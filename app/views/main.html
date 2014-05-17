@@ -1,0 +1,51 @@
+<div class="header">
+    <ul class="nav nav-pills pull-right">
+        <li class="active"><a ng-href="#">Home</a>
+        </li>
+        <li><a ng-href="#">About</a>
+        </li>
+        <li><a ng-href="#">Contact</a>
+        </li>
+        <li ng-cloak ng-show-auth="login" ng-controller="LoginController"><a href="#" ng-click="logout()">Log Out</a>
+        </li>
+        <li ng-cloak ng-show-auth="['logout','error']"><a href="#/login">Log In</a>
+        </li>
+    </ul>
+    <h3 class="text-muted">staffit</h3>
+</div>
+
+<div class="panel panel-primary col-sm-4">
+    <h1>Staff it</h1>
+    <p><a class="btn btn-lg btn-success" ng-href="#" ng-click="createList($event)">Create List<span class="glyphicon glyphicon-ok"></span></a><button class="btn btn-lg btn-warning" ng-href="#" ng-click="showJson($event)">To Json</button>
+        </p>
+    <form name="eventForm">
+        <input class="input" type="text" ng-model="eventName" placeholder="Event Name">
+        <p class="lead">
+            <textarea name="createlist" id="" cols="30" rows="10" ng-model="pasteData" ng-list='/[\n]/' placeholder="Paste Staff list here..." required></textarea>
+
+        </p>
+        <ul ng-model="test">
+            <li ng-repeat="list in pasteData">{{list}}</li>
+        </ul>
+        
+    </form>
+</div>
+
+<div class="panel panel-success col-sm-4">
+    <h1>Staff List</h1>
+    <div>
+        <ul>
+            <li ng-repeat="event in eventStafflist | orderByPriority | filter:search:strict">
+                {{event.eventName}}{{event.created}}
+                <ul>
+                  <li ng-repeat="staff in event.staffList">{{staff | json}}</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="panel panel-info col-sm-4">
+    <p>
+        <span class="glyphicon glyphicon-heart"></span>from the Yeoman team</p>
+</div>
