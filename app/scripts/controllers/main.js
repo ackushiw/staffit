@@ -34,10 +34,22 @@ angular.module('staffitApp')
 	$scope.eventStafflist = syncData(eventPath, 100);
 
 	$scope.showJson = function() {
-        $scope.json = angular.toJson($scope.pasteData);
-    };
+		var input = $scope.pasteData;
+    	var people = input.map(function(p) {
+        	var m = p.replace(/[-]+\s+/g, '').match(/(^\d+)\.\s(\w+\s\w+)\s(\w*)\s?C\:\s(.*\s(?:AM|PM)).*P:\s(\d+-\d+-\d+)\s?(.*)?$/);
+        	return {
+            	number: m[1],
+            	name: m[2],
+            	position: m[3],
+            	calltime: m[4],
+            	phone: m[5],
+            	ntc: m[6]
+        	};
+        $scope.test = people
+    	});
+	};
 
-    $scope.forEach = function() {    	
+    $scope.forEach = function() {     	  	
         $scope.testIterate = angular.forEach($scope.pasteData, function(list){
         	var p = list
 			var items = p.match(/(^\d+)\.\s(\w+\s\w+)\s[-]*\s.*C\:\s(.*\s(AM|PM)).*P:\s(\d+-\d+-\d+)\s?(.*)?$/);
