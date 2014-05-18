@@ -34,7 +34,7 @@ angular
       })
       .when('/paste-event', {
         templateUrl: 'views/paste-event.html',
-        controller: 'PasteEventCtrl'
+        controller: 'MainCtrl'
       })
       .otherwise({
         redirectTo: '/'
