@@ -24,6 +24,18 @@ angular
         templateUrl: 'views/check-in.html',
         controller: 'CheckInCtrl'
       })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
+      })
+      .when('/event-form', {
+        templateUrl: 'views/event-form.html',
+        controller: 'EventFormCtrl'
+      })
+      .when('/paste-event', {
+        templateUrl: 'views/paste-event.html',
+        controller: 'PasteEventCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

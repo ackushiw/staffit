@@ -1,0 +1,17 @@
+<div class="header">
+    <ul class="nav nav-pills pull-right">
+        <li class="active"><a ng-href="#">Home</a>
+        </li>
+        <li><a ng-href="#/about">About</a>
+        </li>
+        <li><a ng-href="#/event-form">New Event Form</a>
+        </li>
+        <li><a ng-href="#/paste-event">Paste Event</a>
+        </li>
+        <li ng-cloak ng-show-auth="login" ng-controller="LoginController"><a href="#" ng-click="logout()">Log Out</a>
+        </li>
+        <li ng-cloak ng-show-auth="['logout','error']"><a href="#/login">Log In</a>
+        </li>
+    </ul>
+    <h3 class="text-muted">staffit</h3>
+</div>
