@@ -30,12 +30,11 @@ angular.module('staffitApp')
     	notes: '',
     	merit: ''    		
     }
+    
 
-	$scope.eventStafflist = syncData(eventPath, 100);
-
-	$scope.showJson = function() {
-		var input = $scope.pasteData;
-    	var people = input.map(function(p) {
+    $scope.update = function(text) {    	
+      	//var pasteInfo = angular.copy(text);
+      	var staffInfo = text.map(function(p) {
         	var m = p.replace(/[-]+\s+/g, '').match(/(^\d+)\.\s(\w+\s\w+)\s(\w*)\s?C\:\s(.*\s(?:AM|PM)).*P:\s(\d+-\d+-\d+)\s?(.*)?$/);
         	return {
             	number: m[1],
@@ -45,7 +44,42 @@ angular.module('staffitApp')
             	phone: m[5],
             	ntc: m[6]
         	};
-        $scope.test = people
+        });
+        $scope.test = people      	
+    };
+
+    
+
+	$scope.eventStafflist = syncData(eventPath, 100);
+
+	$scope.showJson = function() {
+		$scope.test = ['2. Joe Bloggs ---- Server ----------- --- C: 2:45 PM --- P: 000-111-9999', '30. Brady Bielski ----- ----------------- --- C: 2:45 PM --- P: 410-978-2324 **NTC**', '33. MichaelAngelo Caste ----------------- --- C: 2:45 PM --- P: 347-579-6575'];
+   			var input = $scope.test;
+    		var people = input.map(function(p) {
+        	var m = p.replace(/[-]+\s+/g, '').match(/(^\d+)\.\s(\w+\s\w+)\s(\w*)\s?C\:\s(.*\s(?:AM|PM)).*P:\s(\d+-\d+-\d+)\s?(.*)?$/);
+        	return {
+            	number: m[1],
+            	name: m[2],
+            	position: m[3],
+            	ntc: m[6],
+            	calltime: m[4],
+            	phone: m[5],
+            	arrived: false,
+            	arrivalTime: '',
+            	siteIn: false,
+            	siteInTime: '',
+            	siteOut: false,
+            	siteOutTime: '',            	
+            	hours: '',
+    			notes: '',
+    			merit: ''
+        	};
+        });
+    	//$scope.staffList = people
+    	$scope.eventStafflist.$add({
+    		created: new Date(),
+    		eventName: $scope.eventName,
+    		staffList: people
     	});
 	};
 
@@ -62,8 +96,19 @@ angular.module('staffitApp')
     	$scope.eventStafflist.$add({
     		created: new Date(),
     		eventName: $scope.eventName,
-      		staffList: $scope.pasteData
+      		staffList: $scope.pasteData.map(function(p) {
+        		var m = p.replace(/[-]+\s+/g, '').match(/(^\d+)\.\s(\w+\s\w+)\s(\w*)\s?C\:\s(.*\s(?:AM|PM)).*P:\s(\d+-\d+-\d+)\s?(.*)?$/);
+        		return {
+            		number: m[1],
+            		name: m[2],
+            		position: m[3],
+            		calltime: m[4],
+            		phone: m[5],
+            		//ntc: m[6]
+        		};
+        	$scope.test = people
+    		})
     	});
     	$scope.eventList = $scope.pasteData;
     };
-  });
+});
