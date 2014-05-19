@@ -2,9 +2,8 @@
 
 angular.module('staffitApp')
   .directive('eventForm', function () {
-    return {      
+    return {
       restrict: 'C',
       templateUrl: 'views/event-form.html'
-      
     };
   });
