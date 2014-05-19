@@ -32,18 +32,24 @@ angular.module('staffitApp')
     };
 
     $scope.update = function(text) {
-      console.log('test');
-      $scope.people = text.map(function(p) {
+      $scope.people = text.text.map(function(p) {
         var m = p.replace(/[-]+\s+/g, '').match(/(^\d+)\.\s(\w+\s\w+)\s(\w*)\s?C\:\s(.*\s(?:AM|PM)).*P:\s(\d+-\d+-\d+)\s?(.*)?$/);
-        return {
-          number: m[1],
-          name: m[2],
-          position: m[3],
-          calltime: m[4],
-          phone: m[5],
-          ntc: m[6]
-        };
+
+        if (m) {
+          return {
+            number: m[1],
+            name: m[2],
+            position: m[3],
+            calltime: m[4],
+            phone: m[5],
+            ntc: m[6]
+          };
+        }
+        else {
+          return null;
+        }
       });
+      console.log($scope.people);
     };
 
     $scope.eventStafflist = syncData(eventPath, 100);
