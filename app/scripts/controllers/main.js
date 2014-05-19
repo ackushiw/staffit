@@ -56,7 +56,22 @@ angular.module('staffitApp')
           };
         }
         else {
-          return null;
+          return {
+            number: null,
+            name: 'Error',
+            position: '',
+            phone: '',
+            callTime: '',
+            arrived: false,
+            arrivalTime: '',
+            siteIn: false,
+            siteInTime: '',
+            siteOut: false,
+            siteOutTime: '',
+            hours: '',
+            notes: '',
+            merit: ''
+          };
         }
       });
       $scope.eventStafflist.$add({
