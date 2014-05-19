@@ -2,6 +2,7 @@
 
 angular.module('staffitApp')
   .controller('MainCtrl', function ($scope, syncData, eventPath) {
+    $scope.personRegex = /(^\d+)\.\s(\w+\s[\w\-]+)\s(\w+)?\s?(\w+)?\s?C\:\s(.*\s(?:AM|PM)).*P:\s(\d+-\d+-\d+)\s?(.*)?$/;
     $scope.pasteData = {};
     $scope.eventList = {};
     $scope.emptyEvent = {
@@ -33,16 +34,17 @@ angular.module('staffitApp')
 
     $scope.update = function(text) {
       $scope.people = text.text.map(function(p) {
-        var m = p.replace(/[-]+\s+/g, '').match(/(^\d+)\.\s(\w+\s\w+)\s(\w*)\s?C\:\s(.*\s(?:AM|PM)).*P:\s(\d+-\d+-\d+)\s?(.*)?$/);
-
+        var m = p.replace(/[-]+\s+/g, '').match($scope.personRegex);
+        console.log(m);
         if (m) {
           return {
             number: m[1],
             name: m[2],
             position: m[3],
-            calltime: m[4],
-            phone: m[5],
-            ntc: m[6]
+            lieutenant: m[4],
+            calltime: m[5],
+            phone: m[6],
+            ntc: m[7]
           };
         }
         else {
@@ -58,14 +60,15 @@ angular.module('staffitApp')
       $scope.test = ['2. Joe Bloggs ---- Server ----------- --- C: 2:45 PM --- P: 000-111-9999', '30. Brady Bielski ----- ----------------- --- C: 2:45 PM --- P: 410-978-2324 **NTC**', '33. MichaelAngelo Caste ----------------- --- C: 2:45 PM --- P: 347-579-6575'];
       var input = $scope.test;
       var people = input.map(function(p) {
-        var m = p.replace(/[-]+\s+/g, '').match(/(^\d+)\.\s(\w+\s\w+)\s(\w*)\s?C\:\s(.*\s(?:AM|PM)).*P:\s(\d+-\d+-\d+)\s?(.*)?$/);
+        var m = p.replace(/[-]+\s+/g, '').match($scope.personRegex);
         return {
           number: m[1],
           name: m[2],
           position: m[3],
-          ntc: m[6],
-          calltime: m[4],
-          phone: m[5],
+          lieutenant: m[4],
+          calltime: m[5],
+          phone: m[6],
+          ntc: m[7],
           arrived: false,
           arrivalTime: '',
           siteIn: false,
@@ -88,7 +91,7 @@ angular.module('staffitApp')
     $scope.forEach = function() {
       $scope.testIterate = angular.forEach($scope.pasteData, function(list){
         var p = list;
-        var items = p.match(/(^\d+)\.\s(\w+\s\w+)\s[-]*\s.*C\:\s(.*\s(AM|PM)).*P:\s(\d+-\d+-\d+)\s?(.*)?$/);
+        var items = p.match($scope.personRegex);
         $scope.person = { name: items[2], calltime: items[3], phone: items[5] };
       });
     };
@@ -98,14 +101,15 @@ angular.module('staffitApp')
         created: new Date(),
         eventName: $scope.eventName,
         staffList: $scope.pasteData.map(function(p) {
-          var m = p.replace(/[-]+\s+/g, '').match(/(^\d+)\.\s(\w+\s\w+)\s(\w*)\s?C\:\s(.*\s(?:AM|PM)).*P:\s(\d+-\d+-\d+)\s?(.*)?$/);
+          var m = p.replace(/[-]+\s+/g, '').match($scope.personRegex);
           return {
             number: m[1],
             name: m[2],
             position: m[3],
-            calltime: m[4],
-            phone: m[5],
-            //ntc: m[6]
+            lieutenant: m[4],
+            calltime: m[5],
+            phone: m[6],
+            ntc: m[7]
           };
         })
       });
