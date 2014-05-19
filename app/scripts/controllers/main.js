@@ -41,7 +41,7 @@ angular.module('staffitApp')
             name: m[2],
             position: m[3],
             ntc: m[6],
-            calltime: m[4],
+            callTime: m[4],
             phone: m[5],
             arrived: false,
             arrivalTime: '',
@@ -55,7 +55,22 @@ angular.module('staffitApp')
           };
         }
         else {
-          return null;
+          return {                       
+            number: null,
+            name: 'Error',
+            position: '',
+            phone: '',
+            callTime: '',
+            arrived: false,
+            arrivalTime: '',
+            siteIn: false,
+            siteInTime: '',
+            siteOut: false,
+            siteOutTime: '',
+            hours: '',
+            notes: '',
+            merit: ''
+          }  
         }
       });
       console.log($scope.people);
