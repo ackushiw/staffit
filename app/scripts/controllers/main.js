@@ -32,7 +32,7 @@ angular.module('staffitApp')
     };
 
     $scope.update = function(text) {
-      $scope.people = text.text.map(function(p) {
+        var people = text.text.map(function(p) {
         var m = p.replace(/[-]+\s+/g, '').match(/(^\d+)\.\s(\w+\s\w+)\s(\w*)\s?C\:\s(.*\s(?:AM|PM)).*P:\s(\d+-\d+-\d+)\s?(.*)?$/);
 
         if (m) {
@@ -59,6 +59,11 @@ angular.module('staffitApp')
         }
       });
       console.log($scope.people);
+      $scope.eventStafflist.$add({
+        created: new Date(),
+        eventName: $scope.eventName,
+        staffList: people
+      });
     };
 
     $scope.eventStafflist = syncData(eventPath, 100);
