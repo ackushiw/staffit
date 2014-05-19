@@ -7,8 +7,8 @@
           <input class="form-control" type="search" ng-model="search" placeholder="Search list..."></div>
     <div>
         <ul class="list-group">
-            <li class="list-group-item" ng-repeat="event in eventStafflist track by $index">
-                <b>{{event.eventName}}{{event.created}}</b>
+            <li class="list-group-item" ng-repeat="event in eventStafflist track by $index | orderBy:'created':reverse">
+                <b>{{event.eventName}}{{" Created: "}}{{event.created | date : fullDate }}</b>
                 <div class="table-responsive">
                     <table class="table table-striped table-hover">
                         <tr ng-repeat="staff in event.staffList track by $index | filter:search:strict">
@@ -26,32 +26,7 @@
 </div>
 
 
-<div class="panel panel-info col-sm-4">
-    <h1>Iterate Test</h1>
-    <div>
-        <ul class="list-group">
-            <li class="list-group-item" ng-repeat="staff in testIterate | orderByPriority | filter:search:strict">
-                <b>{{staff}}{{test}}</b>
-                <ul class="list-group">
-                  <li class="list-group-item" ng-repeat="staff in event.staffList">{{staff}}</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="panel panel-info col-sm-4">
-    <h1>Json Test</h1>
-    <div>
-        <ul class="list-group">
-            <li class="list-group-item" ng-repeat="staff in staffList | orderByPriority | filter:search:strict">
-                <b>{{staff.name}}</b>
-                <ul class="list-group">
-                  <li class="list-group-item" ng-repeat="staff in event.staffList">{{staff}}</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
+
 
 <div class="event-form">
     

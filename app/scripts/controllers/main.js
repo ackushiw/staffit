@@ -5,6 +5,7 @@ angular.module('staffitApp')
     $scope.personRegex = /(^\d+)\.\s(\w+\s[\w\-]+)\s(\w+)?\s?(\w+)?\s?C\:\s(.*\s(?:AM|PM)).*P:\s(\d+-\d+-\d+)\s?(.*)?$/;
     $scope.pasteData = {};
     $scope.eventList = {};
+    $scope.pasted = false;
     $scope.emptyEvent = {
       id: '',
       client: '',
@@ -83,7 +84,7 @@ angular.module('staffitApp')
 
     $scope.eventStafflist = syncData(eventPath, 100);
 
-    $scope.showJson = function() {
+    /*$scope.showJson = function() {
       $scope.test = ['2. Joe Bloggs ---- Server ----------- --- C: 2:45 PM --- P: 000-111-9999', '30. Brady Bielski ----- ----------------- --- C: 2:45 PM --- P: 410-978-2324 **NTC**', '33. MichaelAngelo Caste ----------------- --- C: 2:45 PM --- P: 347-579-6575'];
       var input = $scope.test;
       var people = input.map(function(p) {
@@ -141,5 +142,5 @@ angular.module('staffitApp')
         })
       });
       $scope.eventList = $scope.pasteData;
-    };
+    };*/
   });
