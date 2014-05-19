@@ -7,11 +7,11 @@
           <input class="form-control" type="search" ng-model="search" placeholder="Search list..."></div>
     <div>
         <ul class="list-group">
-            <li class="list-group-item" ng-repeat="event in eventStafflist">
+            <li class="list-group-item" ng-repeat="event in eventStafflist track by $index">
                 <b>{{event.eventName}}{{event.created}}</b>
                 <div class="table-responsive">
                     <table class="table table-striped table-hover">
-                        <tr ng-repeat="staff in event.staffList | orderByPriority | filter:search:strict">
+                        <tr ng-repeat="staff in event.staffList track by $index | filter:search:strict">
                             <td>{{staff.number}}</td>
                             <td>{{staff.name}}</td>
                             <td>{{staff.calltime}}</td>

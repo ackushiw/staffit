@@ -33,9 +33,8 @@ angular.module('staffitApp')
     };
 
     $scope.update = function(text) {
-      $scope.people = text.text.map(function(p) {
+      var people = text.text.map(function(p) {
         var m = p.replace(/[-]+\s+/g, '').match($scope.personRegex);
-        console.log(m);
         if (m) {
           return {
             number: m[1],
@@ -44,14 +43,27 @@ angular.module('staffitApp')
             lieutenant: m[4],
             calltime: m[5],
             phone: m[6],
-            ntc: m[7]
+            ntc: m[7],
+            arrived: false,
+            arrivalTime: '',
+            siteIn: false,
+            siteInTime: '',
+            siteOut: false,
+            siteOutTime: '',
+            hours: '',
+            notes: '',
+            merit: ''
           };
         }
         else {
           return null;
         }
       });
-      console.log($scope.people);
+      $scope.eventStafflist.$add({
+        created: new Date(),
+        eventName: $scope.eventName,
+        staffList: people
+      });
     };
 
     $scope.eventStafflist = syncData(eventPath, 100);
