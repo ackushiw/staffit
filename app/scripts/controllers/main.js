@@ -40,9 +40,18 @@ angular.module('staffitApp')
             number: m[1],
             name: m[2],
             position: m[3],
+            ntc: m[6],
             calltime: m[4],
             phone: m[5],
-            ntc: m[6]
+            arrived: false,
+            arrivalTime: '',
+            siteIn: false,
+            siteInTime: '',
+            siteOut: false,
+            siteOutTime: '',
+            hours: '',
+            notes: '',
+            merit: ''
           };
         }
         else {
