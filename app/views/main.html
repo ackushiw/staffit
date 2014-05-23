@@ -1,10 +1,15 @@
 <nav></nav>
-<div class="paste-event"></div>
+<div class="panel col-sm-4">
+    <div class="paste-event"></div>
+    <div class="event-form"></div>
+</div>
 
-<div class="panel panel-success col-sm-4">
+<div class="panel panel-success col-sm-8">
 
-    <div class="form-group"><h1>Staff List</h1>
-          <input class="form-control" type="search" ng-model="search" placeholder="Search list..."></div>
+    <div class="form-group">
+        <h1>Staff List</h1>
+        <input class="form-control" type="search" ng-model="search" placeholder="Search list...">
+    </div>
     <div>
         <ul class="list-group">
             <li class="list-group-item" ng-repeat="event in eventStafflist track by $index | orderBy:'created':reverse">
@@ -14,9 +19,10 @@
                         <tr ng-repeat="staff in event.staffList track by $index | filter:search:strict">
                             <td>{{staff.number}}</td>
                             <td>{{staff.name}}</td>
+                            <td>{{staff.position}}</td>
                             <td>{{staff.calltime}}</td>
-                            <td>{{staff.phone}}</td>
-                            <td></td>
+                            <td><a ng-href="{{'tel:'}}{{staff.phone}}" value="{{'+1'}}{{staff.phone}}">{{staff.phone}}</a></td>
+                            <td>{{staff.ntc}}</td>
                         </tr>
                     </table>
                 </div>
@@ -24,11 +30,3 @@
         </ul>
     </div>
 </div>
-
-
-
-
-<div class="event-form">
-    
-</div>
-
