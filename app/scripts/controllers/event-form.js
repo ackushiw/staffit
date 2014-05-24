@@ -2,9 +2,30 @@
 
 angular.module('staffitApp')
   .controller('EventFormCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    $scope.emptyEvent = {
+      id: '',
+      client: '',
+      contact: {
+        name: '',
+        cell: ''
+      },
+      address: '',
+      travelAddress: '',
+      staffQuota: '',
+      staffList: [''],
+      submit: false
+    };
+
+    $scope.emptyStaff = {
+      Name: '',
+      position: '',
+      phone: '',
+      callTime: '',
+      arrival: '',
+      siteIn: '',
+      siteOut: '',
+      hours: '',
+      notes: '',
+      merit: ''
+    };
   });

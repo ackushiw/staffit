@@ -7,8 +7,8 @@ angular.module('staffitApp')
       scope:{
       	staffArrived:'&'
 
-      }
-      transclude: true;
+      },
+      transclude: true,
       template: '<tr ng-repeat="staff in event.staffList track by $index | orderByPriority | filter:search:strict"></tr>'      
     };
   });
