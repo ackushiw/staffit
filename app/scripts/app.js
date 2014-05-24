@@ -1,6 +1,6 @@
 'use strict';
 
-angular
+var staffApp = angular
   .module('staffitApp', [
     'ngCookies',
     'ngResource',
@@ -9,7 +9,7 @@ angular
     'angularfire.login',
     'firebase'
   ])
-  .config(function ($routeProvider) {
+staffApp.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -40,3 +40,9 @@ angular
         redirectTo: '/'
       });
   });
+staffApp.run(['simpleLogin', '$rootScope', 'FBURL', function(simpleLogin, $rootScope, FBURL) {
+      // establish authentication
+      $rootScope.auth = simpleLogin.init('/login');
+      $rootScope.FBURL = FBURL;
+    }
+]);
