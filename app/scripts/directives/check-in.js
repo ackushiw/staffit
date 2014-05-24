@@ -2,13 +2,9 @@
 
 angular.module('staffitApp')
   .directive('checkIn', function () {
-    return {      
+    return {
       restrict: 'C',
-      scope:{
-      	staffArrived:'&'
-
-      },
       transclude: true,
-      template: '<tr ng-repeat="staff in event.staffList track by $index | orderByPriority | filter:search:strict"></tr>'      
+      template: '<tr ng-repeat="staff in event.staffList track by $index" staffArrived="checkIn(person)"></tr>'
     };
   });

@@ -6,7 +6,7 @@ angular.module('staffitApp')
     $scope.pasteData = {};
     //$scope.eventList = {};
     $scope.pasted = false;
-    $scope.eventStafflist = syncData(eventPath, 100);    
+    $scope.eventStafflist = syncData(eventPath, 100);
 
     $scope.update = function(text) {
       var people = text.text.map(function(p) {
@@ -57,10 +57,16 @@ angular.module('staffitApp')
       });
     };
 
-    $scope.checkIn = function() {
-      $scope.checkedIn = true;
+    $scope.checkIn = function (staff){
+      //var list = $scope.staff
+      if (staff.arrived === false) {
+        alert(staff.name + ' is checked in!');
+        return{
+          arrived: true
+        };
+      } else {
+        alert(staff.name + ' is checked out!');
+      }
     };
-    $scope.staffArrived = function() {
-
-    };
+    
   });

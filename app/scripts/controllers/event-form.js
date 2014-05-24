@@ -16,7 +16,7 @@ angular.module('staffitApp')
       submit: false
     };
 
-    $scope.emptyStaff = {      
+    $scope.emptyStaff = {
       name: '',
       position: '',
       phone: '',
