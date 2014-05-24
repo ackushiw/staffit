@@ -82,4 +82,8 @@ angular.module('staffitApp')
         staffList: people
       });
     };
+
+    $scope.checkIn = function() {
+      $scope.checkedIn = true;
+    };
   });
