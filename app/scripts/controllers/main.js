@@ -1,12 +1,14 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('MainCtrl', function ($scope, syncData, eventPath) {
+  .controller('MainCtrl', function ($scope, syncData, eventPath, users) {
     $scope.personRegex = /(^\d+)\.\s(\w+\s[\w\-]+)\s(\w+)?\s?(\w+)?\s?C\:\s(.*\s(?:AM|PM)).*P:\s(\d+-\d+-\d+)\s?(.*)?$/;
     $scope.pasteData = {};
     //$scope.eventList = {};
     $scope.pasted = false;
     $scope.eventStafflist = syncData(eventPath, 100);
+    //user library... will have to hide this later
+    $scope.userLibrary = syncData(users);
 
     $scope.update = function(text) {
       var people = text.text.map(function(p) {
@@ -72,15 +74,17 @@ angular.module('staffitApp')
     //Create User in Firebase from simpleLogin auth and input model user.username
     $scope.register = function (auth, user) {
       var userX = auth.user;
-      var userName = user.username;
+      var username = user.username;
 
-      alert(userName + ' & ' + userX.displayName + ' are awesome!');
-      //auth.user.register($scope.user).then(function (authUser) {
-      //User.create(authUser, $scope.user.username);
-      //$location.path('/');
-      //}, function (error) {
-        //$scope.error = error.toString();
-      //});
+      //This works!!
+      $scope.userLibrary.$add({
+        userData: userX.thirdPartyUserData,
+        username: username,
+        name: userX.displayName,
+        $priority: userX.id
+      }); 
+
+         
     };
     
   });

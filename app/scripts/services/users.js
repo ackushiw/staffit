@@ -1,21 +1,24 @@
 'use strict';
 
 angular.module('staffitApp')
-  .factory('User', function (syncData, simpleLogin) {
+  .factory('User', function (syncData, simpleLogin, users) {
     // Service logic
+    //auth reff
+    var userX = auth.user;
+    //input model ref
+    var username = user.username;
     //firebase ref
     var userLibrary = syncData(users);
 
     var User = {
-      create: function (authUser, username){
+      create: function (auth, user){
         userLibrary[username] = {
-          userData: authUser.thirdPartyUserData,
-          username: username,
-          name: authUser.displayName,
-          $priority: authUser.id
+        userData: userX.thirdPartyUserData,
+        username: username,
+        name: userX.displayName,
+        $priority: userX.id
         };
-
-        userLibrary.$save(username);
+      userLibrary.$save(username);
       }
     };    
 
