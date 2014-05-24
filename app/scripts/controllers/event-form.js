@@ -16,14 +16,17 @@ angular.module('staffitApp')
       submit: false
     };
 
-    $scope.emptyStaff = {
-      Name: '',
+    $scope.emptyStaff = {      
+      name: '',
       position: '',
       phone: '',
       callTime: '',
-      arrival: '',
-      siteIn: '',
-      siteOut: '',
+      arrived: false,
+      arrivalTime: '',
+      siteIn: false,
+      siteInTime: '',
+      siteOut: false,
+      siteOutTime: '',
       hours: '',
       notes: '',
       merit: ''
