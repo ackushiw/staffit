@@ -10,6 +10,6 @@ angular.module('staffitApp')
       simpleLogin.login(service, function(err) {
         $scope.err = err? err + '' : null;
       });
-    };
+    };   
 
   });

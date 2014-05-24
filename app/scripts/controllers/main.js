@@ -68,5 +68,19 @@ angular.module('staffitApp')
         alert(staff.name + ' is checked out!');
       }
     };
+
+    //Create User in Firebase from simpleLogin auth and input model user.username
+    $scope.register = function (auth, user) {
+      var userX = auth.user;
+      var userName = user.username;
+
+      alert(userName + ' & ' + userX.displayName + ' are awesome!');
+      //auth.user.register($scope.user).then(function (authUser) {
+      //User.create(authUser, $scope.user.username);
+      //$location.path('/');
+      //}, function (error) {
+        //$scope.error = error.toString();
+      //});
+    };
     
   });

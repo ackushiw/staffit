@@ -16,4 +16,7 @@ angular.module('staffitApp')
   // your Firebase URL goes here
   .constant('FBURL', 'https://staff-it.firebaseio.com')
 
+  //User Database
+  .constant('users', 'users-library')
+  //Testing for Paste staff list database
   .constant('eventPath', 'list-test-library');
