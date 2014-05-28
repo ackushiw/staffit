@@ -1,14 +1,18 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('MainCtrl', function ($scope, syncData, eventPath, users) {
+  .controller('MainCtrl', function ($scope, $firebase, syncData, eventPath, users) {
     $scope.personRegex = /(^\d+)\.\s(\w+\s[\w\-]+)\s(\w+)?\s?(\w+)?\s?C\:\s(.*\s(?:AM|PM)).*P:\s(\d+-\d+-\d+)\s?(.*)?$/;
     $scope.pasteData = {};
     //$scope.eventList = {};
     $scope.pasted = false;
     $scope.eventStafflist = syncData(eventPath, 100);
     //user library... will have to hide this later
+    var ref = new Firebase('https://staff-it.firebaseio.com/list-test-library');
     $scope.userLibrary = syncData(users);
+    //three way data bind
+    //$scope.eventStafflist.$bind($scope, 'bindTest');
+    
 
     $scope.update = function(text) {
       var people = text.text.map(function(p) {
@@ -60,15 +64,19 @@ angular.module('staffitApp')
     };
 
     $scope.checkIn = function (staff){
+      var time = new Date();
       //var list = $scope.staff
       if (staff.arrived === false) {
-        alert(staff.name + ' is checked in!');
-        return{
-          arrived: true
-        };
+        //alert(staff.name + ' is checked in at ' + time );
+        staff.arrived = true;
+        staff.arrivalTime = new Date();
+
       } else {
-        alert(staff.name + ' is checked out!');
+        //alert(staff.name + ' is checked out!' + ' & arrived= ' + staff.arrived);
+        staff.arrived = false;
+        staff.arrivalTime = '';        
       }
+      $scope.eventStafflist.$save();
     };
 
     //Create User in Firebase from simpleLogin auth and input model user.username
@@ -86,5 +94,6 @@ angular.module('staffitApp')
 
          
     };
+    //return AngularFire(ref, $scope, 'eventStafflist');
     
   });
