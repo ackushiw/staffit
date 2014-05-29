@@ -8,7 +8,6 @@ angular.module('staffitApp')
     $scope.pasted = false;
     $scope.eventStafflist = syncData(eventPath, 100);
     //user library... will have to hide this later
-    var ref = new Firebase('https://staff-it.firebaseio.com/list-test-library');
     $scope.userLibrary = syncData(users);
     //three way data bind
     //$scope.eventStafflist.$bind($scope, 'bindTest');
@@ -74,7 +73,14 @@ angular.module('staffitApp')
       } else {
         //alert(staff.name + ' is checked out!' + ' & arrived= ' + staff.arrived);
         staff.arrived = false;
-        staff.arrivalTime = '';        
+        staff.arrivalTime = '';            
+        staff.siteIn = false;
+        staff.siteInTime= '';
+        staff.siteOut = false;
+        staff.siteOutTime= '';
+        staff.hours= '';
+        staff.notes= '';
+        staff.merit= '';       
       }
       $scope.eventStafflist.$save();
     };
