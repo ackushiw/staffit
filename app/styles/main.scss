@@ -6,6 +6,13 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 
+//check in tables
+.checkIn {
+    tr {
+      cursor: pointer; 
+    }
+}
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;

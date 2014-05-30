@@ -23,10 +23,12 @@
                 <b>{{event.eventName}}{{" Created: "}}{{event.created | date : fullDate }}</b>
                 <div class="table-responsive">
                     <table class="table table-striped table-hover">
-                        <tr class="checkIn" ng-class="{success: staff.arrived}" ng-repeat="staff in event.staffList track by $index | orderByPriority | filter:search:strict" staffArrived="checkIn(person)" ng-transclude>
+                        <tr class="checkIn" ng-class="{hidden: staff.arrived, success: mouse.hover}" ng-repeat="staff in event.staffList track by $index | orderByPriority | filter:search:strict" ng-click="checkIn(staff)" ng-mouseover="mouse.hover = true" ng-mouseleave="mouse.hover = false" ng-transclude>
                             <button class="btn btn-warning btn-block disabled ">Message late-comers</button>
                             <td>{{staff.number}}</td>
-                            <td>{{staff.name}}</td>
+                            <td><p>{{staff.name + ' '}}
+                                                            <span class="glyphicon" ng-class="{'glyphicon-star-empty': staff.lieutenant || staff.position == 'Lt', 'glyphicon-leaf': staff.ntc, 'glyphicon-flash': staff.position == 'Alternate', 'glyphicon-glass': staff.position =='Bartender'}"></span></p>
+                            </td>
 
                             <td class="hidden">{{staff.position}}</td>
                             <td>{{staff.calltime}}</td>
@@ -34,7 +36,10 @@
                             </td>
                             <td class="hidden">{{staff.ntc}}</td>
                             <td>
-                                <button class="btn btn-primary btn-block" ng-class="{'btn-danger': staff.arrived}" ng-click="checkIn(staff)">Check in</button>
+                                <button class="btn btn-primary btn-block" ng-class="{'btn-danger': staff.arrived}">
+                                    <span ng-if="!staff.arrived">Check in <span class="glyphicon glyphicon-ok"></span></span>
+                                    
+                                </button>
                             </td>
                         </tr>
                     </table>
@@ -68,15 +73,18 @@
 
                         <tr class="checkIn" ng-class="{success: staff.siteIn, hidden: !staff.arrived || staff.siteOut}" ng-repeat="staff in event.staffList track by $index | orderByPriority | filter:search:strict" staffArrived="checkIn(person)" ng-transclude>
                             <button class="btn btn-primary btn-block" ng-click="siteIn(event.staffList)">Site In</button>
+                            <td><button class="btn btn-danger glyphicon glyphicon-repeat" ng-click="checkIn(staff)"></button></td>
                             <td>{{staff.number}}</td>
-                            <td>{{staff.name}}</td>
+                            <td>{{staff.name}}
+                                <span class="glyphicon" ng-class="{'glyphicon-star-empty': staff.lieutenant || staff.position == 'Lt', 'glyphicon-leaf': staff.ntc, 'glyphicon-flash': staff.position == 'Alternate', 'glyphicon-glass': staff.position =='Bartender'}"></span>
+                            </td>
                             <td class="hidden">{{'Checked in: ' + staff.arrived}}</td>
                             <td>{{staff.position}}</td>
                             <td>{{staff.calltime}}</td>
                             <td>
-                                <textarea name="notes" id="notes" ng-model="staff.notes" cols="15" rows="1" placeholder="Notes..."></textarea>
+                                <textarea class="form-control" name="notes" id="notes" ng-model="staff.notes" cols="10" rows="1" placeholder="Notes..."></textarea>
                             </td>
-                            <td>
+                            <td>                                
                                 <button class="btn btn-danger" ng-click="deMerit(staff)">
                                     <span class="glyphicon glyphicon-thumbs-down"></span>
                                 </button>
@@ -84,9 +92,9 @@
                                     <span class="glyphicon glyphicon-thumbs-up"></span>
                                 </button>
                             </td>
-                            <td>{{staff.ntc}}</td>
+                            
                             <td>
-                                <button class="btn btn-info btn-block" ng-click="siteOut(staff)">Site out</button>
+                                <button class="btn btn-info btn-block" ng-click="siteOut(staff)">Site out <span class="glyphicon glyphicon-log-out"></span></button>
                             </td>
                         </tr>
                     </table>
