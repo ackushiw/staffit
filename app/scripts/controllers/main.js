@@ -62,9 +62,8 @@ angular.module('staffitApp')
       });
     };
 
-    $scope.checkIn = function (staff){
-      var time = new Date();
-      //var list = $scope.staff
+    $scope.checkIn = function (staff){     
+      
       if (staff.arrived === false) {
         //alert(staff.name + ' is checked in at ' + time );
         staff.arrived = true;
@@ -82,6 +81,35 @@ angular.module('staffitApp')
         staff.notes= '';
         staff.merit= '';       
       }
+      $scope.eventStafflist.$save();
+    };
+    $scope.siteIn = function (staff){
+      alert(staff.id);
+      if (staff.arrived === true && staff.siteIn === false) {
+        alert('Site in!');
+        staff.siteIn = true;
+        staff.siteInTime = new Date();
+      } else {
+        alert('none site in!');
+      }
+
+    };
+    $scope.siteOut = function (staff){
+      if (staff.siteIn ===true) {
+        staff.siteOut = true;
+        staff.siteOutTime = new Date();
+        staff.hours = staff.siteOutTime - staff.siteInTime;
+      } else {
+        alert(staff.name + ' hasn\'t been checked in yet!' );
+      }
+      $scope.eventStafflist.$save();
+    };
+    $scope.merit = function (staff){
+      staff.merit = 1;
+      $scope.eventStafflist.$save();
+    };
+    $scope.deMerit = function (staff){
+      staff.merit = -1;
       $scope.eventStafflist.$save();
     };
 
