@@ -63,7 +63,7 @@ angular.module('staffitApp')
     };
 
     // This is the check in button to note arrival time
-    $scope.checkIn = function (staff){     
+    $scope.checkIn = function (staff){
       
       if (staff.arrived === false) {
         //alert(staff.name + ' is checked in at ' + time );
@@ -73,43 +73,37 @@ angular.module('staffitApp')
       } else {
         //alert(staff.name + ' is checked out!' + ' & arrived= ' + staff.arrived);
         staff.arrived = false;
-        staff.arrivalTime = '';            
+        staff.arrivalTime = '';
         staff.siteIn = false;
         staff.siteInTime= '';
         staff.siteOut = false;
         staff.siteOutTime= '';
         staff.hours= '';
         staff.notes= '';
-        staff.merit= '';       
+        staff.merit= '';
       }
       $scope.eventStafflist.$save();
     };
     //Can't get this to work... don't quite understand how map works
     $scope.siteIn = function (staff){
-      var staffArray = staff;
       var time = new Date();
-      var people = staffArray.map(function (p){
-        if (p.arrived === true && p.siteIn === false) {
-          //alert(p.name +' Site in!');
+      staff.filter(function(p) {
+        return p.arrived && !p.siteIn;
+      }).map(function (p) {
           p.siteIn = true;
           p.siteInTime = time;
-          alert(time)          
-        } else {
-          //alert(p.name +' not site in!');
-        }
-      });
-      //alert(people);
-      
-
+          return p;
+        });
+      $scope.eventStafflist.$save();
     };
     //This is the final check out button to sign staff out
     $scope.siteOut = function (staff){
-      if (staff.siteIn ===true) {
+      if (staff.siteIn) {
         staff.siteOut = true;
         staff.siteOutTime = new Date();
         staff.hours = staff.siteOutTime - staff.siteInTime;
       } else {
-        alert(staff.name + ' hasn\'t been checked in yet!' );
+        window.alert(staff.name + ' hasn\'t been checked in yet!' );
       }
       $scope.eventStafflist.$save();
     };
@@ -134,10 +128,10 @@ angular.module('staffitApp')
         username: username,
         name: userX.displayName,
         $priority: userX.id
-      }); 
+      });
 
-         
+
     };
     //return AngularFire(ref, $scope, 'eventStafflist');
-    
+
   });
