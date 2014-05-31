@@ -62,6 +62,7 @@ angular.module('staffitApp')
       });
     };
 
+    // This is the check in button to note arrival time
     $scope.checkIn = function (staff){     
       
       if (staff.arrived === false) {
@@ -83,17 +84,22 @@ angular.module('staffitApp')
       }
       $scope.eventStafflist.$save();
     };
+    //Can't get this to work... don't quite understand how map works
     $scope.siteIn = function (staff){
-      alert(staff.id);
-      if (staff.arrived === true && staff.siteIn === false) {
+      var people = staff.staff.map(function (){
+        if (staff.arrived === true && staff.siteIn === false) {
         alert('Site in!');
         staff.siteIn = true;
         staff.siteInTime = new Date();
-      } else {
-        alert('none site in!');
-      }
+        } else {
+          alert('none site in!');
+        }
+      });
+      alert(people);
+      
 
     };
+    //This is the final check out button to sign staff out
     $scope.siteOut = function (staff){
       if (staff.siteIn ===true) {
         staff.siteOut = true;
@@ -104,6 +110,7 @@ angular.module('staffitApp')
       }
       $scope.eventStafflist.$save();
     };
+    //These are the two merit buttons to note the performance of staff
     $scope.merit = function (staff){
       staff.merit = 1;
       $scope.eventStafflist.$save();

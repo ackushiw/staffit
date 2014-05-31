@@ -7,11 +7,18 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 // endbower
 
 //check in tables
-.checkIn {
-    tr {
-      cursor: pointer; 
+.check-in{
+    cursor: pointer;      
+}
+.check-in:hover{
+    p{
+        font-weight: bold;
     }
 }
+.check-hover{ 
+    cursor: pointer;   
+    font-weight: bold;    
+} 
 
 .browsehappy {
     margin: 0.2em 0;
