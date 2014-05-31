@@ -86,16 +86,19 @@ angular.module('staffitApp')
     };
     //Can't get this to work... don't quite understand how map works
     $scope.siteIn = function (staff){
-      var people = staff.staff.map(function (){
-        if (staff.arrived === true && staff.siteIn === false) {
-        alert('Site in!');
-        staff.siteIn = true;
-        staff.siteInTime = new Date();
+      var staffArray = staff;
+      var time = new Date();
+      var people = staffArray.map(function (p){
+        if (p.arrived === true && p.siteIn === false) {
+          //alert(p.name +' Site in!');
+          p.siteIn = true;
+          p.siteInTime = time;
+          alert(time)          
         } else {
-          alert('none site in!');
+          //alert(p.name +' not site in!');
         }
       });
-      alert(people);
+      //alert(people);
       
 
     };
