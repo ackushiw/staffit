@@ -76,7 +76,7 @@
                     <table class="table table-striped table-hover">
 
                         <tr class="checkIn" ng-class="{success: staff.siteIn, hidden: !staff.arrived || staff.siteOut}" ng-repeat="staff in event.staffList track by $index" ng-transclude>
-                            <button class="btn btn-primary btn-block" ng-click="siteIn(event.staffList);">Site In @ {{time | date: 'shortTime'}}</button>
+                            <button class="btn btn-primary btn-block" ng-click="siteIn(event.staffList);">{{time | date: 'shortTime'}}: Site In @ {{xvMinRound | date: 'shortTime'}}</button>
                             <td>
                                 <button class="btn btn-danger glyphicon glyphicon-repeat" ng-click="checkIn(staff)"></button>
                             </td>
@@ -91,10 +91,10 @@
                                 <textarea class="form-control" name="notes" id="notes" ng-model="staff.notes" cols="10" rows="1" placeholder="Notes..."></textarea>
                             </td>
                             <td>
-                                <button class="btn btn-danger" ng-click="deMerit(staff)">
+                                <button class="btn btn-danger" ng-class="{active: staff.merit == -1}" ng-click="deMerit(staff)">
                                     <span class="glyphicon glyphicon-thumbs-down"></span>
                                 </button>
-                                <button class="btn btn-success" ng-click="merit(staff)">
+                                <button class="btn btn-success" ng-class="{active: staff.merit == 1}" ng-click="merit(staff)">
                                     <span class="glyphicon glyphicon-thumbs-up"></span>
                                 </button>
                             </td>

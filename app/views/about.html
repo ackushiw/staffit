@@ -31,7 +31,7 @@
                         <th>Hours</th>
 
                         <tr class="checkIn" ng-repeat="staff in event.staffList track by $index | orderByPriority | filter:search:strict" staffArrived="checkIn(person)" ng-transclude>
-                            <td>{{staff.number}} <button class="btn btn-danger glyphicon glyphicon-repeat" ng-click="checkIn(staff)"></button></td>
+                            <td>{{staff.number}} <button class="btn btn-danger glyphicon glyphicon-repeat" ng-class="{hidden: !staff.arrived}" ng-click="checkIn(staff)"></button></td>
                             <td>{{staff.name}}</td>
                             <td>{{staff.calltime}}</td>
                             <td ng-class="{success: staff.arrived, danger: !staff.arrived}">
