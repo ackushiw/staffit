@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('MainCtrl', function ($scope, $firebase, syncData, eventPath, users) {
+  .controller('MainCtrl', function ($scope, $firebase, syncData, eventPath, users, $timeout) {
     $scope.personRegex = /(^\d+)\.\s(\w+\s[\w\-]+)\s(\w+)?\s?(\w+)?\s?C\:\s(.*\s(?:AM|PM)).*P:\s(\d+-\d+-\d+)\s?(.*)?$/;
     $scope.pasteData = {};
     //$scope.eventList = {};
@@ -98,10 +98,15 @@ angular.module('staffitApp')
     };
     //This is the final check out button to sign staff out
     $scope.siteOut = function (staff){
+      var outTime = new Date();
+      var outTimeSec = outTime.getTime();         
       if (staff.siteIn) {
+        var inTime = staff.siteInTime;        
+        var staffInSec = Date.parse(inTime);
+        var hoursCalc = outTime - staffInSec;
         staff.siteOut = true;
-        staff.siteOutTime = new Date();
-        staff.hours = staff.siteOutTime - staff.siteInTime;
+        staff.siteOutTime = outTime;       
+        staff.hours = hoursCalc / (3600*1000); //turning milliseconds to hours
       } else {
         window.alert(staff.name + ' hasn\'t been checked in yet!' );
       }
@@ -134,4 +139,10 @@ angular.module('staffitApp')
     };
     //return AngularFire(ref, $scope, 'eventStafflist');
 
+    //Real Time Clock
+    var tick = function() {            
+      $scope.time = new Date();
+      $timeout(tick, 1000);
+    };
+    $timeout(tick, 1000);
   });

@@ -31,19 +31,19 @@
                         <th>Hours</th>
 
                         <tr class="checkIn" ng-repeat="staff in event.staffList track by $index | orderByPriority | filter:search:strict" staffArrived="checkIn(person)" ng-transclude>
-                            <td>{{staff.number}}</td>
+                            <td>{{staff.number}} <button class="btn btn-danger glyphicon glyphicon-repeat" ng-click="checkIn(staff)"></button></td>
                             <td>{{staff.name}}</td>
                             <td>{{staff.calltime}}</td>
                             <td ng-class="{success: staff.arrived, danger: !staff.arrived}">
                                 <p ng-if="staff.arrived == false">No Show!</p>{{staff.arrivalTime | date: 'shortTime'}}</td>
                             <td>{{staff.position}}</td>
-                            <td>{{staff.siteInTime}}</td>
+                            <td>{{staff.siteInTime | date: 'shortTime'}}</td>
                             <td ng-class="{success: staff.merit == 1, danger: staff.merit == -1}">
                                 <p ng-if="staff.merit == 1">Merit</p>
                                 <p ng-if="staff.merit == -1">Demerit</p>
                             </td>
                             <td>{{staff.notes}}</td>
-                            <td ng-class="{danger: !staff.siteOut, success: staff.siteOut}">{{staff.siteOutTime}}</td>
+                            <td ng-class="{danger: !staff.siteOut, success: staff.siteOut}">{{staff.siteOutTime | date: 'shortTime'}}</td>
                             <td ng-class="{danger: !staff.siteOut, success: staff.siteOut}">{{staff.hours}}</td>
                         </tr>
                     </table>

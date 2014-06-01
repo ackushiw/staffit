@@ -76,7 +76,7 @@
                     <table class="table table-striped table-hover">
 
                         <tr class="checkIn" ng-class="{success: staff.siteIn, hidden: !staff.arrived || staff.siteOut}" ng-repeat="staff in event.staffList track by $index" ng-transclude>
-                            <button class="btn btn-primary btn-block" ng-click="siteIn(event.staffList);">Site In{{event.staffList | json}}</button>
+                            <button class="btn btn-primary btn-block" ng-click="siteIn(event.staffList);">Site In @ {{time | date: 'shortTime'}}</button>
                             <td>
                                 <button class="btn btn-danger glyphicon glyphicon-repeat" ng-click="checkIn(staff)"></button>
                             </td>
