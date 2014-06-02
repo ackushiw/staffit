@@ -103,10 +103,14 @@ angular.module('staffitApp')
       if (staff.siteIn) {
         var inTime = staff.siteInTime;        
         var staffInSec = Date.parse(inTime);
-        var hoursCalc = outTime - staffInSec;
+        var workHours = outTime - staffInSec;
+        var milliHours = 3600*1000;
+        var hoursCalc = Math.floor(workHours/ milliHours);
+        var milliMins = workHours % milliHours;
+        var minsCalc = Math.floor(milliMins / 60000);
         staff.siteOut = true;
         staff.siteOutTime = outTime;       
-        staff.hours = hoursCalc / (3600*1000); //turning milliseconds to hours
+        staff.hours = hoursCalc; // / (3600*1000); //turning milliseconds to hours
       } else {
         window.alert(staff.name + ' hasn\'t been checked in yet!' );
       }
