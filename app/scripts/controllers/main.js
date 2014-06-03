@@ -105,9 +105,9 @@ angular.module('staffitApp')
         var staffInSec = Date.parse(inTime);
         var workHours = outTime - staffInSec;
         var milliHours = 3600*1000;
-        var hoursCalc = Math.floor(workHours/ milliHours);
+        $scope.hoursCalc = Math.floor(workHours/ milliHours);
         var milliMins = workHours % milliHours;
-        var minsCalc = Math.floor(milliMins / 60000);
+        $scope.minsCalc = Math.floor(milliMins / 60000);
         staff.siteOut = true;
         staff.siteOutTime = outTime;       
         staff.hours = hoursCalc; // / (3600*1000); //turning milliseconds to hours
