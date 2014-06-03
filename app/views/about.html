@@ -44,7 +44,7 @@
                             </td>
                             <td>{{staff.notes}}</td>
                             <td ng-class="{danger: !staff.siteOut, success: staff.siteOut}">{{staff.siteOutTime | date: 'shortTime'}}</td>
-                            <td ng-class="{danger: !staff.siteOut, success: staff.siteOut}">{{staff.hours}}</td>
+                            <td ng-class="{danger: !staff.siteOut, success: staff.siteOut}">{{staff.hours + 'h:' + staff.mins + 'mins'}}</td>
                         </tr>
                     </table>
                 </div>

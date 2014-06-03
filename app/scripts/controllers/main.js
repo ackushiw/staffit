@@ -31,7 +31,8 @@ angular.module('staffitApp')
             siteInTime: '',
             siteOut: false,
             siteOutTime: '',
-            hours: '',
+            hours: 0,
+            mins: 0,
             notes: '',
             merit: ''
           };
@@ -49,7 +50,8 @@ angular.module('staffitApp')
             siteInTime: '',
             siteOut: false,
             siteOutTime: '',
-            hours: '',
+            hours: 0,
+            mins: 0,
             notes: '',
             merit: ''
           };
@@ -78,7 +80,8 @@ angular.module('staffitApp')
         staff.siteInTime= '';
         staff.siteOut = false;
         staff.siteOutTime= '';
-        staff.hours= '';
+        staff.hours= 0;
+        staff.mins= 0;
         staff.notes= '';
         staff.merit= '';
       }
@@ -104,13 +107,14 @@ angular.module('staffitApp')
         var inTime = staff.siteInTime;        
         var staffInSec = Date.parse(inTime);
         var workHours = outTime - staffInSec;
-        var milliHours = 3600*1000;
+        var milliHours = 3600*1000; // / (3600*1000); //turning milliseconds to hours
         $scope.hoursCalc = Math.floor(workHours/ milliHours);
         var milliMins = workHours % milliHours;
-        $scope.minsCalc = Math.floor(milliMins / 60000);
+        var minsCalc = Math.floor(milliMins / 60000);
         staff.siteOut = true;
         staff.siteOutTime = outTime;       
-        staff.hours = hoursCalc; // / (3600*1000); //turning milliseconds to hours
+        staff.hours = $scope.hoursCalc;
+        staff.mins = minsCalc; 
       } else {
         window.alert(staff.name + ' hasn\'t been checked in yet!' );
       }

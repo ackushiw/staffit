@@ -20,7 +20,8 @@ angular.module('staffitApp')
         staff.siteInTime= '';
         staff.siteOut = false;
         staff.siteOutTime= '';
-        staff.hours= '';
+        staff.hours= 0;
+        staff.mins= 0;
         staff.notes= '';
         staff.merit= '';
       }
