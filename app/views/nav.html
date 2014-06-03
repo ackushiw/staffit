@@ -1,6 +1,7 @@
-<div class="header">
+<div class="header" ng-controller="NavCtrl">
 
-    <ul class="nav nav-pills pull-right">                
+    <ul class="nav nav-pills pull-right">
+        <li><a><b>{{time | date: 'mediumTime'}}</b></a></li>
         <li><a ng-href="#">Home</a>
         </li>
         <li><a ng-href="#/about">About</a>
