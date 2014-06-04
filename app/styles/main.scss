@@ -19,7 +19,22 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
     cursor: pointer;   
     font-weight: bold;    
 } 
-
+//Nav
+nav {
+    z-index: 100;
+}
+// Side Menu 
+#sidebar {
+    position: fixed;
+    background: white;
+    top: 73px;
+    left: 0;
+    height: 100%;
+    z-index: 20;
+    -moz-box-shadow:    2px 20px 20px 10px rgba(200, 200, 200, 0.7);
+  -webkit-box-shadow: 2px 20px 20px 10px rgba(200, 200, 200, 0.7);
+  box-shadow:         2px 20px 20px 10px rgba(200, 200, 200, 0.7);
+}
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;

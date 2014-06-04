@@ -1,33 +1,46 @@
-<div class="header" ng-controller="NavCtrl">    
+<nav id="nav" class="navbar navbar-default navbar-fixed-top" ng-controller="NavCtrl">
+    <div class="container-fluid">
 
-    <ul class="nav nav-pills pull-right">
-        <li><a><b>{{time | date: 'mediumTime'}}</b></a></li>
-        <li><a ng-href="#">Home</a>
-        </li>
-        <li><a ng-href="#/about">About</a>
-        </li>
-        <li><a ng-href="#/event-form">New Event Form</a>
-        </li>
-        <li><a ng-href="#/paste-event">Paste Event</a>
-        </li>
-        <li ng-show-auth="login" ng-controller="LoginController"><a class="btn btn-danger" href="#" ng-click="auth.$logout();">Log Out</a>
-        </li>
-        <li ng-show-auth="['logout','error']"><a href="#/login">Log In</a>
-        </li>
-    </ul>
-    
-   <h3 class="text-muted brand"><a class="btn btn-lg" ng-click="sidebarToggle(sidebarMenu);">staffit</a></h3> <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" ng-if="sidebarMenu" role="navigation">
-          <div class="list-group">
-            <a href="#" class="list-group-item active">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-          </div>
-        </div><!--/span-->
-</div>
+        <ul class="nav nav-pills pull-right">
+            <li><a><b>{{time | date: 'mediumTime'}}</b></a>
+            </li>
+            <li class="hidden-xs"><a ng-href="#">Home</a>
+            </li>
+            <li class="hidden-xs"><a ng-href="#/about">About</a>
+            </li>
+            <li class="hidden-xs"><a ng-href="#/event-form">New Event Form</a>
+            </li>
+            <li class="hidden-xs"><a ng-href="#/paste-event">Paste Event</a>
+            </li>
+            <li class="hidden-xs" ng-show-auth="login" ng-controller="LoginController"><a class="btn btn-danger" href="#" ng-click="auth.$logout();">Log Out</a>
+            </li>
+            <li class="hidden-xs" ng-show-auth="['logout','error']"><a href="#/login">Log In</a>
+            </li>
+        </ul>
+
+        <h3 class="text-muted brand"><a class="btn btn-lg" ng-click="sidebarToggle(sidebarMenu);">staffit</a>
+        </h3>
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" ng-if="sidebarMenu" role="navigation" ng-animate>
+            <div class="panel info">
+                <ul class="list-group">
+                    <li class="list-group-item"><a><b>{{time | date: 'mediumTime'}}</b></a>
+                    </li>
+                    <li class="list-group-item"><a ng-href="#">Home</a>
+                    </li>
+                    <li class="list-group-item"><a ng-href="#/about">About</a>
+                    </li>
+                    <li class="list-group-item"><a ng-href="#/event-form">New Event Form</a>
+                    </li>
+                    <li class="list-group-item"><a ng-href="#/paste-event">Paste Event</a>
+                    </li>
+                    <li class="list-group-item" ng-show-auth="login" ng-controller="LoginController"><a class="btn btn-danger btn-block" href="#" ng-click="auth.$logout();">Log Out</a>
+                    </li>
+                    <li class="list-group-item" ng-show-auth="['logout','error']"><a href="#/login">Log In</a>
+                    </li>
+                </ul>
+                <a href="#" class="list-group-item">Link</a>
+            </div>
+        </div>
+        <!--/span-->
+    </div>
+</nav>
