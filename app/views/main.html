@@ -92,10 +92,10 @@
                                 <textarea class="form-control" name="notes" id="notes" ng-model="staff.notes" cols="10" rows="1" placeholder="Notes..."></textarea>
                             </td>
                             <td>
-                                <button class="btn btn-danger" ng-class="{active: staff.merit == -1}" ng-click="deMerit(staff)">
+                                <button class="btn btn-default" ng-class="{active: staff.merit == -1, 'btn-danger': staff.merit == -1}" ng-click="deMerit(staff)">
                                     <span class="glyphicon glyphicon-thumbs-down"></span>
                                 </button>
-                                <button class="btn btn-success" ng-class="{active: staff.merit == 1}" ng-click="merit(staff)">
+                                <button class="btn btn-default" ng-class="{active: staff.merit == 1, 'btn-success': staff.merit == 1}" ng-click="merit(staff)">
                                     <span class="glyphicon glyphicon-thumbs-up"></span>
                                 </button>
                             </td>

@@ -6,6 +6,7 @@ var staffApp = angular
     'ngResource',
     'ngSanitize',
     'ngRoute',
+    'ngAnimate',
     'angularfire.login',
     'firebase'
   ])
