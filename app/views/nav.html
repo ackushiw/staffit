@@ -4,13 +4,13 @@
         <ul class="nav nav-pills pull-right">
             <li><a><b>{{time | date: 'mediumTime'}}</b></a>
             </li>
-            <li class="hidden-xs"><a ng-href="#">Home</a>
+            <li class="hidden-xs"><a ui-sref="home">Home</a>
             </li>
-            <li class="hidden-xs"><a ng-href="#/about">About</a>
+            <li class="hidden-xs"><a ui-sref="about">About</a>
             </li>
-            <li class="hidden-xs"><a ng-href="#/event-form">New Event Form</a>
+            <li class="hidden-xs"><a ui-sref="event-form">New Event Form</a>
             </li>
-            <li class="hidden-xs"><a ng-href="#/paste-event">Paste Event</a>
+            <li class="hidden-xs"><a ui-sref="paste-event">Paste Event</a>
             </li>
             <li class="hidden-xs" ng-show-auth="login" ng-controller="LoginController"><a class="btn btn-danger" href="#" ng-click="auth.$logout();">Log Out</a>
             </li>
@@ -28,13 +28,13 @@
                 <ul class="list-group">
                     <li class="list-group-item"><a><b>{{time | date: 'mediumTime'}}</b></a>
                     </li>
-                    <li class="list-group-item"><a ng-href="#">Home</a>
+                    <li class="list-group-item"><a ui-sref="home">Home</a>
                     </li>
-                    <li class="list-group-item"><a ng-href="#/about">About</a>
+                    <li class="list-group-item"><a ui-sref="about">About</a>
                     </li>
-                    <li class="list-group-item"><a ng-href="#/event-form">New Event Form</a>
+                    <li class="list-group-item"><a ui-sref="event-form">New Event Form</a>
                     </li>
-                    <li class="list-group-item"><a ng-href="#/paste-event">Paste Event</a>
+                    <li class="list-group-item"><a ui-sref="paste-event">Paste Event</a>
                     </li>
                     <li class="list-group-item" ng-show-auth="login" ng-controller="LoginController"><a class="btn btn-danger btn-block" href="#" ng-click="auth.$logout();">Log Out</a>
                     </li>
