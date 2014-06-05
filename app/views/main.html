@@ -24,7 +24,7 @@
                 <b>{{event.eventName}}{{" Created: "}}{{event.created | date : fullDate }}</b>
                 <div class="table-responsive">
                     <table class="table table-striped table-hover">
-                        <tr class="check-in" ng-class="{hidden: staff.arrived, success: mouse.hover}" ng-repeat="staff in event.staffList track by $index | filter:search:strict" ng-click="checkIn(staff)" ng-mouseover="mouse.hover = true" ng-mouseleave="mouse.hover = false" ng-transclude>
+                        <tr class="check-in animate-repeat" ng-class="{hidden: staff.arrived, success: mouse.hover}" ng-repeat="staff in event.staffList track by $index | filter:search:strict" ng-click="checkIn(staff)" ng-mouseover="mouse.hover = true" ng-mouseleave="mouse.hover = false" ng-transclude>
                             <button class="btn btn-success btn-block disabled">Add extra staff</button>
                             <td>{{staff.number}}</td>
                             <td>
@@ -76,7 +76,7 @@
                 <div class="table-responsive">
                     <table class="table table-striped table-hover">
 
-                        <tr class="checkIn" ng-class="{success: staff.siteIn, hidden: !staff.arrived || staff.siteOut}" ng-repeat="staff in event.staffList track by $index" ng-transclude>
+                        <tr class="checkIn animate-repeat" ng-class="{success: staff.siteIn, hidden: !staff.arrived || staff.siteOut}" ng-repeat="staff in event.staffList track by $index" ng-transclude>
                             <button class="btn btn-primary btn-block" ng-click="siteIn(event.staffList);">{{time | date: 'shortTime'}}: Site In @ {{xvMinRound | date: 'shortTime'}}</button>
                             <td>
                                 <button class="btn btn-danger glyphicon glyphicon-repeat" ng-click="checkIn(staff)"></button>
