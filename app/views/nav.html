@@ -1,48 +1,52 @@
-<div id="nav-view" ng-controller="NavCtrl"><nav id="nav" class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+<div id="nav-view" ng-controller="NavCtrl">
+    <nav id="nav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
 
-        <ul class="nav nav-pills pull-right">
-            <li><a><b>{{time | date: 'mediumTime'}}</b></a>
-            </li>
-            <li class="hidden-xs"><a ui-sref="home">Home</a>
-            </li>
-            <li class="hidden-xs"><a ui-sref="about">About</a>
-            </li>
-            <li class="hidden-xs"><a ui-sref="event-form">New Event Form</a>
-            </li>
-            <li class="hidden-xs"><a ui-sref="paste-event">Paste Event</a>
-            </li>
-            <li class="hidden-xs" ng-show-auth="login" ng-controller="LoginController"><a class="btn btn-danger" href="#" ng-click="auth.$logout();">Log Out</a>
-            </li>
-            <li class="hidden-xs" ng-show-auth="['logout','error']"><a href="#/login">Log In</a>
-            </li>
-        </ul>
-
-        <h3 class="text-muted brand"><a class="btn btn-lg" ng-click="sidebarToggle(sidebarMenu);">staffit</a>
-        </h3>
-        
-    </div>
-</nav>
-<div class="col-xs-6 col-sm-3 sidebar-offcanvas animate-sidemenu" id="sidebar" ng-if="sidebarMenu" role="navigation" ng-animate>
-            <div class="panel info">
-                <ul class="list-group">
-                    <li class="list-group-item"><a><b>{{time | date: 'mediumTime'}}</b></a>
+            <div>
+                <ul class="nav navbar-nav nav-pills navbar-right">
+                    <li class="hidden-xs"><a><b>{{time | date: 'mediumTime'}}</b></a>
                     </li>
-                    <li class="list-group-item"><a ui-sref="home">Home</a>
+                    <li class="hidden-xs"><a ui-sref="home">Home</a>
                     </li>
-                    <li class="list-group-item"><a ui-sref="about">About</a>
+                    <li class="hidden-xs"><a ui-sref="about">About</a>
                     </li>
-                    <li class="list-group-item"><a ui-sref="event-form">New Event Form</a>
+                    <li class="hidden-xs"><a ui-sref="create">Create Event</a>
                     </li>
-                    <li class="list-group-item"><a ui-sref="paste-event">Paste Event</a>
+                    <li class="hidden-xs"><a ui-sref="paste-event">Paste Event</a>
                     </li>
-                    <li class="list-group-item" ng-show-auth="login" ng-controller="LoginController"><a class="btn btn-danger btn-block" href="#" ng-click="auth.$logout();">Log Out</a>
+                    <li class="hidden-xs" ng-show-auth="login" ng-controller="LoginController"><a class="btn btn-danger" href="#" ng-click="auth.$logout();">Log Out</a>
                     </li>
-                    <li class="list-group-item" ng-show-auth="['logout','error']"><a href="#/login">Log In</a>
+                    <li class="hidden-xs" ng-show-auth="['logout','error']"><a href="#/login">Log In</a>
                     </li>
                 </ul>
-                <a href="#" class="list-group-item">Link</a>
+
+                <h3 class="text-muted brand"><a class="btn btn-lg" ng-click="sidebarToggle(sidebarMenu);"><span class="glyphicon glyphicon-list"></span><span class="glyphicon" ng-class="{'glyphicon-chevron-right': !sidebarMenu, 'glyphicon-chevron-left': sidebarMenu}"></span>  Staffit</a>
+                </h3>
+
             </div>
+
         </div>
-        <!--/span-->
+    </nav>
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas animate-sidemenu" id="sidebar" ng-if="sidebarMenu" role="navigation" ng-mouseleave="sidebarToggle(sidebarMenu);" ng-animate>
+        <div class="panel info">
+            <ul class="list-group">
+                <li class="list-group-item"><a><b>{{time | date: 'mediumTime'}}</b></a>
+                </li>
+                <li class="list-group-item"><a ui-sref="home">Home</a>
+                </li>
+                <li class="list-group-item"><a ui-sref="about">About</a>
+                </li>
+                <li class="list-group-item"><a ui-sref="create">Create Event</a>
+                </li>
+                <li class="list-group-item"><a ui-sref="paste-event">Paste Event</a>
+                </li>
+                <li class="list-group-item" ng-show-auth="login" ng-controller="LoginController"><a class="btn btn-danger btn-block" href="#" ng-click="auth.$logout();">Log Out</a>
+                </li>
+                <li class="list-group-item" ng-show-auth="['logout','error']"><a href="#/login">Log In</a>
+                </li>
+            </ul>
+            <a href="#" class="list-group-item">Link</a>
+        </div>
+    </div>
+    <!--/span-->
 </div>

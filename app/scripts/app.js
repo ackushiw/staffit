@@ -33,10 +33,10 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .state('event-form', {
-        url: '/event-form',
-        templateUrl: 'views/event-form.html',
-        controller: 'EventFormCtrl'
+      .state('create', {
+        url: '/create',
+        templateUrl: 'views/create.html',
+        controller: 'MainCtrl'
       })
       .state('paste-event', {
         url: '/paste-event',
