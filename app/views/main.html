@@ -4,8 +4,8 @@
 </div>
 <!-- Check In Div -->
 <div class="panel panel-success col-sm-4">
-    <div class="input-group">
-        <input ng-show-auth="logout" type="text" ng-model="user.username" placeholder="Username" class="form-control">
+    <div class="input-group hidden" ng-show-auth="logout" ng-cloak>
+        <input  type="text" ng-model="user.username" placeholder="Username" class="form-control">
         <span class="input-group-btn">
             <button class="btn btn-primary" ng-click="register(auth, user)">Register</button>
         </span>
@@ -53,8 +53,8 @@
 </div>
 <!-- Check out Div -->
 <div class="panel panel-info col-sm-8">
-    <div class="input-group">
-        <input ng-show-auth="logout" type="text" ng-model="user.username" placeholder="Username" class="form-control">
+    <div class="input-group" ng-show-auth="logout" ng-cloak>
+        <input  type="text" ng-model="user.username" placeholder="Username" class="form-control">
         <span class="input-group-btn">
             <button class="btn btn-primary" ng-click="register(auth, user)">Register</button>
         </span>
