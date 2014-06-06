@@ -12,7 +12,7 @@ var staffApp = angular
     'firebase'
   ])
 staffApp.config(function ($stateProvider, $urlRouterProvider) {
-    // For any unmatched url, redirect to /state1
+    // For any unmatched url, redirect to /home
     $urlRouterProvider.otherwise("/home");
     $stateProvider
       .state('home', {
@@ -53,9 +53,9 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
         controller: 'ProfileCtrl'
       })      
   });
-staffApp.run(['simpleLogin', '$rootScope', 'FBURL', function(simpleLogin, $rootScope, FBURL) {
+staffApp.run(['simpleLogin', '$rootScope', 'FBURL', function(simpleLogin, $rootScope, FBURL, $location) {
       // establish authentication
       $rootScope.auth = simpleLogin.init('/login');
-      $rootScope.FBURL = FBURL;
+      $rootScope.FBURL = FBURL;      
     }
 ]);
