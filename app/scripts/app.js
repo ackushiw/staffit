@@ -8,12 +8,15 @@ var staffApp = angular
     'ui.router',
     'ngAnimate',
     'angularfire.login',
+    'simpleLoginTools',
     'firebase'
   ])
 staffApp.config(function ($stateProvider, $urlRouterProvider) {
+    // For any unmatched url, redirect to /state1
+    $urlRouterProvider.otherwise("/home");
     $stateProvider
       .state('home', {
-        url: '',
+        url: '/home',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
@@ -44,6 +47,7 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
         controller: 'MainCtrl'
       })
       .state('profile', {
+        authRequired: true,
         url: '/profile',
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl'
