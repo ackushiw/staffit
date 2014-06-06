@@ -6,7 +6,7 @@
                 <ul class="nav navbar-nav nav-pills navbar-right">
                     <li class="hidden-xs"><a><b>{{time | date: 'mediumTime'}}</b></a>
                     </li>
-                    <li class="hidden-xs"><a ui-sref="home">Home</a>
+                    <li class="hidden-xs"><a ui-sref="#">Home</a>
                     </li>
                     <li class="hidden-xs"><a ui-sref="about">About</a>
                     </li>
@@ -18,6 +18,7 @@
                     </li>
                     <li class="hidden-xs" ng-show-auth="['logout','error']"><a href="#/login">Log In</a>
                     </li>
+                    <li class="hidden-xs"><a ui-sref="profile">Profile</a></li>
                 </ul>
 
                 <h3 class="text-muted brand"><a class="btn btn-lg" ng-click="sidebarToggle(sidebarMenu);"><span class="glyphicon glyphicon-list"></span><span class="glyphicon" ng-class="{'glyphicon-chevron-right': !sidebarMenu, 'glyphicon-chevron-left': sidebarMenu}"></span>  Staffit</a>

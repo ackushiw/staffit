@@ -13,7 +13,7 @@ var staffApp = angular
 staffApp.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
-        url: '/home',
+        url: '',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
@@ -42,6 +42,11 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
         url: '/paste-event',
         templateUrl: 'views/paste-event.html',
         controller: 'MainCtrl'
+      })
+      .state('profile', {
+        url: '/profile',
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl'
       })      
   });
 staffApp.run(['simpleLogin', '$rootScope', 'FBURL', function(simpleLogin, $rootScope, FBURL) {
