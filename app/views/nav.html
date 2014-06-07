@@ -18,7 +18,7 @@
                     </li>
                     <li class="hidden-xs" ng-show-auth="['logout','error']" ng-cloak><a class="btn btn-primary" ui-sref="login">Log In</a>
                     </li>
-                    <li class="hidden-xs nav-pointer" ng-show-auth="login" ng-cloak><span class="nav-picture" ui-sref="profile"><img class="img-responsive img-circle" ng-src="http://graph.facebook.com/{{auth.user.id}}/picture"></span></li>
+                    <li class="hidden-xs nav-pointer" ng-show-auth="login" ng-cloak><!-- <span class="nav-picture" ui-sref="profile"><img class="img-responsive img-circle" ng-src="http://graph.facebook.com/{{auth.user.id}}/picture"></span> --> Profile</li>
                 </ul>
 
                 <h3 class="text-muted brand"><a class="btn btn-lg" ng-click="sidebarToggle(sidebarMenu);"><span class="glyphicon glyphicon-list"></span><span class="glyphicon" ng-class="{'glyphicon-chevron-right': !sidebarMenu, 'glyphicon-chevron-left': sidebarMenu}"></span>  Staffit</a>
