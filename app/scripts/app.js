@@ -7,6 +7,7 @@ var staffApp = angular
     'ngSanitize',
     'ui.router',
     'ngAnimate',
+    'ngTouch',
     'angularfire.login',
     'simpleLoginTools',
     'firebase'
