@@ -54,9 +54,17 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
         controller: 'ProfileCtrl'
       })      
   });
-staffApp.run(['simpleLogin', '$rootScope', 'FBURL', function(simpleLogin, $rootScope, FBURL, $location) {
+staffApp.run(['simpleLogin', '$rootScope', 'FBURL', function(simpleLogin, $rootScope, FBURL, $location, _ ) {
       // establish authentication
       $rootScope.auth = simpleLogin.init('/login');
+      $rootScope.logInCheck = function (auth){
+        $rootScope.loggedIn = false;
+        if(auth){
+          $rootScope.loggedIn = true;
+        } else {
+          $rootScope.loggedIn = false;
+        }
+      };
       $rootScope.FBURL = FBURL;
 
       // enumerate routes that don't need authentication
@@ -72,9 +80,12 @@ staffApp.run(['simpleLogin', '$rootScope', 'FBURL', function(simpleLogin, $rootS
 
       $rootScope.$on('$stateChangeStart', function (ev, to, toParams, from, fromParams) {
         // if route requires auth and user is not logged in
-        if (!routeClean($location.url()) && !AuthenticationService.isLoggedIn()) {
+        window.alert('redirect test 2 ' + $rootScope.auth.user.id);
+        if (!$rootScope.loggedIn) {
+          window.alert('redirect test 1 ' + $rootScope.auth.user);
           // redirect back to login
           $location.path('/login');
+          $scope.$apply();
         }
       });      
     }
