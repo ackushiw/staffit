@@ -12,7 +12,7 @@ var staffApp = angular
     'simpleLoginTools',
     'firebase'
   ])
-staffApp.config(function ($stateProvider, $urlRouterProvider) {
+staffApp.config(function ($stateProvider, $urlRouterProvider, USER_ROLES) {
     // For any unmatched url, redirect to /home
     $urlRouterProvider.otherwise("/home");
     $stateProvider
@@ -22,7 +22,7 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
         controller: 'MainCtrl'
       })
       .state('login', {
-        authRequired: false, // if true, must log in before viewing this page
+        //authRequired: false, // if true, must log in before viewing this page
         url: '/login',
         templateUrl: 'views/login.html',
         controller: 'LoginController'
@@ -40,7 +40,10 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
       .state('create', {
         url: '/create',
         templateUrl: 'views/create.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        data: {
+          authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
+        }
       })
       .state('paste-event', {
         url: '/paste-event',
@@ -48,13 +51,16 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
         controller: 'MainCtrl'
       })
       .state('profile', {
-        authRequired: true,
+        //authRequired: true,
         url: '/profile',
         templateUrl: 'views/profile.html',
-        controller: 'ProfileCtrl'
+        controller: 'ProfileCtrl',
+        data: {
+          authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
+        }
       })      
   });
-staffApp.run(['simpleLogin', '$rootScope', 'FBURL', function(simpleLogin, $rootScope, FBURL, $location, _ ) {
+staffApp.run(['simpleLogin', '$rootScope', 'FBURL', function(simpleLogin, $rootScope, FBURL, $location, AUTH_EVENTS, AuthService ) {
       // establish authentication
       $rootScope.auth = simpleLogin.init('/login');
       $rootScope.logInCheck = function (auth){
@@ -66,27 +72,19 @@ staffApp.run(['simpleLogin', '$rootScope', 'FBURL', function(simpleLogin, $rootS
         }
       };
       $rootScope.FBURL = FBURL;
-
-      // enumerate routes that don't need authentication
-      var routesThatDontRequireAuth = ['/login'];
-
-      // check if current location matches route  
-      var routeClean = function (route) {
-        return _.find(routesThatDontRequireAuth,
-          function (noAuthRoute) {
-            return _.str.startsWith(route, noAuthRoute);
-          });
-      };
-
-      $rootScope.$on('$stateChangeStart', function (ev, to, toParams, from, fromParams) {
-        // if route requires auth and user is not logged in
-        window.alert('redirect test 2 ' + $rootScope.auth.user.id);
-        if (!$rootScope.loggedIn) {
-          window.alert('redirect test 1 ' + $rootScope.auth.user);
-          // redirect back to login
-          $location.path('/login');
-          $scope.$apply();
+      //User Authorization Check
+      $rootScope.$on('$stateChangeStart', function (event, next) {
+        var authorizedRoles = next.data.authorizedRoles;
+        if (!AuthService.isAuthorized(authorizedRoles)) {
+          event.preventDefault();
+          if (AuthService.isAuthenticated()) {
+            // user is not allowed
+            $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
+          } else {
+            // user is not logged in
+            $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
+          }
         }
-      });      
+      });        
     }
 ]);

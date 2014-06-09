@@ -20,6 +20,7 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
       logout: function() {
         assertAuth();
         auth.$logout();
+        $rootScope.loggedIn = false;
       },
 
       /**

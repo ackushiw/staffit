@@ -16,6 +16,23 @@ angular.module('staffitApp')
   // your Firebase URL goes here
   .constant('FBURL', 'https://staff-it.firebaseio.com')
 
+  //Authentication Events
+  .constant('AUTH_EVENTS', {
+    loginSuccess: 'auth-login-success',
+    loginFailed: 'auth-login-failed',
+    logoutSuccess: 'auth-logout-success',
+    sessionTimeout: 'auth-session-timeout',
+    notAuthenticated: 'auth-not-authenticated',
+    notAuthorized: 'auth-not-authorized'
+  })
+  //User Roles
+  .constant('USER_ROLES', {
+    all: '*',
+    admin: 'admin',
+    editor: 'editor',
+    guest: 'guest'
+  })
+
   //User Database
   .constant('users', 'users-library')
   //Testing for Paste staff list database
