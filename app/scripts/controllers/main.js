@@ -8,7 +8,7 @@ angular.module('staffitApp')
     $scope.pasted = false;
     $scope.eventStafflist = syncData(eventPath, 100);
     //user library... will have to hide this later
-    $scope.userLibrary = syncData(usersFire);
+    //$scope.userLibrary = syncData(usersFire);
     //three way data bind
     //$scope.eventStafflist.$bind($scope, 'bindTest');
     

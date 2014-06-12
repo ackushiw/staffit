@@ -25,7 +25,7 @@ staffApp.config(function ($stateProvider, $urlRouterProvider, USER_ROLES) {
         //authRequired: false, // if true, must log in before viewing this page
         url: '/login',
         templateUrl: 'views/login.html',
-        controller: 'LoginController'
+        controller: 'MainCtrl'
       })
       .state('check-in', {
         url: '/check-in',
@@ -60,7 +60,7 @@ staffApp.config(function ($stateProvider, $urlRouterProvider, USER_ROLES) {
         }
       })      
   });
-staffApp.run(['simpleLogin', '$rootScope', 'FBURL', function(simpleLogin, $rootScope, FBURL, $location, AUTH_EVENTS, AuthService ) {
+staffApp.run(['simpleLogin', '$rootScope', 'FBURL', function(simpleLogin, $rootScope, FBURL, $location) {
       // establish authentication
       $rootScope.auth = simpleLogin.init('/login');
       $rootScope.logInCheck = function (auth){
@@ -71,20 +71,6 @@ staffApp.run(['simpleLogin', '$rootScope', 'FBURL', function(simpleLogin, $rootS
           $rootScope.loggedIn = false;
         }
       };
-      $rootScope.FBURL = FBURL;
-      //User Authorization Check
-      $rootScope.$on('$stateChangeStart', function (event, next) {
-        var authorizedRoles = next.data.authorizedRoles;
-        if (!AuthService.isAuthorized(authorizedRoles)) {
-          event.preventDefault();
-          if (AuthService.isAuthenticated()) {
-            // user is not allowed
-            $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
-          } else {
-            // user is not logged in
-            $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
-          }
-        }
-      });        
+      $rootScope.FBURL = FBURL;            
     }
 ]);
