@@ -11,7 +11,7 @@ angular.module('staffitApp')
         $scope.err = err? err + '' : null;
       })
       $scope.$close(true);
-      $state.go('profile');
+      $state.go('auth.profile');
     };
 
     $scope.dismiss = function() {

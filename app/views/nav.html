@@ -8,17 +8,17 @@
                     </li>
                     <li class="hidden-xs"><a ui-sref="anon.home">Home</a>
                     </li>
-                    <li class="hidden-xs"><a ui-sref="event-control">Event Control</a>
+                    <li class="hidden-xs"><a ui-sref="auth.event-control">Event Control</a>
                     </li>
-                    <li class="hidden-xs"><a ui-sref="create">Create Event</a>
+                    <li class="hidden-xs"><a ui-sref="auth.create">Create Event</a>
                     </li>
-                    <li class="hidden-xs"><a ui-sref="paste-event">Paste Event</a>
+                    <li class="hidden-xs"><a ui-sref="auth.paste-event">Paste Event</a>
                     </li>
                     <li class="hidden-xs" ng-show-auth="login"><a class="btn-danger" href="#" ng-click="auth.$logout();">Log Out</a>
                     </li>
                     <li class="hidden-xs" ng-show-auth="['logout','error']" ng-cloak><a class="btn btn-primary" ui-sref="anon.login">Log In</a>
                     </li>
-                    <li class="hidden-xs nav-pointer" ng-show-auth="login" ng-cloak><a ui-sref="profile">Profile</a></li>
+                    <li class="hidden-xs nav-pointer" ng-show-auth="login" ng-cloak><a ui-sref="auth.profile">Profile</a></li>
                 </ul>
 
                 <h3 class="text-muted brand"><a class="btn btn-lg" ng-click="sidebarToggle(sidebarMenu);"><span class="glyphicon glyphicon-list"></span><span class="glyphicon" ng-class="{'glyphicon-chevron-right': !sidebarMenu, 'glyphicon-chevron-left': sidebarMenu}"></span>  Staffit</a>
@@ -33,20 +33,20 @@
             <ul class="list-group">
                 <li class="list-group-item"><a><b>{{time | date: 'mediumTime'}}</b></a>
                 </li>
-                <li class="list-group-item"><a ui-sref="home">Home</a>
+                <li class="list-group-item"><a ui-sref="anon.home">Home</a>
                 </li>
-                <li class="list-group-item"><a ui-sref="about">About</a>
+                <li class="list-group-item"><a ui-sref="auth.about">About</a>
                 </li>
-                <li class="list-group-item"><a ui-sref="create">Create Event</a>
+                <li class="list-group-item"><a ui-sref="auth.create">Create Event</a>
                 </li>
-                <li class="list-group-item"><a ui-sref="paste-event">Paste Event</a>
+                <li class="list-group-item"><a ui-sref="auth.paste-event">Paste Event</a>
                 </li>
                 <li class="list-group-item" ng-show-auth="login"><a class="btn btn-danger btn-block" href="#" ng-click="auth.$logout();">Log Out</a>
                 </li>
-                <li class="list-group-item" ng-show-auth="['logout','error']"><a class="btn btn-primary btn-block" ui-sref="login">Log In</a>
+                <li class="list-group-item" ng-show-auth="['logout','error']"><a class="btn btn-primary btn-block" ui-sref="anon.login">Log In</a>
                 </li>
             </ul>
-            <a ui-sref="profile" ng-show-auth="login" class="list-group-item nav-pointer">{{auth.user.displayName}}</a>
+            <a ui-sref="auth.profile" ng-show-auth="login" class="list-group-item nav-pointer">{{auth.user.displayName}}</a>
         </div>
     </div>
     <!--/span-->
