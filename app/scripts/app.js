@@ -15,14 +15,19 @@ var staffApp = angular
   ])
 staffApp.config(function ($stateProvider, $urlRouterProvider, USER_ROLES) {
     // For any unmatched url, redirect to /home
-    $urlRouterProvider.otherwise("/home");
+    $urlRouterProvider.otherwise("welcome/home");
     $stateProvider
-      .state('home', {
+      .state('anon', {
+        abstract: true,
+        url: '/welcome',
+        template: '<ui-view/>'
+      })
+      .state('anon.home', {
         url: '/home',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .state('login', {        
+      .state('anon.login', {        
         url: '/login',
         onEnter: function($stateParams, $state, $modal, $resource, $timeout, simpleLogin, $rootScope) {
             $modal.open({
@@ -36,7 +41,7 @@ staffApp.config(function ($stateProvider, $urlRouterProvider, USER_ROLES) {
                 $state.go('profile'); 
               }, function () {
                 // on error/cancel
-                $state.go('home');
+                $state.go('anon.home');
           });
         }        
       })
@@ -49,11 +54,10 @@ staffApp.config(function ($stateProvider, $urlRouterProvider, USER_ROLES) {
             return $firebaseSimpleLogin(firebaseRef())
               .$getCurrentUser()
               .then(function(user){
-                window.alert(user);
                 if (user) {
                   return;
                 } else {
-                  $state.go('login');
+                  $state.go('anon.login');
                 }
               });
           } //function to check log in state
@@ -73,14 +77,28 @@ staffApp.config(function ($stateProvider, $urlRouterProvider, USER_ROLES) {
         url: '/create',
         templateUrl: 'views/create.html',
         controller: 'MainCtrl',
-        data: {
-          //authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
+        resolve: {
+          Authroute: 'Authroute',
+          checkLogin: function(Authroute){
+            if(Authroute){
+              $state.go('create');
+            } else {
+              $state.go('anon.login');
+            }
+          }
         }
       })
       .state('paste-event', {
         url: '/paste-event',
         templateUrl: 'views/paste-event.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        resolve: {
+          Authroute: 'Authroute',
+
+          checkLogin: function(Authroute){
+            return Authroute.query().$promise;
+          }
+        }
       })
       .state('profile', {
         //authRequired: true,

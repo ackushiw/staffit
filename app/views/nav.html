@@ -6,7 +6,7 @@
                 <ul class="nav navbar-nav nav-pills navbar-right">
                     <li class="hidden-xs"><a><b>{{time | date: 'mediumTime'}}</b></a>
                     </li>
-                    <li class="hidden-xs"><a ui-sref="home">Home</a>
+                    <li class="hidden-xs"><a ui-sref="anon.home">Home</a>
                     </li>
                     <li class="hidden-xs"><a ui-sref="event-control">Event Control</a>
                     </li>
@@ -16,7 +16,7 @@
                     </li>
                     <li class="hidden-xs" ng-show-auth="login"><a class="btn-danger" href="#" ng-click="auth.$logout();">Log Out</a>
                     </li>
-                    <li class="hidden-xs" ng-show-auth="['logout','error']" ng-cloak><a class="btn btn-primary" ui-sref="login">Log In</a>
+                    <li class="hidden-xs" ng-show-auth="['logout','error']" ng-cloak><a class="btn btn-primary" ui-sref="anon.login">Log In</a>
                     </li>
                     <li class="hidden-xs nav-pointer" ng-show-auth="login" ng-cloak><a ui-sref="profile">Profile</a></li>
                 </ul>

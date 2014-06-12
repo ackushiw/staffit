@@ -16,6 +16,6 @@ angular.module('staffitApp')
 
     $scope.dismiss = function() {
       $scope.$dismiss();
-      $state.go('home');
+      $state.go('anon.home');
     };
   });
