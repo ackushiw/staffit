@@ -40,6 +40,11 @@ staffApp.config(function ($stateProvider, $urlRouterProvider, USER_ROLES) {
           });
         }        
       })
+      .state('event-control', {
+        url: '/event-control',
+        templateUrl: 'views/event-control.html',
+        controller: 'EventControlCtrl'
+      })
       .state('check-in', {
         url: '/check-in',
         templateUrl: 'views/check-in.html',
