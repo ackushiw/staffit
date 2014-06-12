@@ -43,7 +43,7 @@ staffApp.config(function ($stateProvider, $urlRouterProvider, USER_ROLES) {
       .state('event-control', {
         url: '/event-control',
         templateUrl: 'views/event-control.html',
-        controller: 'EventControlCtrl'
+        controller: 'MainCtrl'
       })
       .state('check-in', {
         url: '/check-in',
