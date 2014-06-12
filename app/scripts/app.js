@@ -43,7 +43,21 @@ staffApp.config(function ($stateProvider, $urlRouterProvider, USER_ROLES) {
       .state('event-control', {
         url: '/event-control',
         templateUrl: 'views/event-control.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        resolve: {
+          checkLogin: function($firebaseSimpleLogin, firebaseRef, $state){
+            return $firebaseSimpleLogin(firebaseRef())
+              .$getCurrentUser()
+              .then(function(user){
+                window.alert(user);
+                if (user) {
+                  return;
+                } else {
+                  $state.go('login');
+                }
+              });
+          } //function to check log in state
+        }
       })
       .state('check-in', {
         url: '/check-in',
