@@ -34,6 +34,6 @@ angular.module('staffitApp')
   })
 
   //User Database
-  .constant('users', 'users-library')
+  .constant('usersFire', 'users-library')
   //Testing for Paste staff list database
   .constant('eventPath', 'list-test-library');

@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('MainCtrl', function ($scope, $firebase, syncData, eventPath, users, $timeout) {
+  .controller('MainCtrl', function ($scope, $firebase, syncData, eventPath, usersFire, $timeout) {
     $scope.personRegex = /(^\d+)\.\s(\w+\s[\w\-]+)\s(\w+)?\s?(\w+)?\s?C\:\s(.*\s(?:AM|PM)).*P:\s(\d+-\d+-\d+)\s?(.*)?$/;
     $scope.pasteData = {};
     //$scope.eventList = {};
     $scope.pasted = false;
     $scope.eventStafflist = syncData(eventPath, 100);
     //user library... will have to hide this later
-    $scope.userLibrary = syncData(users);
+    $scope.userLibrary = syncData(usersFire);
     //three way data bind
     //$scope.eventStafflist.$bind($scope, 'bindTest');
     
