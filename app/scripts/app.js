@@ -6,6 +6,7 @@ var staffApp = angular
     'ngResource',
     'ngSanitize',
     'ui.router',
+    'ui.bootstrap',
     'ngAnimate',
     'ngTouch',
     'angularfire.login',
@@ -21,11 +22,23 @@ staffApp.config(function ($stateProvider, $urlRouterProvider, USER_ROLES) {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .state('login', {
-        //authRequired: false, // if true, must log in before viewing this page
+      .state('login', {        
         url: '/login',
-        templateUrl: 'views/login.html',
-        controller: 'MainCtrl'
+        onEnter: function($stateParams, $state, $modal, $resource, $timeout, simpleLogin, $rootScope) {
+            $modal.open({
+                templateUrl: "views/login.html",                
+                controller: 'LoginController',
+                resolve: {
+                  logState: $rootScope.auth.user
+                } 
+              }).result.then(function () {
+                // on Success
+                $state.go('profile'); 
+              }, function () {
+                // on error/cancel
+                $state.go('home');
+          });
+        }        
       })
       .state('check-in', {
         url: '/check-in',
@@ -42,7 +55,7 @@ staffApp.config(function ($stateProvider, $urlRouterProvider, USER_ROLES) {
         templateUrl: 'views/create.html',
         controller: 'MainCtrl',
         data: {
-          authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
+          //authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
         }
       })
       .state('paste-event', {
@@ -56,7 +69,7 @@ staffApp.config(function ($stateProvider, $urlRouterProvider, USER_ROLES) {
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl',
         data: {
-          authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
+          //authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
         }
       })      
   });

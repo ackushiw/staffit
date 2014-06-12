@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('LoginController', function($scope, simpleLogin) {
+  .controller('LoginController', function($scope, simpleLogin, $rootScope, $timeout, $state) {
     $scope.pass = null;
     $scope.err = null;
     $scope.user = null;
@@ -10,6 +10,12 @@ angular.module('staffitApp')
       simpleLogin.login(service, function(err) {
         $scope.err = err? err + '' : null;
       })
-    };   
+      $scope.$close(true);
+      $state.go('profile');
+    };
 
+    $scope.dismiss = function() {
+      $scope.$dismiss();
+      $state.go('home');
+    };
   });
