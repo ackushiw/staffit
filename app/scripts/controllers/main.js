@@ -11,10 +11,10 @@ angular.module('staffitApp')
     //$scope.userLibrary = syncData(usersFire);
     //three way data bind
     //$scope.eventStafflist.$bind($scope, 'bindTest');
-    
 
-    $scope.update = function(text) {
-      var people = text.text.map(function(p) {
+
+    $scope.update = function (text) {
+      var people = text.text.map(function (p) {
         var m = p.replace(/[-]+\s+/g, '').match($scope.personRegex);
         if (m) {
           return {
@@ -36,8 +36,7 @@ angular.module('staffitApp')
             notes: '',
             merit: ''
           };
-        }
-        else {
+        } else {
           return {
             number: null,
             name: 'Error',
@@ -65,8 +64,8 @@ angular.module('staffitApp')
     };
 
     // This is the check in button to note arrival time
-    $scope.checkIn = function (staff){
-      
+    $scope.checkIn = function (staff) {
+
       if (staff.arrived === false) {
         //alert(staff.name + ' is checked in at ' + time );
         staff.arrived = true;
@@ -77,55 +76,55 @@ angular.module('staffitApp')
         staff.arrived = false;
         staff.arrivalTime = '';
         staff.siteIn = false;
-        staff.siteInTime= '';
+        staff.siteInTime = '';
         staff.siteOut = false;
-        staff.siteOutTime= '';
-        staff.hours= 0;
-        staff.mins= 0;
-        staff.notes= '';
-        staff.merit= '';
+        staff.siteOutTime = '';
+        staff.hours = 0;
+        staff.mins = 0;
+        staff.notes = '';
+        staff.merit = '';
       }
       $scope.eventStafflist.$save();
     };
     //Can't get this to work... don't quite understand how map works
-    $scope.siteIn = function (staff){
+    $scope.siteIn = function (staff) {
       var time = new Date();
-      staff.filter(function(p) {
+      staff.filter(function (p) {
         return p.arrived && !p.siteIn;
       }).map(function (p) {
-          p.siteIn = true;
-          p.siteInTime = time;
-          return p;
-        });
+        p.siteIn = true;
+        p.siteInTime = time;
+        return p;
+      });
       $scope.eventStafflist.$save();
     };
     //This is the final check out button to sign staff out
-    $scope.siteOut = function (staff){
+    $scope.siteOut = function (staff) {
       var outTime = new Date();
-      var outTimeSec = outTime.getTime();         
+      //var outTimeSec = outTime.getTime();
       if (staff.siteIn) {
-        var inTime = staff.siteInTime;        
+        var inTime = staff.siteInTime;
         var staffInSec = Date.parse(inTime);
         var workHours = outTime - staffInSec;
-        var milliHours = 3600*1000; // / (3600*1000); //turning milliseconds to hours
-        $scope.hoursCalc = Math.floor(workHours/ milliHours);
+        var milliHours = 3600 * 1000; // / (3600*1000); //turning milliseconds to hours
+        $scope.hoursCalc = Math.floor(workHours / milliHours);
         var milliMins = workHours % milliHours;
         var minsCalc = Math.round(milliMins / 60000);
         staff.siteOut = true;
-        staff.siteOutTime = outTime;       
+        staff.siteOutTime = outTime;
         staff.hours = $scope.hoursCalc;
-        staff.mins = minsCalc; 
+        staff.mins = minsCalc;
       } else {
-        window.alert(staff.name + ' hasn\'t been checked in yet!' );
+        window.alert(staff.name + ' hasn\'t been checked in yet!');
       }
       $scope.eventStafflist.$save();
     };
     //These are the two merit buttons to note the performance of staff
-    $scope.merit = function (staff){
+    $scope.merit = function (staff) {
       staff.merit = 1;
       $scope.eventStafflist.$save();
     };
-    $scope.deMerit = function (staff){
+    $scope.deMerit = function (staff) {
       staff.merit = -1;
       $scope.eventStafflist.$save();
     };
@@ -148,10 +147,10 @@ angular.module('staffitApp')
     //return AngularFire(ref, $scope, 'eventStafflist');
 
     //Real Time Clock
-    var tick = function() {            
+    var tick = function () {
       $scope.time = new Date();
       var coeff = 1000 * 60 * 15;
-      var date = new Date();  //or use any other date
+      var date = new Date(); //or use any other date
       $scope.xvMinRound = new Date(Math.round(date.getTime() / coeff) * coeff);
       $timeout(tick, 1000);
     };

@@ -2,7 +2,7 @@
 
 angular.module('staffitApp')
   .factory('UserService', function () {
-    var currentUser = null;
+    /*var currentUser = null;
 
     var adminRoles = ['admin', 'editor'];
     var otherRoles = ['user'];
@@ -17,5 +17,5 @@ angular.module('staffitApp')
       validateRoleOther: function () {
         return _.contains(otherRoles, currentUser.role);
       }
-    };
-  });
+    };*/
+});

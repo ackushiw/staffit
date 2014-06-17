@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('staffitApp')
-  .service('Authroute', function Authroute($firebaseSimpleLogin, firebaseRef, $state){
+  .service('Authroute', function Authroute($firebaseSimpleLogin, firebaseRef, $state) {
     return $firebaseSimpleLogin(firebaseRef())
       .$getCurrentUser()
-      .then(function(user){                
+      .then(function (user) {
         if (user) {
           return;
         } else {
-         $state.go('anon.login');
+          $state.go('anon.login');
         }
       });
-   	});
+  });
