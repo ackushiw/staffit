@@ -2,8 +2,11 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
@@ -16,8 +19,9 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-  </head>
-  <body ng-app="staffitApp">
+</head>
+
+<body ng-app="staffitApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -27,14 +31,21 @@
     <div class="container-fluid" ui-view ng-controller="GlobalCtrl"></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <script>
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+    m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
+ga('create', 'UA-XXXXX-X');
+ga('send', 'pageview');
     </script>
 
     <!--[if lt IE 9]>
@@ -75,36 +86,37 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
     <script src="scripts/angularfire/config.js"></script>
     <script src="scripts/services/firebase.js"></script>
     <script src="scripts/services/login.js"></script>
     <script src="scripts/angularfire/simpleLoginTools.js"></script>
     <script src="scripts/angularfire/routesecurity.js"></script>
     <script src="scripts/controllers/login.js"></script>
-        <script src="scripts/controllers/check-in.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/directives/nav.js"></script>
-        <script src="scripts/controllers/event-form.js"></script>
-        <script src="scripts/directives/event-form.js"></script>
-        <script src="scripts/controllers/paste-event.js"></script>
-        <script src="scripts/directives/paste-event.js"></script>
-        <script src="scripts/services/paste.js"></script>
-        <script src="scripts/directives/check-in.js"></script>
-        <script src="scripts/services/users.js"></script>
-        <script src="scripts/controllers/nav.js"></script>
-        <script src="scripts/controllers/profile.js"></script>
-        <script src="scripts/services/user-service.js"></script>
-        <script src="scripts/services/underscore.js"></script>
-        <script src="scripts/services/session.js"></script>
-        <script src="scripts/controllers/global.js"></script>
-        <script src="scripts/services/auth-service.js"></script>
-        <script src="scripts/directives/event-control.js"></script>
-        <script src="scripts/controllers/event-control.js"></script>
-        <script src="scripts/services/authroute.js"></script>
-        <script src="scripts/controllers/auth.js"></script>
-        <!-- endbuild -->
+    <script src="scripts/controllers/check-in.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/directives/nav.js"></script>
+    <script src="scripts/controllers/event-form.js"></script>
+    <script src="scripts/directives/event-form.js"></script>
+    <script src="scripts/controllers/paste-event.js"></script>
+    <script src="scripts/directives/paste-event.js"></script>
+    <script src="scripts/services/paste.js"></script>
+    <script src="scripts/directives/check-in.js"></script>
+    <script src="scripts/services/users.js"></script>
+    <script src="scripts/controllers/nav.js"></script>
+    <script src="scripts/controllers/profile.js"></script>
+    <script src="scripts/services/user-service.js"></script>
+    <script src="scripts/services/underscore.js"></script>
+    <script src="scripts/services/session.js"></script>
+    <script src="scripts/controllers/global.js"></script>
+    <script src="scripts/services/auth-service.js"></script>
+    <script src="scripts/directives/event-control.js"></script>
+    <script src="scripts/controllers/event-control.js"></script>
+    <script src="scripts/services/authroute.js"></script>
+    <script src="scripts/controllers/auth.js"></script>
+    <!-- endbuild -->
 </body>
+
 </html>

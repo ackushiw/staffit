@@ -8,14 +8,18 @@
             <input class="form-control" name="client" type="text" ng-model="client" placeholder="Client/ Caterer">
         </div>
         <div ng-form name="contactForm" class="form-group">
-            <div class="col-sm-6"><input class="form-control" name="contact.name" type="text" ng-model="contact.name" placeholder="Contact Name"></div>
-        
-            <div class="col-sm-6"><input class="form-control" name="contact.cell" type="number" ng-model="contact.cell" placeholder="Contact Cell #"></div></br>
-        </div>        
+            <div class="col-sm-6">
+                <input class="form-control" name="contact.name" type="text" ng-model="contact.name" placeholder="Contact Name">
+            </div>
+
+            <div class="col-sm-6">
+                <input class="form-control" name="contact.cell" type="number" ng-model="contact.cell" placeholder="Contact Cell #">
+            </div>
+            </br>
+        </div>
         </br>
         <div class="form-group">
             <input class="form-control" name="address" type="address" ng-model="address" placeholder="Meet Address">
-        
             <input class="form-control" name="travelAddress" type="address" ng-model="travelAddress" placeholder="Travel Address">
         </div>
         <div class="form-group">
@@ -25,10 +29,10 @@
             <input class="form-control" name="staff quota" type="number" ng-model="staffQuota" placeholder="Staff Quota">
         </div>
         <div ng-form name="staffForm">
-          <input class="form-control" name="name" ng-model="name" type="text" placeholder="Name">
-          <input class="form-control" name="position" ng-model="position" type="text" placeholder="Position">
-          <input class="form-control" name="phone" ng-model="cell" type="number" min="10" placeholder="Phone Number">
-          <input class="form-control" name="callTime" ng-model="callTime" type="text" placeholder="Call Time">
+            <input class="form-control" name="name" ng-model="name" type="text" placeholder="Name">
+            <input class="form-control" name="position" ng-model="position" type="text" placeholder="Position">
+            <input class="form-control" name="phone" ng-model="cell" type="number" min="10" placeholder="Phone Number">
+            <input class="form-control" name="callTime" ng-model="callTime" type="text" placeholder="Call Time">
         </div>
     </div>
 </div>
