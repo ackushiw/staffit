@@ -8,18 +8,21 @@
         <!--<div ng-show-auth="error">{{auth.error}}</div>-->
         <fieldset>
             <legend>Oauth</legend>
-            <input ng-show-auth="logout" type="text" ng-model="user.username" placeholder="Username" class="form-control"><br/>
+            <input ng-show-auth="logout" type="text" ng-model="user.username" placeholder="Username" class="form-control">
+            <br/>
             <p>
                 <button class="btn btn-lg btn-primary" ng-click="login('facebook')">Facebook</button>
                 <button class="btn btn-lg btn-primary" ng-click="login('twitter')">Twitter</button>
             </p>
         </fieldset>
-        
+
         <button class="btn btn-warning btn-block" ng-click="dismiss()">Cancel</button>
 
-        
+
 
         <br />
-        <div ng-show="err" class="alert alert-danger"><strong>{{err}}</strong></div>
+        <div ng-show="err" class="alert alert-danger">
+            <strong>{{err}}</strong>
+        </div>
     </div>
 </div>
