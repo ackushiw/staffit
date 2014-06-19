@@ -45,7 +45,7 @@
             </form>
         </div>
         <div>
-            <ul ng-repeat="staff in eventForm.staffList">
+            <ul ng-repeat="(id, staff) in eventForm.staffList">
                 <li>{{staff.name}}</li>
             </ul>
         </div>

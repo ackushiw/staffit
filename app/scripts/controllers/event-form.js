@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('EventFormCtrl', function ($scope, syncData, eventDatabase) {
+  .controller('EventFormCtrl', function ($scope, syncData, eventDatabase, Event) {
     $scope.eventLibrary = syncData(eventDatabase);
     //staffList Collapse
     $scope.staffCollapse = true;
@@ -68,7 +68,7 @@ angular.module('staffitApp')
     }
 
     $scope.submitEvent = function () {
-      $scope.eventLibrary.$add($scope.eventForm);
+      Event.create($scope.eventForm);
       console.log('Form Submitted');
       $scope.eventForm = $scope.emptyEvent;
       $scope.staffForm = $scope.emptyStaff;
