@@ -86,7 +86,7 @@ angular.module('staffitApp')
       }
       $scope.eventStafflist.$save();
     };
-    //Can't get this to work... don't quite understand how map works
+
     $scope.siteIn = function (staff) {
       var time = new Date();
       staff.filter(function (p) {
