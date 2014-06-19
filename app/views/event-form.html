@@ -1,6 +1,6 @@
 <div class="panel panel-info col-sm-12">
     <h1>Create Event</h1>
-    <form>
+    <form id="event-form">
         <!-- removed attr: ng-submit="submitEvent()" -->
         <div class="form-group">
             <input class="form-control" name="id" type="text" ng-model="eventForm.id" placeholder="Event ID">
@@ -29,7 +29,8 @@
         <div class="form-group">
             <div class="input-group">
                 <input class="form-control" name="staff quota" type="number" ng-model="eventForm.staffQuota" placeholder="Staff Quota">
-                <span class="input-group-addon">{{eventForm.staffCount}}</span>
+                <span class="input-group-addon alert" ng-class="{'alert-warning': staffArray.length !== eventForm.staffQuota, 'alert-success': staffArray.length == eventForm.staffQuota}">Number of Staff Added: <b>{{' ' + staffArray.length}}</b>
+                </span>
             </div>
         </div>
         <button class="btn btn-primary btn-block" ng-click="showStaffForm()" ng-if="staffCollapse">Add Staff</button>

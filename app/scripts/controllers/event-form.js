@@ -12,7 +12,8 @@ angular.module('staffitApp')
         $scope.staffCollapse = true;
       }
     };
-    $scope.staffArray = []
+    $scope.staffArray = [];
+
     $scope.emptyEvent = {
       id: '',
       client: '',
