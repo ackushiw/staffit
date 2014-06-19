@@ -1,6 +1,7 @@
 <div class="panel panel-info col-sm-12">
     <h1>Create Event</h1>
-    <div ng-form name="eventForm" ng-submit="submitEvent()">
+    <form>
+        <!-- removed attr: ng-submit="submitEvent()" -->
         <div class="form-group">
             <input class="form-control" name="id" type="text" ng-model="eventForm.id" placeholder="Event ID">
         </div>
@@ -26,15 +27,30 @@
             <input class="form-control" name="uniform" type="text" ng-model="eventForm.uniform" placeholder="Uniform">
         </div>
         <div class="form-group">
-            <input class="form-control" name="staff quota" type="number" ng-model="eventForm.staffQuota" placeholder="Staff Quota">
+            <div class="input-group">
+                <input class="form-control" name="staff quota" type="number" ng-model="eventForm.staffQuota" placeholder="Staff Quota">
+                <span class="input-group-addon">{{eventForm.staffCount}}</span>
+            </div>
         </div>
-        <div ng-form name="staffForm">
-            <input class="form-control" name="name" ng-model="eventForm.name" type="text" placeholder="Name">
-            <input class="form-control" name="position" ng-model="eventForm.position" type="text" placeholder="Position">
-            <input class="form-control" name="phone" ng-model="eventForm.cell" type="number" min="10" placeholder="Phone Number">
-            <input class="form-control" name="callTime" ng-model="eventForm.callTime" type="text" placeholder="Call Time">
+        <button class="btn btn-primary btn-block" ng-click="showStaffForm()" ng-if="staffCollapse">Add Staff</button>
+
+        <div collapse="staffCollapse">
+            <form name="staffForm">
+                <input class="form-control" name="name" ng-model="staffForm.name" type="text" placeholder="Name">
+                <input class="form-control" name="position" ng-model="staffForm.position" type="text" placeholder="Position">
+                <input class="form-control" name="phone" ng-model="staffForm.cell" type="number" min="10" placeholder="Phone Number">
+                <input class="form-control" name="callTime" ng-model="staffForm.callTime" type="text" placeholder="Call Time">
+                <button class="btn btn-success btn-block" ng-click="addStaff(staffForm)">Submit Staff</button>
+            </form>
         </div>
-        <input type="submit" class="btn btn-primary btn-block" />
+        <div>
+            <ul ng-repeat="staff in eventForm.staffList">
+                <li>{{staff.name}}</li>
+            </ul>
+        </div>
+        <!-- <input type="submit" class="btn btn-primary btn-block" /> -->
+        <br/>
         <button class="btn btn-primary btn-block" ng-click="submitEvent()">Create Event</button>
-    </div>
+        <br/>
+    </form>
 </div>

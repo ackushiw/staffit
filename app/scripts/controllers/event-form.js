@@ -2,19 +2,27 @@
 
 angular.module('staffitApp')
   .controller('EventFormCtrl', function ($scope, syncData, eventDatabase) {
-    $scope.events = [];
     $scope.eventLibrary = syncData(eventDatabase);
+    //staffList Collapse
+    $scope.staffCollapse = true;
+    $scope.showStaffForm = function () {
+      if ($scope.staffCollapse) {
+        $scope.staffCollapse = false;
+      } else {
+        $scope.staffCollapse = true;
+      }
+    };
+    $scope.staffArray = []
     $scope.emptyEvent = {
       id: '',
       client: '',
-      contact: {
-        name: '',
-        cell: ''
-      },
+      contactName: '',
+      contactCell: '',
       address: '',
       travelAddress: '',
       staffQuota: '',
-      staffList: [''],
+      staffList: $scope.staffArray,
+      staffCount: $scope.staffArray.length,
       submit: false
     };
 
@@ -34,7 +42,29 @@ angular.module('staffitApp')
       merit: ''
     };
 
-    $scope.eventForm = $scope.emptyEvent;
+    $scope.eventForm = {};
+
+    $scope.addStaff = function (staffForm) {
+      console.log(staffForm);
+      var staffData = {
+        name: staffForm.name,
+        position: staffForm.position,
+        phone: staffForm.cell,
+        callTime: staffForm.callTime,
+        arrived: false,
+        arrivalTime: '',
+        siteIn: false,
+        siteInTime: '',
+        siteOut: false,
+        siteOutTime: '',
+        hours: '',
+        notes: '',
+        merit: ''
+      };
+      $scope.staffArray.push(staffData);
+      $scope.eventForm.staffList = $scope.staffArray;
+      $scope.staffCollapse = true;
+    }
 
     $scope.submitEvent = function () {
       $scope.eventLibrary.$add($scope.eventForm);

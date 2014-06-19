@@ -1,5 +1,7 @@
 <div class="panel info">
     <ul ng-repeat="event in eventLibrary">
-        <li>{{'Event: ' + event.id + ' - Client: ' + event.client}}</li>
+        <li>{{'Event: ' + event.id + ' - Client: ' + event.client}}
+            <button ng-click="removeEvent($index)">Remove</button>
+        </li>
     </ul>
 </div>
