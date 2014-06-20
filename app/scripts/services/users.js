@@ -1,9 +1,24 @@
 'use strict';
 
 angular.module('staffitApp')
-  .factory('User', function (syncData, simpleLogin, users) {
+  .factory('User', function ($firebaseSimpleLogin, FBURL, syncData, simpleLogin, users) {
     // Service logic
     //firebase ref
+    var ref = new Firebase(FBURL);
+    var authClient = $firebaseSimpleLogin(ref, function (error, user) {
+      if (error) {
+        console.log(error);
+        return;
+      }
+      if (user) {
+        console.log(user + " is logged in.");
+      } else {
+        console.log("user is logged out.");
+      }
+    });
+
+
+
     var userLibrary = syncData(users);
 
     var User = {
