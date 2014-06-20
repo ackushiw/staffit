@@ -64,8 +64,9 @@ angular.module('staffitApp')
       };
       $scope.staffArray.push(staffData);
       $scope.eventForm.staffList = $scope.staffArray;
+      $scope.staffForm = {};
       $scope.staffCollapse = true;
-    }
+    };
 
     $scope.submitEvent = function () {
       Event.create($scope.eventForm);

@@ -13,6 +13,7 @@ angular.module('staffitApp')
         return events.$add(eventForm);
       },
       find: function (eventId) {
+        console.log(eventId);
         return events.$child(eventId);
       },
       delete: function (eventId) {

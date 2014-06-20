@@ -17,12 +17,11 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
   // For any unmatched url, redirect to /home
   $urlRouterProvider.otherwise('home');
   $stateProvider
-  // Anonymous States for access with sign in
-  .state('anon', {
-    abstract: true,
-    url: '',
-    template: '<ui-view/>'
-  })
+    .state('anon', { // Anonymous States for access with sign in
+      abstract: true,
+      url: '',
+      template: '<ui-view/>'
+    })
     .state('anon.home', {
       url: '/home',
       templateUrl: 'views/main.html',
@@ -39,7 +38,7 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
           }
         }).result.then(function (result) {
           // on Success
-          console.log('user logged in = ' + result);//check if user is logged in...
+          console.log('user logged in = ' + result); //check if user is logged in...
           $state.transitionTo('auth.profile');
         }, function () {
           // on error/cancel
@@ -47,8 +46,7 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
         });
       }
     })
-    //Secure States for authenticated access only
-    .state('auth', {
+    .state('auth', { //Secure States for authenticated access only
       abstract: true,
       url: '',
       template: '<ui-view/>',
@@ -57,25 +55,12 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
     .state('auth.event-control', {
       url: '/event-control',
       templateUrl: 'views/event-control.html',
-      controller: 'MainCtrl',
-      resolve: {
-        checkLogin: function ($firebaseSimpleLogin, firebaseRef, $state) {
-          return $firebaseSimpleLogin(firebaseRef())
-            .$getCurrentUser()
-            .then(function (user) {
-              if (user) {
-                return;
-              } else {
-                $state.go('anon.login');
-              }
-            });
-        } //function to check log in state
-      }
+      controller: 'MainCtrl'
     })
-    .state('auth.check-in', {
-      url: '/check-in',
-      templateUrl: 'views/check-in.html',
-      controller: 'CheckInCtrl'
+    .state('auth.event-view', {
+      url: '/events/:eventId',
+      templateUrl: 'views/event-view.html',
+      controller: 'EventViewCtrl'
     })
     .state('auth.about', {
       url: '/about',

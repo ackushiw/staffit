@@ -1,24 +1,19 @@
 'use strict';
 
 angular.module('staffitApp')
-  .factory('AuthService', function ($http, Session) {
-    return {
-      login: function (credentials) {
-        return $http
-          .post('/login', credentials)
-          .then(function (res) {
-            Session.create(res.id, res.userid, res.role);
-          });
-      },
-      isAuthenticated: function () {
-        return !!Session.userId;
-      },
-      isAuthorized: function (authorizedRoles) {
-        if (!angular.isArray(authorizedRoles)) {
-          authorizedRoles = [authorizedRoles];
-        }
-        return (this.isAuthenticated() &&
-          authorizedRoles.indexOf(Session.userRole) !== -1);
+  .factory('AuthService', function ($firebaseSimpleLogin, FBURL, $rootScope) {
+    var ref = new Firebase(FBURL);
+
+    var auth = $firebaseSimpleLogin(ref);
+
+    var AuthService = {
+      signedIn: function () {
+        return auth.user !== null;
       }
     };
+
+    $rootScope.signedIn = function () {
+      return AuthService.signedIn();
+    };
+    return AuthService;
   });

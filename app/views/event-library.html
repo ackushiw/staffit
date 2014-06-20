@@ -2,6 +2,7 @@
     <ul ng-repeat="(id, event) in eventLibrary">
         <li>{{'Event: ' + event.id + ' - Client: ' + event.client}}{{id}}
             <button ng-click="removeEvent(id)">Remove</button>
+            <button ui-sref="auth.event-view(id)">Go!</button>
 
         </li>
     </ul>
