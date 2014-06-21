@@ -17,17 +17,11 @@ angular.module('staffitApp')
       simpleLogin.login(service, function (err) {
         $scope.err = err ? err + '' : null;
       })
-      console.log('log-in function');
-      $state.go('auth.profile');
     };
 
     /*$scope.dismiss = function () {
       $scope.$dismiss();
       $state.go('anon.home');
     };*/
-    $rootScope.$on("$firebaseSimpleLogin:login", function (e, user) {
-      $rootScope.loggedIn = true;
-      console.log("User " + user.id + " successfully logged in!");
-      console.log("user data:" + user.displayName);
-    });
+
   });
