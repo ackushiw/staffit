@@ -9,7 +9,6 @@ var staffApp = angular
     'ui.bootstrap',
     'ngAnimate',
     'ngTouch',
-    'ionic', //may need to remove this
     'angularfire.login',
     'simpleLoginTools',
     'firebase'
@@ -26,9 +25,9 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
     .state('anon.home', {
       url: '/home',
       templateUrl: 'views/main.html',
-      controller: 'MainCtrl'
+      controller: 'LoginController'
     })
-    .state('anon.login', {
+  /*.state('anon.login', {
       url: '/login',
       onEnter: function ($stateParams, $state, $modal, $resource, $timeout, simpleLogin, $rootScope) {
         $modal.open({
@@ -46,13 +45,13 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
           $state.go('anon.home');
         });
       }
-    })
-    .state('auth', { //Secure States for authenticated access only
-      abstract: true,
-      url: '',
-      template: '<ui-view/>',
-      controller: 'AuthCtrl'
-    })
+    })*/
+  .state('auth', { //Secure States for authenticated access only
+    abstract: true,
+    url: '',
+    template: '<topnav></topnav><ui-view/>',
+    controller: 'AuthCtrl'
+  })
     .state('auth.event-control', {
       url: '/event-control',
       templateUrl: 'views/event-control.html',

@@ -10,12 +10,12 @@ angular.module('staffitApp')
       simpleLogin.login(service, function (err) {
         $scope.err = err ? err + '' : null;
       });
-      $scope.$close(true);
+      //$scope.$close(true);
       $state.go('auth.profile');
     };
 
-    $scope.dismiss = function () {
+    /*$scope.dismiss = function () {
       $scope.$dismiss();
       $state.go('anon.home');
-    };
+    };*/
   });
