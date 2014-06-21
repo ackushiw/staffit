@@ -9,7 +9,7 @@ var staffApp = angular
     'ui.bootstrap',
     'ngAnimate',
     'ngTouch',
-    'ionic',
+    'ionic', //may need to remove this
     'angularfire.login',
     'simpleLoginTools',
     'firebase'
