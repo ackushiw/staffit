@@ -11,9 +11,9 @@ angular.module('staffitApp')
         return;
       }
       if (user) {
-        console.log(user + " is logged in.");
+        console.log(user + ' is logged in.');
       } else {
-        console.log("user is logged out.");
+        console.log('user is logged out.');
       }
     });
 

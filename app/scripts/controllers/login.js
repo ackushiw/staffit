@@ -10,18 +10,11 @@ angular.module('staffitApp')
     if ($rootScope.auth.user) {
       console.log($rootScope.auth.user);
       $state.go('auth.profile');
-    };
-
+    }
 
     $scope.login = function (service) {
       simpleLogin.login(service, function (err) {
         $scope.err = err ? err + '' : null;
-      })
+      });
     };
-
-    /*$scope.dismiss = function () {
-      $scope.$dismiss();
-      $state.go('anon.home');
-    };*/
-
   });

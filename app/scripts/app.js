@@ -27,31 +27,12 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/main.html',
       controller: 'LoginController'
     })
-  /*.state('anon.login', {
-      url: '/login',
-      onEnter: function ($stateParams, $state, $modal, $resource, $timeout, simpleLogin, $rootScope) {
-        $modal.open({
-          templateUrl: 'views/login.html',
-          controller: 'LoginController',
-          resolve: {
-            logState: $rootScope.auth.user
-          }
-        }).result.then(function (result) {
-          // on Success
-          console.log('user logged in = ' + result); //check if user is logged in...
-          $state.transitionTo('auth.profile');
-        }, function () {
-          // on error/cancel
-          $state.go('anon.home');
-        });
-      }
-    })*/
-  .state('auth', { //Secure States for authenticated access only
-    abstract: true,
-    url: '',
-    template: '<topnav></topnav><ui-view/>',
-    controller: 'AuthCtrl'
-  })
+    .state('auth', { //Secure States for authenticated access only
+      abstract: true,
+      url: '',
+      template: '<topnav></topnav><ui-view/>',
+      controller: 'AuthCtrl'
+    })
     .state('auth.event-control', {
       url: '/event-control',
       templateUrl: 'views/event-control.html',
@@ -89,6 +70,7 @@ staffApp.run(['simpleLogin', '$rootScope', 'FBURL',
     $rootScope.auth = simpleLogin.init('/login');
     $rootScope.logInCheck = function (auth) {
       $rootScope.loggedIn = false;
+      console.log(auth);
       if (auth) {
         $rootScope.loggedIn = true;
       } else {
@@ -98,3 +80,22 @@ staffApp.run(['simpleLogin', '$rootScope', 'FBURL',
     $rootScope.FBURL = FBURL;
   }
 ]);
+/*.state('anon.login', {
+      url: '/login',
+      onEnter: function ($stateParams, $state, $modal, $resource, $timeout, simpleLogin, $rootScope) {
+        $modal.open({
+          templateUrl: 'views/login.html',
+          controller: 'LoginController',
+          resolve: {
+            logState: $rootScope.auth.user
+          }
+        }).result.then(function (result) {
+          // on Success
+          console.log('user logged in = ' + result); //check if user is logged in...
+          $state.transitionTo('auth.profile');
+        }, function () {
+          // on error/cancel
+          $state.go('anon.home');
+        });
+      }
+    })*/

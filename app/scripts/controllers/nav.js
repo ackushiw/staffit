@@ -11,7 +11,7 @@ angular.module('staffitApp')
         $scope.sidebarMenu = false;
       }
     };
-    $scope.sidebarClose = function (sidebar) {
+    $scope.sidebarClose = function () {
       $scope.sidebarMenu = false;
     };
 
