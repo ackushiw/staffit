@@ -43,8 +43,6 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
           });
         }
       }, callback);
-      console.log('firebaselogin test');
-      $state.go('auth.profile');
     }
 
 

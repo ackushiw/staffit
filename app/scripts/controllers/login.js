@@ -6,11 +6,10 @@ angular.module('staffitApp')
     $scope.err = null;
     $scope.user = null;
 
-
-    if ($rootScope.auth.user) {
-      console.log($rootScope.auth.user);
+    $rootScope.$on('$firebaseSimpleLogin:login', function () {
+      $rootScope.loggedIn = true;
       $state.go('auth.profile');
-    }
+    });
 
     $scope.login = function (service) {
       simpleLogin.login(service, function (err) {
