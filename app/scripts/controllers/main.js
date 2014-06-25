@@ -85,6 +85,7 @@ angular.module('staffitApp')
         staff.merit = '';
       }
       $scope.eventStafflist.$save();
+      console.log(staff.name + ' checked in!');
     };
 
     $scope.siteIn = function (staff) {
@@ -141,8 +142,6 @@ angular.module('staffitApp')
         name: userX.displayName,
         $priority: userX.id
       });
-
-
     };
     //return AngularFire(ref, $scope, 'eventStafflist');
 
