@@ -184,6 +184,16 @@ module.exports = function (grunt) {
       }
     },
 
+    //Vulcanize from Polymer Project
+    vulcanize: {
+      options: {
+        // Task-specific options go here.
+      },
+      your_target: {
+        // Target-specific file lists and/or options go here.
+      },
+    },
+
     // Renames files for browser caching purposes
     rev: {
       dist: {
