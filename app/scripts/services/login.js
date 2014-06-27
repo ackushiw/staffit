@@ -93,7 +93,7 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
 })
 
 .factory('profileCreator', function (firebaseRef, $timeout) {
-  return function (id, email, callback) {
+  return function (id, email, mdhash, callback) {
     function firstPartOfEmail(email) {
       return ucfirst(email.substr(0, email.indexOf('@')) || '');
     }
@@ -107,7 +107,8 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
 
     firebaseRef('users-library/' + id).set({
       email: email,
-      name: firstPartOfEmail(email)
+      name: firstPartOfEmail(email),
+      md5hash: mdhash
     }, function (err) {
       //err && console.error(err);
       if (callback) {

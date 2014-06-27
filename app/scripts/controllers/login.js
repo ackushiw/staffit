@@ -44,7 +44,7 @@ angular.module('staffitApp')
             $scope.err = err ? err + '' : null;
           } else {
             // must be logged in before I can write to my profile = edited out!!            
-            simpleLogin.createProfile(user.uid, user.email);
+            simpleLogin.createProfile(user.uid, user.email, user.md5_hash);
             $state.go('auth.profile');
           }
         });
