@@ -32,22 +32,28 @@ angular.module('staffitApp')
         } else if (!$scope.pass) {
           $scope.err = 'Please enter a password';
         } else if ($scope.pass !== $scope.confirm) {
-          $scope.err = 'Passwords do not match' + '<button type="button" class="btn btn-warning" ng-click="sendPasswordResetEmail()">Recover?</button>';
+          $scope.err = 'Passwords do not match';
         }
         return !$scope.err;
       }
 
       $scope.err = null;
       if (assertValidLoginAttempt()) {
+        console.log('createProfile');
         simpleLogin.createAccount($scope.email, $scope.pass, function (err, user) {
+          console.log('createProfile');
           if (err) {
             $scope.err = err ? err + '' : null;
+            console.log('createProfileNull');
           } else {
-            // must be logged in before I can write to my profile
-            $scope.login(function () {
-              simpleLogin.createProfile(user.uid, user.email);
-              $state.go('auth.profile');
-            });
+            console.log('createProfile');
+            console.log(user.uid + '&' + user.email);
+            // must be logged in before I can write to my profile = edited out!!
+            console.log('createProfile');
+            simpleLogin.createProfile(user.uid, user.email);
+
+            $state.go('auth.profile');
+
           }
         });
       }

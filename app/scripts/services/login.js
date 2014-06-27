@@ -16,6 +16,7 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
   return {
     init: function () {
       auth = $firebaseSimpleLogin(firebaseRef());
+      console.log(auth.user);
       return auth;
     },
 
@@ -94,6 +95,7 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
 .factory('profileCreator', function (firebaseRef, $timeout) {
   return function (id, email, callback) {
     function firstPartOfEmail(email) {
+      console.log('profileCreator');
       return ucfirst(email.substr(0, email.indexOf('@')) || '');
     }
 
@@ -104,7 +106,7 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
       return f + str.substr(1);
     }
 
-    firebaseRef('users/' + id).set({
+    firebaseRef('users-library/' + id).set({
       email: email,
       name: firstPartOfEmail(email)
     }, function (err) {
