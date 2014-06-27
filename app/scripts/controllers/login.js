@@ -39,44 +39,17 @@ angular.module('staffitApp')
 
       $scope.err = null;
       if (assertValidLoginAttempt()) {
-        console.log('createProfile');
         simpleLogin.createAccount($scope.email, $scope.pass, function (err, user) {
-          console.log('createProfile');
           if (err) {
             $scope.err = err ? err + '' : null;
-            console.log('createProfileNull');
           } else {
-            console.log('createProfile');
-            console.log(user.uid + '&' + user.email);
-            // must be logged in before I can write to my profile = edited out!!
-            console.log('createProfile');
+            // must be logged in before I can write to my profile = edited out!!            
             simpleLogin.createProfile(user.uid, user.email);
-
             $state.go('auth.profile');
-
           }
         });
       }
     };
-
-    $scope.userLibrary = syncData(usersFire);
-
-    $rootScope.$on('$firebaseSimpleLogin:login', function () {
-      var authUser = $rootScope.auth.user;
-
-      console.log(authUser);
-      //This works!!
-      $scope.userLibrary.$add({
-        userData: authUser.thirdPartyUserData,
-        uids: authUser.uid,
-        //username: authUser.name,
-        name: authUser.displayName,
-
-        $priority: authUser.id
-      });
-      $rootScope.loggedIn = true;
-      $state.go('auth.profile');
-    });
 
     $scope.login = function (service) {
       simpleLogin.login(service, function (err) {

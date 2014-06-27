@@ -95,7 +95,6 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
 .factory('profileCreator', function (firebaseRef, $timeout) {
   return function (id, email, callback) {
     function firstPartOfEmail(email) {
-      console.log('profileCreator');
       return ucfirst(email.substr(0, email.indexOf('@')) || '');
     }
 
