@@ -1,10 +1,15 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('AuthCtrl', function ($rootScope, $scope, $firebaseSimpleLogin, $state) {
-    if (!$rootScope.auth.user) {
-      $state.go('anon.home');
-    }
+  .controller('AuthCtrl', function ($rootScope, $scope, $firebaseSimpleLogin, simpleLogin, $state) {
+    simpleLogin.init();
+
+    $rootScope.$watch('sessionId', function () {
+      console.log('session ID:' + $rootScope.sessionId);
+    });
+
+    //console.log($scope.auth.user.uid);
+
     $rootScope.$on('$firebaseSimpleLogin:logout', function () {
       $rootScope.loggedIn = false;
       $state.go('anon.home');
@@ -14,6 +19,6 @@ angular.module('staffitApp')
       waitForAuth.then(function () {
         console.log('auth initialized');
       });
-    }
+    };
 
   });

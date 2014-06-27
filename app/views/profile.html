@@ -1,15 +1,6 @@
-<div ng-init="logInCheck(auth.user)">
-    <h2>{{'Welcome ' + auth.user.displayName}}</h2>
-    <p>This is the profile view.</p>
-    <div ng-cloak-auth>Authentication has resolved.</div>
+<div>
+    <h2>{{'Welcome ' + user.name}}</h2>
+    <input type="text" ng-model="test" placeholder="test...">
+    <button class="btn btn-success" ng-click="editSave($scope.user)">Save!</button>
 
-
-    <div ng-show-auth="login">{{user.id}} is logged in</div>
-
-
-    <div ng-show-auth="logout">Logged out</div>
-
-
-    <div ng-show-auth="error">An error occurred during authentication</div>
-    <button class="btn btn-warning" ng-click="loginCheck()">Login Check</button>
 </div>

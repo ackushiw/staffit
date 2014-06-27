@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('NavCtrl', function ($scope, $timeout) {
+  .controller('NavCtrl', function ($scope, simpleLogin, $timeout) {
     $scope.sidebarMenu = false;
 
     $scope.sidebarToggle = function (sidebar) {
@@ -14,6 +14,9 @@ angular.module('staffitApp')
     $scope.sidebarClose = function () {
       $scope.sidebarMenu = false;
     };
+    $scope.logout = function () {
+      simpleLogin.logout();
+    }
 
     var tick = function () {
       $scope.time = new Date();

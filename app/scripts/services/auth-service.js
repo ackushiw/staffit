@@ -1,5 +1,5 @@
 'use strict';
-
+//delete?
 angular.module('staffitApp')
   .factory('AuthService', function ($firebaseSimpleLogin, FBURL, $rootScope) {
     var ref = new Firebase(FBURL);

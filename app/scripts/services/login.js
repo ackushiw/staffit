@@ -13,17 +13,25 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
   }
 
   var auth = null;
+  var userId = null;
   return {
     init: function () {
       auth = $firebaseSimpleLogin(firebaseRef());
-      console.log(auth.user);
       return auth;
+    },
+
+    signedIn: function () {
+      assertAuth();
+
+      console.log(auth.$getCurrentUser());
+      return userId;
     },
 
     logout: function () {
       assertAuth();
       auth.$logout();
       $rootScope.loggedIn = false;
+      localStorage.removeItem('sessionId');
       $state.go('anon.home');
     },
 
@@ -54,6 +62,8 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
         rememberMe: true
       }).then(function (user) {
         if (callback) {
+          console.log(user.uid);
+          localStorage.setItem('sessionId', user.uid);
           //todo-bug https://github.com/firebase/angularFire/issues/199
           $timeout(function () {
             callback(null, user);
@@ -108,7 +118,7 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
     firebaseRef('users-library/' + id).set({
       email: email,
       name: firstPartOfEmail(email),
-      md5hash: mdhash
+      mdhash: mdhash
     }, function (err) {
       //err && console.error(err);
       if (callback) {

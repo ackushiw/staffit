@@ -30,7 +30,7 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
     .state('auth', { //Secure States for authenticated access only
       abstract: true,
       url: '',
-      template: '<topnav></topnav><ui-view/>',
+      template: '<topnav></topnav><span class=hidden>{{auth.user.uid}}</span><ui-view/>',
       controller: 'AuthCtrl'
     })
     .state('auth.event-control', {
@@ -68,7 +68,8 @@ staffApp.run(['simpleLogin', '$rootScope', 'FBURL',
   function (simpleLogin, $rootScope, FBURL) {
     // establish authentication
     $rootScope.auth = simpleLogin.init('/login');
-    $rootScope.logInCheck = function (auth) {
+    $rootScope.sessionId = simpleLogin.signedIn();
+    /*$rootScope.logInCheck = function (auth) {
       $rootScope.loggedIn = false;
       console.log(auth);
       if (auth) {
@@ -76,7 +77,7 @@ staffApp.run(['simpleLogin', '$rootScope', 'FBURL',
       } else {
         $rootScope.loggedIn = false;
       }
-    };
+    };*/
     $rootScope.FBURL = FBURL;
   }
 ]);

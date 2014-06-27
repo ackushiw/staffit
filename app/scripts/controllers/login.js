@@ -56,4 +56,9 @@ angular.module('staffitApp')
         $scope.err = err ? err + '' : null;
       });
     };
+
+    $rootScope.$on('$firebaseSimpleLogin:login', function () {
+      $rootScope.loggedIn = true;
+      $state.go('auth.profile');
+    });
   });
