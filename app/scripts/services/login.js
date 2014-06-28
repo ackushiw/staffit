@@ -46,6 +46,7 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
         rememberMe: true
       }).then(function (user) {
         if (callback) {
+          localStorage.setItem('sessionId', user.uid);
           //todo-bug https://github.com/firebase/angularFire/issues/199
           $timeout(function () {
             callback(null, user);
