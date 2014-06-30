@@ -25,6 +25,9 @@
             <form role="form">
                 <fielset>
                     <legend>Email/Password</legend>
+                    <div ng-show="err" class="alert alert-danger">
+                        <strong>{{err}}</strong>
+                    </div>
 
                     <div class="row">
                         <div class="col-md-6">
