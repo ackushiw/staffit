@@ -1,12 +1,15 @@
 <div>
-    <h2>{{'Welcome ' + user.name}}</h2>
-    <button class="btn btn-success" ng-click="editSave($scope.user)">Save!</button>
-    <div>
-        <input ng-model="user.name" />
-    </div>
-    <div ng-repeat="userData in user">
-        <div>{{userData}}
+    <div class="panel paper-shadow paper-shadow-z-2">
+        <h2>{{'Welcome ' + user.name}}</h2>
+        <button class="btn btn-success" ng-click="editSave($scope.user)">Save!</button>
+        <div>
+            <input ng-model="user.name" />
         </div>
+        <div ng-repeat="userData in user">
+            <div>{{userData}}
+            </div>
+        </div>
+        <paper-input label="Your Name" floatingLabel="true" ng-model="user.name"></paper-input>
     </div>
 
 </div>

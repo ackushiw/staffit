@@ -1,5 +1,5 @@
-<div id="nav-view" ng-controller="NavCtrl" ng-init="logInCheck(auth.user);">
-    <nav id="nav" class="navbar navbar-default navbar-fixed-top">
+<div id="nav-view" class="paper-shadow-bottom paper-shadow-bottom-z-2" ng-controller="NavCtrl">
+    <nav id="nav" class="navbar navbar-default navbar-fixed-top paper-shadow-bottom paper-shadow-bottom-z-1">
         <div class="container-fluid">
 
             <div>
@@ -41,7 +41,7 @@
 
         </div>
     </nav>
-    <div class="col-xs-6 col-sm-3 sidebar-offcanvas animate-sidemenu" id="sidebar" ng-if="sidebarMenu" role="navigation" ng-mouseleave="sidebarClose(sidebarMenu);" ng-animate>
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas animate-sidemenu paper-shadow-bottom paper-shadow-bottom-z-4" id="sidebar" ng-if="sidebarMenu" role="navigation" ng-mouseleave="sidebarClose(sidebarMenu);" ng-animate>
         <div class="panel info">
             <ul class="list-group">
                 <li class="list-group-item">
