@@ -20,7 +20,8 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
     .state('anon', { // Anonymous States for access with sign in
       abstract: true,
       url: '',
-      template: '<ui-view/>'
+      template: '<ui-view/>',
+      controller: 'AnonCtrl'
     })
     .state('anon.home', {
       url: '/home',
