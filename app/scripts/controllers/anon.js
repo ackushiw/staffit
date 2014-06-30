@@ -12,7 +12,7 @@ angular.module('staffitApp')
     $scope.anon = 'this is the AnonCtrl';
     $scope.sessionId = localStorage.getItem('sessionId');
     $scope.$watch('sessionId', function () {
-      if ($scope.sessionId == null) {
+      if ($scope.sessionId === null) {
         console.log('no user authenticated!');
       } else {
         $state.go('auth.profile');

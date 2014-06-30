@@ -119,7 +119,17 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
     firebaseRef('users-library/' + id).set({
       email: email,
       name: firstPartOfEmail(email),
-      mdhash: mdhash
+      mdhash: mdhash,
+      height: 'add',
+      weight: 'add',
+      skills: 'add',
+      cell: 'add',
+      headshot: 'add',
+      fullbody: 'add',
+      merits: 0,
+      companies: ''
+
+
     }, function (err) {
       //err && console.error(err);
       if (callback) {

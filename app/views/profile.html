@@ -1,6 +1,12 @@
 <div>
     <h2>{{'Welcome ' + user.name}}</h2>
-    <input type="text" ng-model="test" placeholder="test...">
     <button class="btn btn-success" ng-click="editSave($scope.user)">Save!</button>
+    <div>
+        <input ng-model="user.name" />
+    </div>
+    <div ng-repeat="userData in user">
+        <div>{{userData}}
+        </div>
+    </div>
 
 </div>
