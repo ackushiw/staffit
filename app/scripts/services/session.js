@@ -1,7 +1,8 @@
 'use strict';
+//might not need this
 
 angular.module('staffitApp')
-  .service('Session', function Session() {
+  .service('SessionService', function Session() {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     var session = localStorage.getItem('sessionId');
@@ -10,6 +11,6 @@ angular.module('staffitApp')
     } else {
       return false;
     }
-    console.log('Session service is ' + Session);
-    return Session;
+    console.log('Session service is ' + session);
+    return SessionSevice;
   });

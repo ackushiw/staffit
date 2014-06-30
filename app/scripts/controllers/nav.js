@@ -16,7 +16,7 @@ angular.module('staffitApp')
     };
     $scope.logout = function () {
       simpleLogin.logout();
-    }
+    };
 
     var tick = function () {
       $scope.time = new Date();
