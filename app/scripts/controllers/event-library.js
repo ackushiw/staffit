@@ -6,7 +6,7 @@ angular.module('staffitApp')
 
     $scope.removeEvent = function (eventId) {
       console.log(eventId);
-      if (confirm('Are you sure you want to delete this event?')) {
+      if (confirm('Are you sure you want to delete this event?')) { //confirm jshist error
         Event.delete(eventId);
       }
     };

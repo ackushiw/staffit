@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('staffitApp')
-  .factory('User', function ($firebaseSimpleLogin, FBURL, syncData, simpleLogin, users) {
+  .factory('User', function ($firebaseSimpleLogin, FBURL, syncData, simpleLogin, users, $scope) {
     // Service logic
     //firebase ref
     var ref = new Firebase(FBURL);
@@ -12,6 +12,7 @@ angular.module('staffitApp')
       }
       if (user) {
         console.log(user + ' is logged in.');
+        $scope.authClient = authClient;
       } else {
         console.log('user is logged out.');
       }
