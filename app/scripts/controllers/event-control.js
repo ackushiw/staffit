@@ -1,10 +1,6 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('EventControlCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('EventControlCtrl', function ($scope, $rootScope) {
+    console.log($rootScope.auth.uid);
   });
