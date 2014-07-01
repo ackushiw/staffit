@@ -1,7 +1,11 @@
 <div class="panel panel-info col-sm-12">
     <h1>Create Event</h1>
     <form id="event-form">
+
         <!-- removed attr: ng-submit="submitEvent()" -->
+
+        <span ng-init="checkUser()"></span>
+
         <div class="form-group">
             <input class="form-control" name="id" type="text" ng-model="eventForm.id" placeholder="Event ID">
         </div>

@@ -1,8 +1,13 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('EventFormCtrl', function ($scope, syncData, eventDatabase, Event) {
+  .controller('EventFormCtrl', function ($scope, $rootScope, syncData, eventDatabase, Event) {
     $scope.eventLibrary = syncData(eventDatabase);
+    $scope.checkUser = function () {
+      console.log('checkuser run ' + $rootScope.sessionId);
+      $scope.eventForm.creator = $rootScope.sessionId;
+    };
+    //$scope.eventForm.creator = $scope.sessionId;
     //staffList Collapse
     $scope.staffCollapse = true;
     $scope.showStaffForm = function () {
@@ -15,6 +20,9 @@ angular.module('staffitApp')
     $scope.staffArray = [];
 
     $scope.emptyEvent = {
+      creator: $rootScope.sessionId,
+      eventAdmin: '',
+      staffAdmin: '',
       id: '',
       client: '',
       contactName: '',
