@@ -1,7 +1,6 @@
 $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
  @import'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
- // bower:scss
- @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+ // bower:scss @import"../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
  // endbower
 /*check in tables*/
  .check-in {
@@ -19,8 +18,48 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
 /*Nav */
  nav {
     z-index: 1000;
+    background-color:none;
+    .nav-background {
+        position:absolute;
+        bottom: 0;
+        width:100%;
+        height: 77px;
+        opacity: 0.4;
+        background: -moz-linear-gradient(-45deg, rgba(255, 48, 25, 0) 0%, rgba(255, 48, 25, 0.39) 49%, rgba(122, 2, 2, 0.8) 100%);
+        /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(255, 48, 25, 0)), color-stop(49%, rgba(255, 48, 25, 0.39)), color-stop(100%, rgba(122, 2, 2, 0.8)));
+        /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(-45deg, rgba(255, 48, 25, 0) 0%, rgba(255, 48, 25, 0.39) 49%, rgba(122, 2, 2, 0.8) 100%);
+        /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(-45deg, rgba(255, 48, 25, 0) 0%, rgba(255, 48, 25, 0.39) 49%, rgba(122, 2, 2, 0.8) 100%);
+        /* Opera 11.10+ */
+        background: -ms-linear-gradient(-45deg, rgba(255, 48, 25, 0) 0%, rgba(255, 48, 25, 0.39) 49%, rgba(122, 2, 2, 0.8) 100%);
+        /* IE10+ */
+        background: linear-gradient(135deg, rgba(255, 48, 25, 0) 0%, rgba(255, 48, 25, 0.39) 49%, rgba(122, 2, 2, 0.8) 100%);
+        /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ff3019', endColorstr='#cc7a0202', GradientType=1);
+        /* IE6-9 fallback on horizontal gradient */
+    }
+    ul {
+        overflow: none;
+        padding-right: 5%;
+        li.nav-img {
+            height:50px;
+            overflow: none;
+        }
+        button.btn-cirlce {
+            position:relative;
+            top: 40px;
+            height:40px;
+            width:40px;
+            border-radius: 50%;
+        }
+    }
     .container-fluid {
         //z-index: 100 !important;
+        img {
+            top: -10px;
+        }
     }
 }
 .nav-pointer {
@@ -60,6 +99,30 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
     opacity:1;
     max-width: 100%;
     transform: translateX(0);
+}
+.animate-nav-color.ng-enter, .animate-nav-color.ng-leave {
+    -webkit-transition:all ease 0.7s;
+    -moz-transition:all ease 0.7s;
+    -o-transition:all ease 0.7s;
+    transition:all ease 0.7s;
+}
+.animate-nav-color.ng-enter, .animate-nav-color.ng-leave.ng-leave-active {
+    max-width: 0;
+    max-height: 0;
+    opacity: 0;
+    right: 6%;
+    bottom: 0;
+    overflow: hidden;
+    transform: translate(10%, 0);
+    border-radius: 0 100% 0;
+}
+.animate-nav-color.ng-leave, .animate-nav-color.ng-enter.ng-enter-active {
+    opacity:0.4;
+    max-width: 100%;
+    right: 0;
+    max-height: 100%;
+    transform: translate(0);
+    border-radius: 0;
 }
 .browsehappy {
     margin: 0.2em 0;
@@ -236,4 +299,19 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
     100% {
         box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
     }
+}
+/*animate button lift*/
+ .animate-button-lift {
+}
+.animate-button-lift.ng-enter, .animate-button-lift.ng-leave {
+    -webkit-transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    -moz-transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    -o-transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.animate-button-lift.ng-enter, .animate-button-lift.ng-leave.ng-leave-active {
+    box-shadow: none;
+}
+.animate-button-lift.ng-leave, .animate-button-lift.ng-enter.ng-enter-active {
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16);
 }

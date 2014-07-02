@@ -8,8 +8,6 @@ angular.module('staffitApp')
     $scope.pasted = false;
     $scope.eventStafflist = syncData(eventDatabase);
 
-    console.log($rootScope.auth.user.uid);
-
 
     $scope.update = function (text) {
       var people = text.text.map(function (p) {

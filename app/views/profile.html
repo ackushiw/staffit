@@ -1,12 +1,13 @@
 <div>
-    <div class="panel paper-shadow-top paper-shadow-top-z-2">
+    <div class="panel card paper-shadow-top paper-shadow-top-z-2">
         <h2>{{'Welcome ' + user.name}}</h2>
+        <img class="img-responsive img-thumbnail" ng-src="{{'http://www.gravatar.com/avatar/' + user.md5hash}}">
         <button class="btn btn-success" ng-click="editSave($scope.user)">Save!</button>
         <div>
             <input ng-model="user.name" />
         </div>
-        <div class="panel info" ng-repeat="userData in user">
-            <div>{{userData}}
+        <div class="panel info" ng-repeat="(key,userData) in user">
+            <div>{{key}}{{userData}}
             </div>
         </div>
         <paper-input label="Your Name" floatingLabel="true" ng-model="user.name"></paper-input>

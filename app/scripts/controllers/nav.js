@@ -3,6 +3,16 @@
 angular.module('staffitApp')
   .controller('NavCtrl', function ($scope, simpleLogin, $timeout) {
     $scope.sidebarMenu = false;
+    $scope.logoutHover = false;
+
+    $scope.navLogoutColor = function (hover) {
+      if (!hover) {
+        $scope.logoutHover = true;
+      } else {
+        $scope.logoutHover = false;
+      }
+    };
+
 
     $scope.sidebarToggle = function (sidebar) {
       if (sidebar === false) {

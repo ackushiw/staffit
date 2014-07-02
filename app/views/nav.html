@@ -1,32 +1,38 @@
 <div id="nav-view" class="paper-shadow-bottom paper-shadow-bottom-z-2" ng-controller="NavCtrl">
     <nav id="nav" class="navbar navbar-default navbar-fixed-top paper-shadow-bottom paper-shadow-bottom-z-1">
+        <div class="nav-background animate-nav-color" ng-if="logoutHover" ng-animate></div>
         <div class="container-fluid">
             <div>
                 <ul class="nav navbar-nav nav-pills navbar-right">
-                    <li class="hidden-xs">
+                    <li class="hidden-xs animate-button-lift">
                         <a><b>{{time | date: 'mediumTime'}}</b>
                         </a>
                     </li>
-                    <li class="hidden-xs">
+                    <li class="hidden-xs animate-button-lift" ng-animate>
                         <a ui-sref="anon.home">Home</a>
                     </li>
-                    <li class="hidden-xs">
+                    <li class="hidden-xs animate-button-lift" ng-animate>
                         <a ui-sref="auth.event-control">Event Control</a>
                     </li>
-                    <li class="hidden-xs">
+                    <li class="hidden-xs animate-button-lift" ng-animate>
                         <a ui-sref="auth.create">Create Event</a>
                     </li>
-                    <li class="hidden-xs">
+                    <li class="hidden-xs animate-button-lift" ng-animate>
                         <a ui-sref="auth.paste-event">Paste Event</a>
                     </li>
-                    <li class="hidden-xs">
-                        <a class="btn-danger" href="#" ng-click="logout();">Log Out</a>
-                    </li>
-                    <li class="hidden-xs" ng-show-auth="['logout','error']" ng-cloak>
+
+                    <li class="hidden-xs animate-button-lift" ng-animate ng-show-auth="['logout','error']" ng-cloak>
                         <a class="btn btn-primary" ui-sref="anon.login">Log In</a>
                     </li>
-                    <li class="hidden-xs nav-pointer" ng-show-auth="login" ng-cloak>
-                        <a ui-sref="auth.profile">Profile</a>
+                    <li class="hidden-xs animate-button-lift nav-pointer nav-img" ng-show-auth="login" ng-cloak ng-animate>
+                        <a ui-sref="auth.profile">
+                            <img class="img-responsive img-thumbnail img-circle paper-shadow-bottom paper-shadow-bottom-z-1" ng-src="{{'http://www.gravatar.com/avatar/' + auth.user.md5_hash}}" alt="Profile">
+                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <button class="btn btn-danger btn-cirlce paper-shadow-bottom-z-1" ng-mouseenter="navLogoutColor(logoutHover)" ng-mouseleave="navLogoutColor(logoutHover)" ng-click="logout();">
+                            <span class="glyphicon glyphicon-off"></span>
+                        </button>
                     </li>
                 </ul>
 
