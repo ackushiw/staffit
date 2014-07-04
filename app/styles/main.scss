@@ -45,7 +45,9 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
         padding-right: 5%;
         li.nav-img {
             height:50px;
-            overflow: none;
+            img {
+                top: -10px;
+            }
         }
         button.btn-cirlce {
             position:relative;
@@ -57,9 +59,6 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
     }
     .container-fluid {
         //z-index: 100 !important;
-        img {
-            top: -10px;
-        }
     }
 }
 .nav-pointer {

@@ -22,15 +22,16 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
 
     signedIn: function () {
       assertAuth();
-
       console.log(auth.$getCurrentUser());
+      var user = auth.$getCurrentUser();
+      console.log(user);
       return userId;
     },
 
     logout: function () {
       assertAuth();
       auth.$logout();
-      $rootScope.loggedIn = false;
+      $rootScope.signedIn = false;
       localStorage.removeItem('sessionId');
       $state.go('anon.home');
     },

@@ -1,16 +1,29 @@
 <div>
-    <div class="panel card paper-shadow-top paper-shadow-top-z-2">
+    <div class="panel card col-sm-6 paper-shadow-top paper-shadow-top-z-2">
         <h2>{{'Welcome ' + user.name}}</h2>
         <img class="img-responsive img-thumbnail" ng-src="{{'http://www.gravatar.com/avatar/' + user.md5hash}}">
         <button class="btn btn-success" ng-click="editSave($scope.user)">Save!</button>
         <div>
             <input ng-model="user.name" />
         </div>
+        <div class="input-group">
+            <span class="input-group-addon">Cell:</span>
+            <input type="text" class="form-control" placeholder="{{userEdit.cell}}" ng-model="userEdit.cell">
+        </div>
         <div class="panel info" ng-repeat="(key,userData) in user">
             <div>{{key}}{{userData}}
             </div>
         </div>
-        <paper-input label="Your Name" floatingLabel="true" ng-model="user.name"></paper-input>
+    </div>
+    <div class="panel card col-sm-6 paper-shadow-top paper-shadow-top-z-2">
+        <ul ng-repeat="(key, userData) in userEdit">
+            <li>
+                <div class="input-group">
+                    <span class="input-group-addon">{{key}}</span>
+                    <input type="text" class="form-control" placeholder="{{userData}}" ng-model="userData">
+                </div>
+            </li>
+        </ul>
     </div>
 
 </div>

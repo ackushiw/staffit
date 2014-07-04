@@ -31,8 +31,13 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
     .state('auth', { //Secure States for authenticated access only
       abstract: true,
       url: '',
-      template: '<topnav></topnav><span class=hidden>{{auth.user.uid}}</span><ui-view/>',
-      controller: 'AuthCtrl'
+      template: '<topnav></topnav><ui-view/>',
+      controller: 'AuthCtrl',
+      resolve: {
+        userState: function (simpleLogin) {
+          return simpleLogin.signedIn;
+        }
+      }
     })
     .state('auth.event-control', {
       url: '/event-control',

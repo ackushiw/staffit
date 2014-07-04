@@ -2,10 +2,7 @@
 
 angular.module('staffitApp')
   .controller('ProfileCtrl', function ($scope, $firebase, FBURL, syncData, usersFire) {
-
-    $scope.user = syncData(usersFire + '/' + $scope.sessionId);
-    console.log('session Id = ' + $scope.sessionId);
-    console.log(usersFire + '/' + $scope.sessionId);
+    syncData(usersFire + '/' + $scope.sessionId).$bind($scope, 'userEdit');
 
     $scope.edit = false;
 
@@ -15,11 +12,6 @@ angular.module('staffitApp')
       } else {
         $scope.edit = false;
       }
-    };
-
-    $scope.editSave = function () {
-      console.log('editsave');
-      $scope.user.$save();
     };
 
   });

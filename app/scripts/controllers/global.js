@@ -1,9 +1,11 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('GlobalCtrl', function ($scope, $rootScope) {
+  .controller('GlobalCtrl', function ($scope, $rootScope, syncData, usersFire) {
     $scope.GlobalCtrl = 'This is the GlobalCtrl';
-    $rootScope.sessionId = localStorage.getItem('sessionId');
+    var globalSessionId = localStorage.getItem('sessionId');
+    $scope.user = syncData(usersFire + '/' + globalSessionId);
+    $rootScope = globalSessionId;
     $scope.$watch('sessionId', function () {
       console.log('Session State is ' + $scope.sessionId);
     });
