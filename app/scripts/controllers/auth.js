@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('AuthCtrl', function ($scope, $rootScope, AuthService, $state) {
+  .controller('AuthCtrl', function ($scope, $rootScope, simpleLogin, Authroute, $state) {
     $scope.authview = 'this is the AuthCtrl';
     $scope.sessionId = localStorage.getItem('sessionId');
     $scope.$watch('sessionId', function () {
@@ -12,8 +12,7 @@ angular.module('staffitApp')
         $state.go('anon.home');
       }
     });
-    /*$scope.$watch('loggedIn', function () {
-      AuthService;
-      console.log(AuthService);
-    });*/
+
+    $scope.authroute = Authroute;
+
   });

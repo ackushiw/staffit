@@ -1,6 +1,6 @@
 'use strict';
 //delete?
-angular.module('staffitApp')
+/*angular.module('staffitApp')
   .factory('AuthService', function ($firebaseSimpleLogin, FBURL, $rootScope) {
     var ref = new Firebase(FBURL);
 
@@ -19,4 +19,5 @@ angular.module('staffitApp')
         $rootScope.signedIn = false;
       }
     });
-  });
+    return auth;
+  });*/

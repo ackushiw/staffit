@@ -16,13 +16,17 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
   var userId = null;
   return {
     init: function () {
+      console.log('simpleLogin init run!');
       auth = $firebaseSimpleLogin(firebaseRef());
       return auth;
     },
 
     signedIn: function () {
       assertAuth();
-      console.log(auth.$getCurrentUser());
+
+      auth.$getCurrentUser().then(function (user) {
+        console.log(user);
+      });
       var user = auth.$getCurrentUser();
       console.log(user);
       return userId;

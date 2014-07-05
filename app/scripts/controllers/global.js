@@ -7,6 +7,7 @@ angular.module('staffitApp')
     $scope.user = syncData(usersFire + '/' + globalSessionId);
     $rootScope = globalSessionId;
     $scope.$watch('sessionId', function () {
-      console.log('Session State is ' + $scope.sessionId);
+      var localId = localStorage.getItem('sessionId');
+      console.log('Session State is ' + localId);
     });
   });

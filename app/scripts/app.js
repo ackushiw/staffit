@@ -31,7 +31,7 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
     .state('auth', { //Secure States for authenticated access only
       abstract: true,
       url: '',
-      template: '<topnav></topnav><ui-view/>',
+      template: '<topnav ng-init="authCallback"></topnav><ui-view/>',
       controller: 'AuthCtrl',
       resolve: {
         userState: function (simpleLogin) {
