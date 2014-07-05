@@ -43,12 +43,11 @@
 
         </div>
     </nav>
-    <div class="col-xs-6 col-sm-3 sidebar-offcanvas animate-sidemenu paper-shadow-bottom paper-shadow-bottom-z-4" id="sidebar" ng-if="sidebarMenu" role="navigation" ng-mouseleave="sidebarClose(sidebarMenu);" ng-animate>
+    <div class="col-xs-8 col-sm-3 sidebar-offcanvas animate-sidemenu paper-shadow-bottom paper-shadow-bottom-z-4" id="sidebar" ng-if="sidebarMenu" role="navigation" ng-mouseleave="sidebarClose(sidebarMenu);" ng-animate>
         <div class="panel info">
             <ul class="list-group">
-                <li class="list-group-item">
-                    <a><b>{{time | date: 'mediumTime'}}</b>
-                    </a>
+                <li class="list-group-item visible-xs">
+                    <profile></profile>
                 </li>
                 <li class="list-group-item">
                     <a ui-sref="anon.home">Home</a>
