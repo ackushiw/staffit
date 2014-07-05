@@ -30,7 +30,6 @@ angular.module('simpleLoginTools', [])
  * </code>
  */
 .service('waitForAuth', function ($rootScope, $q, $timeout) {
-  console.log('wait for auth run!');
 
   function fn(err) {
     if ($rootScope.auth) {

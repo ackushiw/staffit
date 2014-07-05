@@ -23,12 +23,11 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
 
     signedIn: function () {
       assertAuth();
-
-      auth.$getCurrentUser().then(function (user) {
+      userId = $firebaseSimpleLogin(firebaseRef()).$getCurrentUser().then(function (user) {
         console.log(user);
+        return
       });
-      var user = auth.$getCurrentUser();
-      console.log(user);
+
       return userId;
     },
 

@@ -14,7 +14,7 @@ angular.module('staffitApp')
           $rootScope.signedIn = false;
           localStorage.removeItem('sessionUser');
           localStorage.removeItem('sessionId');
-          $state.go('anon.login');
+          $state.go('anon.home');
         }
       });
   });
