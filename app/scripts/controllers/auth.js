@@ -13,8 +13,5 @@ angular.module('staffitApp')
       }
     });
 
-    $scope.authroute = Authroute;
-
-    console.log(simpleLogin.signedIn())
-
+    //$scope.authroute = simpleLogin.signedIn();
   });

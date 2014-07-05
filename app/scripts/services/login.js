@@ -17,16 +17,44 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
   return {
     init: function () {
       console.log('simpleLogin init run!');
-      auth = $firebaseSimpleLogin(firebaseRef());
+      auth = $firebaseSimpleLogin(firebaseRef())
+        .$getCurrentUser()
+        .then(function (user) {
+          if (user) {
+            console.log(user);
+            localStorage.setItem('sessionUser', user.email);
+            $rootScope.signedIn = true;
+            $rootScope.sessionUser = user;
+            return user;
+          } else {
+            $rootScope.signedIn = false;
+            localStorage.removeItem('sessionUser');
+            localStorage.removeItem('sessionId');
+            $state.go('anon.home');
+          }
+        });
+      console.log(auth);
       return auth;
     },
 
-    signedIn: function () {
+    signedIn: function () { // could delete this now
       assertAuth();
-      userId = $firebaseSimpleLogin(firebaseRef()).$getCurrentUser().then(function (user) {
-        console.log(user);
-        return
-      });
+      userId = $firebaseSimpleLogin(firebaseRef())
+        .$getCurrentUser()
+        .then(function (user) {
+          if (user) {
+            console.log(user);
+            localStorage.setItem('sessionUser', user.email);
+            $rootScope.signedIn = true;
+            $rootScope.sessionUser = user;
+            return user;
+          } else {
+            $rootScope.signedIn = false;
+            localStorage.removeItem('sessionUser');
+            localStorage.removeItem('sessionId');
+            $state.go('anon.home');
+          }
+        });
 
       return userId;
     },
@@ -36,6 +64,7 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
       auth.$logout();
       $rootScope.signedIn = false;
       localStorage.removeItem('sessionId');
+      localStorage.removeItem('sessionName');
       $state.go('anon.home');
     },
 

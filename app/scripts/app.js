@@ -73,7 +73,7 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
 staffApp.run(['simpleLogin', '$rootScope', 'FBURL',
   function (simpleLogin, $rootScope, FBURL) {
     // establish authentication
-    $rootScope.auth = simpleLogin.init('/login');
+    $rootScope.auth = simpleLogin.init();
     $rootScope.FBURL = FBURL;
   }
 ]);

@@ -9,6 +9,7 @@ angular.module('staffitApp')
           console.log(user);
           localStorage.setItem('sessionUser', user.email);
           $rootScope.signedIn = true;
+          $rootScope.sessionUser = user;
           return user;
         } else {
           $rootScope.signedIn = false;
