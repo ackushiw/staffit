@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('GlobalCtrl', function ($scope, $window, $rootScope, syncData, usersFire) {
+  .controller('GlobalCtrl', function ($scope, $rootScope, $window) {
     $scope.GlobalCtrl = 'This is the GlobalCtrl';
+
     var test = localStorage.getItem('device');
     $scope.deviceWindow = test;
     var globalSessionId = localStorage.getItem('sessionId');
-    $scope.user = syncData(usersFire + '/' + globalSessionId);
+
     $rootScope = globalSessionId;
     $scope.$watch(function () { //bug scope doesn't change on window resize!      
       return $window.innerWidth;

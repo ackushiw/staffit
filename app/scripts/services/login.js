@@ -13,18 +13,16 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
   }
 
   var auth = null;
-  var userId = null;
+  //var userId = null;
   return {
     init: function () {
-      console.log('simpleLogin init run!');
       auth = $firebaseSimpleLogin(firebaseRef());
       return auth;
     },
 
-    signedIn: function () { // could delete this now
+    /*signedIn: function () { // could delete this now
       assertAuth();
-      userId = $firebaseSimpleLogin(firebaseRef())
-        .$getCurrentUser()
+      auth.$getCurrentUser()
         .then(function (user) {
           if (user) {
             console.log(user);
@@ -41,7 +39,7 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
         });
 
       return userId;
-    },
+    },*/
 
     logout: function () {
       assertAuth();
