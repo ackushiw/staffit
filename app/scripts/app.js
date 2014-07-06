@@ -66,8 +66,8 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
     })
     .state('auth.profile', {
       url: '/profile',
-      templateUrl: 'views/profile.html',
-      controller: 'ProfileCtrl',
+      templateUrl: 'views/user-view.html'
+
     });
 });
 staffApp.run(['simpleLogin', '$rootScope', 'FBURL',

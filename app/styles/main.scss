@@ -1,7 +1,6 @@
 $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
  @import'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
- // bower:scss
- @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+ // bower:scss @import"../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
  // endbower
 /*check in tables*/
  .check-in {
@@ -141,10 +140,6 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
     padding-top: 80px;
     padding-bottom: 20px;
 }
-/*Cards*/
- .card {
-    padding: 2%;
-}
 /* Everything but the jumbotron gets side spacing for mobile first views */
  .header, .marketing, .footer {
     padding-left: 15px;
@@ -203,6 +198,10 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
     /* Remove the bottom border on the jumbotron for visual effect */
     .jumbotron {
         border-bottom: 0;
+    }
+    /*Cards*/
+    .card {
+        padding: 2%;
     }
 }
 /*Animations 
