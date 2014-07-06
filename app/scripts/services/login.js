@@ -17,23 +17,7 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
   return {
     init: function () {
       console.log('simpleLogin init run!');
-      auth = $firebaseSimpleLogin(firebaseRef())
-        .$getCurrentUser()
-        .then(function (user) {
-          if (user) {
-            console.log(user);
-            localStorage.setItem('sessionUser', user.email);
-            $rootScope.signedIn = true;
-            $rootScope.sessionUser = user;
-            return user;
-          } else {
-            $rootScope.signedIn = false;
-            localStorage.removeItem('sessionUser');
-            localStorage.removeItem('sessionId');
-            $state.go('anon.home');
-          }
-        });
-      console.log(auth);
+      auth = $firebaseSimpleLogin(firebaseRef());
       return auth;
     },
 

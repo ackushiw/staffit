@@ -74,6 +74,7 @@ staffApp.run(['simpleLogin', '$rootScope', 'FBURL',
   function (simpleLogin, $rootScope, FBURL) {
     // establish authentication
     $rootScope.auth = simpleLogin.init();
+    $rootScope.user = simpleLogin.signedIn();
     $rootScope.FBURL = FBURL;
   }
 ]);
