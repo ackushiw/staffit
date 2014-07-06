@@ -44,7 +44,7 @@ angular.module('staffitApp')
         device = 'phone';
         localStorage.setItem('device', device);
       }
-      console.log(device);
+      $scope.deviceWindow = device;
 
 
     });
