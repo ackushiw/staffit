@@ -7,7 +7,7 @@ angular.module('staffitApp')
     $scope.auth.$getCurrentUser()
       .then(function (user) {
         if (user) {
-          console.log(user);
+          //console.log(user);
           localStorage.setItem('sessionUser', user.email);
           $rootScope.signedIn = true;
           $rootScope.sessionUser = user;
@@ -15,8 +15,8 @@ angular.module('staffitApp')
           return user;
         } else {
           $rootScope.signedIn = false;
-          localStorage.removeItem('sessionUser');
-          localStorage.removeItem('sessionId');
+          //localStorage.removeItem('sessionUser');
+          //localStorage.removeItem('sessionId');
           $state.go('anon.home');
         }
       });

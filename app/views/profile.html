@@ -1,59 +1,112 @@
-<div>
-    <div ng-switch on="profileEdit">
-        <div>header picture space
-            <div>name container
-                <h1>{{user.name}}</h1>
-                <button ng-if="profileEdit" class="btn btn-success btn-lg" type="button" ng-click="editProfile(profileEdit)">
-                    <span>Done</span>
-                    <span class="glyphicon glyphicon-ok"></span>
-                </button>
-                <button ng-if="!profileEdit" class="btn btn-primary btn-lg" type="button" ng-click="editProfile(profileEdit)">
-                    <span>Edit</span>
-                    <span class="glyphicon glyphicon-cog"></span>
-                </button>
+<div id="profilecard">
+    <div id="profile-header" class="header-space-background" style="background-image: url({{userEdit.headerPicture}});-webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;">
+        <div class="card name-container">
+            <h1>{{user.name}}</h1>
 
-            </div>
-        </div>
-        <div class="animate-profile-edit" ng-switch-when="true">
-            <div class="panel">
-                <h4><b>Pictures</b>
-                </h4>
-            </div>
-            <div class="panel">
-                <h4><b>Contact</b>
-                </h4>
-            </div>
-            <div class="panel">
-                <h4><b>Basic Information</b>
-                </h4>
-                <div class="input-group">
-                    <span class="input-group-addon">Phone</span>
-                    <input type="text" class="form-control" placeholder="{{userEdit.cell}}" ng-model="userEdit.cell">
-                </div>
-            </div>
-            <div class="panel">
-                <h4><b>Skills</b>
-                </h4>
-            </div>
 
         </div>
-        <div class="animate-profile-edit" ng-switch-default>
-            <div class="panel">
-                <h4><b>Pictures</b>
-                </h4>
-            </div>
-            <div class="panel">
-                <h4><b>Contact</b>
-                </h4>
-            </div>
-            <div class="panel">
-                <h4><b>Basic Information</b>
-                </h4>
-            </div>
-            <div class="panel">
-                <h4><b>Skills</b>
-                </h4>
-            </div>
+    </div>
+    <div>
+        <div class="animate-profile-edit">
+            <tabset class="tabset" justified="true" type="pills">
+                <tab>
+                    <tab-heading>
+                        <span class="hidden-xs">Home</span>
+                        <span class="glyphicon glyphicon-home"></span>
+                    </tab-heading>
+                    <ul>
+                        <li>Agenda</li>
+                        <li>Calendar</li>
+                        <li>Create Event</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </tab>
+                <tab>
+                    <tab-heading>
+                        <span class="hidden-xs">{{userEdit.name}}</span>
+                        <span class="glyphicon glyphicon-user"></span>
+                    </tab-heading>
+                </tab>
+                <tab>
+                    <tab-heading>
+                        <span class="hidden-xs">Pictures</span>
+                        <span class="glyphicon glyphicon-picture"></span>
+                    </tab-heading>
+                    <div class="panel card">
+                        <h4><b>Pictures</b>
+                        </h4>
+                        <img class="img-responsive img-thumbnail col-xs-6" ng-src="{{userEdit.headshot}}" alt="headshot">
+                        <img class="img-responsive img-thumbnail col-xs-6" ng-src="{{userEdit.fullbody}}" alt="fullbody">
+                    </div>
+                </tab>
+                <tab>
+                    <tab-heading>
+                        <span class="hidden-xs">Contact</span>
+                        <span class="glyphicon glyphicon-earphone"></span>
+                    </tab-heading>
+                    <div class="panel card">
+                        <span>
+                            <b>Contact</b>
+                        </span>
+                        <span class="pull-right">
+                            <button type="button" class="btn btn-primary" ng-click="editProfile(profileEdit)">
+                                <span class="hidden-xs">Edit</span>
+                                <span class="glyphicon glyphicon-cog"></span>
+                            </button>
+                        </span>
+                    </div>
+                </tab>
+                <tab select="editProfile(profileEdit)" deselect="editProfile(profileEdit)">
+                    <tab-heading>
+                        <div type="button">
+                            <span class="hidden-xs">Edit</span>
+                            <span class="glyphicon glyphicon-cog"></span>
+                        </div>
+                    </tab-heading>
+                    <button class="btn btn-success pull right" ng-click="profileSave()">Save</button>
+                    <div class="panel">
+                        <h4><b>Pictures</b>
+                        </h4>
+                        <div class="input-group">
+                            <span class="input-group-addon">Header Photo</span>
+                            <input type="text" class="form-control" ng-model="userEdit.headerPicture">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon">Headshot Photo</span>
+                            <input type="text" class="form-control" ng-model="userEdit.headshot">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon">Fullbody Photo</span>
+                            <input type="text" class="form-control" ng-model="userEdit.fullbody">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h4><b>Contact</b>
+                        </h4>
+                    </div>
+                    <div class="panel">
+                        <h4><b>Basic Information</b>
+                        </h4>
+                        <div class="input-group">
+                            <span class="input-group-addon">Name</span>
+                            <input type="text" class="form-control" placeholder="{{userEdit.name}}" ng-model="userEdit.name">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon">Phone</span>
+                            <input type="text" class="form-control" placeholder="{{userEdit.cell}}" ng-model="userEdit.cell">
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h4><b>Skills</b>
+                        </h4>
+                    </div>
+                </tab>
+            </tabset>
         </div>
+
     </div>
 </div>

@@ -32,12 +32,7 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
       abstract: true,
       url: '',
       template: '<topnav ng-init="authCallback"></topnav><ui-view/>',
-      controller: 'AuthCtrl',
-      resolve: {
-        userState: function (simpleLogin) {
-          return simpleLogin.signedIn;
-        }
-      }
+      controller: 'AuthCtrl'
     })
     .state('auth.event-control', {
       url: '/event-control',
@@ -66,7 +61,20 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
     })
     .state('auth.profile', {
       url: '/profile',
-      templateUrl: 'views/user-view.html'
+      templateUrl: 'views/user-view.html',
+      resolve: {
+        userState: function ($q) {
+          var defer = $q.defer();
+          var user = null;
+          while (!user) {
+            console.log('no user data for ' + user);
+            user = localStorage.getItem('sessionUser');
+          }
+          console.log(user);
+          defer.resolve();
+          return defer.promise;
+        }
+      }
 
     });
 });

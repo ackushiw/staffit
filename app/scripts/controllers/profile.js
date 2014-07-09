@@ -2,10 +2,13 @@
 
 angular.module('staffitApp')
   .controller('ProfileCtrl', function ($scope, $firebase, FBURL, syncData, usersFire) {
+
     $scope.userEdit = syncData(usersFire + '/' + $scope.sessionId);
-    //syncData(usersFire + '/' + $scope.sessionId).$bind($scope, 'userEdit');
 
     $scope.profileEdit = false;
+    $scope.profileSave = function () {
+      $scope.userEdit.$save();
+    };
 
     $scope.editProfile = function (edit) {
       if (edit === false) {
@@ -18,5 +21,8 @@ angular.module('staffitApp')
     $scope.profileEditDone = function () {
       $scope.profileEdit = false;
     };
+
+    //profile header
+    //$scope.profileHeader = 'background-image: url(' + syncData(usersFire + '/' + $scope.sessionId + '/headerPicture') + ');';
 
   });

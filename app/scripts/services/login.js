@@ -20,33 +20,13 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
       return auth;
     },
 
-    /*signedIn: function () { // could delete this now
-      assertAuth();
-      auth.$getCurrentUser()
-        .then(function (user) {
-          if (user) {
-            console.log(user);
-            localStorage.setItem('sessionUser', user.email);
-            $rootScope.signedIn = true;
-            $rootScope.sessionUser = user;
-            return user;
-          } else {
-            $rootScope.signedIn = false;
-            localStorage.removeItem('sessionUser');
-            localStorage.removeItem('sessionId');
-            $state.go('anon.home');
-          }
-        });
-
-      return userId;
-    },*/
-
     logout: function () {
       assertAuth();
       auth.$logout();
       $rootScope.signedIn = false;
       localStorage.removeItem('sessionId');
       localStorage.removeItem('sessionName');
+      console.log('user logged out');
       $state.go('anon.home');
     },
 
