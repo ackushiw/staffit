@@ -163,9 +163,16 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
     }
     .tabset {
         margin: 0 -10px;
-        a {
-            border-radius: 0;
+        li{
+            border-bottom-style:solid;
         }
+        li.active{
+            border-bottom-color:red;
+        }
+        a {
+            border-radius: 0;            
+        }
+        
         li {
             display: table-cell;
             width:1%;

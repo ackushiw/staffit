@@ -1,12 +1,14 @@
 <div id="profilecard">
-    <a ui-sref="auth.profile"><div id="profile-header" class="header-space-background" style="background-image: url({{userEdit.headerPicture}});-webkit-background-size: cover;
+    <a ui-sref="auth.profile">
+        <div id="profile-header" class="header-space-background" style="background-image: url({{userEdit.headerPicture}});-webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover;">
             <div class="card name-container">
-                <h1>{{user.name}}</h1>    
+                <h1>{{user.name}}</h1>
             </div>
-        </div></a>
+        </div>
+    </a>
     <div>
         <div class="animate-profile-edit">
             <tabset class="tabset" justified="true" type="pills">
@@ -15,19 +17,21 @@
                         <span class="hidden-xs">Home</span>
                         <span class="glyphicon glyphicon-home"></span>
                     </tab-heading>
-                    <ul>
-                        <li>Agenda</li>
-                        <li>Calendar</li>
-                        <li>Create Event</li>
-                        <li></li>
-                        <li></li>
-                    </ul>
+                    <button class="btn btn-lg btn-block">Agenda</button>
+                    <button class="btn btn-lg btn-block">Calendar</button>
+                    <button class="btn btn-lg btn-block">Create Event</button>
+                    <button class="btn btn-lg btn-block">Messages</button>
+                    <button class="btn btn-lg btn-block">Profiles</button>
+
                 </tab>
                 <tab>
                     <tab-heading>
                         <span class="hidden-xs">{{userEdit.name}}</span>
                         <span class="glyphicon glyphicon-user"></span>
                     </tab-heading>
+                    <div>
+
+                    </div>
                 </tab>
                 <tab>
                     <tab-heading>
@@ -46,16 +50,22 @@
                         <span class="hidden-xs">Contact</span>
                         <span class="glyphicon glyphicon-earphone"></span>
                     </tab-heading>
+
                     <div class="panel card">
-                        <span>
-                            <b>Contact</b>
-                        </span>
-                        <span class="pull-right">
-                            <button type="button" class="btn btn-primary" ng-click="editProfile(profileEdit)">
-                                <span class="hidden-xs">Edit</span>
-                                <span class="glyphicon glyphicon-cog"></span>
-                            </button>
-                        </span>
+                        <div class="page-header">
+                            <h3>Contact
+                                <span class="pull-right">
+                                    <button type="button" class="btn btn-primary" ng-click="editProfile(profileEdit)">
+                                        <span class="hidden-xs">Edit</span>
+                                        <span class="glyphicon glyphicon-cog"></span>
+                                    </button>
+                                </span>
+                            </h3>
+                        </div>
+                        <div ng-switch on="profileEdit" ng-init="profileEdit = false">
+                            <div ng-switch-default>default</div>
+                            <div ng-switch-when="profileEdit">edit</div>                            
+                        </div>                        
                     </div>
                 </tab>
                 <tab select="editProfile(profileEdit)" deselect="editProfile(profileEdit)">

@@ -5,6 +5,7 @@ var staffApp = angular
     'ngCookies',
     'ngResource',
     'ngSanitize',
+    'ngStorage',
     'ui.router',
     'ui.bootstrap',
     'ngAnimate',
