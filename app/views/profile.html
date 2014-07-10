@@ -24,95 +24,129 @@
                     <button class="btn btn-lg btn-block">Profiles</button>
 
                 </tab>
-                <tab>
+                <tab deselect="profileSave()">
                     <tab-heading>
                         <span class="hidden-xs">{{userEdit.name}}</span>
                         <span class="glyphicon glyphicon-user"></span>
                     </tab-heading>
-                    <div>
+                    <div class="panel card" ng-controller="ProfileEditCtrl">
+                        <div class="page-header" ng-init="profileEdit = false">
+                            <h3>{{userEdit.name}}
+                                <span class="pull-right">
+                                    <button type="button" class="btn btn-primary" ng-class="{hidden: profileEdit}" ng-click="profileEdit = !profileEdit">
+                                        <span class="hidden-xs">Edit</span>
+                                        <span class="glyphicon glyphicon-cog"></span>
+                                    </button>
+                                    <button ng-if="profileEdit" class="btn btn-success" ng-click="profileSave()">
+                                        <span class="hidden-xs">Save</span>
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    </button>
+                                </span>
+                            </h3>
+                        </div>
+
+                        <div ng-switch on="profileEdit">
+                            <div ng-switch-default>default</div>
+                            <div ng-switch-when="true">Edit switch
+                                <div class="panel">
+                                    <h4><b>Basic Information</b>
+                                    </h4>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Name</span>
+                                        <input type="text" class="form-control" placeholder="{{userEdit.name}}" ng-model="userEdit.name">
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Phone</span>
+                                        <input type="text" class="form-control" placeholder="{{userEdit.cell}}" ng-model="userEdit.cell">
+                                    </div>
+                                </div>
+                                <div class="panel">
+                                    <h4><b>Skills</b>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </tab>
-                <tab>
+                <tab deselect="profileSave()">
                     <tab-heading>
                         <span class="hidden-xs">Pictures</span>
                         <span class="glyphicon glyphicon-picture"></span>
                     </tab-heading>
-                    <div class="panel card">
-                        <h4><b>Pictures</b>
-                        </h4>
-                        <img class="img-responsive img-thumbnail col-xs-6" ng-src="{{userEdit.headshot}}" alt="headshot">
-                        <img class="img-responsive img-thumbnail col-xs-6" ng-src="{{userEdit.fullbody}}" alt="fullbody">
+                    <div class="panel card" ng-controller="ProfileEditCtrl">
+                        <div class="page-header" ng-init="profileEdit = false">
+                            <h3>Pictures
+                                <span class="pull-right">
+                                    <button type="button" class="btn btn-primary" ng-class="{hidden: profileEdit}" ng-click="profileEdit = !profileEdit">
+                                        <span class="hidden-xs">Edit</span>
+                                        <span class="glyphicon glyphicon-cog"></span>
+                                    </button>
+                                    <button ng-if="profileEdit" class="btn btn-success" ng-click="profileSave()">
+                                        <span class="hidden-xs">Save</span>
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    </button>
+                                </span>
+                            </h3>
+                        </div>
+
+                        <div ng-switch on="profileEdit">
+                            <div ng-switch-default>
+                                <img class="img-responsive img-thumbnail col-xs-6" ng-src="{{userEdit.headshot}}" alt="headshot">
+                                <img class="img-responsive img-thumbnail col-xs-6" ng-src="{{userEdit.fullbody}}" alt="fullbody">
+                            </div>
+                            <div ng-switch-when="true">Edit switch
+                                <div class="panel">
+                                    <h4><b>Pictures</b>
+                                    </h4>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Header Photo</span>
+                                        <input type="text" class="form-control" ng-model="userEdit.headerPicture">
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Headshot Photo</span>
+                                        <input type="text" class="form-control" ng-model="userEdit.headshot">
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Fullbody Photo</span>
+                                        <input type="text" class="form-control" ng-model="userEdit.fullbody">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </tab>
-                <tab>
+                <tab deselect="profileSave()">
                     <tab-heading>
                         <span class="hidden-xs">Contact</span>
                         <span class="glyphicon glyphicon-earphone"></span>
                     </tab-heading>
 
-                    <div class="panel card">
-                        <div class="page-header">
+                    <div class="panel card" ng-controller="ProfileEditCtrl">
+                        <div class="page-header" ng-init="profileEdit = false">
                             <h3>Contact
                                 <span class="pull-right">
-                                    <button type="button" class="btn btn-primary" ng-click="editProfile(profileEdit)">
+                                    <button type="button" class="btn btn-primary"  ng-click="profileEdit = !profileEdit">
                                         <span class="hidden-xs">Edit</span>
                                         <span class="glyphicon glyphicon-cog"></span>
+                                    </button>
+                                    <button ng-if="profileEdit" class="btn btn-success" ng-click="profileSave()">
+                                        <span class="hidden-xs">Save</span>
+                                        <span class="glyphicon glyphicon-ok"></span>
                                     </button>
                                 </span>
                             </h3>
                         </div>
-                        <div ng-switch on="profileEdit" ng-init="profileEdit = false">
+                        {{profileEdit}}
+
+                        <div ng-switch on="profileEdit">
+                        
                             <div ng-switch-default>default</div>
-                            <div ng-switch-when="profileEdit">edit</div>                            
-                        </div>                        
+                            <div ng-switch-when="true">Edit switch</div>
+                        </div>
+
                     </div>
-                </tab>
-                <tab select="editProfile(profileEdit)" deselect="editProfile(profileEdit)">
-                    <tab-heading>
-                        <div type="button">
-                            <span class="hidden-xs">Edit</span>
-                            <span class="glyphicon glyphicon-cog"></span>
-                        </div>
-                    </tab-heading>
-                    <button class="btn btn-success pull right" ng-click="profileSave()">Save</button>
-                    <div class="panel">
-                        <h4><b>Pictures</b>
-                        </h4>
-                        <div class="input-group">
-                            <span class="input-group-addon">Header Photo</span>
-                            <input type="text" class="form-control" ng-model="userEdit.headerPicture">
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon">Headshot Photo</span>
-                            <input type="text" class="form-control" ng-model="userEdit.headshot">
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon">Fullbody Photo</span>
-                            <input type="text" class="form-control" ng-model="userEdit.fullbody">
-                        </div>
-                    </div>
-                    <div class="panel">
-                        <h4><b>Contact</b>
-                        </h4>
-                    </div>
-                    <div class="panel">
-                        <h4><b>Basic Information</b>
-                        </h4>
-                        <div class="input-group">
-                            <span class="input-group-addon">Name</span>
-                            <input type="text" class="form-control" placeholder="{{userEdit.name}}" ng-model="userEdit.name">
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon">Phone</span>
-                            <input type="text" class="form-control" placeholder="{{userEdit.cell}}" ng-model="userEdit.cell">
-                        </div>
-                    </div>
-                    <div class="panel">
-                        <h4><b>Skills</b>
-                        </h4>
-                    </div>
-                </tab>
+                </tab>                
             </tabset>
         </div>
 

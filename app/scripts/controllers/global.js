@@ -1,22 +1,22 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('GlobalCtrl', function ($scope, $rootScope, $window, $localStorage) {
+  .controller('GlobalCtrl', function($scope, $rootScope, $window, $localStorage) {
     $scope.GlobalCtrl = 'This is the GlobalCtrl';
 
     $scope.storage = $localStorage;
-    
+
     var globalSessionId = localStorage.getItem('sessionId');
 
     $rootScope = globalSessionId;
-    
-    $scope.$watch('sessionId', function () {
+
+    $scope.$watch('sessionId', function() {
       var localId = localStorage.getItem('sessionId');
       console.log('Session State is ' + localId);
     });
-    $scope.$watch(function () { //bug scope doesn't change on window resize!            
+    $scope.$watch(function() { //bug scope doesn't change on window resize!            
       return $window.innerWidth;
-    }, function (value) {      
+    }, function(value) {
       var device = 'phone';
       if (value < 768) {
         console.log('phone width is ' + value);
@@ -44,10 +44,10 @@ angular.module('staffitApp')
       } else {
         device = 'phone';
         localStorage.setItem('device', device);
-        $scope.storage.device = device;      
+        $scope.storage.device = device;
       }
       console.log('run baby run!');
-        
+
     });
     //localStorage.getItem('device').$bind($scope, 'testdeviceWindow');
   });
