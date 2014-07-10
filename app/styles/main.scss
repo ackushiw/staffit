@@ -1,6 +1,10 @@
 $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
  @import'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
- // bower:scss @import"../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+ @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
+
+ $Roboto: 'Roboto Condensed', sans-serif;
+ // bower:scss
+ @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
  // endbower
 /*check in tables*/
  .check-in {
@@ -139,16 +143,18 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
  body {
     padding-top: 80px;
     padding-bottom: 20px;
+    font-family: $Roboto;
 }
 /*Profile Styling*/
  #profilecard {
     .header-space-background {
+        overflow: hidden;
         margin: 0 -10px;
         margin-top: -2px;
         height: 135px;
         .name-container {
             position:relative;
-            top: 90px;
+            top: 96px;
             background-color:rgba(0, 0, 0, 0.3);
             h1 {
                 margin: 0;
@@ -237,7 +243,7 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
             height: 150px;
             .name-container {
                 position:relative;
-                top: 90px;
+                top: 96px;
                 background-color:rgba(0, 0, 0, 0.3);
                 h1 {
                     margin: 0;

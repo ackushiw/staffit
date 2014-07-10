@@ -1,14 +1,12 @@
 <div id="profilecard">
-    <div id="profile-header" class="header-space-background" style="background-image: url({{userEdit.headerPicture}});-webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;">
-        <div class="card name-container">
-            <h1>{{user.name}}</h1>
-
-
-        </div>
-    </div>
+    <a ui-sref="auth.profile"><div id="profile-header" class="header-space-background" style="background-image: url({{userEdit.headerPicture}});-webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;">
+            <div class="card name-container">
+                <h1>{{user.name}}</h1>    
+            </div>
+        </div></a>
     <div>
         <div class="animate-profile-edit">
             <tabset class="tabset" justified="true" type="pills">
