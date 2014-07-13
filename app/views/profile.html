@@ -22,14 +22,21 @@
                     <button class="btn btn-lg btn-block">Create Event</button>
                     <button class="btn btn-lg btn-block">Messages</button>
                     <button class="btn btn-lg btn-block">Profiles</button>
+                    <button class="btn btn-lg btn-block" ui-sref="auth.about">About</button>
+                    <button class="btn btn-lg btn-block" ui-sref="auth.create">Create Event</button>
+                    <button class="btn btn-lg btn-block" ui-sref="auth.paste-event">Paste Event</button>
+                    <button class="btn btn-lg btn-danger btn-block" ng-show-auth="login" ng-click="auth.$logout();">Log out
+                        <span class="glyphicon glyphicon-off"></span>
+                    </button>
+
 
                 </tab>
-                <tab deselect="profileSave()">
+                <tab>
                     <tab-heading>
                         <span class="hidden-xs">{{userEdit.name}}</span>
                         <span class="glyphicon glyphicon-user"></span>
                     </tab-heading>
-                    <div class="panel card" ng-controller="ProfileEditCtrl">
+                    <div class="card" ng-controller="ProfileEditCtrl">
                         <div class="page-header" ng-init="profileEdit = false">
                             <h3>{{userEdit.name}}
                                 <span class="pull-right">
@@ -46,8 +53,31 @@
                         </div>
 
                         <div ng-switch on="profileEdit">
-                            <div ng-switch-default>default</div>
-                            <div ng-switch-when="true">Edit switch
+                            <div ng-switch-default>
+
+                                <h4 class="panel panel-default col-sm-12">
+                                    <span class="label label-default">Gender</span>
+                                    {{userEdit.gender}}
+                                </h4>
+                                <h4 class="panel panel-default col-sm-6">
+                                    <span class="label label-default">Height</span>
+                                    {{userEdit.height}}
+                                </h4>
+                                <h4 class="panel panel-default col-sm-6">
+                                    <span class="label label-default">Weight</span>
+                                    {{userEdit.weight}}
+                                </h4>
+                                <h4 class="panel panel-default col-sm-12">
+                                    <span class="label label-default">Gender</span>
+                                    {{userEdit.gender}}
+                                </h4>
+                                <h4 class="panel panel-default col-sm-12">
+                                    <span class="label label-default">Gender</span>
+                                    {{userEdit.gender}}
+                                </h4>
+
+                            </div>
+                            <div ng-switch-when="true">
                                 <div class="panel">
                                     <h4><b>Basic Information</b>
                                     </h4>
@@ -56,8 +86,37 @@
                                         <input type="text" class="form-control" placeholder="{{userEdit.name}}" ng-model="userEdit.name">
                                     </div>
                                     <div class="input-group">
-                                        <span class="input-group-addon">Phone</span>
-                                        <input type="text" class="form-control" placeholder="{{userEdit.cell}}" ng-model="userEdit.cell">
+                                        <span class="input-group-addon">Gender</span>
+                                        <input type="text" class="form-control" placeholder="{{userEdit.gender}}" ng-model="userEdit.gender">
+                                    </div>
+                                    <div ng-if="userEdit.gender == 'choose'" class="alert alert-danger" role="alert">Please Choose a gender</div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <span>Gender
+                                                <span ng-if="userEdit.gender == 'choose'" class="label label-warning">Please select gender</span>
+                                            </span>
+                                        </div>
+
+                                        <div class="panel-body">
+                                            <div class="btn-group">
+                                            <label class="btn btn-default" ng-model="userEdit.gender" btn-radio="'male'" disabled>Gender</label>
+                                            
+                                                <label class="btn btn-info" ng-model="userEdit.gender" btn-radio="'male'">Male</label>
+                                                <label class="btn btn-info" ng-model="userEdit.gender" btn-radio="'female'">Female</label>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br/>
+
+
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Height</span>
+                                        <input type="text" class="form-control" placeholder="{{userEdit.height}}" ng-model="userEdit.height">
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">Weight</span>
+                                        <input type="text" class="form-control" placeholder="{{userEdit.weight}}" ng-model="userEdit.weight">
                                     </div>
                                 </div>
                                 <div class="panel">
@@ -126,7 +185,7 @@
                         <div class="page-header" ng-init="profileEdit = false">
                             <h3>Contact
                                 <span class="pull-right">
-                                    <button type="button" class="btn btn-primary"  ng-click="profileEdit = !profileEdit">
+                                    <button type="button" class="btn btn-primary" ng-click="profileEdit = !profileEdit">
                                         <span class="hidden-xs">Edit</span>
                                         <span class="glyphicon glyphicon-cog"></span>
                                     </button>
@@ -136,17 +195,50 @@
                                     </button>
                                 </span>
                             </h3>
-                        </div>
-                        {{profileEdit}}
+                        </div>                       
 
                         <div ng-switch on="profileEdit">
-                        
-                            <div ng-switch-default>default</div>
-                            <div ng-switch-when="true">Edit switch</div>
+
+                            <div ng-switch-default>
+                                <h4 class="panel panel-default col-sm-12">
+                                    <span class="label label-default">Phone</span>
+                                    {{userEdit.cell}}
+                                </h4>
+                                <h4 class="panel panel-default col-sm-12">
+                                    <span class="label label-default">Email</span>
+                                    {{userEdit.email}}
+                                </h4>
+                                <h4 class="panel panel-default col-sm-12">
+                                    <span class="label label-default">Address</span>
+                                    {{userEdit.address}}
+                                </h4>
+                                <h4 class="panel panel-default col-sm-12">
+                                    <span class="label label-default">Gender</span>
+                                    {{userEdit.gender}}
+                                </h4>
+                                <h4 class="panel panel-default col-sm-12">
+                                    <span class="label label-default">Gender</span>
+                                    {{userEdit.gender}}
+                                </h4>
+                            </div>
+                            <div ng-switch-when="true">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Phone</span>
+                                    <input type="text" class="form-control" placeholder="{{userEdit.cell}}" ng-model="userEdit.cell">
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon">Email</span>
+                                    <input type="text" class="form-control" placeholder="{{userEdit.email}}" ng-model="userEdit.email">
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon">Address</span>
+                                    <input type="text" class="form-control" placeholder="{{userEdit.cell}}" ng-model="userEdit.address">
+                                </div>
+                            </div>
                         </div>
 
                     </div>
-                </tab>                
+                </tab>
             </tabset>
         </div>
 

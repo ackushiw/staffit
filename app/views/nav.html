@@ -25,12 +25,7 @@
                         <a ui-sref="auth.profile">
                             <img class="img-responsive img-thumbnail img-circle paper-shadow-bottom paper-shadow-bottom-z-1" ng-src="{{'http://www.gravatar.com/avatar/' + user.md5hash}}" alt="Profile">
                         </a>
-                    </li>
-                    <li class="hidden-xs">
-                        <button class="btn btn-danger btn-cirlce paper-shadow-bottom-z-1" ng-mouseenter="navLogoutColor(logoutHover)" ng-mouseleave="navLogoutColor(logoutHover)" ng-click="logout();">
-                            <span class="glyphicon glyphicon-off"></span>
-                        </button>
-                    </li>
+                    </li>                    
                 </ul>
 
                 <h3 class="text-muted brand">
@@ -45,10 +40,8 @@
     </nav>
     <div class="col-xs-8 col-sm-3 sidebar-offcanvas animate-sidemenu paper-shadow-bottom paper-shadow-bottom-z-4" id="sidebar" ng-if="sidebarMenu" role="navigation" ng-mouseleave="sidebarClose(sidebarMenu);" ng-animate>
         <profile class="visible-xs"></profile>
-        <div class="panel info">
+        <div class="panel info hidden">
             <ul class="list-group">
-
-
                 <li class="list-group-item">
                     <a ui-sref="auth.about">About</a>
                 </li>

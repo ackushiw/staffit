@@ -1,13 +1,15 @@
 $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
- @import'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
- @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 
- $Roboto: 'Roboto Condensed', sans-serif;
- // bower:scss
- @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
- // endbower
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
+ $Roboto:'Roboto Condensed', sans-serif;
+// bower:scss
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
+// endbower
+
 /*check in tables*/
- .check-in {
+
+.check-in {
     cursor: pointer;
 }
 .check-in:hover {
@@ -20,59 +22,40 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
     font-weight: bold;
 }
 /*Nav */
- nav {
+
+nav {
     z-index: 1000;
-    background-color:none;
-    .nav-background {
-        position:absolute;
-        bottom: 0;
-        width:100%;
-        height: 77px;
-        opacity: 0.4;
-        background: -moz-linear-gradient(-45deg, rgba(255, 48, 25, 0) 0%, rgba(255, 48, 25, 0.39) 49%, rgba(122, 2, 2, 0.8) 100%);
-        /* FF3.6+ */
-        background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(255, 48, 25, 0)), color-stop(49%, rgba(255, 48, 25, 0.39)), color-stop(100%, rgba(122, 2, 2, 0.8)));
-        /* Chrome,Safari4+ */
-        background: -webkit-linear-gradient(-45deg, rgba(255, 48, 25, 0) 0%, rgba(255, 48, 25, 0.39) 49%, rgba(122, 2, 2, 0.8) 100%);
-        /* Chrome10+,Safari5.1+ */
-        background: -o-linear-gradient(-45deg, rgba(255, 48, 25, 0) 0%, rgba(255, 48, 25, 0.39) 49%, rgba(122, 2, 2, 0.8) 100%);
-        /* Opera 11.10+ */
-        background: -ms-linear-gradient(-45deg, rgba(255, 48, 25, 0) 0%, rgba(255, 48, 25, 0.39) 49%, rgba(122, 2, 2, 0.8) 100%);
-        /* IE10+ */
-        background: linear-gradient(135deg, rgba(255, 48, 25, 0) 0%, rgba(255, 48, 25, 0.39) 49%, rgba(122, 2, 2, 0.8) 100%);
-        /* W3C */
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ff3019', endColorstr='#cc7a0202', GradientType=1);
-        /* IE6-9 fallback on horizontal gradient */
-    }
+    background-color: none;
     ul {
         overflow: none;
-        padding-right: 5%;
         li.nav-img {
-            height:50px;
+            height: 50px;
             img {
                 top: -10px;
             }
         }
         button.btn-cirlce {
-            position:relative;
+            position: relative;
             top: 40px;
-            height:40px;
-            width:40px;
+            height: 40px;
+            width: 40px;
             border-radius: 50%;
         }
     }
     .container-fluid {
         //z-index: 100 !important;
+
     }
 }
 .nav-pointer {
     cursor: pointer;
 }
 .nav-picture {
-    left:5px;
+    left: 5px;
 }
 /*Side Menu*/
- #sidebar {
+
+#sidebar {
     position: fixed;
     background: white;
     top: 0;
@@ -82,15 +65,16 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
     z-index: 990;
 }
 /*side menu animation */
- .animate-sidemenu {
-    background:white;
-    padding:10px;
+
+.animate-sidemenu {
+    background: white;
+    padding: 10px;
 }
 .animate-sidemenu.ng-enter, .animate-sidemenu.ng-leave {
-    -webkit-transition:all ease 0.7s;
-    -moz-transition:all ease 0.7s;
-    -o-transition:all ease 0.7s;
-    transition:all ease 0.7s;
+    -webkit-transition: all ease 0.7s;
+    -moz-transition: all ease 0.7s;
+    -o-transition: all ease 0.7s;
+    transition: all ease 0.7s;
 }
 .animate-sidemenu.ng-enter, .animate-sidemenu.ng-leave.ng-leave-active {
     max-width: 0;
@@ -99,15 +83,15 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
     transform: translateX(-50px);
 }
 .animate-sidemenu.ng-leave, .animate-sidemenu.ng-enter.ng-enter-active {
-    opacity:1;
+    opacity: 1;
     max-width: 100%;
     transform: translateX(0);
 }
 .animate-nav-color.ng-enter, .animate-nav-color.ng-leave {
-    -webkit-transition:all ease 0.7s;
-    -moz-transition:all ease 0.7s;
-    -o-transition:all ease 0.7s;
-    transition:all ease 0.7s;
+    -webkit-transition: all ease 0.7s;
+    -moz-transition: all ease 0.7s;
+    -o-transition: all ease 0.7s;
+    transition: all ease 0.7s;
 }
 .animate-nav-color.ng-enter, .animate-nav-color.ng-leave.ng-leave-active {
     max-width: 0;
@@ -120,7 +104,7 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
     border-radius: 0 100% 0;
 }
 .animate-nav-color.ng-leave, .animate-nav-color.ng-enter.ng-enter-active {
-    opacity:0.4;
+    opacity: 0.4;
     max-width: 100%;
     right: 0;
     max-height: 100%;
@@ -134,69 +118,90 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
     padding: 0.2em 0;
 }
 /*Event Form*/
- #event-form {
+
+#event-form {
     .alert {
         padding: 0 10px;
     }
 }
 /* Space out content a bit */
- body {
+
+body {
     padding-top: 80px;
     padding-bottom: 20px;
     font-family: $Roboto;
 }
 /*Profile Styling*/
- #profilecard {
+
+#profilecard {
     .header-space-background {
         overflow: hidden;
         margin: 0 -10px;
         margin-top: -2px;
         height: 135px;
         .name-container {
-            position:relative;
+            position: relative;
             top: 96px;
-            background-color:rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.3);
             h1 {
                 margin: 0;
             }
         }
     }
     .tabset {
-        margin: 0 -10px;
-        li{
-            border-bottom-style:solid;
+        .page-header{
+            padding:0;
         }
-        li.active{
-            border-bottom-color:red;
+        margin: 0 -10px;
+        li {
+            border-bottom-style: solid;
+        }
+        li.active {
+            border-bottom-color: red;
         }
         a {
-            border-radius: 0;            
+            border-radius: 0;
         }
-        
         li {
             display: table-cell;
-            width:1%;
+            width: 1%;
+        }
+        .content-holder {
+            border-bottom: 1px solid blue;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        h4.panel {
+            overflow: hidden;
+            padding: 2px 0;
+            .label {
+                margin-right: 10px;
+            }
         }
     }
 }
 /* Everything but the jumbotron gets side spacing for mobile first views */
- .header, .marketing, .footer {
+
+.header, .marketing, .footer {
     padding-left: 15px;
     padding-right: 15px;
 }
 /* Custom page header */
- .header {
+
+.header {
     border-bottom: 1px solid #e5e5e5;
 }
 /* Make the masthead heading the same height as the navigation */
- .header h3 {
+
+.header h3 {
     margin-top: 0;
     margin-bottom: 0;
     line-height: 40px;
     padding-bottom: 19px;
 }
 /* Custom page footer */
- .footer {
+
+.footer {
     padding-top: 19px;
     color: #777;
     border-top: 1px solid #e5e5e5;
@@ -205,7 +210,8 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
     margin: 30px 0;
 }
 /* Main marketing message and sign up button */
- .jumbotron {
+
+.jumbotron {
     text-align: center;
     border-bottom: 1px solid #e5e5e5;
 }
@@ -214,14 +220,16 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
     padding: 14px 24px;
 }
 /* Supporting marketing content */
- .marketing {
+
+.marketing {
     margin: 40px 0;
 }
 .marketing p + h4 {
     margin-top: 28px;
 }
 /* Responsive: Portrait tablets and up */
- @media screen and (min-width: 768px) {
+
+@media screen and (min-width: 768px) {
     .container {
         max-width: 730px;
     }
@@ -249,9 +257,9 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
             margin-top: -2px;
             height: 150px;
             .name-container {
-                position:relative;
+                position: relative;
                 top: 96px;
-                background-color:rgba(0, 0, 0, 0.3);
+                background-color: rgba(0, 0, 0, 0.3);
                 h1 {
                     margin: 0;
                 }
@@ -267,39 +275,41 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
 }
 /*Animations 
 //Fade */
- .animate-fade {
-}
-.animate-fade.ng-enter, .animate-fade.ng-leave {
-    -webkit-transition:all ease 2s;
-    -moz-transition:all ease 2s;
-    -o-transition:all ease 2s;
-    transition:all ease 2s;
+
+.animate-fade {} .animate-fade.ng-enter, .animate-fade.ng-leave {
+    -webkit-transition: all ease 2s;
+    -moz-transition: all ease 2s;
+    -o-transition: all ease 2s;
+    transition: all ease 2s;
 }
 .animate-fade.ng-enter, .animate-fade.ng-leave.ng-leave-active {
     opacity: 0;
 }
 .animate-fade.ng-leave, .animate-fade.ng-enter.ng-enter-active {
-    opacity:1;
+    opacity: 1;
 }
 /*NG Repeat */
- .animate-repeat.ng-move, .animate-repeat.ng-enter, .animate-repeat.ng-leave {
-    -webkit-transition:all linear 0.5s;
-    transition:all linear 0.5s;
+
+.animate-repeat.ng-move, .animate-repeat.ng-enter, .animate-repeat.ng-leave {
+    -webkit-transition: all linear 0.5s;
+    transition: all linear 0.5s;
 }
 .animate-repeat.ng-leave.ng-leave-active, .animate-repeat.ng-move, .animate-repeat.ng-enter {
-    opacity:0;
-    max-height:0;
+    opacity: 0;
+    max-height: 0;
 }
 .animate-repeat.ng-leave, .animate-repeat.ng-move.ng-move-active, .animate-repeat.ng-enter.ng-enter-active {
-    opacity:1;
-    max-height:40px;
+    opacity: 1;
+    max-height: 40px;
 }
 /*Angularfire Simple Login CSS*/
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
 /*Shadows*/
- .paper-shadow {
+
+.paper-shadow {
     position: absolute;
     top: 0;
     left: 0;
@@ -365,9 +375,8 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
     }
 }
 /*animate button lift*/
- .animate-button-lift {
-}
-.animate-button-lift.ng-enter, .animate-button-lift.ng-leave {
+
+.animate-button-lift {} .animate-button-lift.ng-enter, .animate-button-lift.ng-leave {
     -webkit-transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     -moz-transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     -o-transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
@@ -380,6 +389,7 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16);
 }
 /*ui.bootstrap styling*/
- .nav, .pagination, .carousel, .panel-title a {
+
+.nav, .pagination, .carousel, .panel-title a {
     cursor: pointer;
 }
