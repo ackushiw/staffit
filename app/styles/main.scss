@@ -142,17 +142,23 @@ body {
         .name-container {
             position: relative;
             top: 96px;
+            display: block;
+            height: 60px;
             background-color: rgba(0, 0, 0, 0.3);
             h1 {
+                color: white;
                 margin: 0;
+                right: 0;
+                padding-right: 5px;
             }
         }
     }
     .tabset {
-        .page-header{
-            padding:0;
+        height: 100%;
+        .page-header {
+            padding: 0;
         }
-        margin: 0 -10px;
+        margin:0 -10px;
         li {
             border-bottom-style: solid;
         }
@@ -161,6 +167,7 @@ body {
         }
         a {
             border-radius: 0;
+            margin-bottom: 0;
         }
         li {
             display: table-cell;
@@ -171,6 +178,18 @@ body {
             margin-bottom: 10px;
             overflow: hidden;
         }
+        div.line {
+            padding-top: 5px;
+            border-bottom: 1px solid #eeeeee;
+            h4 {
+                margin-bottom: 0;
+                color: #CCCCCC;
+                text-decoration: capitalize;
+            }
+        }
+        .p {
+            margin-bottom: 15px;
+        }
         h4.panel {
             overflow: hidden;
             padding: 2px 0;
@@ -178,6 +197,11 @@ body {
                 margin-right: 10px;
             }
         }
+    }
+    hr {
+        margin-right: 0;
+        margin-left: 0;
+        height: 1px;
     }
 }
 /* Everything but the jumbotron gets side spacing for mobile first views */
