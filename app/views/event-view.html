@@ -1,1 +1,13 @@
-<p>This is the Event-view view.</p>
+<div class="page-heading">
+    <h1>{{eventView.id}}</h1>
+</div>
+<div class="card">
+    <p>{{'Client: '+ eventView.client}}</p>
+    <p>{{'Creator: ' + eventView.creator}}</p>
+    <p>{{'Uniform: ' + eventView.uniform}}</p>
+    <ul ng-repeat="staff in eventView.staffList">
+        <li>{{staff.name}}</li>
+        <li>{{staff.callTime}}</li>
+        <li>{{staff.position}}</li>
+    </ul>
+</div>

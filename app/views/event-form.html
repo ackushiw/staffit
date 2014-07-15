@@ -1,11 +1,8 @@
 <div class="panel panel-info col-sm-12">
     <h1>Create Event</h1>
     <form id="event-form">
-
         <!-- removed attr: ng-submit="submitEvent()" -->
-
         <span ng-init="checkUser()"></span>
-
         <div class="form-group">
             <input class="form-control" name="id" type="text" ng-model="eventForm.id" placeholder="Event ID">
         </div>
@@ -16,7 +13,6 @@
             <div class="col-sm-6">
                 <input class="form-control" name="contactName" type="text" ng-model="eventForm.contactName" placeholder="Contact Name">
             </div>
-
             <div class="col-sm-6">
                 <input class="form-control" name="contactCell" type="number" ng-model="eventForm.contactCell" placeholder="Contact Cell #">
             </div>
@@ -33,12 +29,11 @@
         <div class="form-group">
             <div class="input-group">
                 <input class="form-control" name="staff quota" type="number" ng-model="eventForm.staffQuota" placeholder="Staff Quota">
-                <span class="input-group-addon alert" ng-class="{'alert-warning': staffArray.length !== eventForm.staffQuota, 'alert-success': staffArray.length == eventForm.staffQuota}">Number of Staff Added: <b>{{' ' + staffArray.length}}</b>
+                <span class="input-group-addon alert" ng-class="{'alert-warning': staffArray.length < eventForm.staffQuota, 'alert-success': staffArray.length >= eventForm.staffQuota}">Number of Staff Added: <b>{{' ' + staffArray.length}}</b>
                 </span>
             </div>
         </div>
         <button class="btn btn-primary btn-block" ng-click="showStaffForm()" ng-if="staffCollapse">Add Staff</button>
-
         <div collapse="staffCollapse">
             <form name="staffForm">
                 <input class="form-control" name="name" ng-model="staffForm.name" type="text" placeholder="Name">

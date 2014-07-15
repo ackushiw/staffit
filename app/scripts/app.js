@@ -60,6 +60,11 @@ staffApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/paste-event.html',
       controller: 'MainCtrl'
     })
+    .state('auth.profileslib', {
+      url: '/profiles',
+      templateUrl: 'views/profileslib.html',
+      controller: 'ProfileslibCtrl'
+    })
     .state('auth.profile', {
       url: '/:profile',
       templateUrl: 'views/user-view.html',
@@ -70,7 +75,8 @@ staffApp.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('auth.profile.agenda', {
       url: '/agenda',
-      templateUrl: 'views/profile-agenda.html'
+      templateUrl: 'views/profile-agenda.html',
+      controller: 'AgendaCrtl'
     })
     .state('auth.profile.calendar', {
       url: '/calendar',

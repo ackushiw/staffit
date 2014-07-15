@@ -22,15 +22,6 @@ angular.module('staffitApp')
           $state.go('anon.home');
         }
       });
-   /* $scope.$watch('sessionId', function() {
-   if ($scope.sessionId) {
-     console.log('user authenticated!');
-   } else {
-     console.log('user is NOT authenticated!');
-     $state.go('anon.home');
-   }
- });
-*/
 
     //$scope.authroute = simpleLogin.signedIn();
   });
