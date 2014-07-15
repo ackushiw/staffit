@@ -1,11 +1,11 @@
 'use strict';
 angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
 
-.run(function (simpleLogin) {
+.run(function(simpleLogin) {
   simpleLogin.init();
 })
 
-.factory('simpleLogin', function ($rootScope, $firebaseSimpleLogin, firebaseRef, profileCreator, $timeout, $state) {
+.factory('simpleLogin', function($rootScope, $firebaseSimpleLogin, firebaseRef, profileCreator, $timeout, $state) {
   function assertAuth() {
     if (auth === null) {
       throw new Error('Must call loginService.init() before using its methods');
@@ -15,12 +15,12 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
   var auth = null;
   //var userId = null;
   return {
-    init: function () {
+    init: function() {
       auth = $firebaseSimpleLogin(firebaseRef());
       return auth;
     },
 
-    logout: function () {
+    logout: function() {
       assertAuth();
       auth.$logout();
       $rootScope.signedIn = false;
@@ -35,61 +35,63 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
      * @param {Function} [callback]
      * @returns {*}
      */
-    login: function (provider, callback) {
+    login: function(provider, callback) {
       assertAuth();
       auth.$login(provider, {
         rememberMe: true
-      }).then(function (user) {
+      }).then(function(user) {
         if (callback) {
-          localStorage.setItem('sessionId', user.uid);
+          $rootScope.sessionUser = user;
           //todo-bug https://github.com/firebase/angularFire/issues/199
-          $timeout(function () {
+          $timeout(function() {
             callback(null, user);
           });
         }
       }, callback);
     },
 
-    loginPassword: function (email, pass, callback) {
+    loginPassword: function(email, pass, callback) {
       assertAuth();
       auth.$login('password', {
         email: email,
         password: pass,
         rememberMe: true
-      }).then(function (user) {
+      }).then(function(user) {
         if (callback) {
-          console.log(user.uid);
-          localStorage.setItem('sessionId', user.uid);
+          $rootScope.sessionUser = user;
+          $state.go('auth.profile', {
+            'profile': $rootScope.user.name
+          });
           //todo-bug https://github.com/firebase/angularFire/issues/199
-          $timeout(function () {
+          $timeout(function() {
             callback(null, user);
           });
         }
       }, callback);
     },
 
-    changePassword: function (opts) {
+    changePassword: function(opts) {
       assertAuth();
-      var cb = opts.callback || function () {};
+      var cb = opts.callback || function() {};
       if (!opts.oldpass || !opts.newpass) {
-        $timeout(function () {
+        $timeout(function() {
           cb('Please enter a password');
         });
       } else if (opts.newpass !== opts.confirm) {
-        $timeout(function () {
+        $timeout(function() {
           cb('Passwords do not match');
         });
       } else {
         auth.$changePassword(opts.email, opts.oldpass, opts.newpass)
-          .then(function () {
+          .then(function() {
             cb(null);
           }, cb);
       }
     },
 
-    createAccount: function (email, pass, callback) {
+    createAccount: function(email, pass, callback) {
       assertAuth();
-      auth.$createUser(email, pass).then(function (user) {
+      auth.$createUser(email, pass).then(function(user) {
         callback(null, user);
       }, callback);
     },
@@ -98,8 +100,8 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
   };
 })
 
-.factory('profileCreator', function (firebaseRef, $timeout) {
-  return function (id, email, mdhash, callback) {
+.factory('profileCreator', function(firebaseRef, $timeout) {
+  return function(id, email, mdhash, callback) {
     function firstPartOfEmail(email) {
       return ucfirst(email.substr(0, email.indexOf('@')) || '');
     }
@@ -125,10 +127,10 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
       companies: ''
 
 
-    }, function (err) {
+    }, function(err) {
       //err && console.error(err);
       if (callback) {
-        $timeout(function () {
+        $timeout(function() {
           callback(err);
         });
       }

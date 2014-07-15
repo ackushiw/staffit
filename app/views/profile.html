@@ -17,15 +17,15 @@
                         <span class="hidden-xs">Home</span>
                         <span class="glyphicon glyphicon-home"></span>
                     </tab-heading>
-                    <button class="btn btn-lg btn-block">Agenda</button>
-                    <button class="btn btn-lg btn-block">Calendar</button>
-                    <button class="btn btn-lg btn-block">Create Event</button>
-                    <button class="btn btn-lg btn-block">Messages</button>
-                    <button class="btn btn-lg btn-block">Profiles</button>
+                    <button class="btn btn-lg btn-block" ui-sref="auth.profile.agenda">Agenda</button>
+                    <button class="btn btn-lg btn-block" ui-sref="auth.profile.calendar">Calendar</button>
+                    <button class="btn btn-lg btn-block" ui-sref="auth.profile.records">Overview</button>
+                    <button class="btn btn-lg btn-block" ui-sref="auth.profile.messages">Messages</button>
+                    <button class="btn btn-lg btn-block" ui-sref="auth.profileslib">Profiles</button>
                     <button class="btn btn-lg btn-block" ui-sref="auth.about">About</button>
                     <button class="btn btn-lg btn-block" ui-sref="auth.create">Create Event</button>
                     <button class="btn btn-lg btn-block" ui-sref="auth.paste-event">Paste Event</button>
-                    <button class="btn btn-lg btn-danger btn-block" ng-show-auth="login" ng-click="auth.$logout();">Log out
+                    <button class="btn btn-lg btn-danger btn-block" ng-show-auth="login" ng-click="logout();">Log out
                         <span class="glyphicon glyphicon-off"></span>
                     </button>
                 </tab>

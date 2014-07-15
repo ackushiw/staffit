@@ -4,61 +4,46 @@
         <div class="container-fluid">
             <div>
                 <ul class="hidden-xs nav navbar-nav nav-pills navbar-right">
-                    <li class="hidden-xs animate-button-lift">
-                        <a><b>{{time | date: 'mediumTime'}}</b>
+                    <li class="hidden-xs animate-button-lift"> <a><b>{{time | date: 'mediumTime'}}</b>
                         </a>
                     </li>
-                    <li class="hidden-xs animate-button-lift" ng-animate>
-                        <a ui-sref="auth.event-control">Event Control</a>
+                    <li class="hidden-xs animate-button-lift" ng-animate> <a ui-sref="auth.event-control">Event Control</a>
                     </li>
-                    <li class="hidden-xs animate-button-lift" ng-animate>
-                        <a ui-sref="auth.create">Create Event</a>
+                    <li class="hidden-xs animate-button-lift" ng-animate> <a ui-sref="auth.create">Create Event</a>
                     </li>
-                    <li class="hidden-xs animate-button-lift" ng-animate>
-                        <a ui-sref="auth.paste-event">Paste Event</a>
+                    <li class="hidden-xs animate-button-lift" ng-animate> <a ui-sref="auth.paste-event">Paste Event</a>
                     </li>
-
-                    <li class="hidden-xs animate-button-lift" ng-animate ng-show-auth="['logout','error']" ng-cloak>
-                        <a class="btn btn-primary" ui-sref="anon.login">Log In</a>
+                    <li class="hidden-xs animate-button-lift" ng-animate ng-show-auth="['logout','error']" ng-cloak> <a class="btn btn-primary" ui-sref="anon.home">Log In</a>
                     </li>
                     <li class="hidden-xs animate-button-lift nav-pointer nav-img" ng-show-auth="login" ng-cloak ng-animate>
-                        <a ui-sref="auth.profile">
+                        <a ui-sref="auth.profile({profile: user.name})">
                             <img class="img-responsive img-thumbnail img-circle paper-shadow-bottom paper-shadow-bottom-z-1" ng-src="{{'http://www.gravatar.com/avatar/' + user.md5hash}}" alt="Profile">
                         </a>
-                    </li>                    
+                    </li>
                 </ul>
-
                 <h3 class="text-muted brand">
                     <a class="btn btn-lg" ng-click="sidebarToggle(sidebarMenu);">
                         <span class="glyphicon glyphicon-list"></span>
                         <span class="glyphicon" ng-class="{'glyphicon-chevron-right': !sidebarMenu, 'glyphicon-chevron-left': sidebarMenu}"></span>Staffit</a>
                 </h3>
-
             </div>
-
         </div>
     </nav>
     <div class="col-xs-8 col-sm-3 sidebar-offcanvas animate-sidemenu paper-shadow-bottom paper-shadow-bottom-z-4" id="sidebar" ng-if="sidebarMenu" role="navigation" ng-mouseleave="sidebarClose(sidebarMenu);" ng-animate>
         <profile class="visible-xs"></profile>
         <div class="panel info hidden">
             <ul class="list-group">
-                <li class="list-group-item">
-                    <a ui-sref="auth.about">About</a>
+                <li class="list-group-item"> <a ui-sref="auth.about">About</a>
                 </li>
-                <li class="list-group-item">
-                    <a ui-sref="auth.create">Create Event</a>
+                <li class="list-group-item"> <a ui-sref="auth.create">Create Event</a>
                 </li>
-                <li class="list-group-item">
-                    <a ui-sref="auth.paste-event">Paste Event</a>
+                <li class="list-group-item"> <a ui-sref="auth.paste-event">Paste Event</a>
                 </li>
-                <li class="list-group-item" ng-show-auth="login">
-                    <a class="btn btn-danger btn-block" href="#" ng-click="auth.$logout();">Log Out</a>
+                <li class="list-group-item" ng-show-auth="login"> <a class="btn btn-danger btn-block" href="#" ng-click="auth.$logout();">Log Out</a>
                 </li>
-                <li class="list-group-item" ng-show-auth="['logout','error']">
-                    <a class="btn btn-primary btn-block" ui-sref="anon.home">Log In</a>
+                <li class="list-group-item" ng-show-auth="['logout','error']"> <a class="btn btn-primary btn-block" ui-sref="anon.home">Log In</a>
                 </li>
-            </ul>
-            <a ui-sref="auth.profile" ng-show-auth="login" class="list-group-item nav-pointer">{{sessionUser.displayName}}</a>
+            </ul> <a ui-sref="auth.profile" ng-show-auth="login" class="list-group-item nav-pointer">{{sessionUser.displayName}}</a>
         </div>
     </div>
     <!--/span-->

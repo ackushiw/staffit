@@ -14,7 +14,7 @@ var staffApp = angular
     'simpleLoginTools',
     'firebase'
   ]);
-staffApp.config(function ($stateProvider, $urlRouterProvider) {
+staffApp.config(function($stateProvider, $urlRouterProvider) {
   // For any unmatched url, redirect to /home
   $urlRouterProvider.otherwise('home');
   $stateProvider
@@ -61,30 +61,37 @@ staffApp.config(function ($stateProvider, $urlRouterProvider) {
       controller: 'MainCtrl'
     })
     .state('auth.profile', {
-      url: '/profile',
+      url: '/:profile',
       templateUrl: 'views/user-view.html',
-      resolve: {
-        userState: function ($q) {
-          var defer = $q.defer();
-          var user = null;
-          while (!user) {
-            console.log('no user data for ' + user);
-            user = localStorage.getItem('sessionUser');
-          }
-          console.log(user);
-          defer.resolve();
-          return defer.promise;
-        }
-      }
+      controller: function($scope, $stateParams) {
+        console.log($stateParams);
 
+      }
+    })
+    .state('auth.profile.agenda', {
+      url: '/agenda',
+      templateUrl: 'views/profile-agenda.html'
+    })
+    .state('auth.profile.calendar', {
+      url: '/calendar',
+      templateUrl: 'views/profile-calendar.html'
+    })
+    .state('auth.profile.messages', {
+      url: '/messages',
+      templateUrl: 'views/profile-messages.html'
+    })
+    .state('auth.profile.records', {
+      url: '/records',
+      templateUrl: 'views/profile-records.html'
     });
 });
-staffApp.run(['simpleLogin', '$rootScope', 'FBURL',
-  function (simpleLogin, $rootScope, FBURL) {
+staffApp.run(['simpleLogin', '$rootScope', 'FBURL', '$sessionStorage',
+  function(simpleLogin, $rootScope, FBURL, $sessionStorage) {
     // establish authentication
     $rootScope.auth = simpleLogin.init();
-    //$rootScope.user = simpleLogin.signedIn();
+    $rootScope.sessionUser = $sessionStorage;
     $rootScope.FBURL = FBURL;
+
   }
 ]);
 /*.state('anon.login', {

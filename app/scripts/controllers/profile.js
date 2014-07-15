@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('ProfileCtrl', function($scope, $firebase, FBURL, syncData, usersFire) {
+  .controller('ProfileCtrl', function($scope, $firebase, FBURL, simpleLogin, syncData, usersFire) {
 
     $scope.userEdit = syncData(usersFire + '/' + $scope.sessionId);
+    $scope.logout = simpleLogin.logout;
 
     $scope.profileEdit = false;
     $scope.profileSave = function() {
