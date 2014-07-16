@@ -1,8 +1,11 @@
 'use strict';
 
 function onGoogleReady() {
-  angular.bootstrap(document.getElementById("map"), ['staffitApp']);
+  console.log('google maps loaded!');
+  //angular.bootstrap(document.getElementById("map"), ['staffitApp']);
 }
+
+
 
 var staffApp = angular
   .module('staffitApp', [
@@ -108,22 +111,3 @@ staffApp.run(['simpleLogin', '$rootScope', 'FBURL', '$sessionStorage',
 
   }
 ]);
-/*.state('anon.login', {
-      url: '/login',
-      onEnter: function ($stateParams, $state, $modal, $resource, $timeout, simpleLogin, $rootScope) {
-        $modal.open({
-          templateUrl: 'views/login.html',
-          controller: 'LoginController',
-          resolve: {
-            logState: $rootScope.auth.user
-          }
-        }).result.then(function (result) {
-          // on Success
-          console.log('user logged in = ' + result); //check if user is logged in...
-          $state.transitionTo('auth.profile');
-        }, function () {
-          // on error/cancel
-          $state.go('anon.home');
-        });
-      }
-    })*/
