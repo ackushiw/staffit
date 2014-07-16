@@ -60,7 +60,7 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
         if (callback) {
           $rootScope.sessionUser = user;
           $state.go('auth.profile', {
-            'profile': $rootScope.user.name
+            'profile': user.email
           });
           //todo-bug https://github.com/firebase/angularFire/issues/199
           $timeout(function() {

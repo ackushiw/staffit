@@ -8,6 +8,8 @@ var staffApp = angular
     'ngStorage',
     'ui.router',
     'ui.bootstrap',
+    'ui.utils',
+    'ui.calendar',
     'ngAnimate',
     'ngTouch',
     'angularfire.login',
@@ -80,7 +82,8 @@ staffApp.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('auth.profile.calendar', {
       url: '/calendar',
-      templateUrl: 'views/profile-calendar.html'
+      templateUrl: 'views/profile-calendar.html',
+      controller: 'CalendarCtrl'
     })
     .state('auth.profile.messages', {
       url: '/messages',
