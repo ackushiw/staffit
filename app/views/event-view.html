@@ -7,64 +7,68 @@
     <p>{{'Uniform: ' + eventView.uniform}}</p>
     <p>I want a only one staff details by user</p>
 </div>
-<section id="map" ng-controller="MapCtrl">
-    <div ui-map="eventMap" ui-options="mapOptions" class="map-canvas"></div>
-</section>
-<div class="table-responsive col-sm-4">
-    <table class="table table-striped table-hover">
-        <tr class="check-in animate-fade" ng-class="{hidden: staff.arrived, success: mouse.hover}" ng-repeat="staff in eventView.staffList track by $index | filter:search:strict" ng-click="checkIn(staff)" ng-mouseover="mouse.hover = true" ng-mouseleave="mouse.hover = false" ng-transclude>
-            <button class="btn btn-success btn-block disabled">Add extra staff</button>
-            <td>{{staff.number}}</td>
-            <td>
-                <p>{{staff.name + ' '}}
-                    <span class="glyphicon" ng-class="{'glyphicon-star-empty': staff.lieutenant || staff.position == 'Lt', 'glyphicon-leaf': staff.ntc, 'glyphicon-flash': staff.position == 'Alternate', 'glyphicon-glass': staff.position =='Bartender'}"></span>
-                </p>
-            </td>
-            <td class="hidden">{{staff.position}}</td>
-            <td>{{staff.calltime}}</td>
-            <td> <a ng-href="{{'tel:'}}{{staff.phone}}" value="{{'+1'}}{{staff.phone}}">{{staff.phone}}</a>
-            </td>
-            <td class="hidden">{{staff.ntc}}</td>
-            <td>
-                <button class="btn btn-primary btn-block" ng-class="{'btn-danger': staff.arrived}">
-                    <span ng-if="!staff.arrived">Check in
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </span>
-                </button>
-            </td>
-        </tr>
-    </table>
+<div class="card">
+    <section id="map" ng-controller="MapCtrl">
+        <div ui-map="eventMap" ui-options="mapOptions" class="map-canvas well"></div>
+    </section>
 </div>
-<div class="table-responsive col-sm-8">
-    <table class="table table-striped table-hover">
-        <tr class="checkIn animate-repeat" ng-class="{success: staff.siteIn, hidden: !staff.arrived || staff.siteOut}" ng-repeat="staff in eventView.staffList track by $index" ng-transclude>
-            <button class="btn btn-primary btn-block" ng-click="siteIn(event.staffList);">{{time | date: 'shortTime'}}: Site In @ {{xvMinRound | date: 'shortTime'}}</button>
-            <td>
-                <button class="btn btn-danger glyphicon glyphicon-repeat" ng-click="checkIn(staff)"></button>
-            </td>
-            <td>{{staff.number}}</td>
-            <td>{{staff.name}}
-                <span class="glyphicon" ng-class="{'glyphicon-star-empty': staff.lieutenant || staff.position == 'Lt', 'glyphicon-leaf': staff.ntc, 'glyphicon-flash': staff.position == 'Alternate', 'glyphicon-glass': staff.position =='Bartender'}"></span>
-            </td>
-            <td class="hidden">{{'Checked in: ' + staff.arrived}}</td>
-            <td>{{staff.position}}</td>
-            <td>{{staff.calltime}}</td>
-            <td>
-                <textarea class="form-control" name="notes" id="notes" ng-model="staff.notes" cols="10" rows="1" placeholder="Notes..."></textarea>
-            </td>
-            <td>
-                <button class="btn btn-default" ng-class="{active: staff.merit == -1, 'btn-danger': staff.merit == -1}" ng-click="deMerit(staff)">
-                    <span class="glyphicon glyphicon-thumbs-down"></span>
-                </button>
-                <button class="btn btn-default" ng-class="{active: staff.merit == 1, 'btn-success': staff.merit == 1}" ng-click="merit(staff)">
-                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                </button>
-            </td>
-            <td>
-                <button class="btn btn-info btn-block" ng-click="siteOut(staff)">Site out
-                    <span class="glyphicon glyphicon-log-out"></span>
-                </button>
-            </td>
-        </tr>
-    </table>
+<div ng-controller="EventControlCtrl">
+    <div class="table-responsive col-sm-4">
+        <table class="table table-striped table-hover">
+            <tr class="check-in animate-fade" ng-class="{hidden: staff.arrived, success: mouse.hover}" ng-repeat="staff in eventView.staffList track by $index | filter:search:strict" ng-click="checkIn(staff)" ng-mouseover="mouse.hover = true" ng-mouseleave="mouse.hover = false" ng-transclude>
+                <button class="btn btn-success btn-block disabled">Add extra staff</button>
+                <td>{{staff.number}}</td>
+                <td>
+                    <p>{{staff.name + ' '}}
+                        <span class="glyphicon" ng-class="{'glyphicon-star-empty': staff.lieutenant || staff.position == 'Lt', 'glyphicon-leaf': staff.ntc, 'glyphicon-flash': staff.position == 'Alternate', 'glyphicon-glass': staff.position =='Bartender'}"></span>
+                    </p>
+                </td>
+                <td class="hidden">{{staff.position}}</td>
+                <td>{{staff.calltime}}</td>
+                <td> <a ng-href="{{'tel:'}}{{staff.phone}}" value="{{'+1'}}{{staff.phone}}">{{staff.phone}}</a>
+                </td>
+                <td class="hidden">{{staff.ntc}}</td>
+                <td>
+                    <button class="btn btn-primary btn-block" ng-class="{'btn-danger': staff.arrived}">
+                        <span ng-if="!staff.arrived">Check in
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="table-responsive col-sm-8">
+        <table class="table table-striped table-hover">
+            <tr class="checkIn animate-repeat" ng-class="{success: staff.siteIn, hidden: !staff.arrived || staff.siteOut}" ng-repeat="staff in eventView.staffList track by $index" ng-transclude>
+                <button class="btn btn-primary btn-block" ng-click="siteIn(event.staffList);">{{time | date: 'shortTime'}}: Site In @ {{xvMinRound | date: 'shortTime'}}</button>
+                <td>
+                    <button class="btn btn-danger glyphicon glyphicon-repeat" ng-click="checkIn(staff)"></button>
+                </td>
+                <td>{{staff.number}}</td>
+                <td>{{staff.name}}
+                    <span class="glyphicon" ng-class="{'glyphicon-star-empty': staff.lieutenant || staff.position == 'Lt', 'glyphicon-leaf': staff.ntc, 'glyphicon-flash': staff.position == 'Alternate', 'glyphicon-glass': staff.position =='Bartender'}"></span>
+                </td>
+                <td class="hidden">{{'Checked in: ' + staff.arrived}}</td>
+                <td>{{staff.position}}</td>
+                <td>{{staff.calltime}}</td>
+                <td>
+                    <textarea class="form-control" name="notes" id="notes" ng-model="staff.notes" cols="10" rows="1" placeholder="Notes..."></textarea>
+                </td>
+                <td>
+                    <button class="btn btn-default" ng-class="{active: staff.merit == -1, 'btn-danger': staff.merit == -1}" ng-click="deMerit(staff)">
+                        <span class="glyphicon glyphicon-thumbs-down"></span>
+                    </button>
+                    <button class="btn btn-default" ng-class="{active: staff.merit == 1, 'btn-success': staff.merit == 1}" ng-click="merit(staff)">
+                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-info btn-block" ng-click="siteOut(staff)">Site out
+                        <span class="glyphicon glyphicon-log-out"></span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>

@@ -11,8 +11,8 @@ angular.module('staffitApp')
   .controller('MapCtrl', function($scope) {
 
     $scope.mapOptions = {
-      center: new google.maps.LatLng(35.784, -78.670),
-      zoom: 15,
+      center: new google.maps.LatLng(40.732153, -73.995785),
+      zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
   });

@@ -65,10 +65,10 @@ staffApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/create.html',
       controller: 'MainCtrl'
     })
-    .state('auth.paste-event', {
-      url: '/paste-event',
-      templateUrl: 'views/paste-event.html',
-      controller: 'MainCtrl'
+    .state('auth.mission-control', {
+      url: '/mission-control',
+      templateUrl: 'views/mission-control.html',
+      controller: 'MissionCtrl'
     })
     .state('auth.profileslib', {
       url: '/profiles',

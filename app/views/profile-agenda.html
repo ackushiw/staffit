@@ -2,7 +2,7 @@
     <h1>Agenda</h1>
     <p>This is the agenda view.</p>
 </div>
-<div>
+<div class="col-md-6 well">
     <accordion close-others="true" ng-repeat="(key, event) in agenda">
         <accordion-group>
             <accordion-heading>{{'Title: '+ event.title}}<a ui-sref="auth.event-view({eventId: key})" class="pull-right">View Event
@@ -13,4 +13,9 @@
                 <p>{{'Uniform: ' + event.uniform}}</p>
             </accordion-heading>{{event.creator}}</accordion-group>
     </accordion>
+</div>
+<div class="col-md-6">
+    <section ng-controller="MapCtrl">
+        <div ui-map="eventListMap" ui-options="mapOptions" class="map-canvas well"></div>
+    </section>
 </div>
