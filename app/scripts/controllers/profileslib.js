@@ -8,10 +8,7 @@
  * Controller of the staffitApp
  */
 angular.module('staffitApp')
-  .controller('ProfileslibCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('ProfileslibCtrl', function($scope, syncData, usersFire) {
+    $scope.profiles = syncData(usersFire);
+    $scope.profileCol = 2;
   });

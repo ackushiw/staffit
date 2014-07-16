@@ -75,6 +75,11 @@ staffApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/profileslib.html',
       controller: 'ProfileslibCtrl'
     })
+    .state('auth.profileslib.profile', {
+      url: '/:id',
+      templateUrl: 'views/profilepage.html',
+      controller: 'ProfilePageCtrl'
+    })
     .state('auth.profile', {
       url: '/:profile',
       templateUrl: 'views/user-view.html',
