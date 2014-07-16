@@ -39,7 +39,7 @@ staffApp.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('auth.event-control', {
       url: '/event-control',
-      templateUrl: 'views/event-control.html',
+      template: '<event-control></event-control>',
       controller: 'MainCtrl'
     })
     .state('auth.event-view', {

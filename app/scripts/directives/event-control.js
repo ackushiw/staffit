@@ -1,12 +1,10 @@
 'use strict';
 
 angular.module('staffitApp')
-  .directive('EventControl', function () {
+  .directive('eventControl', function() {
     return {
-      template: '<div></div>',
-      restrict: 'E'//,
-      //link: function postLink(scope, element, attrs) {
-        //element.text('this is the EventControl directive');
-      //}
+      restrict: 'E',
+      templateUrl: 'views/event-control.html',
+      controller: 'EventControlCtrl'
     };
   });

@@ -127,18 +127,19 @@ angular.module('staffitApp')
     };
 
     //Create User in Firebase from simpleLogin auth and input model user.username
-    $scope.register = function (auth, user) {
-      var userX = auth.user;
-      var username = user.username;
+    /*$scope.register = function(auth, user) {
+  var userX = auth.user;
+  var username = user.username;
 
-      //This works!!
-      $scope.userLibrary.$add({
-        userData: userX.thirdPartyUserData,
-        username: username,
-        name: userX.displayName,
-        $priority: userX.id
-      });
-    };
+  //This works!!
+  $scope.userLibrary.$add({
+    userData: userX.thirdPartyUserData,
+    username: username,
+    name: userX.displayName,
+    $priority: userX.id
+  });
+};
+*/
     //return AngularFire(ref, $scope, 'eventStafflist');
 
     //Real Time Clock

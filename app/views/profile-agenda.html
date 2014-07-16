@@ -5,9 +5,12 @@
 <div>
     <accordion close-others="true" ng-repeat="(key, event) in agenda">
         <accordion-group>
-            <accordion-heading>{{'Address: ' + event.address + ', Uniform: ' + event.uniform}} <a ui-sref="auth.event-view({eventId: key})" class="pull-right">View Event
+            <accordion-heading>{{'Title: '+ event.title}}<a ui-sref="auth.event-view({eventId: key})" class="pull-right">View Event
                     <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
+                <hr>
+                <p>{{'Address: ' + event.address }}</p>
+                <p>{{'Uniform: ' + event.uniform}}</p>
             </accordion-heading>{{event.creator}}</accordion-group>
     </accordion>
 </div>

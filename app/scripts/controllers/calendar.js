@@ -12,7 +12,7 @@ angular.module('staffitApp')
     $scope.uiConfig = {
       calendar: {
         header: {
-          left: 'month agendaWeek',
+          left: 'month agendaWeek basicWeek',
           center: 'title',
           right: 'today prev,next'
         }
