@@ -5,13 +5,9 @@
     <p>{{'Client: '+ eventView.client}}</p>
     <p>{{'Creator: ' + eventView.creator}}</p>
     <p>{{'Uniform: ' + eventView.uniform}}</p>
-    <ul ng-repeat="staff in eventView.staffList">
-        <li>{{staff.name}}</li>
-        <li>{{staff.callTime}}</li>
-        <li>{{staff.position}}</li>
-    </ul>
+    <p>I want a only one staff details by user</p>
 </div>
-<div class="table-responsive col-sm-3">
+<div class="table-responsive col-sm-4">
     <table class="table table-striped table-hover">
         <tr class="check-in animate-fade" ng-class="{hidden: staff.arrived, success: mouse.hover}" ng-repeat="staff in eventView.staffList track by $index | filter:search:strict" ng-click="checkIn(staff)" ng-mouseover="mouse.hover = true" ng-mouseleave="mouse.hover = false" ng-transclude>
             <button class="btn btn-success btn-block disabled">Add extra staff</button>
@@ -36,7 +32,7 @@
         </tr>
     </table>
 </div>
-<div class="table-responsive col-sm-9">
+<div class="table-responsive col-sm-8">
     <table class="table table-striped table-hover">
         <tr class="checkIn animate-repeat" ng-class="{success: staff.siteIn, hidden: !staff.arrived || staff.siteOut}" ng-repeat="staff in eventView.staffList track by $index" ng-transclude>
             <button class="btn btn-primary btn-block" ng-click="siteIn(event.staffList);">{{time | date: 'shortTime'}}: Site In @ {{xvMinRound | date: 'shortTime'}}</button>
