@@ -1,12 +1,15 @@
 <div class="page-heading">
     <h1>{{eventView.id}}</h1>
 </div>
-<div class="card">
+<div class="card col-sm-7">
     <p>{{'Client: '+ eventView.client}}</p>
     <p>{{'Creator: ' + eventView.creator}}</p>
     <p>{{'Uniform: ' + eventView.uniform}}</p>
     <p>I want a only one staff details by user</p>
 </div>
+<section id="map" ng-controller="MapCtrl">
+    <div ui-map="eventMap" ui-options="mapOptions" class="map-canvas"></div>
+</section>
 <div class="table-responsive col-sm-4">
     <table class="table table-striped table-hover">
         <tr class="check-in animate-fade" ng-class="{hidden: staff.arrived, success: mouse.hover}" ng-repeat="staff in eventView.staffList track by $index | filter:search:strict" ng-click="checkIn(staff)" ng-mouseover="mouse.hover = true" ng-mouseleave="mouse.hover = false" ng-transclude>

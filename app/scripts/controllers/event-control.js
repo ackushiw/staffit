@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('EventControlCtrl', function($scope, $stateParams, $firebase, syncData, eventDatabase) {
+  .controller('EventControlCtrl', function($scope) {
 
     $scope.checkIn = function(staff) {
 

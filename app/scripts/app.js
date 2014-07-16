@@ -1,5 +1,9 @@
 'use strict';
 
+function onGoogleReady() {
+  angular.bootstrap(document.getElementById("map"), ['staffitApp']);
+}
+
 var staffApp = angular
   .module('staffitApp', [
     'ngCookies',
@@ -10,6 +14,7 @@ var staffApp = angular
     'ui.bootstrap',
     'ui.utils',
     'ui.calendar',
+    'ui.map',
     'ngAnimate',
     'ngTouch',
     'angularfire.login',
