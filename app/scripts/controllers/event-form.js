@@ -1,16 +1,16 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('EventFormCtrl', function ($scope, $rootScope, syncData, eventDatabase, Event) {
+  .controller('EventFormCtrl', function($scope, $rootScope, syncData, eventDatabase, Event) {
     $scope.eventLibrary = syncData(eventDatabase);
-    $scope.checkUser = function () {
+    $scope.checkUser = function() {
       console.log('checkuser run ' + $rootScope.sessionId);
       $scope.eventForm.creator = $rootScope.sessionId;
     };
     //$scope.eventForm.creator = $scope.sessionId;
     //staffList Collapse
     $scope.staffCollapse = true;
-    $scope.showStaffForm = function () {
+    $scope.showStaffForm = function() {
       if ($scope.staffCollapse) {
         $scope.staffCollapse = false;
       } else {
@@ -21,24 +21,70 @@ angular.module('staffitApp')
 
     $scope.emptyEvent = {
       creator: $rootScope.sessionId,
-      eventAdmin: '',
-      staffAdmin: '',
-      id: '',
-      client: '',
-      contactName: '',
-      contactCell: '',
+      eventAdmin: [],
+      staffAdmin: [],
+      calendar: {
+        id: '',
+        title: '', //required
+        allDay: false,
+        start: '', //required
+        end: '', //optional
+        url: '', //I'll want this to point to the event object page
+        className: null,
+        editable: true,
+        startEditable: true,
+        durationEditable: true,
+        color: '',
+        backgroundColor: '',
+        borderColor: '',
+        textColor: ''
+      },
+      adminOnly: {
+        staffQuota: '',
+        client: '',
+        contactName: '',
+        contactCell: ''
+      },
+      company: '',
       address: '',
+      addressLatLang: '',
       travelAddress: '',
-      staffQuota: '',
+      travelAddressLatLang: '',
+      driver: {
+        name: '',
+        cell: '',
+        rentalDetails: '',
+        time: '',
+        tolls: '',
+        gas: '',
+        parking: '',
+        extras: '',
+        rentalPickupAddress: '',
+        rentalAddressLatLang: '',
+
+      },
+      uniform: {
+        all: '',
+        lead: '',
+        bartender: '',
+        server: '',
+        sanit: '',
+        setup: ''
+      },
       staffList: $scope.staffArray,
       staffCount: $scope.staffArray.length,
       submit: false
     };
 
+
     $scope.emptyStaff = {
       name: '',
       position: '',
+      locationLatLang: false,
       phone: '',
+      email: '',
+      invited: '',
+      confirmed: false,
       callTime: '',
       arrived: false,
       arrivalTime: '',
@@ -53,7 +99,7 @@ angular.module('staffitApp')
 
     $scope.eventForm = {};
 
-    $scope.addStaff = function (staffForm) {
+    $scope.addStaff = function(staffForm) {
       console.log(staffForm);
       var staffData = {
         name: staffForm.name,
@@ -76,7 +122,7 @@ angular.module('staffitApp')
       $scope.staffCollapse = true;
     };
 
-    $scope.submitEvent = function () {
+    $scope.submitEvent = function() {
       Event.create($scope.eventForm);
       console.log('Form Submitted');
       $scope.eventForm = $scope.emptyEvent;
