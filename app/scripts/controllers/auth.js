@@ -7,12 +7,8 @@ angular.module('staffitApp')
     $scope.auth.$getCurrentUser()
       .then(function(user) {
         if (user) {
-          //console.log(user);
-          //localStorage.setItem('sessionId', user.uid);
-          //localStorage.setItem('sessionUser', user.email);
           $scope.$session.userState = true;
           $scope.$session.user = user;
-          //$rootScope.sessionUser = user;
           $scope.$session.userData = syncData(usersFire + '/' + user.uid);
           return user;
         } else {

@@ -10,14 +10,12 @@
 angular.module('staffitApp')
   .controller('AnonCtrl', function($scope, $state) {
     $scope.anon = 'this is the AnonCtrl';
-    $scope.$watch('$session.user', function() {
+    $scope.$watch('$session.userState', function() {
       if (!$scope.$session.userState) {
         console.log('no user authenticated!');
-      } else if ($scope.$session.user) {
+      } else if ($scope.$session.userState) {
         console.log('user signed in');
-        $state.go('auth.profile', {
-          'profile': user.email
-        });
+        $state.go('auth.profile');
       }
     });
   });
