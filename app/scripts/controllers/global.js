@@ -4,10 +4,9 @@ angular.module('staffitApp')
   .controller('GlobalCtrl', function($scope, $rootScope, $window, $localStorage, $sessionStorage) {
     $scope.GlobalCtrl = 'This is the GlobalCtrl';
     $scope.$session = $sessionStorage;
+
     $scope.$storage = $localStorage;
 
-
-    var globalSessionId = localStorage.getItem('sessionId');
     var firebaseSession = {};
     $scope.firebaseSessionCheck = function() {
       var loggedIn = false;
@@ -17,15 +16,9 @@ angular.module('staffitApp')
       } else {
         loggedIn = false;
       }
-      $scope.session.state = loggedIn;
+      $scope.$session.userState = loggedIn;
     };
 
-    $rootScope.sessionId = globalSessionId;
-
-    $scope.$watch('sessionId', function() {
-      var localId = localStorage.getItem('sessionId');
-      console.log('Session State is ' + localId);
-    });
     $scope.$watch(function() { //bug scope doesn't change on window resize!            
       return $window.innerWidth;
     }, function(value) {
@@ -61,5 +54,4 @@ angular.module('staffitApp')
       console.log('run baby run!');
 
     });
-    //localStorage.getItem('device').$bind($scope, 'testdeviceWindow');
   });

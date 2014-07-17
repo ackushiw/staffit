@@ -23,9 +23,6 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
     logout: function() {
       assertAuth();
       auth.$logout();
-      $rootScope.signedIn = false;
-      localStorage.removeItem('sessionId');
-      localStorage.removeItem('sessionName');
       console.log('user logged out');
       $state.go('anon.home');
     },
@@ -41,7 +38,6 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
         rememberMe: true
       }).then(function(user) {
         if (callback) {
-          $rootScope.sessionUser = user;
           //todo-bug https://github.com/firebase/angularFire/issues/199
           $timeout(function() {
             callback(null, user);
@@ -58,7 +54,6 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
         rememberMe: true
       }).then(function(user) {
         if (callback) {
-          $rootScope.sessionUser = user;
           $state.go('auth.profile', {
             'profile': user.email
           });

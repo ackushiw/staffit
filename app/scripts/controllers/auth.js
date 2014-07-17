@@ -3,25 +3,22 @@
 angular.module('staffitApp')
   .controller('AuthCtrl', function($scope, $rootScope, $firebaseSimpleLogin, syncData, usersFire, $state) {
     $scope.authview = 'this is the AuthCtrl';
-    $scope.sessionId = localStorage.getItem('sessionId');
+
     $scope.auth.$getCurrentUser()
       .then(function(user) {
         if (user) {
           //console.log(user);
-          localStorage.setItem('sessionId', user.uid);
-          localStorage.setItem('sessionUser', user.email);
-          $rootScope.signedIn = true;
-          $scope.$storage.user = user;
-          $rootScope.sessionUser = user;
-          $rootScope.user = syncData(usersFire + '/' + user.uid);
+          //localStorage.setItem('sessionId', user.uid);
+          //localStorage.setItem('sessionUser', user.email);
+          $scope.$session.userState = true;
+          $scope.$session.user = user;
+          //$rootScope.sessionUser = user;
+          $scope.$session.userData = syncData(usersFire + '/' + user.uid);
           return user;
         } else {
-          $rootScope.signedIn = false;
-          localStorage.removeItem('sessionUser');
-          localStorage.removeItem('sessionId');
+          $scope.$session.userState = false;
+          delete $scope.$session.user;
           $state.go('anon.home');
         }
       });
-
-    //$scope.authroute = simpleLogin.signedIn();
   });

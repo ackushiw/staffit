@@ -2,7 +2,7 @@
     <h1>Staff Profiles</h1>
 </div>
 <div class="well">
-    <input type="text" name="profileSearch" ng-model="search.$" class="form-control" placeholder="Search Profiles">
+    <input type="text" name="profileSearch" ng-model="search.name" class="form-control" placeholder="Search Profiles">
     <div>
         <p>Colume Number Select</p>
         <div class="btn-group">
@@ -14,10 +14,10 @@
         </div>
     </div>
 </div>
-<div class="card panel col-xs-{{profileCol}}" ng-repeat="(key, profile) in profiles | filter:search">
+<div class="card well col-xs-{{profileCol}}" ng-repeat="(key, profile) in profiles | filter:search">
     <a ui-sref="auth.profileslib.profile({id: key})">
         <div>
-            <img class="img-responsive" src="{{profile.headshot}}" alt="headshot">
+            <img class="img-responsive img-rounded" src="{{profile.headshot}}" alt="headshot">
         </div>
         <div>
             <h3>{{profile.name}}</h3>

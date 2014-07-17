@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('EventFormCtrl', function($scope, $rootScope, syncData, eventDatabase, Event) {
+  .controller('EventFormCtrl', function($scope, $rootScope, $log, syncData, eventDatabase, Event) {
+    $log.debug('debug');
     $scope.eventLibrary = syncData(eventDatabase);
     $scope.checkUser = function() {
       console.log('checkuser run ' + $rootScope.sessionId);
@@ -20,7 +21,7 @@ angular.module('staffitApp')
     $scope.staffArray = [];
 
     $scope.emptyEvent = {
-      creator: $rootScope.sessionId,
+      creator: $scope.$session.user.uid,
       eventAdmin: [],
       staffAdmin: [],
       calendar: {

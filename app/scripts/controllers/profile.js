@@ -1,10 +1,9 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('ProfileCtrl', function($scope, $firebase, FBURL, simpleLogin, syncData, usersFire) {
+  .controller('ProfileCtrl', function($scope, $firebase, simpleLogin) {
 
-    $scope.userEdit = syncData(usersFire + '/' + $scope.sessionId);
-    $scope.logout = simpleLogin.logout;
+    $scope.userEdit = $scope.$session.userData;
 
     $scope.profileEdit = false;
     $scope.profileSave = function() {
@@ -12,17 +11,7 @@ angular.module('staffitApp')
       $scope.profileEdit = false;
       console.log('saved!');
     };
-
-    /*$scope.editProfile = function(edit) {
-      if (edit === false) {
-        $scope.profileEdit = true;
-      } else {
-        $scope.profileEdit = false;
-        $scope.userEdit.$save();
-      }
-    };*/
-
-    //profile header
-    //$scope.profileHeader = 'background-image: url(' + syncData(usersFire + '/' + $scope.sessionId + '/headerPicture') + ');';
-
+    $scope.logout = function() {
+      simpleLogin.logout();
+    };
   });

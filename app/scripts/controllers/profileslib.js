@@ -9,6 +9,7 @@
  */
 angular.module('staffitApp')
   .controller('ProfileslibCtrl', function($scope, syncData, usersFire) {
+    $scope.search = '';
     $scope.profiles = syncData(usersFire);
     $scope.profileCol = 2;
   });

@@ -1,4 +1,4 @@
-<div id="nav-view" class="paper-shadow-bottom paper-shadow-bottom-z-2" ng-controller="NavCtrl">
+<div ng-if="$session.userState" id="nav-view" class="paper-shadow-bottom paper-shadow-bottom-z-2" ng-controller="NavCtrl">
     <nav id="nav" class="navbar navbar-default navbar-fixed-top paper-shadow-bottom paper-shadow-bottom-z-1">
         <div class="nav-background animate-nav-color" ng-if="logoutHover" ng-animate></div>
         <div class="container-fluid">
@@ -17,7 +17,7 @@
                     </li>
                     <li class="hidden-xs animate-button-lift nav-pointer nav-img" ng-show-auth="login" ng-cloak ng-animate>
                         <a ui-sref="auth.profile({profile: user.name})">
-                            <img class="img-responsive img-thumbnail img-circle paper-shadow-bottom paper-shadow-bottom-z-1" ng-src="{{'http://www.gravatar.com/avatar/' + user.md5hash}}" alt="Profile">
+                            <img class="img-responsive img-thumbnail img-circle paper-shadow-bottom paper-shadow-bottom-z-1" ng-src="{{'http://www.gravatar.com/avatar/' + gravatar}}" alt="Profile">
                         </a>
                     </li>
                 </ul>

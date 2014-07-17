@@ -107,11 +107,10 @@ staffApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/profile-records.html'
     });
 });
-staffApp.run(['simpleLogin', '$rootScope', 'FBURL', '$sessionStorage',
-  function(simpleLogin, $rootScope, FBURL, $sessionStorage) {
+staffApp.run(['simpleLogin', '$rootScope', 'FBURL',
+  function(simpleLogin, $rootScope, FBURL) {
     // establish authentication
     $rootScope.auth = simpleLogin.init();
-    $rootScope.sessionUser = $sessionStorage;
     $rootScope.FBURL = FBURL;
 
   }

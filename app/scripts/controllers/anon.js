@@ -8,14 +8,16 @@
  * Controller of the staffitApp
  */
 angular.module('staffitApp')
-  .controller('AnonCtrl', function ($scope, $state) {
+  .controller('AnonCtrl', function($scope, $state) {
     $scope.anon = 'this is the AnonCtrl';
-    $scope.sessionId = localStorage.getItem('sessionId');
-    $scope.$watch('sessionId', function () {
-      if ($scope.sessionId === null) {
+    $scope.$watch('$session.user', function() {
+      if (!$scope.$session.userState) {
         console.log('no user authenticated!');
-      } else {
-        $state.go('auth.profile');
+      } else if ($scope.$session.user) {
+        console.log('user signed in');
+        $state.go('auth.profile', {
+          'profile': user.email
+        });
       }
     });
   });

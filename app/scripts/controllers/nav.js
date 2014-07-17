@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('NavCtrl', function ($scope, simpleLogin, $timeout) {
+  .controller('NavCtrl', function($scope, simpleLogin, $timeout) {
     $scope.sidebarMenu = false;
     $scope.logoutHover = false;
+    $scope.gravatar = $scope.$session.user.md5_hash;
 
-    $scope.navLogoutColor = function (hover) {
+    $scope.navLogoutColor = function(hover) {
       if (!hover) {
         $scope.logoutHover = true;
       } else {
@@ -14,21 +15,21 @@ angular.module('staffitApp')
     };
 
 
-    $scope.sidebarToggle = function (sidebar) {
+    $scope.sidebarToggle = function(sidebar) {
       if (sidebar === false) {
         $scope.sidebarMenu = true;
       } else {
         $scope.sidebarMenu = false;
       }
     };
-    $scope.sidebarClose = function () {
+    $scope.sidebarClose = function() {
       $scope.sidebarMenu = false;
     };
-    $scope.logout = function () {
+    $scope.logout = function() {
       simpleLogin.logout();
     };
 
-    var tick = function () {
+    var tick = function() {
       $scope.time = new Date();
       var coeff = 1000 * 60 * 15;
       var date = new Date(); //or use any other date
