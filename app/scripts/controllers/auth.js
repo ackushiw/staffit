@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('AuthCtrl', function($scope, $rootScope, $firebaseSimpleLogin, syncData, usersFire, $state) {
+  .controller('AuthCtrl', function($scope, $firebaseSimpleLogin, syncData, usersFire, $state) {
     $scope.authview = 'this is the AuthCtrl';
 
-    $scope.auth.$getCurrentUser()
+    /*$scope.auth.$getCurrentUser()
       .then(function(user) {
         if (user) {
           $scope.$session.userState = true;
@@ -16,5 +16,5 @@ angular.module('staffitApp')
           delete $scope.$session.user;
           $state.go('anon.home');
         }
-      });
+      });*/
   });

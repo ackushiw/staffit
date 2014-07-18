@@ -1,5 +1,5 @@
 <div id="profilecard">
-    <a ui-sref="auth.profile({profile: user.name})">
+    <a ui-sref="auth.profile({profile: $session.userData.name})">
         <div id="profile-header" class="header-space-background" style="{{'background-image: url(' + $session.userData.headerPicture +');'}}-webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -17,7 +17,7 @@
                         <span class="hidden-xs">Home</span>
                         <span class="glyphicon glyphicon-home"></span>
                     </tab-heading>
-                    <button class="btn btn-lg btn-block" ui-sref="auth.profile">Agenda</button>
+                    <button class="btn btn-lg btn-block" ui-sref="auth.profile({profile: $session.userData.name})">Agenda</button>
                     <button class="btn btn-lg btn-block" ui-sref="auth.profile.calendar">Calendar</button>
                     <button class="btn btn-lg btn-block" ui-sref="auth.profile.records">Overview</button>
                     <button class="btn btn-lg btn-block" ui-sref="auth.profile.messages">Messages</button>

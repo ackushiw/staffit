@@ -1,14 +1,11 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('EventFormCtrl', function($scope, $rootScope, $log, syncData, eventDatabase, Event) {
-    $log.debug('debug');
+  .controller('EventFormCtrl', function($scope, syncData, eventDatabase, Event, $sessionStorage) {
+    $scope.$session = $sessionStorage;
     $scope.eventLibrary = syncData(eventDatabase);
-    $scope.checkUser = function() {
-      console.log('checkuser run ' + $rootScope.sessionId);
-      $scope.eventForm.creator = $rootScope.sessionId;
-    };
-    //$scope.eventForm.creator = $scope.sessionId;
+    //$scope.formCreator = $scope.$session.user;
+
     //staffList Collapse
     $scope.staffCollapse = true;
     $scope.showStaffForm = function() {

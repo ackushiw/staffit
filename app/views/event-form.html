@@ -5,7 +5,7 @@
     <hr>
     <form id="event-form">
         <!-- removed attr: ng-submit="submitEvent()" -->
-        <span ng-init="checkUser()"></span>
+        <span ng-init="eventForm.creator = $session.user.uid"></span>
         <div class="form-group col-sm-6">
             <input class="form-control" name="id" type="text" ng-model="eventForm.calendar.id" placeholder="Event ID">
         </div>

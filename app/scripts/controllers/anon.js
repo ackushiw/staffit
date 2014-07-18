@@ -15,7 +15,6 @@ angular.module('staffitApp')
         console.log('no user authenticated!');
       } else if ($scope.$session.userState) {
         console.log('user signed in');
-        $state.go('auth.profile');
       }
     });
   });

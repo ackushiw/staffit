@@ -16,7 +16,7 @@
                     <li class="hidden-xs animate-button-lift" ng-animate ng-show-auth="['logout','error']" ng-cloak> <a class="btn btn-primary" ui-sref="anon.home">Log In</a>
                     </li>
                     <li class="hidden-xs animate-button-lift nav-pointer nav-img">
-                        <a ui-sref="auth.profile({profile: user.name})">
+                        <a ui-sref="auth.profile({profile: $session.userData.name})">
                             <img class="img-responsive img-thumbnail img-circle paper-shadow-bottom paper-shadow-bottom-z-1" ng-src="{{'http://www.gravatar.com/avatar/' + gravatar}}" alt="Profile">
                         </a>
                     </li>

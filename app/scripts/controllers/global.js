@@ -1,23 +1,51 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('GlobalCtrl', function($scope, $rootScope, $window, $localStorage, $sessionStorage) {
+  .controller('GlobalCtrl', function($scope, $rootScope, $firebaseSimpleLogin, syncData, usersFire, $window, $localStorage, $sessionStorage, $state) {
     $scope.GlobalCtrl = 'This is the GlobalCtrl';
     $scope.$session = $sessionStorage;
-
     $scope.$storage = $localStorage;
 
-    var firebaseSession = {};
-    $scope.firebaseSessionCheck = function() {
-      var loggedIn = false;
-      firebaseSession = localStorage.getItem('firebaseSession');
-      if (firebaseSession) {
-        loggedIn = true;
-      } else {
-        loggedIn = false;
-      }
-      $scope.$session.userState = loggedIn;
-    };
+    $rootScope.$on("$firebaseSimpleLogin:login", function(e, user) {
+      console.log("User " + user.uid + " successfully logged in!");
+      $scope.$session.userState = true;
+      $scope.$session.user = user;
+      $scope.$session.userData = syncData(usersFire + '/' + user.uid);
+    });
+    $rootScope.$on("$firebaseSimpleLogin:logout", function() {
+      console.log('User logged out!');
+      $scope.$session.userState = false;
+      delete $scope.$session.user;
+      delete $scope.$session.userData;
+      $state.go('anon.home');
+    });
+    $scope.userData = $scope.$session.userData;
+
+
+    $scope.auth.$getCurrentUser()
+      .then(function(user) {
+        if (user) {
+          console.log('get current user is: ' + user.uid);
+          $scope.$session.userState = true;
+          $scope.$session.user = user;
+          $scope.$session.userData = syncData(usersFire + '/' + user.uid);
+          return user;
+        }
+      });
+
+
+    /*var firebaseSession = {};
+$scope.firebaseSessionCheck = function() {
+  var loggedIn = false;
+  firebaseSession = localStorage.getItem('firebaseSession');
+  if (firebaseSession) {
+    loggedIn = true;
+  } else {
+    loggedIn = false;
+  }
+  $scope.$session.userState = loggedIn;
+};
+*/
 
     $scope.$watch(function() { //bug scope doesn't change on window resize!            
       return $window.innerWidth;
@@ -51,7 +79,6 @@ angular.module('staffitApp')
         localStorage.setItem('device', device);
         $scope.$storage.device = device;
       }
-      console.log('run baby run!');
 
     });
   });
