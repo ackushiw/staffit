@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('AuthCtrl', function($scope, $firebaseSimpleLogin, syncData, usersFire, $state) {
+  .controller('AuthCtrl', function($scope) {
     $scope.authview = 'this is the AuthCtrl';
 
     /*$scope.auth.$getCurrentUser()

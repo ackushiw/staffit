@@ -36,7 +36,7 @@
                     </tab-heading>
                     <div class="card" ng-controller="ProfileEditCtrl">
                         <div class="page-header" ng-init="profileEdit = false">
-                            <h3>{{userEdit.name}}
+                            <h3>{{$session.userData.name}}
                                 <span class="pull-right">
                                     <button type="button" class="btn btn-primary" ng-class="{hidden: profileEdit}" ng-click="profileEdit = !profileEdit">
                                         <span class="hidden-xs">Edit</span>
@@ -55,19 +55,19 @@
                                     <div class="line">
                                         <h4>Gender</h4>
                                     </div>
-                                    <p>{{userEdit.gender}}</p>
+                                    <p>{{$session.userData.gender}}</p>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="line">
                                         <h4>Height</h4>
                                     </div>
-                                    <p>{{userEdit.height}}</p>
+                                    <p>{{$session.userData.height}}</p>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="line">
                                         <h4>Weight</h4>
                                     </div>
-                                    <p>{{userEdit.weight}}</p>
+                                    <p>{{$session.userData.weight}}</p>
                                 </div>
                             </div>
                             <div ng-switch-when="true">
@@ -76,28 +76,28 @@
                                         <div class="line">
                                             <h4>Name</h4>
                                         </div>
-                                        <input type="text" class="form-control" ng-model="userEdit.name">
+                                        <input type="text" class="form-control" ng-model="$session.userData.name">
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="line">
-                                            <h4>Gender {{userEdit.gender}}</h4>
+                                            <h4>Gender {{$session.userData.gender}}</h4>
                                         </div>
                                         <div class="btn-group">
-                                            <label class="btn btn-info" ng-model="userEdit.gender" btn-radio="'male'">Male</label>
-                                            <label class="btn btn-info" ng-model="userEdit.gender" btn-radio="'female'">Female</label>
+                                            <label class="btn btn-info" ng-model="$session.userData.gender" btn-radio="'male'">Male</label>
+                                            <label class="btn btn-info" ng-model="$session.userData.gender" btn-radio="'female'">Female</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="line">
                                             <h4>Height</h4>
                                         </div>
-                                        <input type="text" class="form-control" ng-model="userEdit.height">
+                                        <input type="text" class="form-control" ng-model="$session.userData.height">
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="line">
                                             <h4>weight</h4>
                                         </div>
-                                        <input type="text" class="form-control" ng-model="userEdit.weight">
+                                        <input type="text" class="form-control" ng-model="$session.userData.weight">
                                     </div>
                                 </div>
                             </div>
@@ -127,8 +127,8 @@
                         </div>
                         <div ng-switch on="profileEdit">
                             <div ng-switch-default>
-                                <img class="img-responsive img-thumbnail col-xs-6" ng-src="{{userEdit.headshot}}" alt="headshot">
-                                <img class="img-responsive img-thumbnail col-xs-6" ng-src="{{userEdit.fullbody}}" alt="fullbody">
+                                <img class="img-responsive img-thumbnail col-xs-6" ng-src="{{$session.userData.headshot}}" alt="headshot">
+                                <img class="img-responsive img-thumbnail col-xs-6" ng-src="{{$session.userData.fullbody}}" alt="fullbody">
                                 <br>
                             </div>
                             <div ng-switch-when="true">
@@ -137,15 +137,15 @@
                                     </h4>
                                     <div class="input-group">
                                         <span class="input-group-addon">Header Photo</span>
-                                        <input type="text" class="form-control" ng-model="userEdit.headerPicture">
+                                        <input type="text" class="form-control" ng-model="$session.userData.headerPicture">
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon">Headshot Photo</span>
-                                        <input type="text" class="form-control" ng-model="userEdit.headshot">
+                                        <input type="text" class="form-control" ng-model="$session.userData.headshot">
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon">Fullbody Photo</span>
-                                        <input type="text" class="form-control" ng-model="userEdit.fullbody">
+                                        <input type="text" class="form-control" ng-model="$session.userData.fullbody">
                                     </div>
                                 </div>
                             </div>
@@ -180,22 +180,22 @@
                                         <div class="line">
                                             <h4>Phone</h4>
                                         </div>
-                                        <p>{{userEdit.cell}}</p>
+                                        <p>{{$session.userData.cell}}</p>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="line">
                                             <h4>Work Email</h4>
                                         </div>
-                                        <p>{{userEdit.email}}</p>
+                                        <p>{{$session.userData.email}}</p>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="line">
                                             <h4>Address</h4>
                                         </div>
-                                        <p>{{userEdit.address.street + ', ' + userEdit.address.apt}}</p>
-                                        <p>{{userEdit.address.city}}</p>
-                                        <p>{{userEdit.address.state + ', ' + userEdit.address.zip}}</p>
-                                        <p>{{userEdit.address.country}}</p>
+                                        <p>{{$session.userData.address.street + ', ' + $session.userData.address.apt}}</p>
+                                        <p>{{$session.userData.address.city}}</p>
+                                        <p>{{$session.userData.address.state + ', ' + $session.userData.address.zip}}</p>
+                                        <p>{{$session.userData.address.country}}</p>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="line">
@@ -209,13 +209,13 @@
                                     <div class="line">
                                         <h4>phone</h4>
                                     </div>
-                                    <input type="text" class="form-control" ng-model="userEdit.cell">
+                                    <input type="text" class="form-control" ng-model="$session.userData.cell">
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="line">
                                         <h4>email</h4>
                                     </div>
-                                    <input type="text" class="form-control" ng-model="userEdit.email">
+                                    <input type="text" class="form-control" ng-model="$session.userData.email">
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="line">
@@ -223,27 +223,27 @@
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon">Line 1</span>
-                                        <input type="text" class="form-control" placeholder="{{userEdit.cell}}" ng-model="userEdit.address.street">
+                                        <input type="text" class="form-control" placeholder="{{$session.userData.cell}}" ng-model="$session.userData.address.street">
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon">Line 2</span>
-                                        <input type="text" class="form-control" placeholder="{{userEdit.cell}}" ng-model="userEdit.address.apt">
+                                        <input type="text" class="form-control" placeholder="{{$session.userData.cell}}" ng-model="$session.userData.address.apt">
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon">City</span>
-                                        <input type="text" class="form-control" placeholder="{{userEdit.cell}}" ng-model="userEdit.address.city">
+                                        <input type="text" class="form-control" placeholder="{{$session.userData.cell}}" ng-model="$session.userData.address.city">
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon">State</span>
-                                        <input type="text" class="form-control" placeholder="{{userEdit.cell}}" ng-model="userEdit.address.state">
+                                        <input type="text" class="form-control" placeholder="{{$session.userData.cell}}" ng-model="$session.userData.address.state">
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon">Zip</span>
-                                        <input type="text" class="form-control" placeholder="{{userEdit.cell}}" ng-model="userEdit.address.zip">
+                                        <input type="text" class="form-control" placeholder="{{$session.userData.cell}}" ng-model="$session.userData.address.zip">
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon">Country</span>
-                                        <input type="text" class="form-control" placeholder="{{userEdit.cell}}" ng-model="userEdit.address.country">
+                                        <input type="text" class="form-control" placeholder="{{$session.userData.cell}}" ng-model="$session.userData.address.country">
                                     </div>
                                 </div>
                             </div>

@@ -8,7 +8,7 @@
  * Controller of the staffitApp
  */
 angular.module('staffitApp')
-  .controller('AnonCtrl', function($scope, $state) {
+  .controller('AnonCtrl', function($scope) {
     $scope.anon = 'this is the AnonCtrl';
     $scope.$watch('$session.userState', function() {
       if (!$scope.$session.userState) {

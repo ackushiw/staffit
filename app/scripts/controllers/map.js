@@ -15,4 +15,5 @@ angular.module('staffitApp')
       zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
+
   });

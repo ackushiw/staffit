@@ -63,6 +63,9 @@ nav {
     height: 100%;
     padding-top: 80px;
     z-index: 990;
+    .sidemenu-container {
+        overflow: auto;
+    }
 }
 /*side menu animation */
 
