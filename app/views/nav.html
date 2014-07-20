@@ -19,7 +19,7 @@
                     <li class="hidden-xs animate-button-lift" ng-animate> <a ui-sref="auth.mission-control">Mission Control</a>
                     </li>
                     <li class="animate-button-lift" ng-animate>
-                        <a ng-click="messageToggle(messagePane)">{{messagePane}}
+                        <a ng-click="messageToggle(messagePane)">
                             <span class="glyphicon glyphicon-envelope"></span>
                         </a>
                     </li>
@@ -66,7 +66,9 @@
     </div>
     <!-- Message Pane -->
     <div class="animate-swift-out paper-shadow-bottom paper-shadow-bottom-z-4 col-xs-12 col-md-6 col-lg-4" id="message-pane" ng-class="{'msg-pane-oncanvas': messagePane, 'msg-pane-offcanvas': !messagePane}">
-        <profile></profile>
+        <div class="msg-pane-container">
+            <messages></messages>
+        </div>
     </div>
 
 </div>
