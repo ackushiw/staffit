@@ -14,183 +14,225 @@
             <tabset class="tabset" justified="true" type="pills">
                 <tab>
                     <tab-heading>
-                        <span class="hidden-xs">Home</span>
-                        <span class="glyphicon glyphicon-home"></span>
+                        <div>
+                            <span class="hidden-xs animate-swift-out" ng-class="{'sidebar-fold': !sidebarMenu}" ng-animate>Home</span>
+                            <span class="glyphicon glyphicon-home "></span>
+                        </div>
                     </tab-heading>
                     <br>
-                    <button class="btn btn-lg btn-block" ui-sref="auth.profile({profile: $session.userData.name, title: 'Agenda'})">Agenda</button>
-                    <button class="btn btn-lg btn-block" ui-sref="auth.profile.calendar({title: 'Calendar'})">Calendar</button>
-                    <button class="btn btn-lg btn-block" ui-sref="auth.profile.records">Overview</button>
-                    <button class="btn btn-lg btn-block" ui-sref="auth.profile.messages">Messages</button>
-                    <button class="btn btn-lg btn-block" ui-sref="auth.profileslib">Profiles</button>
-                    <button class="btn btn-lg btn-block" ui-sref="auth.about">Event Control</button>
-                    <button class="btn btn-lg btn-block" ui-sref="auth.create">Create Event</button>
-                    <button class="btn btn-lg btn-block" ui-sref="auth.paste-event">Paste Event</button>
-                    <button class="btn btn-lg btn-danger btn-block" ng-click="logout();">Log out
-                        <span class="glyphicon glyphicon-off"></span>
+                    <button class="btn btn-lg btn-block " ui-sref="auth.profile({profile: $session.userData.name, title: 'Agenda'}) ">
+                        <span class="glyphicon glyphicon-user "></span>
+                        <span ng-if="sidebarMenu" class="animate-fade " ng-animate>Agenda</span>
+
+                    </button>
+                    <button class="btn btn-lg btn-block " ui-sref="auth.profile.calendar({title: 'Calendar'}) ">
+                        <span class="glyphicon glyphicon-user "></span>
+                        <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Calendar</span>
+
+                    </button>
+                    <button class="btn btn-lg btn-block " ui-sref="auth.profile.records ">
+                        <span class="glyphicon glyphicon-user "></span>
+                        <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Overview</span>
+
+                    </button>
+                    <button class="btn btn-lg btn-block " ui-sref="auth.profile.messages ">
+                        <span class="glyphicon glyphicon-user "></span>
+                        <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Messages</span>
+
+                    </button>
+                    <button class="btn btn-lg btn-block " ui-sref="auth.profileslib ">
+                        <span class="glyphicon glyphicon-user "></span>
+                        <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Profiles</span>
+
+                    </button>
+                    <button class="btn btn-lg btn-block " ui-sref="auth.about ">
+                        <span class="glyphicon glyphicon-user "></span>
+                        <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Event Control</span>
+
+                    </button>
+                    <button class="btn btn-lg btn-block " ui-sref="auth.create ">
+                        <span class="glyphicon glyphicon-user "></span>
+                        <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Create Event</span>
+
+                    </button>
+                    <button class="btn btn-lg btn-block " ui-sref="auth.paste-event ">
+                        <span class="glyphicon glyphicon-user "></span>
+                        <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Paste Event</span>
+
+                    </button>
+                    <button class="btn btn-lg btn-danger btn-block " ng-click="logout(); ">
+                        <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Log out</span>
+                        <span class="glyphicon glyphicon-off "></span>
                     </button>
                 </tab>
-                <tab>
+                <tab ng-if="sidebarMenu" class="animate-fade " ng-animate>
                     <tab-heading>
-                        <span class="hidden-xs">Profile</span>
-                        <span class="glyphicon glyphicon-user"></span>
+                        <div class="animate-swift-out " ng-class="{ 'sidebar-fold': !sidebarMenu} " ng-animate>
+                            <span class="hidden-xs ">Profile</span>
+                            <span class="glyphicon glyphicon-user ">
+                            </span>
+                        </div>
                     </tab-heading>
-                    <div class="card" ng-controller="ProfileEditCtrl">
-                        <div class="page-header" ng-init="profileEdit = false">
+                    <div class="card " ng-controller="ProfileEditCtrl ">
+                        <div class="page-header " ng-init="profileEdit=false ">
                             <h3>{{$session.userData.name}}
-                                <span class="pull-right">
-                                    <button type="button" class="btn btn-primary animate-swift-out" ng-class="{hidden: profileEdit}" ng-click="profileEdit = !profileEdit" ng-animate>
-                                        <span class="hidden-xs">Edit</span>
-                                        <span class="glyphicon glyphicon-cog"></span>
+                                <span class="pull-right ">
+                                    <button type="button " class="btn btn-primary animate-swift-out " ng-class="{hidden: profileEdit} " ng-click="profileEdit=! profileEdit " ng-animate>
+                                        <span class="hidden-xs ">Edit</span>
+                                        <span class="glyphicon glyphicon-cog "></span>
                                     </button>
-                                    <button ng-if="profileEdit" class="btn btn-success" ng-click="profileSave()">
-                                        <span class="hidden-xs">Save</span>
-                                        <span class="glyphicon glyphicon-ok"></span>
+                                    <button ng-if="profileEdit " class="btn btn-success " ng-click="profileSave() ">
+                                        <span class="hidden-xs ">Save</span>
+                                        <span class="glyphicon glyphicon-ok "></span>
                                     </button>
                                 </span>
                             </h3>
                         </div>
-                        <div ng-switch on="profileEdit">
+                        <div ng-switch on="profileEdit ">
                             <div ng-switch-default>
-                                <div class="col-sm-12">
-                                    <div class="line">
+                                <div class="col-sm-12 ">
+                                    <div class="line ">
                                         <h4>Gender</h4>
                                     </div>
                                     <p>{{$session.userData.gender}}</p>
                                 </div>
-                                <div class="col-xs-6">
-                                    <div class="line">
+                                <div class="col-xs-6 ">
+                                    <div class="line ">
                                         <h4>Height</h4>
                                     </div>
                                     <p>{{$session.userData.height}}</p>
                                 </div>
-                                <div class="col-xs-6">
-                                    <div class="line">
+                                <div class="col-xs-6 ">
+                                    <div class="line ">
                                         <h4>Weight</h4>
                                     </div>
                                     <p>{{$session.userData.weight}}</p>
                                 </div>
                             </div>
-                            <div ng-switch-when="true">
-                                <div class="panel">
-                                    <div class="col-sm-12">
-                                        <div class="line">
+                            <div ng-switch-when="true ">
+                                <div class="panel ">
+                                    <div class="col-sm-12 ">
+                                        <div class="line ">
                                             <h4>Name</h4>
                                         </div>
-                                        <input type="text" class="form-control" ng-model="$session.userData.name">
+                                        <input type="text " class="form-control " ng-model="$session.userData.name ">
                                     </div>
-                                    <div class="col-sm-12">
-                                        <div class="line">
+                                    <div class="col-sm-12 ">
+                                        <div class="line ">
                                             <h4>Gender {{$session.userData.gender}}</h4>
                                         </div>
-                                        <div class="btn-group">
-                                            <label class="btn btn-info" ng-model="$session.userData.gender" btn-radio="'male'">Male</label>
-                                            <label class="btn btn-info" ng-model="$session.userData.gender" btn-radio="'female'">Female</label>
+                                        <div class="btn-group ">
+                                            <label class="btn btn-info " ng-model="$session.userData.gender " btn-radio=" 'male' ">Male</label>
+                                            <label class="btn btn-info " ng-model="$session.userData.gender " btn-radio=" 'female' ">Female</label>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="line">
+                                    <div class="col-sm-6 ">
+                                        <div class="line ">
                                             <h4>Height</h4>
                                         </div>
-                                        <input type="text" class="form-control" ng-model="$session.userData.height">
+                                        <input type="text " class="form-control " ng-model="$session.userData.height ">
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="line">
+                                    <div class="col-sm-6 ">
+                                        <div class="line ">
                                             <h4>weight</h4>
                                         </div>
-                                        <input type="text" class="form-control" ng-model="$session.userData.weight">
+                                        <input type="text " class="form-control " ng-model="$session.userData.weight ">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <hr class="col-sm-12">
+                        <hr class="col-sm-12 ">
                     </div>
                 </tab>
-                <tab>
+                <tab ng-if="sidebarMenu" class="animate-fade " ng-animate>
                     <tab-heading>
-                        <span class="hidden-xs">Pictures</span>
-                        <span class="glyphicon glyphicon-picture"></span>
+                        <div class="animate-swift-out " ng-class="{ 'sidebar-fold': !sidebarMenu} " ng-animate>
+                            <span class="hidden-xs ">Pictures</span>
+                            <span class="glyphicon glyphicon-picture "></span>
+                        </div>
                     </tab-heading>
-                    <div class="panel card" ng-controller="ProfileEditCtrl">
-                        <div class="page-header" ng-init="profileEdit = false">
+                    <div class="panel card " ng-controller="ProfileEditCtrl ">
+                        <div class="page-header " ng-init="profileEdit=false ">
                             <h3>Pictures
-                                <span class="pull-right">
-                                    <button type="button" class="btn btn-primary" ng-class="{hidden: profileEdit}" ng-click="profileEdit = !profileEdit">
-                                        <span class="hidden-xs">Edit</span>
-                                        <span class="glyphicon glyphicon-cog"></span>
+                                <span class="pull-right ">
+                                    <button type="button " class="btn btn-primary " ng-class="{hidden: profileEdit} " ng-click="profileEdit=! profileEdit ">
+                                        <span class="hidden-xs ">Edit</span>
+                                        <span class="glyphicon glyphicon-cog "></span>
                                     </button>
-                                    <button ng-if="profileEdit" class="btn btn-success" ng-click="profileSave()">
-                                        <span class="hidden-xs">Save</span>
-                                        <span class="glyphicon glyphicon-ok"></span>
+                                    <button ng-if="profileEdit " class="btn btn-success " ng-click="profileSave() ">
+                                        <span class="hidden-xs ">Save</span>
+                                        <span class="glyphicon glyphicon-ok "></span>
                                     </button>
                                 </span>
                             </h3>
                         </div>
-                        <div ng-switch on="profileEdit">
+                        <div ng-switch on="profileEdit ">
                             <div ng-switch-default>
-                                <img class="img-responsive img-thumbnail col-xs-6" ng-src="{{$session.userData.headshot}}" alt="headshot">
-                                <img class="img-responsive img-thumbnail col-xs-6" ng-src="{{$session.userData.fullbody}}" alt="fullbody">
+                                <img class="img-responsive img-thumbnail col-xs-6 " ng-src="{{$session.userData.headshot}} " alt="headshot ">
+                                <img class="img-responsive img-thumbnail col-xs-6 " ng-src="{{$session.userData.fullbody}} " alt="fullbody ">
                                 <br>
                             </div>
-                            <div ng-switch-when="true">
-                                <div class="panel">
+                            <div ng-switch-when="true ">
+                                <div class="panel ">
                                     <h4><b>Pictures</b>
                                     </h4>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">Header Photo</span>
-                                        <input type="text" class="form-control" ng-model="$session.userData.headerPicture">
+                                    <div class="input-group ">
+                                        <span class="input-group-addon ">Header Photo</span>
+                                        <input type="text " class="form-control " ng-model="$session.userData.headerPicture ">
                                     </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">Headshot Photo</span>
-                                        <input type="text" class="form-control" ng-model="$session.userData.headshot">
+                                    <div class="input-group ">
+                                        <span class="input-group-addon ">Headshot Photo</span>
+                                        <input type="text " class="form-control " ng-model="$session.userData.headshot ">
                                     </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">Fullbody Photo</span>
-                                        <input type="text" class="form-control" ng-model="$session.userData.fullbody">
+                                    <div class="input-group ">
+                                        <span class="input-group-addon ">Fullbody Photo</span>
+                                        <input type="text " class="form-control " ng-model="$session.userData.fullbody ">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <hr class="col-sm-12">
+                        <hr class="col-sm-12 ">
                     </div>
                 </tab>
-                <tab>
+                <tab ng-if="sidebarMenu" class="animate-fade " ng-animate>
                     <tab-heading>
-                        <span class="hidden-xs">Contact</span>
-                        <span class="glyphicon glyphicon-earphone"></span>
+                        <div class="animate-swift-out " ng-class="{ 'sidebar-fold': !sidebarMenu} " ng-animate>
+                            <span class="hidden-xs ">Contact</span>
+                            <span class="glyphicon glyphicon-earphone "></span>
+                        </div>
                     </tab-heading>
-                    <div class="card" ng-controller="ProfileEditCtrl">
-                        <div class="page-header" ng-init="profileEdit = false">
+                    <div class="card " ng-controller="ProfileEditCtrl ">
+                        <div class="page-header " ng-init="profileEdit=false ">
                             <h3>Contact
-                                <span class="pull-right">
-                                    <button type="button" class="btn btn-primary" ng-class="{hidden: profileEdit}" ng-click="profileEdit = !profileEdit">
-                                        <span class="hidden-xs">Edit</span>
-                                        <span class="glyphicon glyphicon-cog"></span>
+                                <span class="pull-right ">
+                                    <button type="button " class="btn btn-primary " ng-class="{hidden: profileEdit} " ng-click="profileEdit=! profileEdit ">
+                                        <span class="hidden-xs ">Edit</span>
+                                        <span class="glyphicon glyphicon-cog "></span>
                                     </button>
-                                    <button ng-if="profileEdit" class="btn btn-success" ng-click="profileSave()">
-                                        <span class="hidden-xs">Save</span>
-                                        <span class="glyphicon glyphicon-ok"></span>
+                                    <button ng-if="profileEdit " class="btn btn-success " ng-click="profileSave() ">
+                                        <span class="hidden-xs ">Save</span>
+                                        <span class="glyphicon glyphicon-ok "></span>
                                     </button>
                                 </span>
                             </h3>
                         </div>
-                        <div ng-switch on="profileEdit">
+                        <div ng-switch on="profileEdit ">
                             <div ng-switch-default>
-                                <div class="card">
-                                    <div class="col-sm-12">
-                                        <div class="line">
+                                <div class="card ">
+                                    <div class="col-sm-12 ">
+                                        <div class="line ">
                                             <h4>Phone</h4>
                                         </div>
                                         <p>{{$session.userData.cell}}</p>
                                     </div>
-                                    <div class="col-sm-12">
-                                        <div class="line">
+                                    <div class="col-sm-12 ">
+                                        <div class="line ">
                                             <h4>Work Email</h4>
                                         </div>
                                         <p>{{$session.userData.email}}</p>
                                     </div>
-                                    <div class="col-sm-12">
-                                        <div class="line">
+                                    <div class="col-sm-12 ">
+                                        <div class="line ">
                                             <h4>Address</h4>
                                         </div>
                                         <p>{{$session.userData.address.street + ', ' + $session.userData.address.apt}}</p>
@@ -198,58 +240,58 @@
                                         <p>{{$session.userData.address.state + ', ' + $session.userData.address.zip}}</p>
                                         <p>{{$session.userData.address.country}}</p>
                                     </div>
-                                    <div class="col-sm-12">
-                                        <div class="line">
+                                    <div class="col-sm-12 ">
+                                        <div class="line ">
                                             <h4>Other</h4>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div ng-switch-when="true">
-                                <div class="col-sm-6">
-                                    <div class="line">
+                            <div ng-switch-when="true ">
+                                <div class="col-sm-6 ">
+                                    <div class="line ">
                                         <h4>phone</h4>
                                     </div>
-                                    <input type="text" class="form-control" ng-model="$session.userData.cell">
+                                    <input type="text " class="form-control " ng-model="$session.userData.cell ">
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="line">
+                                <div class="col-sm-6 ">
+                                    <div class="line ">
                                         <h4>email</h4>
                                     </div>
-                                    <input type="text" class="form-control" ng-model="$session.userData.email">
+                                    <input type="text " class="form-control " ng-model="$session.userData.email ">
                                 </div>
-                                <div class="col-sm-12">
-                                    <div class="line">
+                                <div class="col-sm-12 ">
+                                    <div class="line ">
                                         <h4>Address</h4>
                                     </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">Line 1</span>
-                                        <input type="text" class="form-control" placeholder="{{$session.userData.cell}}" ng-model="$session.userData.address.street">
+                                    <div class="input-group ">
+                                        <span class="input-group-addon ">Line 1</span>
+                                        <input type="text " class="form-control " placeholder="{{$session.userData.cell}} " ng-model="$session.userData.address.street ">
                                     </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">Line 2</span>
-                                        <input type="text" class="form-control" placeholder="{{$session.userData.cell}}" ng-model="$session.userData.address.apt">
+                                    <div class="input-group ">
+                                        <span class="input-group-addon ">Line 2</span>
+                                        <input type="text " class="form-control " placeholder="{{$session.userData.cell}} " ng-model="$session.userData.address.apt ">
                                     </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">City</span>
-                                        <input type="text" class="form-control" placeholder="{{$session.userData.cell}}" ng-model="$session.userData.address.city">
+                                    <div class="input-group ">
+                                        <span class="input-group-addon ">City</span>
+                                        <input type="text " class="form-control " placeholder="{{$session.userData.cell}} " ng-model="$session.userData.address.city ">
                                     </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">State</span>
-                                        <input type="text" class="form-control" placeholder="{{$session.userData.cell}}" ng-model="$session.userData.address.state">
+                                    <div class="input-group ">
+                                        <span class="input-group-addon ">State</span>
+                                        <input type="text " class="form-control " placeholder="{{$session.userData.cell}} " ng-model="$session.userData.address.state ">
                                     </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">Zip</span>
-                                        <input type="text" class="form-control" placeholder="{{$session.userData.cell}}" ng-model="$session.userData.address.zip">
+                                    <div class="input-group ">
+                                        <span class="input-group-addon ">Zip</span>
+                                        <input type="text " class="form-control " placeholder="{{$session.userData.cell}} " ng-model="$session.userData.address.zip ">
                                     </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">Country</span>
-                                        <input type="text" class="form-control" placeholder="{{$session.userData.cell}}" ng-model="$session.userData.address.country">
+                                    <div class="input-group ">
+                                        <span class="input-group-addon ">Country</span>
+                                        <input type="text " class="form-control " placeholder="{{$session.userData.cell}} " ng-model="$session.userData.address.country ">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <hr class="col-sm-12">
+                        <hr class="col-sm-12 ">
                     </div>
                 </tab>
             </tabset>

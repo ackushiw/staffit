@@ -27,24 +27,23 @@
         <span class="glyphicon" ng-class="{'glyphicon-chevron-right': !sidebarMenu, 'glyphicon-chevron-left': sidebarMenu}"></span>Staffit</a>
 </h3>
  -->
-                <ul class="nav nav-tabs">
-                    <li class="hidden-xs animate-button-lift nav-pointer nav-img">
+                <ul class="nav nav-tabs animate-swift-out" ng-class="{'nav-img-slide': sidebarMenu, 'img-circle-parent': !sidebarMenu}" ng-animate>
+                    <li class="animate-button-lift nav-pointer nav-img">
                         <img class="img-responsive img-thumbnail img-circle paper-shadow-bottom paper-shadow-bottom-z-1" ng-src="{{'http://www.gravatar.com/avatar/' + gravatar}}" alt="Profile" ng-click="sidebarToggle(sidebarMenu);">
 
                     </li>
                     <li ng-click="sidebarToggle(sidebarMenu);">
                         <span class="navbar-brand nav-title">A.lance</span>
                     </li>
-                    <li class="nav-title">
-                        <span class="navbar-brand nav-title">{{$stateParams.title}}</span>
-                    </li>
                 </ul>
 
             </div>
         </div>
     </nav>
-    <div class="col-xs-8 col-sm-6 animate-swift-out paper-shadow-bottom paper-shadow-bottom-z-4" id="sidebar" ng-class="{'col-md-1': !sidebarMenu, 'col-md-3': sidebarMenu, 'sidebar-offcanvas': !sidebarMenu && phone, 'sidebar-offcanvas-tablet': !sidebarMenu && tablet}" role="navigation" ng-animate>
+    <div class="animate-swift-out paper-shadow-bottom paper-shadow-bottom-z-4" id="sidebar" ng-class="{'col-sm-1': !sidebarMenu, 'col-md-3': sidebarMenu, 'sidebar-offcanvas': !sidebarMenu && phone, 'col-xs-8': sidebarMenu, 'col-sm-6': sidebarMenu}" role="navigation" ng-animate>
+        <img class="hidden img-responsive img-thumbnail img-circle paper-shadow-bottom paper-shadow-bottom-z-1" ng-src="{{'http://www.gravatar.com/avatar/' + gravatar}}" alt="Profile" ng-click="sidebarToggle(sidebarMenu);">
         <div class="sidemenu-container col-xs-12">
+
             <profile></profile>
             <div class="panel info hidden">
                 <ul class="list-group">

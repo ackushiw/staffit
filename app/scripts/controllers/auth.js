@@ -20,7 +20,7 @@ angular.module('staffitApp')
         $scope.tablet = false;
       } else if (device === 'tabelt') {
         $scope.sidebarMenu = false;
-        $scope.phone = false;
+        $scope.phone = true;
         $scope.tablet = true;
       }
     };

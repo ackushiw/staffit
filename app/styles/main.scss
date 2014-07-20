@@ -24,7 +24,7 @@ $icon-font-path:"/bower_components/bootstrap-sass-official/vendor/assets/fonts/b
 /*Nav */
 
 nav {
-    z-index: 1000;
+    z-index: 900;
     background-color: none;
     ul {
         overflow: none;
@@ -51,6 +51,12 @@ nav {
 
     }
 }
+.img-circle-parent {
+    margin-left: 0;
+}
+.nav-img-slide {
+    margin-left: 0;
+}
 .nav-pointer {
     cursor: pointer;
 }
@@ -70,40 +76,23 @@ nav {
     .sidemenu-container {
         overflow: hidden;
     }
-    .sidebar-offcanvas {
-        overflow: hidden;
-        width: 3px;
-        left: 0;
+    img.img-circle {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1000 !important;
     }
 }
 /*side menu animation */
 
-.animate-sidemenu {
-    background: white;
-    padding-left: 10px;
-}
-.animate-sidemenu.ng-enter, .animate-sidemenu.ng-leave {
-    -webkit-transition: all ease 0.7s;
-    -moz-transition: all ease 0.7s;
-    -o-transition: all ease 0.7s;
-    transition: all ease 0.7s;
-}
-.animate-sidemenu.ng-enter, .animate-sidemenu.ng-leave.ng-leave-active {
-    max-width: 0;
-    left: -1px;
+.sidebar-offcanvas {
     overflow: hidden;
-    transform: translateX(-50px);
+    width: 50px;
+    left: 0;
+    transform: translateX(-47px);
 }
-.animate-sidemenu.ng-leave, .animate-sidemenu.ng-enter.ng-enter-active {
-    opacity: 1;
-    max-width: 100%;
-    transform: translateX(0);
-}
-.view-animate-with-sidemenu {
-    -webkit-transition: all ease 0.7s;
-    -moz-transition: all ease 0.7s;
-    -o-transition: all ease 0.7s;
-    transition: all ease 0.7s;
+.sidebar-fold {
+    display: none;
 }
 .animate-swift-out {
     -webkit-transition: all 500ms cubic-bezier(0.410, 0.000, 0.115, 1);
@@ -291,6 +280,13 @@ body {
     .card {
         padding: 2%;
     }
+    /*Nav*/
+    .img-circle-parent {
+        margin-left: 3%;
+    }
+    .nav-img-slide {
+        margin-left: 0;
+    }
     /*Profile Styling*/
     #profilecard {
         .header-space-background {
@@ -338,10 +334,13 @@ body {
 //Fade */
 
 .animate-fade {} .animate-fade.ng-enter, .animate-fade.ng-leave {
-    -webkit-transition: all ease 2s;
-    -moz-transition: all ease 2s;
-    -o-transition: all ease 2s;
-    transition: all ease 2s;
+    -webkit-transition: all 500ms cubic-bezier(0.410, 0.000, 0.115, 1);
+    /* older webkit */
+    -webkit-transition: all 500ms cubic-bezier(0.410, 0.000, 0.115, 1.005);
+    -moz-transition: all 500ms cubic-bezier(0.410, 0.000, 0.115, 1.005);
+    -o-transition: all 500ms cubic-bezier(0.410, 0.000, 0.115, 1.005);
+    transition: all 500ms cubic-bezier(0.410, 0.000, 0.115, 1.005);
+    /* custom */
 }
 .animate-fade.ng-enter, .animate-fade.ng-leave.ng-leave-active {
     opacity: 0;
