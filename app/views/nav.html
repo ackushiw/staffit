@@ -3,43 +3,46 @@
         <div class="nav-background animate-nav-color" ng-if="logoutHover" ng-animate></div>
         <div class="container-fluid">
             <div>
-                <ul class="hidden-xs nav navbar-nav nav-pills navbar-right">
-                    <li class="hidden-xs animate-button-lift"> <a><b>{{time | date: 'mediumTime'}}</b>
+                <ul class="nav navbar-nav nav-pills pull-right">
+                    <li class="animate-button-lift" ng-animate>
+                        <a ui-sref="auth.profile.profileslib">
+                            <span class="glyphicon glyphicon-search"></span>
                         </a>
                     </li>
-                    <li class="hidden-xs animate-button-lift" ng-animate> <a ui-sref="auth.event-control">Event Control</a>
+                    <li class=" hidden-xs animate-button-lift"> <a><b>{{time | date: 'mediumTime'}}</b>
+                        </a>
+                    </li>
+                    <li class="hidden animate-button-lift" ng-animate> <a ui-sref="auth.event-control">Event Control</a>
                     </li>
                     <li class="hidden-xs animate-button-lift" ng-animate> <a ui-sref="auth.create">Create Event</a>
                     </li>
                     <li class="hidden-xs animate-button-lift" ng-animate> <a ui-sref="auth.mission-control">Mission Control</a>
                     </li>
-                    <li class="hidden-xs animate-button-lift" ng-animate ng-show-auth="['logout','error']" ng-cloak> <a class="btn btn-primary" ui-sref="anon.home">Log In</a>
-                    </li>
-                    <li class="hidden animate-button-lift nav-pointer nav-img">
-                        <a ng-click="sidebarToggle(sidebarMenu);">
-                            <img class="img-responsive img-thumbnail img-circle paper-shadow-bottom paper-shadow-bottom-z-1" ng-src="{{'http://www.gravatar.com/avatar/' + gravatar}}" alt="Profile">
+                    <li class="animate-button-lift" ng-animate>
+                        <a ng-click="messageToggle(messagePane)">{{messagePane}}
+                            <span class="glyphicon glyphicon-envelope"></span>
                         </a>
                     </li>
+                    <li class="animate-button-lift" ng-animate ng-show-auth="['logout','error']" ng-cloak> <a class="btn btn-primary" ui-sref="anon.home">Log In</a>
+                    </li>
                 </ul>
-                <!-- <h3 class="text-muted brand">
-    <a class="btn btn-lg" ng-click="sidebarToggle(sidebarMenu);">
-        <span class="glyphicon glyphicon-list"></span>
-        <span class="glyphicon" ng-class="{'glyphicon-chevron-right': !sidebarMenu, 'glyphicon-chevron-left': sidebarMenu}"></span>Staffit</a>
-</h3>
- -->
-                <ul class="nav nav-tabs animate-swift-out" ng-class="{'nav-img-slide': sidebarMenu, 'img-circle-parent': !sidebarMenu}" ng-animate>
-                    <li class="animate-button-lift nav-pointer nav-img">
+                <!--  <h3 class="text-muted brand">
+                   <a class="btn btn-lg" ng-click="sidebarToggle(sidebarMenu);">
+                       <span class="glyphicon glyphicon-list"></span>
+                       <span class="glyphicon" ng-class="{'glyphicon-chevron-right': !sidebarMenu, 'glyphicon-chevron-left': sidebarMenu}"></span>Staffit</a>
+               </h3> -->
+                <div class="animate-swift-out nav-img-holder" ng-class="{'nav-img-slide': sidebarMenu, 'img-circle-parent': !sidebarMenu}" ng-animate>
+                    <div class="animate-button-lift nav-pointer nav-img">
                         <img class="img-responsive img-thumbnail img-circle paper-shadow-bottom paper-shadow-bottom-z-1" ng-src="{{'http://www.gravatar.com/avatar/' + gravatar}}" alt="Profile" ng-click="sidebarToggle(sidebarMenu);">
 
-                    </li>
-                    <li ng-click="sidebarToggle(sidebarMenu);">
-                        <span class="navbar-brand nav-title">A.lance</span>
-                    </li>
-                </ul>
+                    </div>
+                </div>
+                <span class="navbar-brand nav-title">A.lance</span>
 
             </div>
         </div>
     </nav>
+    <!-- Left Side Menu -->
     <div class="animate-swift-out paper-shadow-bottom paper-shadow-bottom-z-4" id="sidebar" ng-class="{'col-sm-1': !sidebarMenu, 'col-md-3': sidebarMenu, 'sidebar-offcanvas': !sidebarMenu && phone, 'col-xs-8': sidebarMenu, 'col-sm-6': sidebarMenu}" role="navigation" ng-animate>
         <img class="hidden img-responsive img-thumbnail img-circle paper-shadow-bottom paper-shadow-bottom-z-1" ng-src="{{'http://www.gravatar.com/avatar/' + gravatar}}" alt="Profile" ng-click="sidebarToggle(sidebarMenu);">
         <div class="sidemenu-container col-xs-12">
@@ -57,9 +60,13 @@
                     </li>
                     <li class="list-group-item" ng-show-auth="['logout','error']"> <a class="btn btn-primary btn-block" ui-sref="anon.home">Log In</a>
                     </li>
-                </ul> <a ui-sref="auth.profile" ng-show-auth="login" class="list-group-item nav-pointer">{{sessionUser.displayName}}</a>
+                </ul>
             </div>
         </div>
     </div>
-    <!--/span-->
+    <!-- Message Pane -->
+    <div class="animate-swift-out paper-shadow-bottom paper-shadow-bottom-z-4 col-xs-12 col-md-6 col-lg-4" id="message-pane" ng-class="{'msg-pane-oncanvas': messagePane, 'msg-pane-offcanvas': !messagePane}">
+        <profile></profile>
+    </div>
+
 </div>

@@ -20,50 +20,91 @@
                         </div>
                     </tab-heading>
                     <br>
-                    <button class="btn btn-lg btn-block " ui-sref="auth.profile({profile: $session.userData.name, title: 'Agenda'}) ">
-                        <span class="glyphicon glyphicon-user "></span>
-                        <span ng-if="sidebarMenu" class="animate-fade " ng-animate>Agenda</span>
+                    <div class="col-xs-10" ng-if="sidebarMenu" class="animate-fade " ng-animate>
+                        <button class="btn btn-lg btn-block " ui-sref="auth.profile({profile: $session.userData.name, title: 'Agenda'}) ">
 
-                    </button>
-                    <button class="btn btn-lg btn-block " ui-sref="auth.profile.calendar({title: 'Calendar'}) ">
-                        <span class="glyphicon glyphicon-user "></span>
-                        <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Calendar</span>
+                            <span ng-if="sidebarMenu" class="animate-fade " ng-animate>Agenda</span>
 
-                    </button>
-                    <button class="btn btn-lg btn-block " ui-sref="auth.profile.records ">
-                        <span class="glyphicon glyphicon-user "></span>
-                        <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Overview</span>
+                        </button>
 
-                    </button>
-                    <button class="btn btn-lg btn-block " ui-sref="auth.profile.messages ">
-                        <span class="glyphicon glyphicon-user "></span>
-                        <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Messages</span>
 
-                    </button>
-                    <button class="btn btn-lg btn-block " ui-sref="auth.profileslib ">
-                        <span class="glyphicon glyphicon-user "></span>
-                        <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Profiles</span>
+                        <button class="btn btn-lg btn-block" ui-sref="auth.profile.calendar({title: 'Calendar'}) ">
 
-                    </button>
-                    <button class="btn btn-lg btn-block " ui-sref="auth.about ">
-                        <span class="glyphicon glyphicon-user "></span>
-                        <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Event Control</span>
+                            <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Calendar</span>
 
-                    </button>
-                    <button class="btn btn-lg btn-block " ui-sref="auth.create ">
-                        <span class="glyphicon glyphicon-user "></span>
-                        <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Create Event</span>
+                        </button>
+                        <button class="btn btn-lg btn-block " ui-sref="auth.profile.records ">
 
-                    </button>
-                    <button class="btn btn-lg btn-block " ui-sref="auth.paste-event ">
-                        <span class="glyphicon glyphicon-user "></span>
-                        <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Paste Event</span>
+                            <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Overview</span>
 
-                    </button>
-                    <button class="btn btn-lg btn-danger btn-block " ng-click="logout(); ">
-                        <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Log out</span>
-                        <span class="glyphicon glyphicon-off "></span>
-                    </button>
+                        </button>
+                        <button class="btn btn-lg btn-block " ui-sref="auth.profile.messages ">
+
+                            <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Messages</span>
+
+                        </button>
+                        <button class="btn btn-lg btn-block " ui-sref="auth.profileslib ">
+
+                            <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Profiles</span>
+
+                        </button>
+                        <button class="btn btn-lg btn-block " ui-sref="auth.about ">
+
+                            <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Event Control</span>
+
+                        </button>
+                        <button class="btn btn-lg btn-block " ui-sref="auth.create ">
+
+                            <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Create Event</span>
+
+                        </button>
+                        <button class="btn btn-lg btn-block " ui-sref="auth.paste-event ">
+
+                            <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Paste Event</span>
+
+                        </button>
+                        <button class="btn btn-lg btn-danger btn-block " ng-click="logout(); ">
+                            <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Log out</span>
+
+                        </button>
+                    </div>
+                    <div class="col-xs-2">
+                        <button class="btn btn-lg btn-block " ui-sref="auth.profile({profile: $session.userData.name, title: 'Agenda'}) ">
+                            <span class="glyphicon glyphicon-th-list"></span>
+                        </button>
+
+                        <button class="btn btn-lg btn-block" ui-sref="auth.profile.calendar({title: 'Calendar'}) ">
+                            <span class="glyphicon glyphicon-calendar"></span>
+
+                        </button>
+                        <button class="btn btn-lg btn-block " ui-sref="auth.profile.records ">
+                            <span class="glyphicon glyphicon-stats "></span>
+
+                        </button>
+                        <button class="btn btn-lg btn-block " ui-sref="auth.profile.messages ">
+                            <span class="glyphicon glyphicon-envelope "></span>
+
+                        </button>
+                        <button class="btn btn-lg btn-block " ui-sref="auth.profileslib ">
+                            <span class="glyphicon glyphicon-search "></span>
+
+                        </button>
+                        <button class="btn btn-lg btn-block " ui-sref="auth.about ">
+                            <span class="glyphicon glyphicon-tasks "></span>
+
+                        </button>
+                        <button class="btn btn-lg btn-block " ui-sref="auth.create ">
+                            <span class="glyphicon glyphicon-pencil "></span>
+
+                        </button>
+                        <button class="btn btn-lg btn-block " ui-sref="auth.paste-event ">
+                            <span class="glyphicon glyphicon-th-large "></span>
+
+                        </button>
+                        <button class="btn btn-lg btn-block " ng-click="logout(); ">
+                            <span class="glyphicon glyphicon-off "></span>
+                        </button>
+                    </div>
                 </tab>
                 <tab ng-if="sidebarMenu" class="animate-fade " ng-animate>
                     <tab-heading>

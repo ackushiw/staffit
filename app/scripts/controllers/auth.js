@@ -3,6 +3,7 @@
 angular.module('staffitApp')
   .controller('AuthCtrl', function($scope, $stateParams) {
     $scope.authview = 'this is the AuthCtrl';
+    $scope.messagePane = false;
 
     console.log('$stateParams: ' + $stateParams.id + ' & ' + $stateParams.title);
 
@@ -33,6 +34,14 @@ angular.module('staffitApp')
     };
     $scope.sidebarClose = function() {
       $scope.sidebarMenu = false;
+    };
+
+    $scope.messageToggle = function(msgPane) {
+      if (!msgPane) {
+        $scope.messagePane = true;
+      } else {
+        $scope.messagePane = false;
+      }
     };
 
 
