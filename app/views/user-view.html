@@ -1,6 +1,11 @@
-<div class="panel card col-sm-7 col-md-8 col-lg-9">
+<!-- <div class="panel card col-sm-7 col-md-8 col-lg-9">
     <div ui-view>
         <agenda></agenda>
     </div>
 </div>
-<profile class="col-sm-5 col-md-4 col-lg-3 paper-shadow-top paper-shadow-top-z-1 hidden-xs"></profile>
+<profile class="col-sm-5 col-md-4 hidden col-lg-3 paper-shadow-top paper-shadow-top-z-1 hidden-xs"></profile>
+ -->
+
+<div ui-view class="col-sm-offset-3 animate-swift-out" ng-class="{'col-md-offset-1': !sidebarMenu}" ng-animate>
+    <agenda></agenda>
+</div>

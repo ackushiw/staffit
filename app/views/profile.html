@@ -17,8 +17,9 @@
                         <span class="hidden-xs">Home</span>
                         <span class="glyphicon glyphicon-home"></span>
                     </tab-heading>
-                    <button class="btn btn-lg btn-block" ui-sref="auth.profile({profile: $session.userData.name})">Agenda</button>
-                    <button class="btn btn-lg btn-block" ui-sref="auth.profile.calendar">Calendar</button>
+                    <br>
+                    <button class="btn btn-lg btn-block" ui-sref="auth.profile({profile: $session.userData.name, title: 'Agenda'})">Agenda</button>
+                    <button class="btn btn-lg btn-block" ui-sref="auth.profile.calendar({title: 'Calendar'})">Calendar</button>
                     <button class="btn btn-lg btn-block" ui-sref="auth.profile.records">Overview</button>
                     <button class="btn btn-lg btn-block" ui-sref="auth.profile.messages">Messages</button>
                     <button class="btn btn-lg btn-block" ui-sref="auth.profileslib">Profiles</button>
@@ -38,7 +39,7 @@
                         <div class="page-header" ng-init="profileEdit = false">
                             <h3>{{$session.userData.name}}
                                 <span class="pull-right">
-                                    <button type="button" class="btn btn-primary" ng-class="{hidden: profileEdit}" ng-click="profileEdit = !profileEdit">
+                                    <button type="button" class="btn btn-primary animate-swift-out" ng-class="{hidden: profileEdit}" ng-click="profileEdit = !profileEdit" ng-animate>
                                         <span class="hidden-xs">Edit</span>
                                         <span class="glyphicon glyphicon-cog"></span>
                                     </button>

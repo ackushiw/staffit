@@ -1,50 +1,52 @@
-<div class="panel panel-success col-sm-12">
+<div class="col-sm-offset-1 animate-swift-out" ng-class="{'col-md-offset-3': sidebarMenu}" ng-animate>
+    <div class="panel panel-success col-sm-12">
 
 
-    <div class="form-group">
-        <h1>Staff List</h1>
-        <input class="form-control hidden" type="search" ng-model="search" placeholder="Search list...">
-    </div>
-    <!-- Check in table -->
-    <div>
-        <ul class="list-group">
-            <li class="list-group-item" ng-repeat="event in eventStafflist track by $index | orderByPriority:reverse">
-                <b>{{event.eventName}}{{" Created: "}}{{event.created | date : fullDate }}</b>
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover">
+        <div class="form-group">
+            <h1>Staff List</h1>
+            <input class="form-control hidden" type="search" ng-model="search" placeholder="Search list...">
+        </div>
+        <!-- Check in table -->
+        <div>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="event in eventStafflist track by $index | orderByPriority:reverse">
+                    <b>{{event.eventName}}{{" Created: "}}{{event.created | date : fullDate }}</b>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
 
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Call Time</th>
-                        <th>Arrival Time</th>
-                        <th>Position</th>
-                        <th>Site In Time</th>
-                        <th>Merit?</th>
-                        <th>Notes</th>
-                        <th>Site Out Time</th>
-                        <th>Hours</th>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Call Time</th>
+                            <th>Arrival Time</th>
+                            <th>Position</th>
+                            <th>Site In Time</th>
+                            <th>Merit?</th>
+                            <th>Notes</th>
+                            <th>Site Out Time</th>
+                            <th>Hours</th>
 
-                        <tr class="checkIn" ng-repeat="staff in event.staffList track by $index | orderByPriority | filter:search:strict" staffArrived="checkIn(person)" ng-transclude>
-                            <td>{{staff.number}}
-                                <button class="btn btn-danger glyphicon glyphicon-repeat" ng-class="{hidden: !staff.arrived}" ng-click="checkIn(staff)"></button>
-                            </td>
-                            <td>{{staff.name}}</td>
-                            <td>{{staff.calltime}}</td>
-                            <td ng-class="{success: staff.arrived, danger: !staff.arrived}">
-                                <p ng-if="staff.arrived == false">No Show!</p>{{staff.arrivalTime | date: 'shortTime'}}</td>
-                            <td>{{staff.position}}</td>
-                            <td>{{staff.siteInTime | date: 'shortTime'}}</td>
-                            <td ng-class="{success: staff.merit == 1, danger: staff.merit == -1}">
-                                <p ng-if="staff.merit == 1">Merit</p>
-                                <p ng-if="staff.merit == -1">Demerit</p>
-                            </td>
-                            <td>{{staff.notes}}</td>
-                            <td ng-class="{danger: !staff.siteOut, success: staff.siteOut}">{{staff.siteOutTime | date: 'shortTime'}}</td>
-                            <td ng-class="{danger: !staff.siteOut, success: staff.siteOut}">{{staff.hours + 'h:' + staff.mins + 'mins'}}</td>
-                        </tr>
-                    </table>
-                </div>
-            </li>
-        </ul>
+                            <tr class="checkIn" ng-repeat="staff in event.staffList track by $index | orderByPriority | filter:search:strict" staffArrived="checkIn(person)" ng-transclude>
+                                <td>{{staff.number}}
+                                    <button class="btn btn-danger glyphicon glyphicon-repeat" ng-class="{hidden: !staff.arrived}" ng-click="checkIn(staff)"></button>
+                                </td>
+                                <td>{{staff.name}}</td>
+                                <td>{{staff.calltime}}</td>
+                                <td ng-class="{success: staff.arrived, danger: !staff.arrived}">
+                                    <p ng-if="staff.arrived == false">No Show!</p>{{staff.arrivalTime | date: 'shortTime'}}</td>
+                                <td>{{staff.position}}</td>
+                                <td>{{staff.siteInTime | date: 'shortTime'}}</td>
+                                <td ng-class="{success: staff.merit == 1, danger: staff.merit == -1}">
+                                    <p ng-if="staff.merit == 1">Merit</p>
+                                    <p ng-if="staff.merit == -1">Demerit</p>
+                                </td>
+                                <td>{{staff.notes}}</td>
+                                <td ng-class="{danger: !staff.siteOut, success: staff.siteOut}">{{staff.siteOutTime | date: 'shortTime'}}</td>
+                                <td ng-class="{danger: !staff.siteOut, success: staff.siteOut}">{{staff.hours + 'h:' + staff.mins + 'mins'}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>

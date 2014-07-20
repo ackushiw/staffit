@@ -2,29 +2,17 @@
 
 angular.module('staffitApp')
   .controller('NavCtrl', function($scope, simpleLogin, $timeout) {
-    $scope.sidebarMenu = false;
-    $scope.logoutHover = false;
+    /*$scope.sidebarMenu = false;
     $scope.gravatar = $scope.$session.user.md5_hash;
-
-    $scope.navLogoutColor = function(hover) {
-      if (!hover) {
-        $scope.logoutHover = true;
-      } else {
-        $scope.logoutHover = false;
-      }
-    };
-
-
-    $scope.sidebarToggle = function(sidebar) {
-      if (sidebar === false) {
+    $scope.deviceCheck = function(device) {
+      if (device === 'desktop' || device === 'desktop-large') {
+        console.log('device desktop: ' + device);
         $scope.sidebarMenu = true;
-      } else {
-        $scope.sidebarMenu = false;
       }
-    };
-    $scope.sidebarClose = function() {
-      $scope.sidebarMenu = false;
-    };
+    };*/
+
+
+
     $scope.logout = function() {
       simpleLogin.logout();
     };

@@ -1,36 +1,38 @@
-<div class="panel panel-primary col-sm-12">
-    <h1>CEE Paste Staff list</h1>
-    <div ng-form name="eventForm" role="form">
-        <div class="form-group">
-            <input class="form-control" name="id" type="text" ng-model="id" placeholder="Event ID">
-        </div>
-        <div class="form-group">
-            <input class="form-control" name="client" type="text" ng-model="client" placeholder="Client/ Caterer">
-        </div>
-        <div ng-form name="contactForm" class="form-group">
-            <div class="col-sm-6">
-                <input class="form-control" name="contact.name" type="text" ng-model="contact.name" placeholder="Contact Name">
+<div>
+    <div class="panel panel-primary col-sm-12">
+        <h1>CEE Paste Staff list</h1>
+        <div ng-form name="eventForm" role="form">
+            <div class="form-group">
+                <input class="form-control" name="id" type="text" ng-model="id" placeholder="Event ID">
             </div>
-            <div class="col-sm-6">
-                <input class="form-control" name="contact.cell" type="number" ng-model="contact.cell" placeholder="Contact Cell #">
+            <div class="form-group">
+                <input class="form-control" name="client" type="text" ng-model="client" placeholder="Client/ Caterer">
+            </div>
+            <div ng-form name="contactForm" class="form-group">
+                <div class="col-sm-6">
+                    <input class="form-control" name="contact.name" type="text" ng-model="contact.name" placeholder="Contact Name">
+                </div>
+                <div class="col-sm-6">
+                    <input class="form-control" name="contact.cell" type="number" ng-model="contact.cell" placeholder="Contact Cell #">
+                </div>
+                </br>
             </div>
             </br>
+            <div class="form-group">
+                <input class="form-control" name="address" type="address" ng-model="address" placeholder="Meet Address">
+                <input class="form-control" name="travelAddress" type="address" ng-model="travelAddress" placeholder="Travel Address">
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="uniform" type="text" ng-model="uniform" placeholder="Uniform">
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="staff quota" type="number" ng-model="staffQuota" placeholder="Staff Quota">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" name="createlist" id="" cols="30" rows="10" ng-model="pasteData.text" ng-list="/\n/" placeholder="Paste Staff list here..." required ng-paste="pasted = true"></textarea>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" ng-class="{disabled: pasted == false}" ng-href="#" ng-click="update(pasteData)">Form Test</button>
+            <br/>
         </div>
-        </br>
-        <div class="form-group">
-            <input class="form-control" name="address" type="address" ng-model="address" placeholder="Meet Address">
-            <input class="form-control" name="travelAddress" type="address" ng-model="travelAddress" placeholder="Travel Address">
-        </div>
-        <div class="form-group">
-            <input class="form-control" name="uniform" type="text" ng-model="uniform" placeholder="Uniform">
-        </div>
-        <div class="form-group">
-            <input class="form-control" name="staff quota" type="number" ng-model="staffQuota" placeholder="Staff Quota">
-        </div>
-        <div class="form-group">
-            <textarea class="form-control" name="createlist" id="" cols="30" rows="10" ng-model="pasteData.text" ng-list="/\n/" placeholder="Paste Staff list here..." required ng-paste="pasted = true"></textarea>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" ng-class="{disabled: pasted == false}" ng-href="#" ng-click="update(pasteData)">Form Test</button>
-        <br/>
     </div>
 </div>

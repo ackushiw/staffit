@@ -3,6 +3,8 @@
 angular.module('staffitApp')
   .controller('GlobalCtrl', function($scope, $rootScope, $firebaseSimpleLogin, syncData, usersFire, $window, $localStorage, $sessionStorage, $state) {
     $scope.GlobalCtrl = 'This is the GlobalCtrl';
+
+
     $scope.$session = $sessionStorage;
     $scope.$storage = $localStorage;
 
@@ -32,6 +34,10 @@ angular.module('staffitApp')
           return user;
         }
       });
+
+    $scope.pageTitle = {
+      nav: $scope.$session.userData.name
+    };
 
 
     $scope.$watch(function() { //bug scope doesn't change on window resize!            

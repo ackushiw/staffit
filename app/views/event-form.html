@@ -1,67 +1,69 @@
-<div class="panel panel-info col-sm-12">
-    <h1>Create Event
-        <button class="btn btn-info pull-right">Save As Template</button>
-    </h1>
-    <hr>
-    <form id="event-form">
-        <!-- removed attr: ng-submit="submitEvent()" -->
-        <span ng-init="eventForm.creator = $session.user.uid"></span>
-        <div class="form-group col-sm-6">
-            <input class="form-control" name="id" type="text" ng-model="eventForm.calendar.id" placeholder="Event ID">
-        </div>
-        <div class="form-group col-sm-6">
-            <input class="form-control" name="title" type="text" ng-model="eventForm.calendar.title" placeholder="Event Title">
-        </div>
-        <div class="form-group col-sm-12">
-            <input class="form-control" name="client" type="text" ng-model="eventForm.client" placeholder="Client">
-        </div>
-        <div class="form-group col-sm-12">
-            <input class="form-control" name="company" type="text" ng-model="eventForm.company" placeholder="Company">
-        </div>
-        <div class="panel warning">
-            <div class="col-sm-6">
-                <input class="form-control" name="contactName" type="text" ng-model="eventForm.adminOnly.contactName" placeholder="Contact Name">
+<div>
+    <div class="panel panel-info col-sm-12">
+        <h1>Create Event
+            <button class="btn btn-info pull-right">Save As Template</button>
+        </h1>
+        <hr>
+        <form id="event-form">
+            <!-- removed attr: ng-submit="submitEvent()" -->
+            <span ng-init="eventForm.creator = $session.user.uid"></span>
+            <div class="form-group col-sm-6">
+                <input class="form-control" name="id" type="text" ng-model="eventForm.calendar.id" placeholder="Event ID">
             </div>
-            <div class="col-sm-6">
-                <input class="form-control" name="contactCell" type="number" ng-model="eventForm.adminOnly.contactCell" placeholder="Contact Cell #">
+            <div class="form-group col-sm-6">
+                <input class="form-control" name="title" type="text" ng-model="eventForm.calendar.title" placeholder="Event Title">
             </div>
-        </div>
-        <div class="form-group col-sm-12">
-            <input class="form-control" name="address" type="address" ng-model="eventForm.address" placeholder="Meet Address">
-            <input class="form-control" name="travelAddress" type="address" ng-model="eventForm.travelAddress" placeholder="Travel Address">
-        </div>
-        <div class="form-group col-sm-12">
-            <input class="form-control" name="uniform" type="text" ng-model="eventForm.uniform" placeholder="Uniform">
-        </div>
-        <div class="form-group col-sm-12">
-            <div class="input-group">
-                <input class="form-control" name="staff quota" type="number" ng-model="eventForm.staffQuota" placeholder="Staff Quota">
-                <span class="input-group-addon alert" ng-class="{'alert-warning': staffArray.length < eventForm.staffQuota, 'alert-success': staffArray.length >= eventForm.staffQuota}">Number of Staff Added: <b>{{' ' + staffArray.length}}</b>
-                </span>
+            <div class="form-group col-sm-12">
+                <input class="form-control" name="client" type="text" ng-model="eventForm.client" placeholder="Client">
             </div>
-        </div>
-        <div class="col-sm-12">
-            <button class="btn btn-primary btn-block col-sm-12" ng-click="showStaffForm()" ng-if="staffCollapse">Add Staff</button>
-        </div>
-        <div collapse="staffCollapse" class="col-sm-12">
-            <form name="staffForm">
-                <input class="form-control" name="name" ng-model="staffForm.name" type="text" placeholder="Name">
-                <input class="form-control" name="position" ng-model="staffForm.position" type="text" placeholder="Position">
-                <input class="form-control" name="phone" ng-model="staffForm.cell" type="number" min="10" placeholder="Phone Number">
-                <input class="form-control" name="callTime" ng-model="staffForm.callTime" type="text" placeholder="Call Time">
-                <button class="btn btn-success btn-block" ng-click="addStaff(staffForm)">Submit Staff</button>
-            </form>
-        </div>
-        <div>
-            <ul ng-repeat="(id, staff) in eventForm.staffList">
-                <li>{{staff.name}}</li>
-            </ul>
-        </div>
-        <!-- <input type="submit" class="btn btn-primary btn-block" /> -->
-        <br/>
-        <div class="col-sm-12">
-            <button class="btn btn-primary btn-block col-sm-12" ng-click="submitEvent()">Create Event</button>
-        </div>
-    </form>
-    <hr>
+            <div class="form-group col-sm-12">
+                <input class="form-control" name="company" type="text" ng-model="eventForm.company" placeholder="Company">
+            </div>
+            <div class="panel warning">
+                <div class="col-sm-6">
+                    <input class="form-control" name="contactName" type="text" ng-model="eventForm.adminOnly.contactName" placeholder="Contact Name">
+                </div>
+                <div class="col-sm-6">
+                    <input class="form-control" name="contactCell" type="number" ng-model="eventForm.adminOnly.contactCell" placeholder="Contact Cell #">
+                </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <input class="form-control" name="address" type="address" ng-model="eventForm.address" placeholder="Meet Address">
+                <input class="form-control" name="travelAddress" type="address" ng-model="eventForm.travelAddress" placeholder="Travel Address">
+            </div>
+            <div class="form-group col-sm-12">
+                <input class="form-control" name="uniform" type="text" ng-model="eventForm.uniform" placeholder="Uniform">
+            </div>
+            <div class="form-group col-sm-12">
+                <div class="input-group">
+                    <input class="form-control" name="staff quota" type="number" ng-model="eventForm.staffQuota" placeholder="Staff Quota">
+                    <span class="input-group-addon alert animate-swift-out" ng-class="{'alert-warning': staffArray.length < eventForm.staffQuota, 'alert-success': staffArray.length >= eventForm.staffQuota}" ng-animate>Number of Staff Added: <b>{{' ' + staffArray.length}}</b>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <button class="btn btn-primary btn-block col-sm-12" ng-click="showStaffForm()" ng-if="staffCollapse">Add Staff</button>
+            </div>
+            <div collapse="staffCollapse" class="col-sm-12">
+                <form name="staffForm">
+                    <input class="form-control" name="name" ng-model="staffForm.name" type="text" placeholder="Name">
+                    <input class="form-control" name="position" ng-model="staffForm.position" type="text" placeholder="Position">
+                    <input class="form-control" name="phone" ng-model="staffForm.cell" type="number" min="10" placeholder="Phone Number">
+                    <input class="form-control" name="callTime" ng-model="staffForm.callTime" type="text" placeholder="Call Time">
+                    <button class="btn btn-success btn-block" ng-click="addStaff(staffForm)">Submit Staff</button>
+                </form>
+            </div>
+            <div>
+                <ul ng-repeat="(id, staff) in eventForm.staffList">
+                    <li>{{staff.name}}</li>
+                </ul>
+            </div>
+            <!-- <input type="submit" class="btn btn-primary btn-block" /> -->
+            <br/>
+            <div class="col-sm-12">
+                <button class="btn btn-primary btn-block col-sm-12" ng-click="submitEvent()">Create Event</button>
+            </div>
+        </form>
+        <hr>
+    </div>
 </div>

@@ -1,8 +1,40 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('AuthCtrl', function($scope) {
+  .controller('AuthCtrl', function($scope, $stateParams) {
     $scope.authview = 'this is the AuthCtrl';
+
+    console.log('$stateParams: ' + $stateParams.id + ' & ' + $stateParams.title);
+
+    //$scope.sidebarMenu = false;
+    $scope.gravatar = $scope.$session.user.md5_hash;
+    $scope.deviceCheck = function(device) {
+      if (device === 'desktop' || device === 'desktop-large') {
+        console.log('device desktop: ' + device);
+        $scope.sidebarMenu = true;
+        $scope.phone = false;
+        $scope.tablet = false;
+      } else if (device === 'phone') {
+        $scope.sidebarMenu = false;
+        $scope.phone = true;
+        $scope.tablet = false;
+      } else if (device === 'tabelt') {
+        $scope.sidebarMenu = false;
+        $scope.phone = false;
+        $scope.tablet = true;
+      }
+    };
+    $scope.sidebarToggle = function(sidebar) {
+      if (sidebar === false) {
+        $scope.sidebarMenu = true;
+      } else {
+        $scope.sidebarMenu = false;
+      }
+    };
+    $scope.sidebarClose = function() {
+      $scope.sidebarMenu = false;
+    };
+
 
     /*$scope.auth.$getCurrentUser()
       .then(function(user) {

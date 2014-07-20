@@ -1,26 +1,28 @@
-<div class="page-header">
-    <h1>Staff Profiles</h1>
-</div>
-<div class="well">
-    <input type="text" name="profileSearch" ng-model="search.name" class="form-control" placeholder="Search Profiles">
-    <div>
-        <p>Colume Number Select</p>
-        <div class="btn-group">
-            <label class="btn btn-primary" ng-model="profileCol" btn-radio="2">2</label>
-            <label class="btn btn-primary" ng-model="profileCol" btn-radio="3">3</label>
-            <label class="btn btn-primary" ng-model="profileCol" btn-radio="4">4</label>
-            <label class="btn btn-primary" ng-model="profileCol" btn-radio="6">6</label>
-            <label class="btn btn-primary" ng-model="profileCol" btn-radio="12">12</label>
+<div class="col-sm-offset-1 view-animate-with-sidemenu" ng-class="{'col-md-offset-3': sidebarMenu}" ng-animate>
+    <div class="page-header">
+        <h1>Staff Profiles</h1>
+    </div>
+    <div class="well">
+        <input type="text" name="profileSearch" ng-model="search.name" class="form-control" placeholder="Search Profiles">
+        <div>
+            <p>Colume Number Select</p>
+            <div class="btn-group">
+                <label class="btn btn-primary" ng-model="profileCol" btn-radio="2">2</label>
+                <label class="btn btn-primary" ng-model="profileCol" btn-radio="3">3</label>
+                <label class="btn btn-primary" ng-model="profileCol" btn-radio="4">4</label>
+                <label class="btn btn-primary" ng-model="profileCol" btn-radio="6">6</label>
+                <label class="btn btn-primary" ng-model="profileCol" btn-radio="12">12</label>
+            </div>
         </div>
     </div>
-</div>
-<div class="card well col-xs-{{profileCol}}" ng-repeat="(key, profile) in profiles | filter:search">
-    <a ui-sref="auth.profileslib.profile({id: key})">
-        <div>
-            <img class="img-responsive img-rounded" src="{{profile.headshot}}" alt="headshot">
-        </div>
-        <div>
-            <h3>{{profile.name}}</h3>
-        </div>
-    </a>
+    <div class="card well col-xs-{{profileCol}}" ng-repeat="(key, profile) in profiles | filter:search">
+        <a ui-sref="auth.profileslib.profile({id: key})">
+            <div>
+                <img class="img-responsive img-rounded" src="{{profile.headshot}}" alt="headshot">
+            </div>
+            <div>
+                <h3>{{profile.name}}</h3>
+            </div>
+        </a>
+    </div>
 </div>

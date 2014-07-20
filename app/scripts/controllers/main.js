@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('MainCtrl', function ($scope, $firebase, syncData, eventDatabase, usersFire, $timeout) {
+  .controller('MainCtrl', function($scope, $firebase, syncData, eventDatabase, usersFire, $timeout) {
     $scope.personRegex = /(^\d+)\.\s(\w+\s[\w\-]+)\s(\w+)?\s?(\w+)?\s?C\:\s(.*\s(?:AM|PM)).*P:\s(\d+-\d+-\d+)\s?(.*)?$/;
     $scope.pasteData = {};
     //$scope.eventList = {};
@@ -9,8 +9,8 @@ angular.module('staffitApp')
     $scope.eventStafflist = syncData(eventDatabase);
 
 
-    $scope.update = function (text) {
-      var people = text.text.map(function (p) {
+    $scope.update = function(text) {
+      var people = text.text.map(function(p) {
         var m = p.replace(/[-]+\s+/g, '').match($scope.personRegex);
         if (m) {
           return {
@@ -60,7 +60,7 @@ angular.module('staffitApp')
     };
 
     // This is the check in button to note arrival time
-    $scope.checkIn = function (staff) {
+    $scope.checkIn = function(staff) {
 
       if (staff.arrived === false) {
         //alert(staff.name + ' is checked in at ' + time );
@@ -84,11 +84,11 @@ angular.module('staffitApp')
       console.log(staff.name + ' checked in!');
     };
 
-    $scope.siteIn = function (staff) {
+    $scope.siteIn = function(staff) {
       var time = new Date();
-      staff.filter(function (p) {
+      staff.filter(function(p) {
         return p.arrived && !p.siteIn;
-      }).map(function (p) {
+      }).map(function(p) {
         p.siteIn = true;
         p.siteInTime = time;
         return p;
@@ -96,7 +96,7 @@ angular.module('staffitApp')
       $scope.eventStafflist.$save();
     };
     //This is the final check out button to sign staff out
-    $scope.siteOut = function (staff) {
+    $scope.siteOut = function(staff) {
       var outTime = new Date();
       //var outTimeSec = outTime.getTime();
       if (staff.siteIn) {
@@ -117,33 +117,17 @@ angular.module('staffitApp')
       $scope.eventStafflist.$save();
     };
     //These are the two merit buttons to note the performance of staff
-    $scope.merit = function (staff) {
+    $scope.merit = function(staff) {
       staff.merit = 1;
       $scope.eventStafflist.$save();
     };
-    $scope.deMerit = function (staff) {
+    $scope.deMerit = function(staff) {
       staff.merit = -1;
       $scope.eventStafflist.$save();
     };
 
-    //Create User in Firebase from simpleLogin auth and input model user.username
-    /*$scope.register = function(auth, user) {
-  var userX = auth.user;
-  var username = user.username;
-
-  //This works!!
-  $scope.userLibrary.$add({
-    userData: userX.thirdPartyUserData,
-    username: username,
-    name: userX.displayName,
-    $priority: userX.id
-  });
-};
-*/
-    //return AngularFire(ref, $scope, 'eventStafflist');
-
     //Real Time Clock
-    var tick = function () {
+    var tick = function() {
       $scope.time = new Date();
       var coeff = 1000 * 60 * 15;
       var date = new Date(); //or use any other date
