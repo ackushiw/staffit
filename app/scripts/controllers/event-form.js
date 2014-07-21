@@ -8,6 +8,21 @@ angular.module('staffitApp')
 
     //staffList Collapse
     $scope.staffCollapse = true;
+    $scope.pasteCollapsed = true;
+
+    //Calendar Inputs
+    $scope.minDate = new Date();
+    $scope.open = function($event) {
+      $event.preventDefault();
+      $event.stopPropagation();
+
+      $scope.opened = true;
+    };
+    $scope.dateOptions = {
+      formatYear: 'yy',
+      startingDay: 1
+    };
+
     $scope.showStaffForm = function() {
       if ($scope.staffCollapse) {
         $scope.staffCollapse = false;

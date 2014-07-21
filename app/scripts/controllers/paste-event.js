@@ -1,10 +1,6 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('PasteEventCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('PasteEventCtrl', function($scope) {
+    $scope.pasteEventCtrl = true;
   });

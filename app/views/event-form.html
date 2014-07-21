@@ -8,27 +8,55 @@
             <!-- removed attr: ng-submit="submitEvent()" -->
             <span ng-init="eventForm.creator = $session.user.uid"></span>
             <div class="form-group col-sm-6">
+                <input class="form-control" name="eventAdmin" type="text" ng-model="eventForm.eventAdmin" placeholder="Event Admin">
+            </div>
+            <div class="form-group col-sm-6">
+                <input class="form-control" name="staffAdmin" type="text" ng-model="eventForm.staffAdmin" placeholder="Staff Admin">
+            </div>
+            <div class="form-group col-sm-6">
                 <input class="form-control" name="id" type="text" ng-model="eventForm.calendar.id" placeholder="Event ID">
             </div>
             <div class="form-group col-sm-6">
                 <input class="form-control" name="title" type="text" ng-model="eventForm.calendar.title" placeholder="Event Title">
             </div>
+            <div class="col-md-12">
+
+                <p>{{eventForm.dateDay | date:'fullDate' }}</p>
+                <p class="input-group">
+                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="eventForm.dateDay" is-open="opened" min-date="minDate" show-weeks="true" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" placeholder="yyyy-mm-dd" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <p>Start Time: {{eventForm.dateTimeStart | date:'mediumTime'}}</p>
+                <timepicker ng-model="eventForm.dateTimeStart" ng-change="changed()" minute-step="15"></timepicker>
+            </div>
+            <div class="col-md-6">
+                <p>Finish Time: {{eventForm.dateTimeFinish | date:'mediumTime' }}</p>
+                <timepicker ng-model="eventForm.dateTimeFinish" ng-change="changed()" minute-step="15"></timepicker>
+            </div>
             <div class="form-group col-sm-12">
-                <input class="form-control" name="client" type="text" ng-model="eventForm.client" placeholder="Client">
+                <input class="form-control" name="client" type="text" ng-model="eventForm.adminOnly.client" placeholder="Client">
             </div>
             <div class="form-group col-sm-12">
                 <input class="form-control" name="company" type="text" ng-model="eventForm.company" placeholder="Company">
             </div>
             <div class="panel warning">
-                <div class="col-sm-6">
+                <div class="form-group col-sm-6">
                     <input class="form-control" name="contactName" type="text" ng-model="eventForm.adminOnly.contactName" placeholder="Contact Name">
                 </div>
-                <div class="col-sm-6">
+                <div class="form-group col-sm-6">
                     <input class="form-control" name="contactCell" type="number" ng-model="eventForm.adminOnly.contactCell" placeholder="Contact Cell #">
                 </div>
             </div>
             <div class="form-group col-sm-12">
                 <input class="form-control" name="address" type="address" ng-model="eventForm.address" placeholder="Meet Address">
+            </div>
+            <button class="btn btn-block btn-info">Travel?</button>
+            <div class="form-group col-sm-12">
                 <input class="form-control" name="travelAddress" type="address" ng-model="eventForm.travelAddress" placeholder="Travel Address">
             </div>
             <div class="form-group col-sm-12">
@@ -37,7 +65,7 @@
             <div class="form-group col-sm-12">
                 <div class="input-group">
                     <input class="form-control" name="staff quota" type="number" ng-model="eventForm.staffQuota" placeholder="Staff Quota">
-                    <span class="input-group-addon alert animate-swift-out" ng-class="{'alert-warning': staffArray.length < eventForm.staffQuota, 'alert-success': staffArray.length >= eventForm.staffQuota}" ng-animate>Number of Staff Added: <b>{{' ' + staffArray.length}}</b>
+                    <span class="input-group-addon alert animate-swift-out" ng-class="{'alert-warning': eventForm.staffList.length < eventForm.staffQuota, 'alert-success': eventForm.staffList.length >= eventForm.staffQuota}" ng-animate>Number of Staff Added: <b>{{' ' + eventForm.staffList.length}}</b>
                     </span>
                 </div>
             </div>
@@ -59,8 +87,8 @@
                 </ul>
             </div>
             <!-- <input type="submit" class="btn btn-primary btn-block" /> -->
-            <br/>
-            <div class="col-sm-12">
+            <div class="paste-event"></div>
+            <div class="form-group col-sm-12">
                 <button class="btn btn-primary btn-block col-sm-12" ng-click="submitEvent()">Create Event</button>
             </div>
         </form>

@@ -161,6 +161,28 @@ body {
     padding-bottom: 20px;
     font-family: $Roboto;
 }
+/*View Animations*/
+
+.sub-view-animate.ng-enter, .sub-view-animate.ng-leave {
+    -webkit-transition: all 500ms cubic-bezier(0.410, 0.000, 0.115, 1);
+    /* older webkit */
+    -webkit-transition: all 500ms cubic-bezier(0.410, 0.000, 0.115, 1.005);
+    -moz-transition: all 500ms cubic-bezier(0.410, 0.000, 0.115, 1.005);
+    -o-transition: all 500ms cubic-bezier(0.410, 0.000, 0.115, 1.005);
+    transition: all 500ms cubic-bezier(0.410, 0.000, 0.115, 1.005);
+    /* custom */
+}
+.sub-view-animate.ng-enter {
+    transform: translate(-100%, 0);
+}
+.sub-view-animate.ng-enter.ng-enter-active {
+    transform: translate(0);
+    opacity: 1;
+}
+.sub-view-animate.ng-leave.ng-leave-active {
+    transform: translate(0, 100%);
+    opacity: 0;
+}
 /*Profile Styling*/
 
 #profilecard {

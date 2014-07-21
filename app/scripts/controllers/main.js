@@ -52,11 +52,12 @@ angular.module('staffitApp')
           };
         }
       });
-      $scope.eventStafflist.$add({
-        created: new Date(),
-        eventName: $scope.eventName,
-        staffList: people
-      });
+      //$scope.eventStafflist.$add({
+      //created: new Date(),
+      //eventName: $scope.eventName,
+      $scope.eventForm.staffList = people;
+      $scope.pasteCollasped = true;
+      //});
     };
 
     // This is the check in button to note arrival time
