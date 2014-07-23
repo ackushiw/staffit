@@ -43,6 +43,29 @@ angular.module('staffitApp')
     $scope.$watch(function() { //bug scope doesn't change on window resize!            
       return $window.innerWidth;
     }, function(value) {
+      $scope.deviceTest = function(value) {
+        this.screenWidth = value;
+        if (value < 768) {
+          console.log('phone width is ' + value);
+          this.device = 'phone';
+
+        } else if (value >= 768 && value < 992) {
+          console.log('tablet widthis ' + value);
+          this.device = 'tablet';
+
+        } else if (value >= 992 && value < 1200) {
+          console.log('desktop width is ' + value);
+          this.device = 'desktop';
+
+        } else if (value >= 1200) {
+          console.log('desktop-large width is ' + value);
+          this.device = 'desktop-large';
+
+        } else {
+          this.device = 'phone';
+
+        }
+      };
       var device = 'phone';
       if (value < 768) {
         console.log('phone width is ' + value);
