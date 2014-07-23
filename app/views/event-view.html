@@ -9,7 +9,9 @@
         <p>I want a only one staff details by user</p>
     </div>
     <div class="card">
+        <event-map></event-map>
         <section id="map" ng-controller="MapCtrl">
+            <span ng-init="mapInit(eventView.address.addresLatLang.k)"></span>
             <div ui-map="eventMap" ui-options="mapOptions" class="map-canvas well"></div>
         </section>
     </div>

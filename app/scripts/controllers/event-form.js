@@ -4,7 +4,28 @@ angular.module('staffitApp')
   .controller('EventFormCtrl', function($scope, syncData, eventDatabase, Event, $sessionStorage) {
     $scope.$session = $sessionStorage;
     $scope.eventLibrary = syncData(eventDatabase);
-    //$scope.formCreator = $scope.$session.user;
+
+    var geocoder;
+
+    $scope.geocoderInit = function() {
+      console.log('google maps geocoder initialized');
+      geocoder = new google.maps.Geocoder();
+    }
+
+    $scope.codeAddress = function(address) {
+      geocoder.geocode({
+        'address': address
+      }, function(results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+          console.log(results);
+          $scope.eventForm.addressLatLang = results[0].geometry.location;
+        } else {
+          console.log(status);
+        }
+      });
+    };
+
+
 
     //staffList Collapse
     $scope.staffCollapse = true;
