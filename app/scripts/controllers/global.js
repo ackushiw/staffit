@@ -35,16 +35,22 @@ angular.module('staffitApp')
         }
       });
 
-    $scope.pageTitle = {
-      nav: $scope.$session.userData.name
-    };
+    $scope.windowTest = '';
+
+    /*$scope.pageTitle = {
+  nav: $scope.$session.userData.name
+};
+*/
 
 
-    $scope.$watch(function() { //bug scope doesn't change on window resize!            
+    $scope.$watch(function() { //bug scope doesn't change on window resize!  
+      angular.copy($scope.windowTest, $window.innerWidth);
       return $window.innerWidth;
     }, function(value) {
-      $scope.deviceTest = function(value) {
-        this.screenWidth = value;
+
+
+      angular.bind($scope.deviceTest, function(value) {
+
         if (value < 768) {
           console.log('phone width is ' + value);
           this.device = 'phone';
@@ -65,7 +71,8 @@ angular.module('staffitApp')
           this.device = 'phone';
 
         }
-      };
+        return this;
+      });
       var device = 'phone';
       if (value < 768) {
         console.log('phone width is ' + value);
