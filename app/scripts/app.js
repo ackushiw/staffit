@@ -15,6 +15,7 @@ var staffApp = angular
     'ngStorage',
     'ui.router',
     'ui.bootstrap',
+    'ui.bootstrap.datetimepicker',
     'ui.utils',
     'ui.calendar',
     'ui.map',
