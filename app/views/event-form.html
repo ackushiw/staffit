@@ -64,7 +64,7 @@
             <div class="col-xs-6">
                 <p>{{eventForm.calendar.start | date:'fullDate' }}</p>
                 <p>Start Time: {{eventForm.calendar.start | date:'mediumTime'}}</p>
-                <timepicker ng-model="eventForm.calendar.start" ng-change="changed()" minute-step="15"></timepicker>
+                <timepicker ng-model="eventForm.calendar.start" ng-change="changed()" minute-step="15" ng-disabled="!eventForm.calendar.start"></timepicker>
             </div>
             <div class="col-xs-6">
                 <p>{{eventForm.calendar.end | date:'fullDate' }}</p>
