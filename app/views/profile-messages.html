@@ -7,12 +7,12 @@
         <div class="messageCont ConnectionsView paper-shadow-z-1 paper-shadow-top-z-1 animate-swift-out" ng-mouseenter="focusContacts()" ng-class="{'col-xs-6': !messageFocusToggle, 'col-xs-2': messageFocusToggle}" ng-animate>
             <p>This is the Connections view.</p>
         </div>
-        <div ng-if="messagePane" class="message-type-bottom row paper-shadow-z-3 paper-shadow-top-z-3">
-            <div class="col-xs-6">
+        <div class="message-type-bottom row paper-shadow-z-3 paper-shadow-top-z-3">
+            <div class="animate-swift-out" ng-class="{'col-xs-6': !messageFocusToggle, 'col-xs-10': messageFocusToggle}" ng-animate>
                 <button class="btn btn-block">Send</button>
                 <textarea class="form-control" ng-focus="focusMessages()"></textarea>
             </div>
-            <div class="col-xs-6">
+            <div class="animate-swift-out" ng-class="{'col-xs-6': !messageFocusToggle, 'col-xs-2': messageFocusToggle}" ng-mouseenter="focusContacts()" ng-animate>
 
                 <input class="form-control" type="text" ng-model="messageSearch" placeholder="Search messages and contacts" ng-focus="focusContacts()">
                 <button class="btn btn-primary" ng-click="toggleMessages(messageFocusToggle)">toggle{{messageFocusToggle}}</button>
