@@ -9,7 +9,7 @@ angular.module('staffitApp')
     $scope.eventStafflist = syncData(eventDatabase);
 
 
-    $scope.update = function(text) {
+    $scope.pasteUpdate = function(text) {
       var people = text.text.map(function(p) {
         var m = p.replace(/[-]+\s+/g, '').match($scope.personRegex);
         if (m) {

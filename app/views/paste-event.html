@@ -6,7 +6,7 @@
                 <div class="form-group">
                     <textarea class="form-control" name="createlist" id="" cols="30" rows="10" ng-model="pasteData.text" ng-list="/\n/" placeholder="Paste a CEE staff list here to create staff manager" required ng-paste="pasted = true"></textarea>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" ng-class="{disabled: pasted == false}" ng-href="#" ng-click="update(pasteData)">Form Test</button>
+                <button class="btn btn-lg btn-primary btn-block" ng-class="{disabled: pasted == false}" ng-href="#" ng-click="pasteUpdate(pasteData)">Form Test</button>
                 <br/>
             </div>
         </div>

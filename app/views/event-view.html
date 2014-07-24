@@ -6,13 +6,29 @@
         <p>{{'Client: '+ eventView.client}}</p>
         <p>{{'Creator: ' + eventView.creator}}</p>
         <p>{{'Uniform: ' + eventView.uniform}}</p>
+        <p>{{eventView.addressLatLang.B}}</p>
         <p>I want a only one staff details by user</p>
     </div>
-    <div class="card">
-        <event-map></event-map>
+    <div class="card" ng-if="eventView.addressLatLang.k">
         <section id="map" ng-controller="MapCtrl">
-            <span ng-init="mapInit(eventView.address.addresLatLang.k)"></span>
-            <div ui-map="eventMap" ui-options="mapOptions" class="map-canvas well"></div>
+            <div ng-repeat="marker in eventMarkers" ui-map-marker="eventMarkers[$index]" ui-event="{'map-click': 'openMarkerInfo(marker)'}">
+            </div>
+
+            <div ui-map-info-window="eventMapInfoWindow">
+                <h1>{{title}}</h1>
+                Lat:
+                <input ng-model="currentMarkerLat">, Lng:
+                <input ng-model="currentMarkerLng">
+                <a ng-click="setMarkerPosition(currentMarker, currentMarkerLat, currentMarkerLng)">Set Position</a>
+            </div>
+
+
+            <div id="map_canvas" ui-map="eventMap" ui-options="mapOptions" ui-event="{'map-click': 'addMarker($event, $params)'}" class="map-canvas well">
+
+            </div>
+            <span ng-init="markerInit(eventMap)"></span>
+            <button class="btn" ng-click="transitLayerBtn(transitLayerToggle, eventMap)">Transit</button>
+            <button class="btn" ng-click="trafficLayerBtn(trafficLayerToggle, eventMap)">Traffic</button>
         </section>
     </div>
     <div ng-controller="EventControlCtrl">
