@@ -1,10 +1,16 @@
 <div>
     <div class="panel info">
-        <ul ng-repeat="(id, event) in eventLibrary">
-            <li>{{'Event: ' + event.id + ' - Client: ' + event.client}}{{id}}
-                <button ng-click="removeEvent(id)">Remove</button>
-                <button ui-sref="auth.event-view({eventId: id})">Go!</button>
-            </li>
-        </ul>
+        <div ng-repeat="(id, event) in eventLibrary">
+
+            <div class="well">
+                <p>{{'Event: ' + event.calendar.id}}</p>
+                <p>{{'Client: ' + event.client}}</p>
+                <p>{{'Address: ' + event.address}}</p>
+                <p>{{'Uniform: ' + event.uniform}}</p>
+                <button class="btn btn-danger" ng-click="removeEvent(id)">Remove</button>
+                <button class="btn btn-primary" ui-sref="auth.event-view({eventId: id})">Go!</button>
+            </div>
+
+        </div>
     </div>
 </div>

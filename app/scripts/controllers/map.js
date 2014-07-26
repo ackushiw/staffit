@@ -14,9 +14,16 @@ angular.module('staffitApp')
 
     $scope.MapCtrl = true;
 
-    var lng = $scope.eventView.addressLatLang.B;
-    var lat = $scope.eventView.addressLatLang.k;
+    //Staff Meet Location
+    var lng = $scope.eventView.addressLatLng.B;
+    var lat = $scope.eventView.addressLatLng.k;
     var mapsLatLng = new google.maps.LatLng(lat, lng);
+
+    //Map Bounds
+    var bounds = new google.maps.LatLngBounds();
+    
+
+    //Map Layers
     var transitLayer = new google.maps.TransitLayer();
     var trafficLayer = new google.maps.TrafficLayer();
 
@@ -41,6 +48,25 @@ angular.module('staffitApp')
 
       }));
     };
+    $scope.travelMarkerInit = function(map) {
+      var tlng = $scope.eventView.travelAddressLatLng.B;
+      var tlat = $scope.eventView.travelAddressLatLng.k;
+      console.log(tlat);
+
+      var travelLatLng = new google.maps.LatLng(tlat, tlng);
+      console.log(travelLatLng);
+      $scope.eventMarkers.push(new google.maps.Marker({
+        map: map,
+        position: travelLatLng,
+        title: 'Travel Address'
+      }));
+
+      bounds.extend(mapsLatLng);
+      bounds.extend(travelLatLng);
+      map.fitBounds(bounds);
+    };
+
+
     $scope.transitLayerBtn = function(toggle, map) {
       if (!toggle) {
         $scope.transitLayerToggle = true;
@@ -58,7 +84,7 @@ angular.module('staffitApp')
         $scope.trafficLayerToggle = false;
         trafficLayer.setMap(null);
       }
-    }
+    };
 
 
 

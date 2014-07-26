@@ -2,8 +2,10 @@
 
 function onGoogleReady() {
   console.log('google maps loaded!');
+
   //angular.bootstrap(document.getElementById("map"), ['staffitApp']);
 }
+console.log(onGoogleReady());
 
 
 

@@ -23,5 +23,5 @@ angular.module('staffitApp')
     };
     $scope.focusMessages = function() {
       $scope.messageFocusToggle = true;
-    }
+    };
   });

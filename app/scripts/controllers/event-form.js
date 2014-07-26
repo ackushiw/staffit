@@ -1,16 +1,16 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('EventFormCtrl', function($scope, syncData, eventDatabase, Event, $sessionStorage) {
+  .controller('EventFormCtrl', function($scope, Event, $sessionStorage) {
     $scope.$session = $sessionStorage;
-    $scope.eventLibrary = syncData(eventDatabase);
+    console.log($scope.$session.user.uid);
 
     var geocoder;
 
     $scope.geocoderInit = function() {
       console.log('google maps geocoder initialized');
       geocoder = new google.maps.Geocoder();
-    }
+    };
 
     $scope.codeAddress = function(address) {
       geocoder.geocode({
@@ -18,18 +18,56 @@ angular.module('staffitApp')
       }, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
           console.log(results);
-          $scope.eventForm.addressLatLang = results[0].geometry.location;
+          $scope.eventForm.addressLatLng = results[0].geometry.location;
         } else {
           console.log(status);
         }
       });
     };
 
+    $scope.codeTravelAddress = function(address) {
+      geocoder.geocode({
+        'address': address
+      }, function(results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+          console.log(results);
+          $scope.eventForm.travelAddressLatLng = results[0].geometry.location;
+        } else {
+          console.log(status);
+        }
+      });
+    };
 
+    //colorCollapse
+    $scope.colorCollapse = true;
+    $scope.toggleColorForm = function() {
+      if ($scope.colorCollapse) {
+        $scope.colorCollapse = false;
+      } else {
+        $scope.colorCollapse = true;
+      }
+    };
+
+    //travelCollapse
+    $scope.travelCollapse = true;
+    $scope.toggleTravelForm = function() {
+      if ($scope.travelCollapse) {
+        $scope.travelCollapse = false;
+      } else {
+        $scope.travelCollapse = true;
+      }
+    };
 
     //staffList Collapse
     $scope.staffCollapse = true;
     $scope.pasteCollapsed = true;
+    $scope.showStaffForm = function() {
+      if ($scope.staffCollapse) {
+        $scope.staffCollapse = false;
+      } else {
+        $scope.staffCollapse = true;
+      }
+    };
 
     //Calendar Inputs
     $scope.minDate = new Date();
@@ -44,19 +82,17 @@ angular.module('staffitApp')
       startingDay: 1
     };
 
-    $scope.showStaffForm = function() {
-      if ($scope.staffCollapse) {
-        $scope.staffCollapse = false;
-      } else {
-        $scope.staffCollapse = true;
-      }
-    };
+    
     $scope.staffArray = [];
 
     $scope.emptyEvent = {
       creator: $scope.$session.user.uid,
       eventAdmin: [],
+      eventAdminInvite: [],
       staffAdmin: [],
+      staffAdminInvite: [],
+      users: [],
+      usersInvite: [],
       calendar: {
         id: '',
         title: '', //required
@@ -81,9 +117,9 @@ angular.module('staffitApp')
       },
       company: '',
       address: '',
-      addressLatLang: '',
+      addressLatLng: '',
       travelAddress: '',
-      travelAddressLatLang: '',
+      travelAddressLatLng: '',
       driver: {
         name: '',
         cell: '',
@@ -94,7 +130,7 @@ angular.module('staffitApp')
         parking: '',
         extras: '',
         rentalPickupAddress: '',
-        rentalAddressLatLang: '',
+        rentalAddressLatLng: '',
 
       },
       uniform: {
@@ -114,7 +150,7 @@ angular.module('staffitApp')
     $scope.emptyStaff = {
       name: '',
       position: '',
-      locationLatLang: false,
+      locationLatLng: false,
       phone: '',
       email: '',
       invited: '',
@@ -157,9 +193,12 @@ angular.module('staffitApp')
     };
 
     $scope.submitEvent = function() {
+      $scope.eventForm.creator = $scope.$session.user.uid;
       Event.create($scope.eventForm);
       console.log('Form Submitted');
       $scope.eventForm = $scope.emptyEvent;
       $scope.staffForm = $scope.emptyStaff;
+      $scope.staffArray = [];
+      $scope.pasteData = {};
     };
   });

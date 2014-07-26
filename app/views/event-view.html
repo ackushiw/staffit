@@ -7,10 +7,11 @@
             <p>{{'Client: '+ eventView.client}}</p>
             <p>{{'Creator: ' + eventView.creator}}</p>
             <p>{{'Uniform: ' + eventView.uniform}}</p>
-            <p>{{eventView.addressLatLang.B}}</p>
+            <p>EventLATLNG: {{eventView.addressLatLng |json}}</p>
+            <p>TravelLATLNG: {{eventView.travelAddressLatLng | json}}</p>
             <p>I want a only one staff details by user</p>
         </div>
-        <div class="card" ng-if="eventView.addressLatLang.k">
+        <div class="card" ng-if="eventView.addressLatLng.k">
             <section id="map" ng-controller="MapCtrl">
                 <div ng-repeat="marker in eventMarkers" ui-map-marker="eventMarkers[$index]" ui-event="{'map-click': 'openMarkerInfo(marker)'}">
                 </div>
@@ -28,6 +29,7 @@
 
                 </div>
                 <span ng-init="markerInit(eventMap)"></span>
+                <span ng-if="eventView.travelAddressLatLng" ng-init="travelMarkerInit(eventMap)"></span>
                 <button class="btn" ng-click="transitLayerBtn(transitLayerToggle, eventMap)">Transit</button>
                 <button class="btn" ng-click="trafficLayerBtn(trafficLayerToggle, eventMap)">Traffic</button>
             </section>
