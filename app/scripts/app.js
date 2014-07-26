@@ -18,6 +18,7 @@ var staffApp = angular
     'ui.router',
     'ui.bootstrap',
     'ui.bootstrap.datetimepicker',
+    'colorpicker.module',
     'ui.utils',
     'ui.calendar',
     'ui.map',
