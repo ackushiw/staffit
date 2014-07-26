@@ -160,6 +160,17 @@ nav {
 }
 /*Event Form*/
 
+.form-container {
+    display: inline-block;
+}
+form {
+    display: inline-block;
+    .color-picker {
+        button {
+            text-shadow: 0 0 #FFF;
+        }
+    }
+}
 #event-form {
     .alert {
         padding: 0 10px;

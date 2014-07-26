@@ -82,6 +82,10 @@ angular.module('staffitApp')
       formatYear: 'yy',
       startingDay: 1
     };
+    $scope.eventColorSet = function(color) {
+      $scope.eventForm.calendar.backgroundColor = color;
+      $scope.eventForm.calendar.borderColor = color;
+    }
 
     //call time
     $scope.callTimeEmit = function() {
