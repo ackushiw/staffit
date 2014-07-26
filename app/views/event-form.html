@@ -124,6 +124,13 @@
                 <input class="form-control" name="travelAddress" type="address" ng-model="eventForm.travelAddress" placeholder="Travel Address" ng-blur="codeTravelAddress(eventForm.travelAddress)">
                 <textarea name="address notes" id="" class="form-control" ng-model="eventForm.travelAddressNotes" rows="4" placeholder="Notes for Travel Address..."></textarea>
             </div>
+            <div ng-if="eventForm.travelAddress" class="col-xs-12">
+                <button class="btn btn-block btn-primary" ng-click="toggleDriverForm()">Driver</button>
+            </div>
+            <div ng-if="eventForm.travelAddress" collapse="driverCollapse" class="form-group col-sm-12">
+                <input class="form-control" name="driver-name" type="address" ng-model="eventForm.driver.name" placeholder="Driver">
+                <textarea name="address notes" id="" class="form-control" ng-model="eventForm.driver.rentalDetails" rows="4" placeholder="Notes for Driver..."></textarea>
+            </div>
             <div class="form-group col-sm-12">
                 <input class="form-control" name="uniform" type="text" ng-model="eventForm.uniform" placeholder="Uniform">
             </div>
@@ -134,8 +141,19 @@
                     </span>
                 </div>
             </div>
+            <div class="col-xs-6">
+
+
+                <span class="col-xs-4">Call Time:</span>
+                <timepicker class="col-xs-8" ng-model="eventForm.callTime" ng-change="changed()" minute-step="5" ng-disabled="!eventForm.calendar.start"></timepicker>
+
+            </div>
+            <div class="col-xs-6">
+                <button class="btn btn-block" ng-click="callTimeEmit()">call time test</button>
+                <p>Call Time: {{eventForm.callTime | date:'mediumTime'}}</p>
+            </div>
             <div class="col-sm-12">
-                <button class="btn btn-primary btn-block col-sm-12" ng-click="showStaffForm()">Add Staff</button>
+                <button class="btn btn-primary btn-block col-sm-12" ng-click="showStaffForm(eventForm.callTime)">Add Staff</button>
             </div>
             <div collapse="staffCollapse" class="col-sm-12">
                 <form name="staffForm">

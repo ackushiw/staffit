@@ -37,11 +37,6 @@ angular.module('staffitApp')
 
     $scope.windowTest = '';
 
-    /*$scope.pageTitle = {
-  nav: $scope.$session.userData.name
-};
-*/
-
 
     $scope.$watch(function() { //bug scope doesn't change on window resize!  
       angular.copy($scope.windowTest, $window.innerWidth);

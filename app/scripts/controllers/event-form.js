@@ -38,13 +38,13 @@ angular.module('staffitApp')
       });
     };
 
-    //colorCollapse
-    $scope.colorCollapse = true;
-    $scope.toggleColorForm = function() {
-      if ($scope.colorCollapse) {
-        $scope.colorCollapse = false;
+    //driverCollapse
+    $scope.driverCollapse = true;
+    $scope.toggleDriverForm = function() {
+      if ($scope.driverCollapse) {
+        $scope.driverCollapse = false;
       } else {
-        $scope.colorCollapse = true;
+        $scope.driverCollapse = true;
       }
     };
 
@@ -61,9 +61,10 @@ angular.module('staffitApp')
     //staffList Collapse
     $scope.staffCollapse = true;
     $scope.pasteCollapsed = true;
-    $scope.showStaffForm = function() {
+    $scope.showStaffForm = function(callTime) {
       if ($scope.staffCollapse) {
         $scope.staffCollapse = false;
+        $scope.staffForm.callTime = callTime;
       } else {
         $scope.staffCollapse = true;
       }
@@ -82,7 +83,12 @@ angular.module('staffitApp')
       startingDay: 1
     };
 
-    
+    //call time
+    $scope.callTimeEmit = function() {
+      $scope.eventForm.callTime = $scope.eventForm.calendar.start;
+    };
+
+
     $scope.staffArray = [];
 
     $scope.emptyEvent = {
@@ -130,8 +136,7 @@ angular.module('staffitApp')
         parking: '',
         extras: '',
         rentalPickupAddress: '',
-        rentalAddressLatLng: '',
-
+        rentalAddressLatLng: ''
       },
       uniform: {
         all: '',
@@ -148,6 +153,25 @@ angular.module('staffitApp')
 
 
     $scope.emptyStaff = {
+      name: '',
+      position: '',
+      locationLatLng: false,
+      phone: '',
+      email: '',
+      invited: '',
+      confirmed: false,
+      callTime: '',
+      arrived: false,
+      arrivalTime: '',
+      siteIn: false,
+      siteInTime: '',
+      siteOut: false,
+      siteOutTime: '',
+      hours: '',
+      notes: '',
+      merit: ''
+    };
+    $scope.staffForm = {
       name: '',
       position: '',
       locationLatLng: false,
