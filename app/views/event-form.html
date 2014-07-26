@@ -24,7 +24,7 @@
                 <textarea class="form-control" name="admin-notes" type="text" ng-model="eventForm.adminNotes" placeholder="Notes for Admins"></textarea>
             </div>
             <div class="form-group col-sm-6">
-                <textarea class="form-control" name="event-notes" type="text" ng-model="eventForm.eventNotes" placeholder="Notes for Event"></textarea> 
+                <textarea class="form-control" name="event-notes" type="text" ng-model="eventForm.eventNotes" placeholder="Notes for Event"></textarea>
             </div>
             <!-- <div class="col-md-12">
             
@@ -78,12 +78,27 @@
                 <p>End Time: {{eventForm.calendar.end | date:'mediumTime' }}</p>
                 <timepicker ng-model="eventForm.calendar.end" ng-change="changed()" minute-step="5"></timepicker>
             </div>
-            <div class="col-xs-12">
-                <button class="btn btn-block" ng-click="toggleColorForm()">Choose Colors</button>
+            <!-- <div class="col-xs-12">
+                <button class="btn btn-block btn-primary" ng-click="toggleColorForm()">Choose Colors</button>
             </div>
-            <div collapse="colorCollapse" class="form-group col-sm-12">
-                <p>Test Color Collapse</p>
+            <div collapse="colorCollapse" class="form-group col-sm-12"> -->
+            <div class="col-xs-3">
+                <button class="btn btn-block" ng-style="{'background-color': eventForm.calendar.color}" colorpicker type="text" ng-model="eventForm.calendar.color"><b>Event Color</b>
+                </button>
             </div>
+            <div class="col-xs-3">
+                <button class="btn btn-block" ng-style="{'background-color': eventForm.calendar.backgroundColor}" colorpicker type="text" ng-model="eventForm.calendar.backgroundColor"><b>Background Color</b>
+                </button>
+            </div>
+            <div class="col-xs-3">
+                <button class="btn btn-block" ng-style="{'background-color': eventForm.calendar.borderColor}" colorpicker type="text" ng-model="eventForm.calendar.borderColor"><b>Border Color</b>
+                </button>
+            </div>
+            <div class="col-xs-3">
+                <button class="btn btn-block" ng-style="{'background-color': eventForm.calendar.textColor}" colorpicker type="text" ng-model="eventForm.calendar.textColor"><b>Text Color</b>
+                </button>
+            </div>
+            <!-- </div> -->
             <div class="form-group col-sm-12">
                 <input class="form-control" name="client" type="text" ng-model="eventForm.adminOnly.client" placeholder="Client">
             </div>
@@ -120,7 +135,7 @@
                 </div>
             </div>
             <div class="col-sm-12">
-                <button class="btn btn-primary btn-block col-sm-12" ng-click="showStaffForm()" >Add Staff</button>
+                <button class="btn btn-primary btn-block col-sm-12" ng-click="showStaffForm()">Add Staff</button>
             </div>
             <div collapse="staffCollapse" class="col-sm-12">
                 <form name="staffForm">
