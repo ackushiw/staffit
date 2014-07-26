@@ -220,13 +220,17 @@ angular.module('staffitApp')
       $scope.staffCollapse = true;
     };
 
-    $scope.submitEvent = function() {
-      $scope.eventForm.creator = $scope.$session.user.uid;
-      Event.create($scope.eventForm);
-      console.log('Form Submitted');
-      $scope.eventForm = $scope.emptyEvent;
-      $scope.staffForm = $scope.emptyStaff;
-      $scope.staffArray = [];
-      $scope.pasteData = {};
+    $scope.submitEvent = function(formIsValid) {
+      if (formIsValid) {
+        $scope.eventForm.creator = $scope.$session.user.uid;
+        Event.create($scope.eventForm);
+        console.log('Form Submitted');
+        $scope.eventForm = $scope.emptyEvent;
+        $scope.staffForm = $scope.emptyStaff;
+        $scope.staffArray = [];
+        $scope.pasteData = {};
+      } else {
+        console.log('not valid');
+      }
     };
   });
