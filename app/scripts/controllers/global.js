@@ -1,9 +1,8 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('GlobalCtrl', function($scope, $rootScope, $firebaseSimpleLogin, syncData, usersFire, $window, $localStorage, $sessionStorage, $state) {
+  .controller('GlobalCtrl', function($scope, $rootScope, $firebase, FBURL, $firebaseSimpleLogin, syncData, usersFire, $window, $localStorage, $sessionStorage, $state) {
     $scope.GlobalCtrl = 'This is the GlobalCtrl';
-
 
     $scope.$session = $sessionStorage;
     $scope.$storage = $localStorage;
@@ -12,7 +11,10 @@ angular.module('staffitApp')
       console.log('User ' + user.uid + ' successfully logged in!');
       $scope.$session.userState = true;
       $scope.$session.user = user;
-      $scope.$session.userData = syncData(usersFire + '/' + user.uid);
+      var fireRef = new Firebase(FBURL + '/' + usersFire + '/' + user.uid);
+      var sync = $firebase(fireRef);
+
+      $scope.$session.userData = sync.$asObject();
     });
     $rootScope.$on('$firebaseSimpleLogin:logout', function() {
       console.log('User logged out!');
@@ -30,7 +32,9 @@ angular.module('staffitApp')
           console.log('get current user is: ' + user.uid);
           $scope.$session.userState = true;
           $scope.$session.user = user;
-          $scope.$session.userData = syncData(usersFire + '/' + user.uid);
+          var fireRef = new Firebase(FBURL + '/' + usersFire + '/' + user.uid);
+          var sync = $firebase(fireRef);
+          $scope.$session.userData = sync.$asObject();;
           return user;
         }
       });

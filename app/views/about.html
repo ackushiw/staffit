@@ -9,7 +9,8 @@
         <!-- Check in table -->
         <div>
             <ul class="list-group">
-                <li class="list-group-item" ng-repeat="event in eventStafflist track by $index | orderByPriority:reverse">
+                <li class="list-group-item" ng-repeat="event in eventStafflist">
+                    <!-- <li class="list-group-item" ng-repeat="event in eventStafflist track by $index | orderByPriority:reverse"> -->
                     <b>{{event.eventName}}{{" Created: "}}{{event.created | date : fullDate }}</b>
                     <div class="table-responsive">
                         <table class="table table-striped table-hover">
@@ -25,7 +26,7 @@
                             <th>Site Out Time</th>
                             <th>Hours</th>
 
-                            <tr class="checkIn" ng-repeat="staff in event.staffList track by $index | orderByPriority | filter:search:strict" staffArrived="checkIn(person)" ng-transclude>
+                            <tr class="checkIn" ng-repeat="staff in event.staffList" staffArrived="checkIn(person)" ng-transclude>
                                 <td>{{staff.number}}
                                     <button class="btn btn-danger glyphicon glyphicon-repeat" ng-class="{hidden: !staff.arrived}" ng-click="checkIn(staff)"></button>
                                 </td>

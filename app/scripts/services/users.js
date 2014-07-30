@@ -1,42 +1,23 @@
 'use strict';
 
 angular.module('staffitApp')
-  .factory('User', function ($firebaseSimpleLogin, FBURL, syncData, simpleLogin, users, $scope) {
+  .factory('User', function($firebase, FBURL, usersFire) {
     // Service logic
-    //firebase ref
-    var ref = new Firebase(FBURL);
-    var authClient = $firebaseSimpleLogin(ref, function (error, user) {
-      if (error) {
-        console.log(error);
-        return;
-      }
-      if (user) {
-        console.log(user + ' is logged in.');
-        $scope.authClient = authClient;
-      } else {
-        console.log('user is logged out.');
-      }
-    });
+    var ref = new Firebase(FBURL + '/' + usersFire);
 
-
-
-    var userLibrary = syncData(users);
+    var events = $firebase(ref);
 
     var User = {
-      create: function (auth, user) {
-        //auth reff
-        var userX = auth.user;
-        console.log(userX);
-        //input model ref
-        var username = user.username;
-
-        userLibrary[username] = {
-          userData: userX.thirdPartyUserData,
-          username: username,
-          name: userX.displayName,
-          $priority: userX.id
-        };
-        userLibrary.$save(username);
+      all: events,
+      create: function(userForm) {
+        return events.$add(userForm);
+      },
+      find: function(userId) {
+        console.log(userId);
+        return events.$child(userId);
+      },
+      delete: function(userId) {
+        return events.$remove(userId);
       }
     };
 

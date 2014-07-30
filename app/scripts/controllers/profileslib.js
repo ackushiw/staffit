@@ -8,8 +8,10 @@
  * Controller of the staffitApp
  */
 angular.module('staffitApp')
-  .controller('ProfileslibCtrl', function($scope, syncData, usersFire) {
+  .controller('ProfileslibCtrl', function($scope, $firebase, syncData, usersFire) {
+    var fireRef = new Firebase(FBURL + '/' + usersFire);
+    var sync = $firebase(fireRef);
     $scope.search = '';
-    $scope.profiles = syncData(usersFire);
+    $scope.profiles = sync.$asArray();
     $scope.profileCol = 2;
   });

@@ -2,5 +2,7 @@
     <div class="page-header">
         <h1>Calendar</h1>
     </div>
-    <div ui-calendar="uiConfig.calendar" ng-model="eventSources" ng-init="pageTitle.nav = 'Calendar'" class="col-xs-12"></div>
+    <div ng-if="calSource">
+        <div ui-calendar="uiConfig.calendar" ng-model="eventSources" ng-init="pageTitle.nav = 'Calendar'" class="col-xs-12"></div>
+    </div>
 </div>

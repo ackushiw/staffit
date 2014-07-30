@@ -8,6 +8,8 @@
  * Controller of the staffitApp
  */
 angular.module('staffitApp')
-  .controller('AgendaCtrl', function($scope, syncData, eventDatabase) {
-    $scope.agenda = syncData(eventDatabase);
+  .controller('AgendaCtrl', function($scope, $firebase, FBURL, eventDatabase) {
+    var fireRef = new Firebase(FBURL + '/' + eventDatabase);
+    var sync = $firebase(fireRef);
+    $scope.agenda = sync.$asArray();
   });
