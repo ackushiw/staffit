@@ -1,12 +1,14 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('MainCtrl', function($scope, $firebase, syncData, eventDatabase, usersFire, $timeout) {
+  .controller('MainCtrl', function($scope, $firebase, FBURL, eventDatabase, usersFire, $timeout) {
     $scope.personRegex = /(^\d+)\.\s(\w+\s[\w\-]+)\s(\w+)?\s?(\w+)?\s?C\:\s(.*\s(?:AM|PM)).*P:\s(\d+-\d+-\d+)\s?(.*)?$/;
     $scope.pasteData = {};
     //$scope.eventList = {};
     $scope.pasted = false;
-    $scope.eventStafflist = syncData(eventDatabase);
+    var fireRef = new Firebase(FBURL + '/' + eventDatabase);
+    var sync = $firebase(fireRef);
+    $scope.eventStafflist = sync.$asArray();
 
 
     $scope.pasteUpdate = function(text) {

@@ -8,13 +8,15 @@ angular.module('staffitApp')
     var events = $firebase(ref);
 
     var User = {
-      all: events,
+      all: events.$asArray(),
+
       create: function(userForm) {
         return events.$add(userForm);
       },
       find: function(userId) {
-        console.log(userId);
-        return events.$child(userId);
+        var userRef = new Firebase(FBURL + '/' + usersFire + '/' + userId);
+        var userSync = $firebase(eventRef).$asObject();
+        return userSync;
       },
       delete: function(userId) {
         return events.$remove(userId);

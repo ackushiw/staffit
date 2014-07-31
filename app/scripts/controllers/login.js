@@ -1,20 +1,20 @@
 'use strict';
 
 angular.module('staffitApp')
-  .controller('LoginController', function ($scope, $firebase, simpleLogin, $rootScope, syncData, usersFire, $timeout, $state) {
+  .controller('LoginController', function($scope, $firebase, simpleLogin, $rootScope, usersFire, $timeout, $state) {
     $scope.pass = null;
     $scope.err = null;
     $scope.email = null;
     $scope.confirm = null;
     $scope.createMode = false;
-    $scope.loginPassword = function (cb) {
+    $scope.loginPassword = function(cb) {
       $scope.err = null;
       if (!$scope.email) {
         $scope.err = 'Please enter an email address';
       } else if (!$scope.pass) {
         $scope.err = 'Please enter a password';
       } else {
-        simpleLogin.loginPassword($scope.email, $scope.pass, function (err, user) {
+        simpleLogin.loginPassword($scope.email, $scope.pass, function(err, user) {
           $scope.err = err ? err + '' : null;
           if (!err && cb) {
             cb(user);
@@ -25,7 +25,7 @@ angular.module('staffitApp')
 
     $scope.logout = simpleLogin.logout;
 
-    $scope.createAccount = function () {
+    $scope.createAccount = function() {
       function assertValidLoginAttempt() {
         if (!$scope.email) {
           $scope.err = 'Please enter an email address';
@@ -39,7 +39,7 @@ angular.module('staffitApp')
 
       $scope.err = null;
       if (assertValidLoginAttempt()) {
-        simpleLogin.createAccount($scope.email, $scope.pass, function (err, user) {
+        simpleLogin.createAccount($scope.email, $scope.pass, function(err, user) {
           if (err) {
             $scope.err = err ? err + '' : null;
           } else {
@@ -51,13 +51,13 @@ angular.module('staffitApp')
       }
     };
 
-    $scope.login = function (service) {
-      simpleLogin.login(service, function (err) {
+    $scope.login = function(service) {
+      simpleLogin.login(service, function(err) {
         $scope.err = err ? err + '' : null;
       });
     };
 
-    $rootScope.$on('$firebaseSimpleLogin:login', function () {
+    $rootScope.$on('$firebaseSimpleLogin:login', function() {
       $rootScope.loggedIn = true;
       $state.go('auth.profile');
     });

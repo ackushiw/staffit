@@ -8,7 +8,7 @@
  * Controller of the staffitApp
  */
 angular.module('staffitApp')
-  .controller('ProfileslibCtrl', function($scope, $firebase, syncData, usersFire) {
+  .controller('ProfileslibCtrl', function($scope, $firebase, usersFire) {
     var fireRef = new Firebase(FBURL + '/' + usersFire);
     var sync = $firebase(fireRef);
     $scope.search = '';
