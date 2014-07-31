@@ -27,9 +27,9 @@ angular.module('staffitApp')
       console.log(staff.name + ' checked in!');
     };
 
-    $scope.siteIn = function(staff) {
+    $scope.siteIn = function() {
       var time = new Date();
-      staff.filter(function(p) {
+      $scope.eventView.staffList.filter(function(p) {
         return p.arrived && !p.siteIn;
       }).map(function(p) {
         p.siteIn = true;

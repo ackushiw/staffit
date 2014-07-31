@@ -21,7 +21,7 @@ angular.module('staffitApp')
 
     //Map Bounds
     var bounds = new google.maps.LatLngBounds();
-    
+
 
     //Map Layers
     var transitLayer = new google.maps.TransitLayer();
@@ -40,6 +40,7 @@ angular.module('staffitApp')
 
 
     $scope.markerInit = function(map) {
+      console.log(map);
 
       $scope.eventMarkers.push(new google.maps.Marker({
         map: map,

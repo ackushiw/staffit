@@ -179,6 +179,17 @@ nav {
         padding: 0 10px;
     }
 }
+/*Agenda*/
+
+#agenda {
+    .accordion-toggle {
+        width: 100%;
+    }
+    .agenda-container {
+        display: inline-block;
+        width: 100%;
+    }
+}
 /*Mission Control*/
 
 .mission-map {
@@ -191,6 +202,9 @@ body {
     padding-top: 80px;
     padding-bottom: 20px;
     font-family: $Roboto;
+}
+.inline-block {
+    display: inline-block;
 }
 /*View Animations*/
 
