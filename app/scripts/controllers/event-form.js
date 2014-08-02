@@ -223,7 +223,7 @@ angular.module('staffitApp')
     $scope.submitEvent = function(formIsValid) {
       if (formIsValid) {
         $scope.eventForm.creator = $scope.$session.user.uid;
-        Event.create($scope.eventForm);
+        Event.create(formIsValid);
         console.log('Form Submitted');
         $scope.eventForm = $scope.emptyEvent;
         $scope.staffForm = $scope.emptyStaff;

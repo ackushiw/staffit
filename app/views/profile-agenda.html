@@ -2,7 +2,8 @@
     <div class="page-header">
         <h1>Agenda</h1>
     </div>
-    <div class="col-md-6 well" ng-init="pageTitle.nav = 'Agenda'">
+    <div class="col-md-6 panel" ng-init="pageTitle.nav = 'Agenda'">
+        <h3>Events</h3>
         <accordion close-others="true" ng-repeat="(key, event) in agenda | orderBy: 'calendar.start'">
             <accordion-group>
                 <accordion-heading>

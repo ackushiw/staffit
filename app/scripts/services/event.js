@@ -5,12 +5,13 @@ angular.module('staffitApp')
     // Service logic
     var ref = new Firebase(FBURL + '/event-library');
 
-    var events = $firebase(ref);
+    var events = $firebase(ref).$asArray();
 
     var Event = {
-      all: events.$asArray(),
+      all: events,
 
       create: function(eventForm) {
+        console.log(eventForm);
         return events.$add(eventForm);
       },
       find: function(eventId) {
