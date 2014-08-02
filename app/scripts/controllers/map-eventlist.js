@@ -22,7 +22,7 @@ angular.module('staffitApp')
     var bounds = new google.maps.LatLngBounds();
 
 
-    var markers = [];
+    //var markers = [];
     $scope.markerInit = function(map) {
       eventLib.$loaded().then(function(data) {
         var eventsLatLng = [];

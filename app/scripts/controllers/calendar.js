@@ -33,7 +33,7 @@ angular.module('staffitApp')
       $scope.eventSources = [{
         //url: 'https://www.google.com/calendar/feeds/en_gb.usa%23holiday%40group.v.calendar.google.com/public/basic',
         events: calendarSource
-      }]
+      }];
     });
 
 

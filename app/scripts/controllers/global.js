@@ -34,7 +34,7 @@ angular.module('staffitApp')
           $scope.$session.user = user;
           var fireRef = new Firebase(FBURL + '/' + usersFire + '/' + user.uid);
           var sync = $firebase(fireRef);
-          $scope.$session.userData = sync.$asObject();;
+          $scope.$session.userData = sync.$asObject();
           return user;
         }
       });
