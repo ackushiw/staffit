@@ -5,6 +5,7 @@ angular.module('staffitApp')
     $scope.$session = $sessionStorage;
     console.log($scope.$session.user.uid);
 
+
     var geocoder;
 
     $scope.geocoderInit = function() {
@@ -18,7 +19,8 @@ angular.module('staffitApp')
       }, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
           console.log(results);
-          $scope.eventForm.addressLatLng = results[0].geometry.location;
+          $scope.eventFormValidate.addressLatLng = results[0].geometry.location;
+          $scope.address = results[0].formatted_address;
         } else {
           console.log(status);
         }
@@ -31,7 +33,8 @@ angular.module('staffitApp')
       }, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
           console.log(results);
-          $scope.eventForm.travelAddressLatLng = results[0].geometry.location;
+          $scope.eventFormValidate.travelAddressLatLng = results[0].geometry.location;
+          $scope.eventFormValidate.travelAddress = results[0].formatted_address;
         } else {
           console.log(status);
         }
@@ -83,13 +86,24 @@ angular.module('staffitApp')
       startingDay: 1
     };
     $scope.eventColorSet = function(color) {
-      $scope.eventForm.calendar.backgroundColor = color;
-      $scope.eventForm.calendar.borderColor = color;
+      $scope.eventFormValidate.calendar.backgroundColor = color;
+      $scope.eventFormValidate.calendar.borderColor = color;
+      $scope.backgroundColor = color;
+      $scope.borderColor = color;
+    };
+    $scope.backgroundColorSet = function(color) {
+      $scope.eventFormValidate.calendar.backgroundColor = color;
+    };
+    $scope.borderColorSet = function(color) {
+      $scope.eventFormValidate.calendar.borderColor = color;
+    };
+    $scope.textColorSet = function(color) {
+      $scope.eventFormValidate.calendar.textColor = color;
     };
 
     //call time
     $scope.callTimeEmit = function() {
-      $scope.eventForm.callTime = $scope.eventForm.calendar.start;
+      $scope.eventFormValidate.callTime = $scope.eventFormValidate.calendar.start;
     };
 
 
