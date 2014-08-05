@@ -1,4 +1,4 @@
-<div>
+<div ng-init="cleanForm()">
     <div class="form-view panel panel-info col-sm-12 paper-shadow-z-1 paper-shadow-top-z-1" ng-style="{'background-color': eventFormValidate.calendar.backgroundColor, 'border-color': eventFormValidate.calendar.borderColor}">
         <h1 ng-style="{color: eventFormValidate.calendar.textColor}">Create Event
             <button class="btn btn-info pull-right">Save As Template</button>
@@ -16,17 +16,17 @@
                     <input class="form-control" name="staffAdmin" type="text" ng-model="eventFormValidate.staffAdmin" placeholder="Staff Admin">
                 </div>
                 <div class="form-group col-sm-6">
-                    <textarea class="form-control" name="adminNotes" type="text" ng-model="adminNotes" placeholder="Notes for Admins"></textarea>
+                    <textarea class="form-control" name="adminNotes" type="text" ng-model="eventFormValidate.adminNotes" placeholder="Notes for Admins"></textarea>
                 </div>
                 <div class="form-group col-sm-6">
-                    <textarea class="form-control" name="eventNotes" type="text" ng-model="eventNotes" placeholder="Notes for Event"></textarea>
+                    <textarea class="form-control" name="eventNotes" type="text" ng-model="eventFormValidate.eventNotes" placeholder="Notes for Event"></textarea>
                 </div>
                 <div ng-form name="calendar">
                     <div class="form-group col-sm-6" ng-class="{ 'has-error' : eventFormValidate.calendar.id.$invalid && !eventFormValidate.id.$pristine, 'has-warning': eventFormValidate.id.$pristine }">
-                        <input class="form-control" name="id" type="text" ng-model="id" placeholder="Event ID" required>
+                        <input class="form-control" name="id" type="text" ng-model="eventFormValidate.calendar.id" placeholder="Event ID" required>
                     </div>
                     <div class="form-group col-sm-6" ng-class="{ 'has-error' : eventFormValidate.calendar.title.$invalid && !eventFormValidate.calendar.title.$pristine, 'has-warning': eventFormValidate.calendar.title.$pristine }">
-                        <input class="form-control" name="title" type="text" ng-model="title" placeholder="Event Title" required>
+                        <input class="form-control" name="title" type="text" ng-model="eventFormValidate.calendar.title" placeholder="Event Title" required>
                     </div>
 
                     <!-- <div class="col-md-12">
@@ -47,13 +47,13 @@
                             <a class="dropdown-toggle my-toggle-select" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="">
                                 <div class="input-group" ng-class="{ 'has-error' : eventFormValidate.calendar.start.$invalid && !eventFormValidate.calendar.start.$pristine, 'has-warning': eventFormValidate.calendar.start.$pristine}">
 
-                                    <input name="start" type="text" class="form-control" data-ng-model="start" placeholder="Start time...">
+                                    <input name="start" type="text" class="form-control" data-ng-model="eventFormValidate.calendar.start" placeholder="Start time...">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i>
                                     </span>
                                 </div>
                             </a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <datetimepicker data-ng-model="start" data-datetimepicker-config="{ dropdownSelector: '.my-toggle-select' }"></datetimepicker>
+                                <datetimepicker data-ng-model="eventFormValidate.calendar.start" data-datetimepicker-config="{ dropdownSelector: '.my-toggle-select' }" ng-mouseleave="startSet(start)"></datetimepicker>
                             </ul>
                         </div>
                     </div>
@@ -62,37 +62,40 @@
                         <div class="dropdown" on-toggle="calStartToggled(open)">
                             <a class="dropdown-toggle my-toggle-select" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="">
                                 <div class="input-group">
-                                    <input name="end" type="text" class="form-control" data-ng-model="end" placeholder="End time...">
+                                    <input name="end" type="text" class="form-control" data-ng-model="eventFormValidate.calendar.end" placeholder="End time..." ng-change="endSet(end)">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i>
                                     </span>
                                 </div>
                             </a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                <datetimepicker data-ng-model="end" data-datetimepicker-config="{ dropdownSelector: '.my-toggle-select' }"></datetimepicker>
+                                <datetimepicker data-ng-model="eventFormValidate.calendar.end" data-datetimepicker-config="{ dropdownSelector: '.my-toggle-select' }"></datetimepicker>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-xs-6">
-                        <p>{{start | date:'fullDate' }}</p>
-                        <p>Start Time: {{start | date:'mediumTime'}}</p>
-                        <timepicker name="start" ng-model="start" ng-change="changed()" minute-step="5"></timepicker>
+                    <div class="col-xs-12">
+                        <hr/>
                     </div>
-                    <div class="col-xs-6">
-                        <p>{{end | date:'fullDate' }}</p>
-                        <p>End Time: {{end | date:'mediumTime' }}</p>
-                        <timepicker name="end" ng-model="end" ng-change="changed()" minute-step="5"></timepicker>
-                    </div>
+                    <!--  <div class="col-xs-6">
+                       <p>{{start | date:'fullDate' }}</p>
+                       <p>Start Time: {{start | date:'mediumTime'}}</p>
+                       <timepicker name="start" ng-model="eventFormValidate.calendar.start" ng-change="changed()" minute-step="5"></timepicker>
+                   </div>
+                   <div class="col-xs-6">
+                       <p>{{end | date:'fullDate' }}</p>
+                       <p>End Time: {{end | date:'mediumTime' }}</p>
+                       <timepicker name="end" ng-model="eventFormValidate.calendar.end" ng-change="changed()" minute-step="5"></timepicker>
+                   </div> -->
                     <!-- <div class="col-xs-12">
                         <button class="btn btn-block btn-primary" ng-click="toggleColorForm()">Choose Colors</button>
                     </div>
                     <div collapse="colorCollapse" class="form-group col-sm-12"> -->
                     <div class="color-picker">
                         <div class="col-xs-3">
-                            <button class="btn btn-block" ng-style="{'background-color': color}" colorpicker name="color" ng-model="color" ng-change="eventColorSet(color)"><b>Event Color</b>
+                            <button class="btn btn-block" ng-style="{'background-color': eventFormValidate.calendar.color}" colorpicker name="color" ng-model="eventFormValidate.calendar.color" ng-change="eventColorSet(eventFormValidate.calendar.color)"><b>Event Color</b>
                             </button>
                         </div>
                         <div class="col-xs-3">
-                            <button class="btn btn-block" ng-style="{'background-color': backgroundColor}" colorpicker name="backgroundColor" ng-model="backgroundColor" ng-change="backgroundColorSet(backgroundColor)"><b>Background Color</b>
+                            <button class="btn btn-block" ng-style="{'background-color': backgroundColor}" colorpicker name="backgroundColor" ng-model="eventFormValidate.calendar.backgroundColor" ng-change="backgroundColorSet(eventFormValidate.calendar.backgroundColor)"><b>Background Color</b>
                             </button>
                         </div>
                         <div class="col-xs-3">
@@ -100,7 +103,7 @@
                             </button>
                         </div>
                         <div class="col-xs-3">
-                            <button class="btn btn-block" ng-style="{'background-color': textColor}" colorpicker name="textColor" ng-model="textColor" ng-change="textColorSet(textColor)"><b>Text Color</b>
+                            <button class="btn btn-block" ng-style="{'background-color': eventFormValidate.calendar.textColor}" colorpicker name="textColor" ng-model="eventFormValidate.calendar.textColor" ng-change="textColorSet(eventFormValidate.calendar.textColor)"><b>Text Color</b>
                             </button>
                         </div>
                     </div>
@@ -110,33 +113,33 @@
                     <hr>
                 </div>
                 <div class="form-group col-sm-12">
-                    <input class="form-control" name="client" type="text" ng-model="eventForm.adminOnly.client" placeholder="Client">
+                    <input class="form-control" name="client" type="text" ng-model="eventFormValidate.adminOnly.client" placeholder="Client">
                 </div>
                 <div class="form-group col-sm-12">
-                    <input class="form-control" name="company" type="text" ng-model="eventForm.company" placeholder="Company">
+                    <input class="form-control" name="company" type="text" ng-model="eventFormValidate.company" placeholder="Company">
                 </div>
                 <div class="panel warning">
                     <div class="form-group col-sm-6">
-                        <input class="form-control" name="contactName" type="text" ng-model="eventForm.adminOnly.contactName" placeholder="Contact Name">
+                        <input class="form-control" name="contactName" type="text" ng-model="eventFormValidate.adminOnly.contactName" placeholder="Contact Name">
                     </div>
                     <div class="form-group col-sm-6">
-                        <input class="form-control" name="contactCell" type="number" ng-model="eventForm.adminOnly.contactCell" placeholder="Contact Cell #">
+                        <input class="form-control" name="contactCell" type="number" ng-model="eventFormValidate.adminOnly.contactCell" placeholder="Contact Cell #">
                     </div>
                 </div>
                 <div class="form-group col-sm-12" ng-class="{ 'has-error' : eventFormValidate.address.$invalid && !eventFormValidate.address.$pristine, 'has-warning': eventFormValidate.address.$pristine}">
-                    <input class="form-control" name="address" type="text" ng-model="address" placeholder="Meet Address" ng-blur="codeAddress(address)" required>{{address}}
+                    <input class="form-control" name="address" type="text" ng-model="address" placeholder="Meet Address" ng-blur="codeAddress(address)" required>{{eventFormValidate.address}}
 
                 </div>
 
                 <div class="form-group col-sm-12">
-                    <textarea name="address notes" id="" class="form-control" ng-model="eventForm.addressNotes" rows="4" placeholder="Notes for Address..."></textarea>
+                    <textarea name="address notes" id="" class="form-control" ng-model="eventFormValidate.addressNotes" rows="4" placeholder="Notes for Address..."></textarea>
                 </div>
                 <div class="col-xs-12">
                     <button class="btn btn-block btn-info" ng-click="toggleTravelForm()">Travel?</button>
                 </div>
                 <div collapse="travelCollapse" class="form-group col-sm-12">
-                    <input class="form-control" name="travelAddress" type="address" ng-model="eventForm.travelAddress" placeholder="Travel Address" ng-blur="codeTravelAddress(eventForm.travelAddress)">
-                    <textarea name="address notes" id="" class="form-control" ng-model="eventForm.travelAddressNotes" rows="4" placeholder="Notes for Travel Address..."></textarea>
+                    <input class="form-control" name="travelAddress" type="address" ng-model="travelAddress" placeholder="Travel Address" ng-blur="codeTravelAddress(travelAddress)">
+                    <textarea name="address notes" id="" class="form-control" ng-model="eventFormValidate.travelAddressNotes" rows="4" placeholder="Notes for Travel Address..."></textarea>
                 </div>
                 <div ng-if="eventForm.travelAddress" class="col-xs-12">
                     <button class="btn btn-block btn-primary" ng-click="toggleDriverForm()">Driver</button>

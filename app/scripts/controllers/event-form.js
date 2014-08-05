@@ -13,6 +13,14 @@ angular.module('staffitApp')
       geocoder = new google.maps.Geocoder();
     };
 
+    $scope.setNow = function() {
+      var now = new Date();
+      console.log(now);
+      $scope.eventFormValidate.calendar.start = now;
+      $scope.eventFormValidate.calendar.end = now;
+    };
+
+
     $scope.codeAddress = function(address) {
       geocoder.geocode({
         'address': address
@@ -20,7 +28,7 @@ angular.module('staffitApp')
         if (status === google.maps.GeocoderStatus.OK) {
           console.log(results);
           $scope.eventFormValidate.addressLatLng = results[0].geometry.location;
-          $scope.address = results[0].formatted_address;
+          $scope.eventFormValidate.address = results[0].formatted_address;
         } else {
           console.log(status);
         }
@@ -109,7 +117,7 @@ angular.module('staffitApp')
 
     $scope.staffArray = [];
 
-    $scope.emptyEvent = {
+    var emptyEvent = {
       creator: $scope.$session.user.uid,
       eventAdmin: [],
       eventAdminInvite: [],
@@ -170,7 +178,7 @@ angular.module('staffitApp')
     };
 
 
-    $scope.emptyStaff = {
+    var emptyStaff = {
       name: '',
       position: '',
       locationLatLng: false,
@@ -211,6 +219,8 @@ angular.module('staffitApp')
 
     $scope.eventForm = {};
 
+    $scope.eventFormValidate = angular.copy(emptyEvent);
+
     $scope.addStaff = function(staffForm) {
       console.log(staffForm);
       var staffData = {
@@ -241,7 +251,7 @@ angular.module('staffitApp')
         console.log(angular.copy(eventData, data));
         Event.create(angular.fromJson(angular.toJson(eventData)));
         console.log('Form Submitted');
-        $scope.eventForm = $scope.emptyEvent;
+        $scope.eventFormValidate = angular.copy(emptyEvent);
         $scope.staffForm = $scope.emptyStaff;
         $scope.staffArray = [];
         $scope.pasteData = {};
