@@ -234,10 +234,12 @@ angular.module('staffitApp')
       $scope.staffCollapse = true;
     };
 
-    $scope.submitEvent = function(formIsValid) {
-      if (formIsValid) {
-        $scope.eventForm.creator = $scope.$session.user.uid;
-        Event.create(formIsValid);
+    $scope.submitEvent = function(valid, eventData) {
+      if (valid) {
+        var data = null;
+        $scope.eventFormValidate.creator = $scope.$session.user.uid;
+        console.log(angular.copy(eventData, data));
+        Event.create(angular.fromJson(angular.toJson(eventData)));
         console.log('Form Submitted');
         $scope.eventForm = $scope.emptyEvent;
         $scope.staffForm = $scope.emptyStaff;

@@ -1,3 +1,38 @@
+<nav id="nav" class="navbar navbar-default navbar-fixed-top paper-shadow-bottom paper-shadow-bottom-z-1">
+    <div class="container-fluid">
+        <div>
+            <form class="hidden navbar-form navbar-right" role="form">
+                <fieldset>
+                    <div class="form-group">
+                        <label>email</label>
+                        <input class="form-control" type="text" ng-model="email" placeholder="email" />
+                    </div>
+                    <div class="form-group">
+                        <label>password</label>
+                        <input class="form-control" type="password" ng-model="pass" placeholder="password" />
+                    </div>
+                    <div class="form-group" ng-show="createMode">
+                        <label>confirm pass</label>
+                        <input class="form-control" type="password" ng-model="confirm" placeholder="confirm password" />
+                    </div>
+                    <button class="btn btn-primary" ng-click="loginPassword()" ng-hide="createMode">Log In</button>
+                    <button class="btn btn-default" ng-click="createMode = true" ng-hide="createMode">Register</button>
+                    <button class="btn btn-success" ng-show="createMode" ng-click="createAccount()">Create Account</button>
+                    <button class="btn btn-default" ng-show="createMode" ng-click="createMode = false">Cancel</button>
+
+                </fieldset>
+            </form>
+            <div class="animate-swift-out nav-img-holder" ng-class="{'nav-img-slide': sidebarMenu, 'img-circle-parent': !sidebarMenu}" ng-animate>
+                <div class="animate-button-lift nav-pointer nav-img">
+                    <img class="img-responsive img-thumbnail img-circle paper-shadow-bottom paper-shadow-bottom-z-1" ng-src="{{'http://www.gravatar.com/avatar/' + gravatar}}" alt="Profile" ng-click="sidebarToggle(sidebarMenu);">
+
+                </div>
+            </div>
+            <span class="navbar-brand nav-title">A.lance</span>
+
+        </div>
+    </div>
+</nav>
 <div class="jumbotron">
     <h1><b>A.Lance</b>
     </h1>

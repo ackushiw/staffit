@@ -25,7 +25,7 @@
                     <div class="form-group col-sm-6" ng-class="{ 'has-error' : eventFormValidate.calendar.id.$invalid && !eventFormValidate.id.$pristine, 'has-warning': eventFormValidate.id.$pristine }">
                         <input class="form-control" name="id" type="text" ng-model="id" placeholder="Event ID" required>
                     </div>
-                    <div class="form-group col-sm-6" ng-class="{ 'has-error' : eventFormValidate.title.$invalid && !eventFormValidate.title.$pristine, 'has-warning': eventFormValidate.title.$pristine }">
+                    <div class="form-group col-sm-6" ng-class="{ 'has-error' : eventFormValidate.calendar.title.$invalid && !eventFormValidate.calendar.title.$pristine, 'has-warning': eventFormValidate.calendar.title.$pristine }">
                         <input class="form-control" name="title" type="text" ng-model="title" placeholder="Event Title" required>
                     </div>
 
@@ -45,7 +45,7 @@
 
                         <div class="dropdown" on-toggle="calStartToggled(open)">
                             <a class="dropdown-toggle my-toggle-select" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="">
-                                <div class="input-group" ng-class="{ 'has-error' : eventFormValidate.start.$invalid && !eventFormValidate.start.$pristine, 'has-warning': eventFormValidate.start.$pristine}">
+                                <div class="input-group" ng-class="{ 'has-error' : eventFormValidate.calendar.start.$invalid && !eventFormValidate.calendar.start.$pristine, 'has-warning': eventFormValidate.calendar.start.$pristine}">
 
                                     <input name="start" type="text" class="form-control" data-ng-model="start" placeholder="Start time...">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i>
@@ -193,7 +193,7 @@
                     <hr>
                 </div>
                 <div class="form-group col-sm-12">
-                    <button class="btn btn-success btn-block col-sm-12" ng-click="submitEvent(eventFormValidate.$valid)">Create Event</button>
+                    <button class="btn btn-success btn-block col-sm-12" ng-class="{'btn-danger': eventFormValidate.$invalid}" ng-click="submitEvent(eventFormValidate.$valid, eventFormValidate)" ng-disabled="eventFormValidate.$invalid">Create Event</button>
                 </div>
                 <!-- ng-disabled="eventFormValidate.$invalid" -->
 
