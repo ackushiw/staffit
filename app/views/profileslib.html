@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="card well col-xs-{{profileCol}}" ng-repeat="(key, profile) in profiles | filter:search">
-        <a ui-sref="auth.profileslib.profile({id: key})">
+        <a ui-sref="auth.user({id: profile.$id, name: profile.name})">
             <div>
                 <img class="img-responsive img-rounded" src="{{profile.headshot}}" alt="headshot">
             </div>

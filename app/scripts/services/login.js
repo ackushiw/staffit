@@ -116,8 +116,9 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
       weight: 'add',
       skills: 'add',
       cell: 'add',
-      headshot: 'add',
-      fullbody: 'add',
+      headshot: 'images/default-headshot.jpg',
+      fullbody: 'images/default-fullbody.jpg',
+      coverPhoto: 'images/default-cover.png',
       merits: 0,
       companies: ''
 

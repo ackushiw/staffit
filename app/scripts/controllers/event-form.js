@@ -197,25 +197,7 @@ angular.module('staffitApp')
       notes: '',
       merit: ''
     };
-    $scope.staffForm = {
-      name: '',
-      position: '',
-      locationLatLng: false,
-      phone: '',
-      email: '',
-      invited: '',
-      confirmed: false,
-      callTime: '',
-      arrived: false,
-      arrivalTime: '',
-      siteIn: false,
-      siteInTime: '',
-      siteOut: false,
-      siteOutTime: '',
-      hours: '',
-      notes: '',
-      merit: ''
-    };
+    $scope.staffForm = emptyStaff;
 
     $scope.eventForm = {};
 
@@ -249,7 +231,7 @@ angular.module('staffitApp')
         var data = null;
         $scope.eventFormValidate.creator = $scope.$session.user.uid;
         $scope.eventFormValidate.calendar.allDay = false;
-        $scope.eventFormValidate.calendar.url = "url";
+        $scope.eventFormValidate.calendar.url = 'url';
         console.log(angular.copy(eventData, data));
         Event.create(angular.fromJson(angular.toJson(eventData)));
         console.log('Form Submitted');

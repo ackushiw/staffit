@@ -79,18 +79,19 @@ staffApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/profileslib.html',
       controller: 'ProfileslibCtrl'
     })
-    .state('auth.profileslib.profile', {
-      url: '/:id',
+    .state('auth.user', {
+      url: '/:name',
       templateUrl: 'views/profilepage.html',
       controller: 'ProfilePageCtrl'
     })
     .state('auth.profile', {
       url: '/:profile',
       templateUrl: 'views/user-view.html',
-      controller: function($scope, $stateParams) {
-        console.log($stateParams);
+controller: function($scope, $stateParams) {
+  console.log($stateParams);
 
-      }
+}
+
     })
     .state('auth.profile.agenda', {
       url: '/agenda',

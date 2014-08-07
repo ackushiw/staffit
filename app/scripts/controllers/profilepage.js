@@ -8,10 +8,8 @@
  * Controller of the staffitApp
  */
 angular.module('staffitApp')
-  .controller('ProfilePageCtrl', function($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('ProfilePageCtrl', function($scope, $stateParams) {
+    var test = $stateParams.id;
+    console.log($stateParams);
+    console.log(test);
   });
