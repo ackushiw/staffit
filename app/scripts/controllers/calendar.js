@@ -23,12 +23,13 @@ angular.module('staffitApp')
         console.log(dataChild); // Prints items in order they appear in Firebase.
         var key = dataChild.$id;
         console.log(key);
+        dataChild.calendar.url = '#/events/' + key;
         console.log(dataChild.calendar);
         if (dataChild.calendar) {
           this.push(dataChild.calendar);
         }
       }, calendarSource);
-      console.log(calendarSource);
+      //console.log(calendarSource);
       $scope.calSource = calendarSource;
       $scope.eventSources = [{
         //url: 'https://www.google.com/calendar/feeds/en_gb.usa%23holiday%40group.v.calendar.google.com/public/basic',

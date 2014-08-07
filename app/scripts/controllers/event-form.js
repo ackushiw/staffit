@@ -248,6 +248,8 @@ angular.module('staffitApp')
       if (valid) {
         var data = null;
         $scope.eventFormValidate.creator = $scope.$session.user.uid;
+        $scope.eventFormValidate.calendar.allDay = false;
+        $scope.eventFormValidate.calendar.url = "url";
         console.log(angular.copy(eventData, data));
         Event.create(angular.fromJson(angular.toJson(eventData)));
         console.log('Form Submitted');
