@@ -1,3 +1,6 @@
 <div class="col-sm-offset-1 animate-swift-out" ng-class="{'col-md-offset-3': sidebarMenu}" ng-animate>
     <p>This is the ProfilePage view.</p>
-    </dass="col-sm-offset-1
+    <div ng-if="calSource">
+        <div ui-calendar="uiConfig.calendar" ng-model="eventSources" ng-init="pageTitle.nav = 'Calendar'" class="col-xs-12"></div>
+    </div>
+</div>
