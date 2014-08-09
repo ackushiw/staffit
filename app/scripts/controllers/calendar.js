@@ -11,7 +11,7 @@ angular.module('staffitApp')
   .controller('CalendarCtrl', function($scope, $firebase, FBURL, eventDatabase) {
     var fireRef = new Firebase(FBURL + '/' + eventDatabase);
     var sync = $firebase(fireRef);
-    $scope.CalendarCtrl = true;
+    $scope.calInit = false;
     var eventLib = sync.$asArray();
 
     eventLib.$loaded().then(function(data) {
@@ -35,6 +35,7 @@ angular.module('staffitApp')
         //url: 'https://www.google.com/calendar/feeds/en_gb.usa%23holiday%40group.v.calendar.google.com/public/basic',
         events: calendarSource
       }];
+      $scope.calInit = true;
     });
 
 
@@ -44,7 +45,8 @@ angular.module('staffitApp')
           left: 'month agendaWeek',
           center: 'title',
           right: 'today prev,next'
-        }
+        },
+        timezone: 'UTC' //This doesn't seem to work
       }
     };
     /*$scope.eventSources = [{
