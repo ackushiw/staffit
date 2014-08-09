@@ -24,6 +24,7 @@ var staffApp = angular
     'ui.map',
     'ngAnimate',
     'ngTouch',
+    'ngAutocomplete', //for google places
     'angularfire.login',
     'simpleLoginTools',
     'firebase'
@@ -87,10 +88,10 @@ staffApp.config(function($stateProvider, $urlRouterProvider) {
     .state('auth.profile', {
       url: '/:profile',
       templateUrl: 'views/user-view.html',
-controller: function($scope, $stateParams) {
-  console.log($stateParams);
+      controller: function($scope, $stateParams) {
+        console.log($stateParams);
 
-}
+      }
 
     })
     .state('auth.profile.agenda', {

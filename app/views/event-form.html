@@ -127,9 +127,11 @@
                     </div>
                 </div>
                 <div class="form-group col-sm-12" ng-class="{ 'has-error' : eventFormValidate.address.$invalid && !eventFormValidate.address.$pristine, 'has-warning': eventFormValidate.address.$pristine}">
-                    <input class="form-control" name="address" type="text" ng-model="address" placeholder="Meet Address" ng-blur="codeAddress(address)" required>{{eventFormValidate.address}}
+                    <input class="form-control" name="address" type="text" ng-autocomplete options="autoOptions" details="addressDetails" ng-model="address" placeholder="Meet Address" required>{{addressDetails.geometry | json}}
 
                 </div>
+                <button class="btn btn-block" ng-click="codeAddress(address)">address</button>
+                {{eventFormValidate.address}}
 
                 <div class="form-group col-sm-12">
                     <textarea name="address notes" id="" class="form-control" ng-model="eventFormValidate.addressNotes" rows="4" placeholder="Notes for Address..."></textarea>
@@ -138,7 +140,7 @@
                     <button class="btn btn-block btn-info" ng-click="toggleTravelForm()">Travel?</button>
                 </div>
                 <div collapse="travelCollapse" class="form-group col-sm-12">
-                    <input class="form-control" name="travelAddress" type="address" ng-model="travelAddress" placeholder="Travel Address" ng-blur="codeTravelAddress(travelAddress)">
+                    <input class="form-control" name="travelAddress" type="text" ng-autocomplete ng-model="travelAddress" placeholder="Travel Address" ng-blur="codeTravelAddress(travelAddress)">
                     <textarea name="address notes" id="" class="form-control" ng-model="eventFormValidate.travelAddressNotes" rows="4" placeholder="Notes for Travel Address..."></textarea>
                 </div>
                 <div ng-if="eventForm.travelAddress" class="col-xs-12">

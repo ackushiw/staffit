@@ -109,6 +109,11 @@ angular.module('staffitApp')
       $scope.eventFormValidate.calendar.textColor = color;
     };
 
+    //ngAutocomplete
+    $scope.autoOptions = {
+      watchEnter: true
+    };
+
     //call time
     $scope.callTimeEmit = function() {
       $scope.eventFormValidate.callTime = $scope.eventFormValidate.calendar.start;
@@ -199,7 +204,6 @@ angular.module('staffitApp')
     };
     $scope.staffForm = emptyStaff;
 
-    $scope.eventForm = {};
 
     $scope.eventFormValidate = angular.copy(emptyEvent);
 
@@ -232,6 +236,7 @@ angular.module('staffitApp')
         $scope.eventFormValidate.creator = $scope.$session.user.uid;
         $scope.eventFormValidate.calendar.allDay = false;
         $scope.eventFormValidate.calendar.url = 'url';
+        $scope.eventFormValidate.calendar.createdTime = new Date();
         console.log(angular.copy(eventData, data));
         Event.create(angular.fromJson(angular.toJson(eventData)));
         console.log('Form Submitted');

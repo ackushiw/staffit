@@ -13,6 +13,7 @@
         </div>
         <div class="card animate-fade" ng-if="eventView.addressLatLng.k" ng-animate>
             <section id="map" ng-controller="MapCtrl">
+
                 <div ng-repeat="marker in eventMarkers" ui-map-marker="eventMarkers[$index]" ui-event="{'map-click': 'openMarkerInfo(marker)'}">
                 </div>
 
