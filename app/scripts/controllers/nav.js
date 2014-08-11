@@ -11,6 +11,12 @@ angular.module('staffitApp')
       }
     };*/
 
+    $scope.logOutAsk = function() {
+      if (confirm('Going?')) { //confirm jshist error
+        simpleLogin.logout();
+      }
+    }
+
 
 
     $scope.logout = function() {

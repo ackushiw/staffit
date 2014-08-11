@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('staffitApp')
-  .factory('Event', function($firebase, FBURL) {
+  .factory('Event', function($rootScope, $firebase, FBURL) {
     // Service logic
     var ref = new Firebase(FBURL + '/event-library');
 
@@ -20,6 +20,26 @@ angular.module('staffitApp')
         var eventRef = new Firebase(FBURL + '/event-library/' + eventId);
         var eventSync = $firebase(eventRef).$asObject();
         return eventSync;
+      },
+      filter: function(userId) {
+        events.$loaded().then(function(data) {
+          var filteredEvents = [];
+          console.log('filterStarted for: ' + userId);
+          angular.forEach(data, function(dataChild) {
+
+            console.log(dataChild.creator); // Prints items in order they appear in Firebase.
+
+            if (dataChild.creator === userId) {
+              var key = dataChild.$id;
+              console.log(key);
+              this.push(dataChild);
+            }
+          }, filteredEvents);
+          console.log('filterFinished');
+          $rootScope.filteredEventsTest = filteredEvents;
+          return filteredEvents;
+        });
+
       },
       delete: function(eventId) {
         return events.$remove(eventId);
