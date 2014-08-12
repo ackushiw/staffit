@@ -15,7 +15,7 @@ angular.module('staffitApp')
       if (confirm('Going?')) { //confirm jshist error
         simpleLogin.logout();
       }
-    }
+    };
 
 
 
