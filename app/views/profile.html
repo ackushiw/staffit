@@ -21,89 +21,89 @@
                     </tab-heading>
                     <br>
                     <div class="col-xs-10" ng-if="sidebarMenu" class="animate-fade" ng-animate>
-                        <button class="btn btn-lg btn-block" ui-sref="auth.profile({profile: $session.userData.name})">
+                        <material-button class="btn btn-lg btn-block" ui-sref="auth.profile({profile: $session.userData.name})">
 
                             <span ng-if="sidebarMenu" class="animate-fade" ng-animate>Agenda</span>
 
-                        </button>
+                        </material-button>
 
 
-                        <button class="btn btn-lg btn-block" ui-sref="auth.profile.calendar" ui-sref-active="active">
+                        <material-button class="btn btn-lg btn-block" ui-sref="auth.profile.calendar" ui-sref-active="active">
 
                             <span ng-if="sidebarMenu" class="animate-fade" ng-animate>Calendar</span>
 
-                        </button>
-                        <button class="btn btn-lg btn-block" ui-sref="auth.profile.records" ui-sref-active="active">
+                        </material-button>
+                        <material-button class="btn btn-lg btn-block" ui-sref="auth.profile.records" ui-sref-active="active">
 
                             <span ng-if="sidebarMenu" class="animate-fade" ng-animate>Overview</span>
 
-                        </button>
-                        <button class="btn btn-lg btn-block" ng-click="messageToggle(messagePane)">
+                        </material-button>
+                        <material-button class="btn btn-lg btn-block" ng-click="messageToggle(messagePane)">
 
                             <span ng-if="sidebarMenu" class="animate-fade" ng-animate>Messages</span>
 
-                        </button>
-                        <button class="btn btn-lg btn-block " ui-sref="auth.profileslib" ui-sref-active="active">
+                        </material-button>
+                        <material-button class="btn btn-lg btn-block " ui-sref="auth.profileslib" ui-sref-active="active">
 
                             <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Profiles</span>
 
-                        </button>
-                        <button class="btn btn-lg btn-block " ui-sref="auth.about ">
+                        </material-button>
+                        <material-button class="btn btn-lg btn-block " ui-sref="auth.about ">
 
                             <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Event Control</span>
 
-                        </button>
-                        <button class="btn btn-lg btn-block" ui-sref="auth.create" ui-sref-active="active">
+                        </material-button>
+                        <material-button class="btn btn-lg btn-block" ui-sref="auth.create" ui-sref-active="active">
 
                             <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Create Event</span>
 
-                        </button>
-                        <button class="btn btn-lg btn-block " ui-sref="auth.paste-event" ui-sref-active="active">
+                        </material-button>
+                        <material-button class="btn btn-lg btn-block " ui-sref="auth.paste-event" ui-sref-active="active">
 
                             <span ng-if="sidebarMenu " class="animate-fade " ng-animate>Archive</span>
 
-                        </button>
-                        <button class="btn btn-lg btn-danger btn-block " ng-click="logOutAsk(); ">
+                        </material-button>
+                        <material-button class="btn btn-lg btn-danger btn-block " ng-click="logOutAsk(); ">
                             <span ng-if="sidebarMenu" class="animate-fade " ng-animate>Log out</span>
 
-                        </button>
+                        </material-button>
                     </div>
                     <div class="col-xs-2">
-                        <button class="btn btn-lg btn-block" ui-sref="auth.profile({profile: $session.userData.name, title: 'Agenda'})" ui-sref-active="active">
+                        <material-button class="btn btn-lg btn-block" ui-sref="auth.profile({profile: $session.userData.name, title: 'Agenda'})" ui-sref-active="active">
                             <span class="glyphicon glyphicon-th-list"></span>
-                        </button>
+                        </material-button>
 
-                        <button class="btn btn-lg btn-block" ui-sref="auth.profile.calendar" ui-sref-active="active">
+                        <material-button class="btn btn-lg btn-block" ui-sref="auth.profile.calendar" ui-sref-active="active">
                             <span class="glyphicon glyphicon-calendar"></span>
 
-                        </button>
-                        <button class="btn btn-lg btn-block" ui-sref="auth.profile.records" ui-sref-active="active">
+                        </material-button>
+                        <material-button class="btn btn-lg btn-block" ui-sref="auth.profile.records" ui-sref-active="active">
                             <span class="glyphicon glyphicon-stats "></span>
 
-                        </button>
-                        <button class="btn btn-lg btn-block" ng-click="messageToggle(messagePane)">
+                        </material-button>
+                        <material-button class="btn btn-lg btn-block" ng-click="messageToggle(messagePane)">
                             <span class="glyphicon glyphicon-envelope "></span>
 
-                        </button>
-                        <button class="btn btn-lg btn-block" ui-sref="auth.profileslib" ui-sref-active="active">
+                        </material-button>
+                        <material-button class="btn btn-lg btn-block" ui-sref="auth.profileslib" ui-sref-active="active">
                             <span class="glyphicon glyphicon-user"></span>
 
-                        </button>
-                        <button class="btn btn-lg btn-block" ui-sref="auth.about" ui-sref-active="active">
+                        </material-button>
+                        <material-button class="btn btn-lg btn-block" ui-sref="auth.about" ui-sref-active="active">
                             <span class="glyphicon glyphicon-tasks "></span>
 
-                        </button>
-                        <button class="btn btn-lg btn-block" ui-sref="auth.create" ui-sref-active="active">
+                        </material-button>
+                        <material-button class="btn btn-lg btn-block" ui-sref="auth.create" ui-sref-active="active">
                             <span class="glyphicon glyphicon-pencil "></span>
 
-                        </button>
-                        <button class="btn btn-lg btn-block" ui-sref="auth.paste-event ">
+                        </material-button>
+                        <material-button class="btn btn-lg btn-block" ui-sref="auth.paste-event ">
                             <span class="glyphicon glyphicon-th-large"></span>
 
-                        </button>
-                        <button class="btn btn-lg btn-block" ng-click="logOutAsk();">
+                        </material-button>
+                        <material-button class="btn btn-lg btn-block" ng-click="logOutAsk();">
                             <span class="glyphicon glyphicon-off"></span>
-                        </button>
+                        </material-button>
                     </div>
                 </tab>
                 <tab ng-if="sidebarMenu" class="animate-fade" ng-animate>
@@ -118,14 +118,14 @@
                         <div class="page-header" ng-init="profileEdit=false">
                             <h3>{{$session.userData.name}}
                                 <span class="pull-right">
-                                    <button type="button" class="btn btn-primary animate-swift-out" ng-class="{hidden: profileEdit}" ng-click="profileEdit=! profileEdit" ng-animate>
+                                    <material-button type="button" class="btn btn-primary animate-swift-out" ng-class="{hidden: profileEdit}" ng-click="profileEdit=! profileEdit" ng-animate>
                                         <span class="hidden-xs">Edit</span>
                                         <span class="glyphicon glyphicon-cog"></span>
-                                    </button>
-                                    <button ng-if="profileEdit " class="btn btn-success " ng-click="profileSave() ">
+                                    </material-button>
+                                    <material-button ng-if="profileEdit " class="btn btn-success " ng-click="profileSave() ">
                                         <span class="hidden-xs ">Save</span>
                                         <span class="glyphicon glyphicon-ok "></span>
-                                    </button>
+                                    </material-button>
                                 </span>
                             </h3>
                         </div>
@@ -196,14 +196,14 @@
                         <div class="page-header " ng-init="profileEdit=false ">
                             <h3>Pictures
                                 <span class="pull-right ">
-                                    <button type="button " class="btn btn-primary " ng-class="{hidden: profileEdit} " ng-click="profileEdit=! profileEdit ">
+                                    <material-button type="button" class="btn btn-primary " ng-class="{hidden: profileEdit} " ng-click="profileEdit=! profileEdit ">
                                         <span class="hidden-xs ">Edit</span>
                                         <span class="glyphicon glyphicon-cog "></span>
-                                    </button>
-                                    <button ng-if="profileEdit " class="btn btn-success " ng-click="profileSave() ">
+                                    </material-button>
+                                    <material-button ng-if="profileEdit " class="btn btn-success " ng-click="profileSave() ">
                                         <span class="hidden-xs ">Save</span>
                                         <span class="glyphicon glyphicon-ok "></span>
-                                    </button>
+                                    </material-button>
                                 </span>
                             </h3>
                         </div>
@@ -246,14 +246,14 @@
                         <div class="page-header " ng-init="profileEdit=false ">
                             <h3>Contact
                                 <span class="pull-right ">
-                                    <button type="button " class="btn btn-primary " ng-class="{hidden: profileEdit} " ng-click="profileEdit=! profileEdit ">
+                                    <material-button type="button" class="btn btn-primary " ng-class="{hidden: profileEdit} " ng-click="profileEdit=! profileEdit ">
                                         <span class="hidden-xs ">Edit</span>
                                         <span class="glyphicon glyphicon-cog "></span>
-                                    </button>
-                                    <button ng-if="profileEdit " class="btn btn-success " ng-click="profileSave() ">
+                                    </material-button>
+                                    <material-button ng-if="profileEdit " class="btn btn-success " ng-click="profileSave() ">
                                         <span class="hidden-xs ">Save</span>
                                         <span class="glyphicon glyphicon-ok "></span>
-                                    </button>
+                                    </material-button>
                                 </span>
                             </h3>
                         </div>

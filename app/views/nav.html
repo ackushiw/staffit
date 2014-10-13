@@ -51,22 +51,7 @@
     <div class="animate-swift-out paper-shadow-bottom paper-shadow-bottom-z-4" id="sidebar" ng-class="{'col-sm-1': !sidebarMenu, 'col-md-3': sidebarMenu, 'sidebar-offcanvas': !sidebarMenu && phone, 'col-xs-8': sidebarMenu, 'col-sm-6': sidebarMenu}" role="navigation" ng-animate>
         <img class="hidden img-responsive img-thumbnail img-circle paper-shadow-bottom paper-shadow-bottom-z-1" ng-src="{{'http://www.gravatar.com/avatar/' + gravatar}}" alt="Profile" ng-click="sidebarToggle(sidebarMenu);">
         <div class="sidemenu-container col-xs-12">
-
-            <profile></profile>
-            <div class="panel info hidden">
-                <ul class="list-group">
-                    <li class="list-group-item"> <a ui-sref="auth.about" ui-sref-active="active">About</a>
-                    </li>
-                    <li class="list-group-item"> <a ui-sref="auth.create" ui-sref-active="active">Create Event</a>
-                    </li>
-                    <li class="list-group-item"> <a ui-sref="auth.paste-event" ui-sref-active="active">Paste Event</a>
-                    </li>
-                    <li class="list-group-item" ng-show-auth="login"> <a class="btn btn-danger btn-block" href="#" ng-click="auth.$logout();">Log Out</a>
-                    </li>
-                    <li class="list-group-item" ng-show-auth="['logout','error']"> <a class="btn btn-primary btn-block" ui-sref="anon.home">Log In</a>
-                    </li>
-                </ul>
-            </div>
+            <profile></profile>            
         </div>
     </div>
     <!-- Message Pane -->

@@ -15,6 +15,10 @@ var staffApp = angular
     'ngResource',
     'ngSanitize',
     'ngStorage',
+    'ngAnimate',
+    'ngMaterial',
+    'ngTouch',    
+    'ngAutocomplete', //for google places
     'ui.router',
     'ui.bootstrap',
     'ui.bootstrap.datetimepicker',
@@ -22,9 +26,6 @@ var staffApp = angular
     'ui.utils',
     'ui.calendar',
     'ui.map',
-    'ngAnimate',
-    'ngTouch',
-    'ngAutocomplete', //for google places
     'angularfire.login',
     'simpleLoginTools',
     'firebase'

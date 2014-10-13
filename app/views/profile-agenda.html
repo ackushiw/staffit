@@ -1,38 +1,50 @@
-<div id="agenda">
-    <div class="col-xs-12">
-        <div class="page-header">
-            <h1>Agenda</h1>
+<div id="agenda" layout="vertical" layout-fill>
+    <material-toolbar scroll-shrink class="material-theme-light">
+        <div class="material-toolbar-tools material-toolbar-tools-bottom" layout="horizontal" flex>
+            <span flex></span>
+            <material-tabs>
+                <material-tab>
+                    <material-tab-label><b>Agenda</b>
+                    </material-tab-label>
+                </material-tab>
+                <material-tab label="today"></material-tab>
+                <material-tab label="Week"></material-tab>
+                <material-tab label="MOnth"></material-tab>
+                <material-tab label="Map View"></material-tab>
+            </material-tabs>
         </div>
-    </div>
-    <div class="col-md-6 panel" ng-init="pageTitle.nav = 'Agenda'">
-        <h3>Events</h3>
-        <accordion close-others="true" ng-repeat="(key, event) in agenda | orderBy: 'calendar.start'">
-            <accordion-group>
-                <accordion-heading>
-                    <div class="agenda-container">
-                        <span class="col-xs-4">{{'Title: '+ event.calendar.title}}</span>
-                        <span class="col-xs-5">{{event.calendar.start | date:'EEEE, MMMM d, h:mm a'}}</span>
-                        <span class="col-xs-3">
-                            <a ui-sref="auth.event-view({eventId: event.$id})" class="pull-right">View Event
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        </span>
-                    </div>
-                </accordion-heading>{{event.creator}}
+    </material-toolbar>
+    <material-content>
+        <div class="col-md-6 panel" ng-init="pageTitle.nav = 'Agenda'">
+            <h3>Events</h3>
+            <accordion close-others="true" ng-repeat="(key, event) in agenda | orderBy: 'calendar.start'">
+                <accordion-group>
+                    <accordion-heading>
+                        <div class="agenda-container">
+                            <span class="col-xs-4">{{'Title: '+ event.calendar.title}}</span>
+                            <span class="col-xs-5">{{event.calendar.start | date:'EEEE, MMMM d, h:mm a'}}</span>
+                            <span class="col-xs-3">
+                                <a ui-sref="auth.event-view({eventId: event.$id})" class="pull-right">View Event
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            </span>
+                        </div>
+                    </accordion-heading>{{event.creator}}
 
-                <p>{{'Address: ' + event.address }}</p>
-                <p>{{'Time: '}}{{event.calendar.start | date: 'shortTime'}}</p>
-                <p>{{'Uniform: ' + event.uniform}}</p>
+                    <p>{{'Address: ' + event.address }}</p>
+                    <p>{{'Time: '}}{{event.calendar.start | date: 'shortTime'}}</p>
+                    <p>{{'Uniform: ' + event.uniform}}</p>
 
-            </accordion-group>
-        </accordion>
-    </div>
-    <div class="col-md-6">
-        <section ng-controller="EventlistMapCtrl">
-            <div ng-repeat="marker in eventListMarkers" ui-map-marker="eventsListMarkers[$index]" ui-event="{'map-click': 'openMarkerInfo(marker)'}">
-            </div>
-            <div ui-map="eventListMap" ui-options="mapOptions" class="map-canvas well"></div>
-            <span ng-init="markerInit(eventListMap)"></span>
-        </section>
-    </div>
+                </accordion-group>
+            </accordion>
+        </div>
+        <div class="col-md-6">
+            <section ng-controller="EventlistMapCtrl">
+                <div ng-repeat="marker in eventListMarkers" ui-map-marker="eventsListMarkers[$index]" ui-event="{'map-click': 'openMarkerInfo(marker)'}">
+                </div>
+                <div ui-map="eventListMap" ui-options="mapOptions" class="map-canvas well"></div>
+                <span ng-init="markerInit(eventListMap)"></span>
+            </section>
+        </div>
+    </material-content>
 </div>
