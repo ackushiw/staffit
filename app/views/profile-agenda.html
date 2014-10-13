@@ -37,14 +37,25 @@
 
                 </accordion-group>
             </accordion>
-        </div>
-        <div class="col-md-6">
-            <section ng-controller="EventlistMapCtrl">
-                <div ng-repeat="marker in eventListMarkers" ui-map-marker="eventsListMarkers[$index]" ui-event="{'map-click': 'openMarkerInfo(marker)'}">
+            <h2>Scroller (is loading: {{loading}})</h2>
+            <div ui-scroll-viewport="" style="height:300px;" class="panel info">
+                <div ui-scroll="item in datasource" buffer-size="4" is-loading="loading">
+
+                    <div class="alert alert-info large-3 medium-4 small-6 columns item">
+                        *one {{item}}* <i class="fa fa-bolt"></i>
+                    </div>
                 </div>
-                <div ui-map="eventListMap" ui-options="mapOptions" class="map-canvas well"></div>
-                <span ng-init="markerInit(eventListMap)"></span>
-            </section>
+
+            </div>
         </div>
-    </material-content>
+</div>
+<div class="col-md-6">
+    <section ng-controller="EventlistMapCtrl">
+        <div ng-repeat="marker in eventListMarkers" ui-map-marker="eventsListMarkers[$index]" ui-event="{'map-click': 'openMarkerInfo(marker)'}">
+        </div>
+        <div ui-map="eventListMap" ui-options="mapOptions" class="map-canvas well"></div>
+        <span ng-init="markerInit(eventListMap)"></span>
+    </section>
+</div>
+</material-content>
 </div>

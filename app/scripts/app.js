@@ -17,7 +17,7 @@ var staffApp = angular
     'ngStorage',
     'ngAnimate',
     'ngMaterial',
-    'ngTouch',    
+    'ngTouch',
     'ngAutocomplete', //for google places
     'ui.router',
     'ui.bootstrap',
